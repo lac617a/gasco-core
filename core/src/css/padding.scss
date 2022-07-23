@@ -1,0 +1,130 @@
+@import "../themes/gasco.globals";
+@import "../themes/gasco.mixins";
+
+
+// Element Space
+// --------------------------------------------------
+// Creates padding and margin attributes to be used on
+// any element
+
+$padding: var(--gasco-padding, 16px);
+$margin: var(--gasco-margin, 16px);
+
+// Padding
+// --------------------------------------------------
+
+.gasco-no-padding {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+
+  @include padding(0);
+}
+
+.gasco-padding {
+  --padding-start: #{$padding};
+  --padding-end: #{$padding};
+  --padding-top: #{$padding};
+  --padding-bottom: #{$padding};
+
+  @include padding($padding);
+}
+
+.gasco-padding-top {
+  --padding-top: #{$padding};
+
+  @include padding($padding, null, null, null);
+}
+
+.gasco-padding-start {
+  --padding-start: #{$padding};
+
+  @include padding-horizontal($padding, null);
+}
+
+.gasco-padding-end {
+  --padding-end: #{$padding};
+
+  @include padding-horizontal(null, $padding);
+}
+
+.gasco-padding-bottom {
+  --padding-bottom: #{$padding};
+
+  @include padding(null, null, $padding, null);
+}
+
+.gasco-padding-vertical {
+  --padding-top: #{$padding};
+  --padding-bottom: #{$padding};
+
+  @include padding($padding, null, $padding, null);
+}
+
+.gasco-padding-horizontal {
+  --padding-start: #{$padding};
+  --padding-end: #{$padding};
+
+  @include padding-horizontal($padding);
+}
+
+
+// Margin
+// --------------------------------------------------
+
+.gasco-no-margin {
+  --margin-start: 0;
+  --margin-end: 0;
+  --margin-top: 0;
+  --margin-bottom: 0;
+
+  @include margin(0);
+}
+
+.gasco-margin {
+  --margin-start: #{$margin};
+  --margin-end: #{$margin};
+  --margin-top: #{$margin};
+  --margin-bottom: #{$margin};
+
+  @include margin($margin);
+}
+
+.gasco-margin-top {
+  --margin-top: #{$margin};
+
+  @include margin($margin, null, null, null);
+}
+
+.gasco-margin-start {
+  --margin-start: #{$margin};
+
+  @include margin-horizontal($margin, null);
+}
+
+.gasco-margin-end {
+  --margin-end: #{$margin};
+
+  @include margin-horizontal(null, $margin);
+}
+
+.gasco-margin-bottom {
+  --margin-bottom: #{$margin};
+
+  @include margin(null, null, $margin, null);
+}
+
+.gasco-margin-vertical {
+  --margin-top: #{$margin};
+  --margin-bottom: #{$margin};
+
+  @include margin($margin, null, $margin, null);
+}
+
+.gasco-margin-horizontal {
+  --margin-start: #{$margin};
+  --margin-end: #{$margin};
+
+  @include margin-horizontal($margin);
+}

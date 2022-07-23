@@ -1,0 +1,99 @@
+// Flex Utilities
+// --------------------------------------------------
+// Creates flex classes to align flex containers
+// and items
+
+// Align Self
+// --------------------------------------------------
+
+.gasco-align-self-start {
+  align-self: flex-start !important;
+}
+
+.gasco-align-self-end {
+  align-self: flex-end !important;
+}
+
+.gasco-align-self-center {
+  align-self: center !important;
+}
+
+.gasco-align-self-stretch {
+  align-self: stretch !important;
+}
+
+.gasco-align-self-baseline {
+  align-self: baseline !important;
+}
+
+.gasco-align-self-auto {
+  align-self: auto !important;
+}
+
+
+// Flex Wrap
+// --------------------------------------------------
+
+.gasco-wrap {
+  flex-wrap: wrap !important;
+}
+
+.gasco-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.gasco-wrap-reverse {
+  flex-wrap: wrap-reverse !important;
+}
+
+
+// Justify Content
+// --------------------------------------------------
+
+.gasco-justify-content-start {
+  justify-content: flex-start !important;
+}
+
+.gasco-justify-content-center {
+  justify-content: center !important;
+}
+
+.gasco-justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.gasco-justify-content-around {
+  justify-content: space-around !important;
+}
+
+.gasco-justify-content-between {
+  justify-content: space-between !important;
+}
+
+.gasco-justify-content-evenly {
+  justify-content: space-evenly !important;
+}
+
+
+// Align Items
+// --------------------------------------------------
+
+.gasco-align-items-start {
+  align-items: flex-start !important;
+}
+
+.gasco-align-items-center {
+  align-items: center !important;
+}
+
+.gasco-align-items-end {
+  align-items: flex-end !important;
+}
+
+.gasco-align-items-stretch {
+  align-items: stretch !important;
+}
+
+.gasco-align-items-baseline {
+  align-items: baseline !important;
+}

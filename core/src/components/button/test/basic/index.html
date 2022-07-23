@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  <title>Button basic</title>
+</head>
+
+<body>
+  <p>
+    <gasco-button id="default">Default</gasco-button>
+    <gasco-button class="gasco-activated">Default.activated</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button color="primary">Primary</gasco-button>
+    <gasco-button class="gasco-activated" color="primary">Primary.activated</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button color="secondary">Secondary</gasco-button>
+    <gasco-button class="gasco-activated" color="secondary">Secondary.activated</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button color="success">Success</gasco-button>
+    <gasco-button class="gasco-activated" color="success">Success.activated</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button color="warning">Warning</gasco-button>
+    <gasco-button class="gasco-activated" color="warning">Warning.activated</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button color="danger">Danger</gasco-button>
+    <gasco-button class="gasco-activated" color="danger">Danger.activated</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button color="medium">Medium</gasco-button>
+    <gasco-button class="gasco-activated" color="medium">Medium.activated</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button color="dark">Dark</gasco-button>
+    <gasco-button class="gasco-activated" color="dark">Dark.activated</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button style="--opacity: 0.2">Opacity: 0.2</gasco-button>
+  </p>
+  <p>
+    <gasco-button expand="block" id="disabledButton" disabled onclick="clickedButton(event)">Button Disabled
+    </gasco-button>
+    <gasco-button expand="block" color="secondary" disabled>Secondary Disabled</gasco-button>
+    <gasco-button expand="block" color="tertiary" style="--opacity: 1" disabled>Disabled opacity: 1</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button expand="block" onclick="toggleDisabled()">Toggle Disabled</gasco-button>
+  </p>
+
+  <p>
+    <gasco-button id="dynamicColor1" onclick="changeColor(event)">Change Color</gasco-button>
+    <gasco-button id="dynamicColor2" onclick="changeColor(event)" fill="outline">Change Color</gasco-button>
+  </p>
+  <script>
+    testingColors = ['primary', 'secondary', 'danger', 'dark'];
+    testingColorIndex = {
+      dynamicColor1: 0,
+      dynamicColor2: 0,
+    };
+
+    function changeColor(ev) {
+      el = ev.currentTarget;
+
+      testingColorIndex[el.id] =
+        testingColorIndex[el.id] >= testingColors.length - 1 ? 0 : testingColorIndex[el.id] + 1;
+      newColor = testingColors[testingColorIndex[el.id]];
+
+      el.color = newColor;
+    }
+
+    function toggleDisabled() {
+      var buttonEl = document.getElementById('disabledButton');
+      console.log(buttonEl);
+      buttonEl.disabled = !buttonEl.disabled;
+    }
+
+    function clickedButton(ev) {
+      console.log('Clicked button', ev);
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+@import "./button";
+@import "./button.md.vars";
+
+// Material Design Button
+// --------------------------------------------------
+
+:host {
+  --border-radius: #{$button-md-border-radius};
+  --padding-top: #{$button-md-padding-top};
+  --padding-bottom: #{$button-md-padding-bottom};
+  --padding-start: #{$button-md-padding-start};
+  --padding-end: #{$button-md-padding-end};
+  --transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),
+                background-color 15ms linear,
+                color 15ms linear;
+
+  @include margin($button-md-margin-top, $button-md-margin-end, $button-md-margin-bottom, $button-md-margin-start);
+
+  height: #{$button-md-height};
+
+  font-size: #{$button-md-font-size};
+  font-weight: #{$button-md-font-weight};
+
+  letter-spacing: #{$button-md-letter-spacing};
+
+}
+
+// Material Design Solid Button
+// --------------------------------------------------
+
+:host(.button-solid, :host(.button-outline)) {
+  --background-activated: transparent;
+  --background-hover: #{gasco-color(primary, contrast)};
+  --background-focused: #{gasco-color(primary, contrast)};
+  --background-activated-opacity: 0;
+  --background-focused-opacity: .24;
+  --background-hover-opacity: .08;
+  --box-shadow: #{$button-md-box-shadow};
+}
+
+:host(.button-solid.gasco-activated) {
+  --box-shadow: #{$button-md-box-shadow-activated};
+}
+
+// Material Design Outline Button
+// --------------------------------------------------
+
+:host(.button-outline) {
+  --border-width: 2px;
+  --border-style: solid;
+}
+
+:host(.button-outline.gasco-activated.gasco-color) .button-native {
+  background: transparent;
+}
+
+
+// Material Design Clear Button
+// --------------------------------------------------
+
+:host(.button-clear) {
+  --background-activated: transparent;
+  --background-focused: #{gasco-color(primary, base)};
+  --background-hover: #{gasco-color(primary, base)};
+  --background-activated-opacity: 0;
+  --background-focused-opacity: .12;
+  --background-hover-opacity: .04;
+}
+
+
+// Material Design Round Button
+// --------------------------------------------------
+
+:host(.button-round) {
+  --border-radius: #{$button-md-round-border-radius};
+  --padding-top: #{$button-md-round-padding-top};
+  --padding-start: #{$button-md-round-padding-start};
+  --padding-end: #{$button-md-round-padding-end};
+  --padding-bottom: #{$button-md-round-padding-bottom};
+}
+
+
+// Material Design Button Sizes
+// --------------------------------------------------
+
+:host(.button-large) {
+  --padding-top: #{$button-md-large-padding-top};
+  --padding-start: #{$button-md-large-padding-start};
+  --padding-end: #{$button-md-large-padding-end};
+  --padding-bottom: #{$button-md-large-padding-bottom};
+
+  height: #{$button-md-large-height};
+
+  font-size: #{$button-md-large-font-size};
+}
+
+:host(.button-small) {
+  --padding-top: #{$button-md-small-padding-top};
+  --padding-start: #{$button-md-small-padding-start};
+  --padding-end: #{$button-md-small-padding-end};
+  --padding-bottom: #{$button-md-small-padding-bottom};
+
+  height: #{$button-md-small-height};
+
+  font-size: #{$button-md-small-font-size};
+}
+
+
+// MD strong Button
+// --------------------------------------------------
+
+:host(.button-strong) {
+  font-weight: #{$button-md-strong-font-weight};
+}
+
+::slotted(ion-icon[slot="icon-only"]) {
+  @include padding(0);
+}
+
+
+// Material Design Button: Hover
+// --------------------------------------------------
+
+/**
+ * Only allow overriding of opacity here
+ * as developers should not be overriding
+ * colors when using the color prop.
+ */
+
+:host(.button-solid.gasco-color.gasco-focused) .button-native::after {
+  background: #{current-color(contrast)};
+}
+
+:host(.button-clear.gasco-color.gasco-focused) .button-native::after,
+:host(.button-outline.gasco-color.gasco-focused) .button-native::after {
+  background: #{current-color(base)};
+}
+
+:host(.button-solid:active) .button-native {
+  box-shadow: inset 0 0 10px 50px rgba(0 0 0  / 15%);
+}
+
+@media (any-hover: hover) {
+  :host(.button-solid.gasco-color:hover) .button-native::after,
+  :host(.button-clear.gasco-color:hover) .button-native::after,
+  :host(.button-outline.gasco-color:hover) .button-native::after {
+    box-shadow: #{$button-md-box-shadow};
+  }
+}

@@ -1,0 +1,31 @@
+@import "../themes/gasco.globals";
+@import "../themes/gasco.mixins";
+
+// Display
+// --------------------------------------------------
+// Modifies display of a particular element based on the given classes
+
+.gasco-hide {
+  display: none !important;
+}
+
+// Adds hidden classes
+@each $breakpoint in map-keys($screen-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $screen-breakpoints);
+
+  @include media-breakpoint-up($breakpoint, $screen-breakpoints) {
+    // Provide `gasco-hide-{bp}-up` classes for hiding the element based
+    // on the breakpoint
+    .gasco-hide#{$infix}-up {
+      display: none !important;
+    }
+  }
+
+  @include media-breakpoint-down($breakpoint, $screen-breakpoints) {
+    // Provide `gasco-hide-{bp}-down` classes for hiding the element based
+    // on the breakpoint
+    .gasco-hide#{$infix}-down {
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Button - Dynamic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+
+  <gasco-button slot="start">Default</gasco-button>
+  <gasco-button id="dynamicItemLarge" slot="end" size="large">Large</gasco-button>
+  <gasco-button id="add-item-button" color="success" onClick="addButton('dynamicItem')"> Add a Button </gasco-button>
+  <gasco-button id="change-item-button" color="tertiary" onClick="changeButtonSize('dynamicItemLarge')">
+    Change Button Size
+  </gasco-button>
+
+  <gasco-button slot="start">Default</gasco-button>
+  <gasco-button id="dynamicItemDividerLarge" slot="end" size="large">Large</gasco-button>
+  <gasco-button id="add-item-divider-button" color="success" onClick="addButton('dynamicItemDivider')">
+    Add a Button
+  </gasco-button>
+  <gasco-button id="change-item-divider-button" color="tertiary" onClick="changeButtonSize('dynamicItemDividerLarge')">
+    Change Button Size
+  </gasco-button>
+
+  <script>
+    function addButton(dynamicId) {
+      var item = document.querySelector('#' + dynamicId);
+      var button = document.createElement('gasco-button');
+      button.textContent = 'Button';
+      button.slot = 'start';
+      item.appendChild(button);
+    }
+
+    function changeButtonSize(dynamicId) {
+      var button = document.querySelector('#' + dynamicId);
+      var size = button.size === 'large' ? undefined : 'large';
+      button.size = size;
+    }
+
+  </script>
+</body>
+
+</html>

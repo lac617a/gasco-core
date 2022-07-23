@@ -1,0 +1,46 @@
+@import "../themes/gasco.globals";
+@import "../themes/gasco.mixins";
+
+// Text Alignment
+// --------------------------------------------------
+// Creates text alignment attributes based on screen size
+
+@each $breakpoint in map-keys($screen-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $screen-breakpoints);
+
+  @include media-breakpoint-up($breakpoint, $screen-breakpoints) {
+    // Provide `.gasco-text-{bp}` classes for aligning the text based
+    // on the breakpoint
+    .gasco-text#{$infix}-center {
+      text-align: center !important;
+    }
+
+    .gasco-text#{$infix}-justify {
+      text-align: justify !important;
+    }
+
+    .gasco-text#{$infix}-start {
+      text-align: start !important;
+    }
+
+    .gasco-text#{$infix}-end {
+      text-align: end !important;
+    }
+
+    .gasco-text#{$infix}-left {
+      text-align: left !important;
+    }
+
+    .gasco-text#{$infix}-right {
+      text-align: right !important;
+    }
+
+    .gasco-text#{$infix}-nowrap {
+      white-space: nowrap !important;
+    }
+
+    .gasco-text#{$infix}-wrap {
+      white-space: normal !important;
+    }
+  }
+}

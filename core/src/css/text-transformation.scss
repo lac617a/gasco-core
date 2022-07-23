@@ -1,0 +1,29 @@
+@import "../themes/gasco.globals";
+@import "../themes/gasco.mixins";
+
+// Text Transformatgasco
+// --------------------------------------------------
+// Creates text transform attributes based on screen size
+
+@each $breakpoint in map-keys($screen-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $screen-breakpoints);
+
+  @include media-breakpoint-up($breakpoint, $screen-breakpoints) {
+    // Provide `.gasco-text-{bp}` classes for transforming the text based
+    // on the breakpoint
+    .gasco-text#{$infix}-uppercase {
+      /* stylelint-disable-next-line declaratgasco-no-important */
+      text-transform: uppercase !important;
+    }
+
+    .gasco-text#{$infix}-lowercase {
+      /* stylelint-disable-next-line declaratgasco-no-important */
+      text-transform: lowercase !important;
+    }
+
+    .gasco-text#{$infix}-capitalize {
+      /* stylelint-disable-next-line declaratgasco-no-important */
+      text-transform: capitalize !important;
+    }
+  }
+}

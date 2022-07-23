@@ -1,0 +1,31 @@
+@import '../gasco-input/gasco-input.scss';
+@import '../gasco-input/gasco-input.md.vars.scss';
+@import '../gasco-input/gasco-input.md.scss';
+
+:host(.sc-gasco-input-code-h) {
+  justify-content: center;
+}
+
+:host .native-input-code {
+  text-align: center;
+  display: flex;
+  max-width: 5%;
+  align-items: center;
+  &:not(:last-child)::after {
+    content: "";
+    position: relative;
+    z-index: 10;
+    width: 8px;
+    height: 8px;
+    margin-left: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #333;
+  }
+  &:last-child {
+    input {
+      text-align: left;
+      margin-left: 8px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "@gasco/core",
+  "version": "0.0.1-2",
+  "description": "Base components for Gasco",
+  "keywords": [
+    "gasco",
+    "pwa",
+    "webapp",
+    "stencil",
+    "framework"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.js",
+  "es2017": "dist/esm/index.js",
+  "types": "dist/types/interface.d.ts",
+  "collection:main": "dist/collection/index.js",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "css/",
+    "dist/",
+    "loader/",
+    "components/"
+  ],
+  "dependencies": {
+    "@stencil/core": "^2.13.0",
+    "ionicons": "^6.0.2"
+  },
+  "devDependencies": {
+    "@stencil/react-output-target": "^0.3.1",
+    "@stencil/sass": "^1.5.2",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^14.6.0",
+    "clean-css-cli": "^4.1.11",
+    "fs-extra": "^9.0.1",
+    "jest": "^27.4.5",
+    "jest-cli": "^27.4.5",
+    "puppeteer": "^10.0.0",
+    "sass": "^1.26.10",
+    "typescript": "^4.0.5"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "npm run clean && npm run build.css && stencil build --es5 --docs-json dist/docs.json && npm run cdnloader",
+    "build.stencil": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "cdnloader": "node scripts/copy-cdn-loader.js",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate",
+    "clean": "node scripts/clean.js",
+    "css.minify": "cleancss -O2 -o ./css/gasco.bundle.css ./css/gasco.bundle.css",
+    "css.sass": "sass --embed-sources src/css:./css",
+    "build.css": "npm run css.sass && npm run css.minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lac617a/gasco-core.git"
+  },
+  "author": "yoydev",
+  "homepage": "https://www.empresasgasco.com/",
+  "license": "MIT"
+}

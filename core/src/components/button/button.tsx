@@ -1,4 +1,4 @@
-import type { ComponentInterface, EventEmitter } from '@stencil/core';
+import { ComponentInterface, EventEmitter, Fragment } from '@stencil/core';
 import { Component, Element, Event, Host, Prop, h } from '@stencil/core';
 
 import type {  Color } from '../../interface';
@@ -51,6 +51,11 @@ export class Button implements ComponentInterface, ButtonInterface {
    * If `true`, the user cannot interact with the button.
    */
   @Prop({ reflect: true }) disabled = false;
+
+  /**
+   * If `true`, the user cannot interact with the button.
+   */
+  @Prop({ reflect: true }) progress = false;
 
   /**
    * Set to `"block"` for a full-width button or to `"full"` for a full-width button
@@ -123,6 +128,7 @@ export class Button implements ComponentInterface, ButtonInterface {
       expand,
       strong,
       disabled,
+      progress,
       buttonType,
       hasIconOnly,
       inheritedAttributes,
@@ -137,6 +143,7 @@ export class Button implements ComponentInterface, ButtonInterface {
     return (
       <Host
         aria-disabled={disabled ? 'true' : null}
+        aria-progress={progress ? 'true' : null}
         class={createColorClasses(color, {
           [`${buttonType}-${expand}`]: expand !== undefined,
           [`${buttonType}-${finalSize}`]: finalSize !== undefined,
@@ -151,18 +158,24 @@ export class Button implements ComponentInterface, ButtonInterface {
       >
         <button
           {...attrs}
-          class="button-native"
+          class={`button-native ${progress ? 'progress': ''}`}
           part="native"
           disabled={disabled}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           {...inheritedAttributes}>
-          <span class="button-inner">
-            <slot name="icon-only"></slot>
-            <slot name="start"></slot>
-            <slot></slot>
-            <slot name="end"></slot>
-          </span>
+            <span class="button-inner">
+              {progress ? (
+                <span class="button-progress"></span>
+              ) : (
+                <Fragment>
+                  <slot name="icon-only"></slot>
+                  <slot name="start"></slot>
+                  <slot></slot>
+                  <slot name="end"></slot>
+                </Fragment>
+              )}
+            </span>
         </button>
       </Host>
     );

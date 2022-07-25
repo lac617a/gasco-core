@@ -1,4 +1,8 @@
 @import "./button.vars";
+$lite:  #F1F1F1;
+$brand: #FFFFFF;
+$size: 18px;
+
 
 // Button
 // --------------------------------------------------
@@ -98,7 +102,6 @@
   --background: #{gasco-color(primary, base)};
   --color: #{gasco-color(primary, contrast)};
 }
-
 
 // Outline Button
 // --------------------------------------------------
@@ -223,8 +226,35 @@
   height: 100%;
 
   z-index: 1;
+
+  // Loaders
+
+  .button-progress {
+    width : $size;
+    height: $size;
+    border: 3px solid #{$lite}70;
+    border-bottom-color: $brand;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+  }
 }
 
+/* keyFrames */ 
+@keyframes rotation {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+// Outline and Clear Button Progress
+// --------------------------------------------------
+
+:host(.button-outline) .button-native.progress .button-inner .button-progress,
+:host(.button-clear) .button-native.progress .button-inner .button-progress {
+  // --border-color: #{current-color(base)};
+  // border: 3px solid #{current-color(base)}70;
+  border-bottom-color: #{current-color(base)};
+}
 
 // Button Icons
 // --------------------------------------------------
@@ -279,6 +309,7 @@
 @media (any-hover: hover) {
   :host(:hover) {
     color: var(--color-hover);
+    box-shadow: var(--box-shadow);
   }
 
   :host(:hover) .button-native::after {

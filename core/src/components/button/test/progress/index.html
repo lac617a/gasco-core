@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  <title>Button progress</title>
+</head>
+
+<body>
+  <p>
+    <p>
+      <p class="title">Solid Button progress</p>
+      <gasco-button id="exapmleProgress" expand="block" color="primary" progress>progress</gasco-button>
+      <gasco-button expand="block" color="secondary" progress>progress</gasco-button>
+      <gasco-button expand="block" color="success" progress>progress</gasco-button>
+      <gasco-button expand="block" color="warning" progress>progress</gasco-button>
+      <gasco-button expand="block" color="danger" progress>progress</gasco-button>
+    </p>
+    <p>
+      <p class="title">Outline Button progress</p>
+      <gasco-button fill="outline" expand="block" color="primary" progress>progress</gasco-button>
+      <gasco-button fill="outline" expand="block" color="secondary" progress>progress</gasco-button>
+      <gasco-button fill="outline" expand="block" color="success" progress>progress</gasco-button>
+      <gasco-button fill="outline" expand="block" color="warning" progress>progress</gasco-button>
+      <gasco-button fill="outline" expand="block" color="danger" progress>progress</gasco-button>
+    </p>
+    <p>
+      <p class="title">Clear Button progress</p>
+      <gasco-button fill="clear" expand="block" color="primary" progress>progress</gasco-button>
+      <gasco-button fill="clear" expand="block" color="secondary" progress>progress</gasco-button>
+      <gasco-button fill="clear" expand="block" color="success" progress>progress</gasco-button>
+      <gasco-button fill="clear" expand="block" color="warning" progress>progress</gasco-button>
+      <gasco-button fill="clear" expand="block" color="danger" progress>progress</gasco-button>
+    </p>
+
+    <gasco-button expand="block" onclick="changeProgress()">Change to progress</gasco-button>
+    <gasco-button id="loading" color="secondary" onclick="loadingLazy()">loading lazy</gasco-button>
+    <gasco-button id="loading2" color="warning" onclick="loadingLazy()">loading lazy</gasco-button>
+    <gasco-button id="loading3" color="danger" onclick="loadingLazy()">Presionameee!!!</gasco-button>
+  </p>
+  <script>
+      function changeProgress() {
+        const progress = document.querySelector('#exapmleProgress');
+        progress.progress = !progress.progress;
+      }
+      function loadingLazy() {
+        document.querySelector('#loading').progress = true;
+      }
+  </script>
+  <style>
+    .title {
+      text-align: center;
+    }
+  </style>
+</body>
+
+</html>

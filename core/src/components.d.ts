@@ -30,6 +30,10 @@ export namespace Components {
          */
         "fill"?: 'clear' | 'outline' | 'solid' | 'default';
         /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "progress": boolean;
+        /**
           * The button shape.
          */
         "shape"?: 'round';
@@ -366,6 +370,10 @@ declare namespace LocalJSX {
           * Emitted when the button has focus.
          */
         "onGascoFocus"?: (event: GascoButtonCustomEvent<void>) => void;
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "progress"?: boolean;
         /**
           * The button shape.
          */

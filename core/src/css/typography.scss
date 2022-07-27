@@ -5,19 +5,19 @@
 // --------------------------------------------------
 
 /// @prop - Font weight of all headings
-$headings-font-weight:         500 !default;
+$headings-font-weight:         600 !default;
 
 /// @prop - Line height of all headings
-$headings-line-height:         1.2 !default;
+$headings-line-height:         76px !default;
 
 /// @prop - Font size of heading level 1
-$h1-font-size:                 26px !default;
+$h1-font-size:                 64px !default;
 
 /// @prop - Font size of heading level 2
-$h2-font-size:                 24px !default;
+$h2-font-size:                 36px !default;
 
 /// @prop - Font size of heading level 3
-$h3-font-size:                 22px !default;
+$h3-font-size:                 28px !default;
 
 /// @prop - Font size of heading level 4
 $h4-font-size:                 20px !default;
@@ -46,35 +46,37 @@ h6 {
   @include margin(16px, null, 10px, null);
 
   font-weight: $headings-font-weight;
-
-  line-height: $headings-line-height;
 }
 
-h1 {
+.gasco-heading\:1 {
   @include margin(20px, null, null, null);
 
   font-size: $h1-font-size;
+  line-height: $headings-line-height;
 }
 
-h2 {
+.gasco-heading\:2 {
   @include margin(18px, null, null, null);
 
   font-size: $h2-font-size;
+  line-height: $headings-line-height / 1.7;
 }
 
-h3 {
+.gasco-heading\:3 {
   font-size: $h3-font-size;
+  line-height: $headings-line-height / 2.1;
 }
 
-h4 {
+.gasco-heading\:4 {
   font-size: $h4-font-size;
+  line-height: $headings-line-height / 2.6;
 }
 
-h5 {
+.gasco-heading\:5 {
   font-size: $h5-font-size;
 }
 
-h6 {
+.gasco-heading\:6 {
   font-size: $h6-font-size;
 }
 

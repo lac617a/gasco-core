@@ -8,12 +8,12 @@ exports.defineCustomElements = function(_, opts) {
       var mod = document.createElement('script');
       mod.setAttribute('type', 'module');
       mod['data-opts'] = opts;
-      mod.src = '__CDN_LOADER_URL__/dist/ionic/ionic.esm.js';
+      mod.src = '__CDN_LOADER_URL__/dist/gasco/gasco.esm.js';
 
       var legacy = document.createElement('script');
       legacy.setAttribute('nomodule', '');
       legacy['data-opts'] = opts;
-      legacy.src = '__CDN_LOADER_URL__/dist/ionic/ionic.js';
+      legacy.src = '__CDN_LOADER_URL__/dist/gasco/gasco.js';
 
       mod.onload = resolve;
       mod.onerror = reject;

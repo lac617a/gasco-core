@@ -14,7 +14,7 @@ export namespace Components {
          */
         "buttonType": string;
         /**
-          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`.
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
          */
         "color"?: Color;
         /**
@@ -22,15 +22,11 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Set to `"block"` for a full-width button or to `"full"` for a full-width button without left and right borders.
-         */
-        "expand"?: 'full' | 'block';
-        /**
           * Set to `"clear"` for a transparent button, to `"outline"` for a transparent button with a border, or to `"solid"`. The default style is `"solid"` except inside of a toolbar, where the default is `"clear"`.
          */
         "fill"?: 'clear' | 'outline' | 'solid' | 'default';
         /**
-          * If `true`, the user cannot interact with the button.
+          * If `true`, the user cannot interact with the button in progress.
          */
         "progress": boolean;
         /**
@@ -347,17 +343,13 @@ declare namespace LocalJSX {
          */
         "buttonType"?: string;
         /**
-          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`.
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
          */
         "color"?: Color;
         /**
           * If `true`, the user cannot interact with the button.
          */
         "disabled"?: boolean;
-        /**
-          * Set to `"block"` for a full-width button or to `"full"` for a full-width button without left and right borders.
-         */
-        "expand"?: 'full' | 'block';
         /**
           * Set to `"clear"` for a transparent button, to `"outline"` for a transparent button with a border, or to `"solid"`. The default style is `"solid"` except inside of a toolbar, where the default is `"clear"`.
          */
@@ -371,7 +363,7 @@ declare namespace LocalJSX {
          */
         "onGascoFocus"?: (event: GascoButtonCustomEvent<void>) => void;
         /**
-          * If `true`, the user cannot interact with the button.
+          * If `true`, the user cannot interact with the button in progress.
          */
         "progress"?: boolean;
         /**

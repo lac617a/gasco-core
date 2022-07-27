@@ -38,9 +38,9 @@ export class Button implements ComponentInterface, ButtonInterface {
 
   /**
    * The color to use from your application's color palette.
-   * Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`.
+   * Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
    */
-  @Prop({ reflect: true }) color?: Color;
+  @Prop({ reflect: true }) color?: Color = 'primary';
 
   /**
    * The type of button.
@@ -53,7 +53,7 @@ export class Button implements ComponentInterface, ButtonInterface {
   @Prop({ reflect: true }) disabled = false;
 
   /**
-   * If `true`, the user cannot interact with the button.
+   * If `true`, the user cannot interact with the button in progress.
    */
   @Prop({ reflect: true }) progress = false;
 
@@ -61,7 +61,7 @@ export class Button implements ComponentInterface, ButtonInterface {
    * Set to `"block"` for a full-width button or to `"full"` for a full-width button
    * without left and right borders.
    */
-  @Prop({ reflect: true }) expand?: 'full' | 'block';
+  // @Prop({ reflect: true }) expand?: 'full' | 'block';
 
   /**
    * Set to `"clear"` for a transparent button, to `"outline"` for a transparent
@@ -125,7 +125,7 @@ export class Button implements ComponentInterface, ButtonInterface {
       size,
       color,
       shape,
-      expand,
+      // expand,
       strong,
       disabled,
       progress,
@@ -145,7 +145,7 @@ export class Button implements ComponentInterface, ButtonInterface {
         aria-disabled={disabled ? 'true' : null}
         aria-progress={progress ? 'true' : null}
         class={createColorClasses(color, {
-          [`${buttonType}-${expand}`]: expand !== undefined,
+          // [`${buttonType}-${expand}`]: expand !== undefined,
           [`${buttonType}-${finalSize}`]: finalSize !== undefined,
           [`${buttonType}-${shape}`]: shape !== undefined,
           [`${buttonType}-${fill}`]: true,

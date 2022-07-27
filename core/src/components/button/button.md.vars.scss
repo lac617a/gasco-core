@@ -27,6 +27,9 @@ $button-md-padding-bottom:                              0 !default;
 /// @prop - Padding start of the button
 $button-md-padding-start:                               1.1em !default;
 
+/// @prop - width of the button
+$button-md-width:                                       247.15px !default;
+
 /// @prop - Height of the button
 $button-md-height:                                      50px !default;
 
@@ -34,10 +37,10 @@ $button-md-height:                                      50px !default;
 $button-md-border-radius:                               8px !default;
 
 /// @prop - Font size of the button text
-$button-md-font-size:                                   14px !default;
+$button-md-font-size:                                   16px !default;
 
 /// @prop - Font weight of the button text
-$button-md-font-weight:                                 500 !default;
+$button-md-font-weight:                                 400 !default;
 
 /// @prop - Capitalization of the button text
 $button-md-text-transform:                              uppercase !default;
@@ -54,7 +57,7 @@ $button-md-box-shadow-inset-activated:                  inset 0 4px 5px -1px rgb
 $button-md-opacity-activated:                           1 !default;
 
 /// @prop - Box shadow of the activated button
-$button-md-box-shadow-activated:                        0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12) !default;
+$button-md-box-shadow-activated:                        $button-md-box-shadow !default;
 
 /// @prop - Background color of the ripple on the button
 $button-md-ripple-background-color:                     $text-color-step-400 !default;
@@ -77,11 +80,14 @@ $button-md-large-padding-bottom:                        $button-md-large-padding
 /// @prop - Padding start of the large button
 $button-md-large-padding-start:                         $button-md-large-padding-end !default;
 
+/// @prop - width of the button
+$button-md-large-width:                                 300px !default;
+
 /// @prop - Height of the large button
 $button-md-large-height:                                60px !default;
 
 /// @prop - Font size of the large button
-$button-md-large-font-size:                             20px !default;
+$button-md-large-font-size:                             18px !default;
 
 
 // Material Design Small Button
@@ -99,11 +105,14 @@ $button-md-small-padding-bottom:                        $button-md-small-padding
 /// @prop - Padding start of the small button
 $button-md-small-padding-start:                         $button-md-small-padding-end !default;
 
+/// @prop - width of the button
+$button-md-small-width:                                 200.65px !default;
+
 /// @prop - Height of the small button
 $button-md-small-height:                                40px !default;
 
 /// @prop - Font size of the small button
-$button-md-small-font-size:                             13px !default;
+$button-md-small-font-size:                             14px !default;
 
 
 // Material Design Outline Button

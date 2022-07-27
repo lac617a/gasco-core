@@ -70,30 +70,6 @@ $size: 18px;
   font-kerning: none;
 }
 
-// Disabled Button
-// --------------------------------------------------
-
-:host(.button-disabled) {
-  cursor: default;
-  opacity: .8;
-  pointer-events: none;
-}
-
-:host(.button-disabled.button-solid) {
-  --background: #{gasco-color(light, base)};
-  --color: #{gasco-color(light, contrast)};
-}
-
-:host(.button-disabled.button-outline) {
-  --border-color: #{gasco-color(light, contrast)};
-  --background: transparent;
-  --color: #{gasco-color(light, contrast)};
-}
-
-:host(.button-disabled.button-clear) {
-  --color: #{gasco-color(light, contrast)};
-}
-
 // Solid Button
 // --------------------------------------------------
 
@@ -171,6 +147,33 @@ $size: 18px;
 
   border-right-width: 0;
   border-left-width: 0;
+}
+
+// Disabled Button
+// --------------------------------------------------
+
+:host(.button-disabled) {
+  cursor: default;
+  pointer-events: none;
+}
+
+:host(.button-disabled.button-solid),
+:host(.button-disabled.button-solid) .button-native {
+  --gasco-color-base: #F1F1F1 !important;
+  --gasco-color-contrast: #CCCCCC !important;
+}
+
+:host(.button-disabled.button-outline),
+:host(.button-disabled.button-outline) .button-native {
+  --border-color: #CCCCCC !important;
+  --gasco-color-base: #CCCCCC !important;
+  // --gasco-color-base: transparent !important;
+  --gasco-color-contrast: #CCCCCC !important;
+}
+
+:host(.button-disabled.button-clear),
+:host(.button-disabled.button-clear) .button-native {
+  --gasco-color-base: #CCCCCC !important;
 }
 
 .button-native {
@@ -286,6 +289,7 @@ $size: 18px;
 // Button Activated
 :host(.gasco-activated) {
   color: var(--color-activated);
+  box-shadow: var(--box-shadow);
 }
 
 :host(.gasco-activated) .button-native::after {
@@ -299,22 +303,22 @@ $size: 18px;
   color: var(--color-focused);
 }
 
-:host(.gasco-focused) .button-native::after {
-  background: var(--background-focused);
+// :host(.gasco-focused) .button-native::after {
+//   background: var(--background-focused);
 
-  opacity: var(--background-focused-opacity);
-}
+//   opacity: var(--background-focused-opacity);
+// }
 
 // Button Hover
 @media (any-hover: hover) {
   :host(:hover) {
     color: var(--color-hover);
     box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
   }
 
   :host(:hover) .button-native::after {
     background: var(--background-hover);
-    box-shadow: var(--box-shadow);
     opacity: var(--background-hover-opacity);
   }
 }

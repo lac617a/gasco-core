@@ -80,6 +80,22 @@ h6 {
   font-size: $h6-font-size;
 }
 
+[class^='gasco-body'] {
+  font-weight: $headings-font-weight;
+}
+.gasco-body\:1 {
+  font-size: $h5-font-size;
+  line-height: $headings-line-height / 2.7;
+}
+.gasco-body\:2 {
+  font-size: $h6-font-size;
+  line-height: $headings-line-height / 3.1;
+}
+.gasco-body\:3 {
+  font-size: $h6-font-size - 2;
+  line-height: $headings-line-height / 3.7;
+}
+
 small {
   font-size: 75%;
 }

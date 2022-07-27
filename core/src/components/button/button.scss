@@ -290,6 +290,7 @@ $size: 18px;
 :host(.gasco-activated) {
   color: var(--color-activated);
   box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
 }
 
 :host(.gasco-activated) .button-native::after {

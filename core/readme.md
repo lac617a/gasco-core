@@ -2,8 +2,8 @@
 * Materialize, a CSS Framework based on Material Design
 
 ###usage
+``
 // Your index.html
-``html
 <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/icon?family=Material+Icons"

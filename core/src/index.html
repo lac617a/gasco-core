@@ -10,15 +10,28 @@
 
     <script type="module" src="/build/gasco.esm.js"></script>
     <script nomodule src="/build/gasco.js"></script>
-
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
   </head>
   <body>
 
     <div style="display: grid; gap: 1rem;">
-      <gasco-button expand="block" progress>Default</gasco-button>
-      <gasco-button id="exapmleProgress" expand="block" progress>progress</gasco-button>
-      <gasco-button expand="block" onclick="changeProgress()">Change to progress</gasco-button>
-      <gasco-button id="loading" expand="block" onclick="loadingLazy()">loading lazy</gasco-button>
+      <gasco-button color="primary">
+        <i class="material-icons" slot="start">donut_small</i>
+        Default
+      </gasco-button>
+      <gasco-button color="primary">
+        Default
+        <i class="material-icons" slot="end">donut_small</i>
+      </gasco-button>
+      <gasco-button color="primary">
+        <i class="material-icons" slot="icon-only">donut_small</i>
+      </gasco-button>
+      <gasco-button id="exapmleProgress" progress>progress</gasco-button>
+      <gasco-button onclick="changeProgress()">Change to progress</gasco-button>
+      <gasco-button id="loading" onclick="loadingLazy()">loading lazy</gasco-button>
     </div>
 
     <!-- <div style="display: grid; gap: 1rem;">

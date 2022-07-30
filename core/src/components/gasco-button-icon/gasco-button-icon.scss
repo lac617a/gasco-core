@@ -1,0 +1,29 @@
+@import '../button/button.md.scss';
+
+// Material Design Button
+// --------------------------------------------------
+
+:host {
+  width: #{$button-md-height};
+}
+
+// Material Design Outline Button
+// --------------------------------------------------
+
+:host(.button-outline) {
+  --border-width: 1.5px;
+  --border-style: solid;
+}
+
+// MD Only Icons Button Sizes
+// --------------------------------------------------
+
+:host(.button-solid.button-large),
+:host(.button-outline.button-large) {
+  width: #{$button-md-large-height};
+}
+
+:host(.button-solid.button-small),
+:host(.button-outline.button-small) {
+  width: #{$button-md-small-height};
+}

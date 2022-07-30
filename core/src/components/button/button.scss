@@ -233,8 +233,9 @@ $size: 18px;
   // Loaders
 
   .button-progress {
-    width : $size;
-    height: $size;
+    position: absolute;
+    width : $size - 4;
+    height: $size - 4;
     border: 3px solid #{$lite}70;
     border-bottom-color: $brand;
     border-radius: 50%;
@@ -259,24 +260,41 @@ $size: 18px;
   border-bottom-color: #{current-color(base)};
 }
 
+// Button Progress Size
+// --------------------------------------------------
+
+:host(.button-solid.button-large) .button-native.progress .button-inner .button-progress,
+:host(.button-outline.button-large) .button-native.progress .button-inner .button-progress,
+:host(.button-clear.button-large) .button-native.progress .button-inner .button-progress {
+  width : $size;
+  height: $size;
+}
+
+:host(.button-solid.button-small) .button-native.progress .button-inner .button-progress,
+:host(.button-outline.button-small) .button-native.progress .button-inner .button-progress,
+:host(.button-clear.button-small) .button-native.progress .button-inner .button-progress {
+  width : $size - 8;
+  height: $size - 8;
+}
+
 // Button Icons
 // --------------------------------------------------
 
-::slotted(ion-icon) {
-  font-size: 1.4em;
+::slotted(i) {
+  font-size: 1.4em !important;
   pointer-events: none;
 }
 
-::slotted(ion-icon[slot="start"]) {
+::slotted(i[slot="start"]) {
   @include margin(0, .3em, 0, -.3em);
 }
 
-::slotted(ion-icon[slot="end"]) {
+::slotted(i[slot="end"]) {
   @include margin(0, -.2em, 0, .3em);
 }
 
-::slotted(ion-icon[slot="icon-only"]) {
-  font-size: 1.8em;
+::slotted(i[slot="icon-only"]) {
+  font-size: 1.8em !important;
 }
 
 // Button: States

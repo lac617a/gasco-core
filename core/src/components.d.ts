@@ -46,6 +46,40 @@ export namespace Components {
          */
         "type": 'submit' | 'reset' | 'button';
     }
+    interface GascoButtonIcon {
+        /**
+          * The type of button.
+         */
+        "buttonType": string;
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`.
+         */
+        "color"?: Color;
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled": boolean;
+        /**
+          * Set to `"clear"` for a transparent button, to `"outline"` for a transparent button with a border, or to `"solid"`.
+         */
+        "fill"?: | 'outline' | 'solid' | 'default';
+        /**
+          * If `true`, the user cannot interact with the button in progress.
+         */
+        "progress": boolean;
+        /**
+          * The button shape.
+         */
+        "shape"?: 'round';
+        /**
+          * The button size.
+         */
+        "size"?: 'small' | 'default' | 'large';
+        /**
+          * The type of the button.
+         */
+        "type": 'submit' | 'reset' | 'button';
+    }
     interface GascoInput {
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `off`, `none`, `on`, `sentences`, `words`, `characters`.
@@ -285,6 +319,10 @@ export interface GascoButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoButtonElement;
 }
+export interface GascoButtonIconCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoButtonIconElement;
+}
 export interface GascoInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoInputElement;
@@ -303,6 +341,12 @@ declare global {
     var HTMLGascoButtonElement: {
         prototype: HTMLGascoButtonElement;
         new (): HTMLGascoButtonElement;
+    };
+    interface HTMLGascoButtonIconElement extends Components.GascoButtonIcon, HTMLStencilElement {
+    }
+    var HTMLGascoButtonIconElement: {
+        prototype: HTMLGascoButtonIconElement;
+        new (): HTMLGascoButtonIconElement;
     };
     interface HTMLGascoInputElement extends Components.GascoInput, HTMLStencilElement {
     }
@@ -330,6 +374,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "gasco-button": HTMLGascoButtonElement;
+        "gasco-button-icon": HTMLGascoButtonIconElement;
         "gasco-input": HTMLGascoInputElement;
         "gasco-input-code": HTMLGascoInputCodeElement;
         "gasco-item": HTMLGascoItemElement;
@@ -378,6 +423,48 @@ declare namespace LocalJSX {
           * If `true`, activates a button with a heavier font weight.
          */
         "strong"?: boolean;
+        /**
+          * The type of the button.
+         */
+        "type"?: 'submit' | 'reset' | 'button';
+    }
+    interface GascoButtonIcon {
+        /**
+          * The type of button.
+         */
+        "buttonType"?: string;
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`.
+         */
+        "color"?: Color;
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set to `"clear"` for a transparent button, to `"outline"` for a transparent button with a border, or to `"solid"`.
+         */
+        "fill"?: | 'outline' | 'solid' | 'default';
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onGascoBlur"?: (event: GascoButtonIconCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onGascoFocus"?: (event: GascoButtonIconCustomEvent<void>) => void;
+        /**
+          * If `true`, the user cannot interact with the button in progress.
+         */
+        "progress"?: boolean;
+        /**
+          * The button shape.
+         */
+        "shape"?: 'round';
+        /**
+          * The button size.
+         */
+        "size"?: 'small' | 'default' | 'large';
         /**
           * The type of the button.
          */
@@ -642,6 +729,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "gasco-button": GascoButton;
+        "gasco-button-icon": GascoButtonIcon;
         "gasco-input": GascoInput;
         "gasco-input-code": GascoInputCode;
         "gasco-item": GascoItem;
@@ -653,6 +741,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gasco-button": LocalJSX.GascoButton & JSXBase.HTMLAttributes<HTMLGascoButtonElement>;
+            "gasco-button-icon": LocalJSX.GascoButtonIcon & JSXBase.HTMLAttributes<HTMLGascoButtonIconElement>;
             "gasco-input": LocalJSX.GascoInput & JSXBase.HTMLAttributes<HTMLGascoInputElement>;
             "gasco-input-code": LocalJSX.GascoInputCode & JSXBase.HTMLAttributes<HTMLGascoInputCodeElement>;
             "gasco-item": LocalJSX.GascoItem & JSXBase.HTMLAttributes<HTMLGascoItemElement>;

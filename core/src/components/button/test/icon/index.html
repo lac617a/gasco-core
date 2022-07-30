@@ -9,91 +9,54 @@
   <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
   <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
   <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+  </style>
   <p>
-    <gasco-button>
-      <ion-icon name="home" slot="start"></ion-icon>
+    <h2 class="gasco-heading:2">Solid</h2>
+    <gasco-button color="primary">
+      <i class="material-icons" slot="start">donut_small</i>
       Left Icon
     </gasco-button>
-    <gasco-button color="secondary">
-      <ion-icon name="home" slot="start"></ion-icon>
+    <gasco-button color="primary">
+      <i class="material-icons" slot="start">accessibility</i>
       Left Icon
     </gasco-button>
   </p>
+
   <p>
-    <gasco-button>
-      Right Icon
-      <ion-icon name="star" slot="end"></ion-icon>
+    <h2 class="gasco-heading:2">Outline</h2>
+    <gasco-button fill="outline" color="primary">
+      <i class="material-icons" slot="start">donut_small</i>
+      Left Icon
     </gasco-button>
-    <gasco-button>
-      <ion-icon name="star" slot="end"></ion-icon>
-      Right Icon
+    <gasco-button fill="outline" color="primary">
+      <i class="material-icons" slot="start">accessibility</i>
+      Left Icon
     </gasco-button>
   </p>
+
   <p>
-    <gasco-button>
-      <ion-icon name="flag" slot="icon-only"></ion-icon>
+    <h2 class="gasco-heading:2">Clear</h2>
+    <gasco-button fill="clear" color="primary">
+      <i class="material-icons" slot="start">donut_small</i>
+      Left Icon
     </gasco-button>
-    <gasco-button>
-      <ion-icon name="flag" slot="icon-only"></ion-icon>
-    </gasco-button>
-  </p>
-  <p>
-    <gasco-button size="large">
-      <ion-icon name="help-circle" slot="start"></ion-icon>
-      Left, Large
-    </gasco-button>
-    <gasco-button size="large">
-      <ion-icon name="help-circle" slot="start"></ion-icon>
-      Left, Large
-    </gasco-button>
-  </p>
-  <p>
-    <gasco-button size="large">
-      <ion-icon name="settings" slot="end"></ion-icon>
-      Right, Large
-    </gasco-button>
-    <gasco-button size="large">
-      <ion-icon name="settings" slot="end"></ion-icon>
-      Right, Large
-    </gasco-button>
-  </p>
-  <p>
-    <gasco-button size="large">
-      <ion-icon name="heart" slot="icon-only"></ion-icon>
-    </gasco-button>
-    <gasco-button size="large">
-      <ion-icon name="heart" slot="icon-only"></ion-icon>
-    </gasco-button>
-  </p>
-  <p>
-    <gasco-button size="small">
-      <ion-icon name="checkmark" slot="start"></ion-icon>
-      Left, Small
-    </gasco-button>
-    <gasco-button size="small">
-      <ion-icon name="checkmark" slot="start"></ion-icon>
-      Left, Small
-    </gasco-button>
-  </p>
-  <p>
-    <gasco-button size="small">
-      <ion-icon name="arrow-forward" slot="end"></ion-icon>
-      Right, Small
-    </gasco-button>
-    <gasco-button size="small">
-      <ion-icon name="arrow-forward" slot="end"></ion-icon>
-      Right, Small
-    </gasco-button>
-  </p>
-  <p>
-    <gasco-button size="small">
-      <ion-icon name="search" slot="icon-only"></ion-icon>
-    </gasco-button>
-    <gasco-button size="small">
-      <ion-icon name="search" slot="icon-only"></ion-icon>
+    <gasco-button fill="clear" color="primary">
+      <i class="material-icons" slot="start">accessibility</i>
+      Left Icon
     </gasco-button>
   </p>
 </body>

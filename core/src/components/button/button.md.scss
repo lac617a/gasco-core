@@ -74,8 +74,8 @@
 :host(.button-round) {
   --border-radius: #{$button-md-round-border-radius};
   --padding-top: #{$button-md-round-padding-top};
-  --padding-start: #{$button-md-round-padding-start};
-  --padding-end: #{$button-md-round-padding-end};
+  // --padding-start: #{$button-md-round-padding-start};
+  // --padding-end: #{$button-md-round-padding-end};
   --padding-bottom: #{$button-md-round-padding-bottom};
 }
 
@@ -113,7 +113,7 @@
   font-weight: #{$button-md-strong-font-weight};
 }
 
-::slotted(ion-icon[slot="icon-only"]) {
+::slotted(i[slot="icon-only"]) {
   @include padding(0);
 }
 

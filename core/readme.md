@@ -3,6 +3,7 @@
 
 ###usage
 // Your index.html
+``html
 <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -12,3 +13,4 @@
   <i class="material-icons" slot="start">add</i>
   <!-- Here your text -->
 </gasco-button>
+``

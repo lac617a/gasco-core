@@ -2,7 +2,7 @@
 * Materialize, a CSS Framework based on Material Design
 
 ### usage
-``
+```
 // Your index.html
 <link
     rel="stylesheet"
@@ -13,4 +13,4 @@
   <i class="material-icons" slot="start">add</i>
   <!-- Here your text -->
 </gasco-button>
-``
+```

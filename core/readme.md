@@ -1,7 +1,7 @@
 ## library of tertiary
 * Materialize, a CSS Framework based on Material Design
 
-###usage
+### usage
 ``
 // Your index.html
 <link

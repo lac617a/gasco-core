@@ -19,20 +19,24 @@
    * @prop --placeholder-font-weight: Font weight of the input placeholder text
    * @prop --placeholder-opacity: Opacity of the input placeholder text
    */
-  --placeholder-color: initial;
+  --placeholder-color: #{gasco-color(medium, base)};
   --placeholder-font-style: initial;
   --placeholder-font-weight: initial;
   --placeholder-opacity: .5;
   --padding-top: 0;
   --padding-end: 0;
   --padding-bottom: 0;
+  --margin-bottom: 12px;
   --padding-start: 0;
-  --border-radius: 4px;
+  --box-shadow: 0px 4px 10px rgba(171, 190, 209, 0.4);
+  --border-radius: 8px;
   --border-style: solid;
   --border-width: 1px;
-  --border-color: #{gasco-color(primary, base)};
+  --border-color: #{gasco-color(medium, base)};
   --background: transparent;
-  --color: initial;
+  --color: #{gasco-color(medium, base)};
+  --line-height-secondary: 16px;
+  --font-size-secondary: 12px;
   @include border-radius(var(--border-radius));
 
   display: flex;
@@ -44,6 +48,7 @@
   width: 100%;
 
   padding: 0 !important;
+  margin-bottom: var(--margin-bottom);
 
   color: var(--color);
   background: var(--background);
@@ -54,6 +59,7 @@
   font-family: $font-family-base;
 
   z-index: $z-index-item-input;
+  transition: 300ms;
 }
 
 :host(.gasco-color) {
@@ -82,6 +88,7 @@
   box-sizing: border-box;
   appearance: none;
   border: 0;
+  transition: 300ms;
 
   &::placeholder {
     color: var(--placeholder-color);
@@ -90,7 +97,7 @@
     font-style: var(--placeholder-font-style);
     font-weight: var(--placeholder-font-weight);
 
-    opacity: var(--placeholder-opacity);
+    // opacity: var(--placeholder-opacity);
   }
 
   &:-webkit-autofill {
@@ -104,44 +111,46 @@
   &::-ms-clear {
     display: none;
   }
+  &-label {
+    --background: white;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: var(--background);
+    padding: 0 4px;
+    font-weight: 400;
+    line-height: var(--line-height-secondary);
+    font-size: var(--font-size-secondary);
+    border-radius: var(--border-radius);
+    transition: 300ms;
+  }
+  &-textHelp, &-limit {
+    position: absolute;
+    bottom: -17px;
+    left: 10px;
+    font-weight: 400;
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    transition: 300ms;
+  }
+  &-limit {
+    left: inherit;
+    right: 10px;
+  }
 }
 
 
 // DISABLED
 :host[disabled] {
-  --border-color: #{gasco-color(medium, base)};
+  --border-color: #{gasco-color(light, base)} !important;
+  --background: #{gasco-color(light, base)} !important;
 }
 .native-input[disabled] {
-  opacity: .4;
+  opacity: .8;
 }
 
-// Input color: default primary
-:host(.gasco-color-secondary) {
-  --border-color: #{gasco-color(secondary, base)};
-}
-
-:host(.gasco-color-tertiary) {
-  --border-color: #{gasco-color(tertiary, base)};
-}
-
-:host(.gasco-color-success) {
-  --border-color: #{gasco-color(success, base)};
-}
-
-:host(.gasco-color-warning) {
-  --border-color: #{gasco-color(warning, base)};
-}
-
-:host(.gasco-color-danger) {
-  --border-color: #{gasco-color(danger, base)};
-}
-
-:host(.gasco-color-light) {
-  --border-color: #{gasco-color(light, base)};
-}
-
-:host(.gasco-color-dark) {
-  --border-color: #{gasco-color(dark, base)};
+:host[disabled] .native-input-label {
+  --background: #{gasco-color(light, base)};
 }
 
 
@@ -196,10 +205,68 @@
 
 :host(.has-focus) {
   pointer-events: none;
+  --border-color: #{gasco-color(primary, base)} !important;
+  .native-input {
+    &-label, &-textHelp, &-limit {
+      color: #{gasco-color(primary, base)};
+    }
+  }
+}
+
+:host(.has-focus) [slot="start"] {
+  color: #{gasco-color(primary, base)};
 }
 
 :host(.has-focus) input,
 :host(.has-focus) a,
 :host(.has-focus) button {
   pointer-events: auto;
+}
+
+// Input Has Error or Success
+// --------------------------------------------------
+// When the input has focus, then the input cover should be hidden
+
+:host(.has-error) {
+  --border-color: #{gasco-color(secondary, base)} !important;
+  .native-input {
+    &-label, &-textHelp, &-limit {
+      color: #{gasco-color(secondary, base)};
+    }
+  }
+}
+
+:host(.has-success) {
+  --border-color: #{gasco-color(success, base)} !important;
+  .native-input {
+    &-label, &-textHelp, &-limit {
+      color: #{gasco-color(success, base)};
+    }
+  }
+}
+
+// Button Icons
+// --------------------------------------------------
+
+::slotted([slot="start"]),
+::slotted([slot="end"]) {
+  font-size: 1.4em !important;
+  pointer-events: none;
+}
+
+::slotted([slot="start"]) {
+  @include margin(0, -.3em, 0, .6em);
+}
+
+::slotted([slot="end"]) {
+  @include margin(0, .6em, 0, -.3em);
+}
+
+// Button Hover
+@media (any-hover: hover) {
+  :host(:not([disabled]):hover) {
+    box-shadow: var(--box-shadow);
+    --border-color: #{gasco-color(dark, base)};
+    border-radius: var(--border-radius);
+  }
 }

@@ -106,10 +106,6 @@ export namespace Components {
          */
         "clearOnEdit"?: boolean;
         /**
-          * If `true`, the user interact with the input mode code.
-         */
-        "code": boolean;
-        /**
           * The color to use from your application's color palette. Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
          */
         "color"?: Color;
@@ -126,6 +122,14 @@ export namespace Components {
           * A hint to the browser for which keyboard to display. Possible values: `none`, `text`, `tel`, `url`, `email, `numeric`, `decimal`, `search`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Instructional text that show before the input has a value. The Input label.
+         */
+        "label"?: string;
+        /**
+          * Instructional text that show before the input has a value. The Input text help.
+         */
+        "limit"?: boolean;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
@@ -175,9 +179,9 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * The initial size of the control. This value is in pixels inless the value of the type attribute is `text` or `password`, in which case it is an integer number os charactersd. This attribute applies only whe the `type` attribute is set to `text`, `search`, `tel`, `url`, `email`, or `password`, otherwise it is ignored.
+          * The Input size.
          */
-        "size"?: number;
+        "size"?: 'small' | 'default' | 'large';
         /**
           * If `true`, the element will have its spelling and grammar checked.
          */
@@ -186,6 +190,10 @@ export namespace Components {
           * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `any` or a positive floating point number.
          */
         "step"?: string;
+        /**
+          * Instructional text that show before the input has a value. The Input text help.
+         */
+        "textHelp"?: string;
         /**
           * The type of control to display. The default type is `text`.
          */
@@ -496,10 +504,6 @@ declare namespace LocalJSX {
          */
         "clearOnEdit"?: boolean;
         /**
-          * If `true`, the user interact with the input mode code.
-         */
-        "code"?: boolean;
-        /**
           * The color to use from your application's color palette. Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
          */
         "color"?: Color;
@@ -512,6 +516,14 @@ declare namespace LocalJSX {
           * A hint to the browser for which keyboard to display. Possible values: `none`, `text`, `tel`, `url`, `email, `numeric`, `decimal`, `search`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Instructional text that show before the input has a value. The Input label.
+         */
+        "label"?: string;
+        /**
+          * Instructional text that show before the input has a value. The Input text help.
+         */
+        "limit"?: boolean;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
@@ -573,9 +585,9 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * The initial size of the control. This value is in pixels inless the value of the type attribute is `text` or `password`, in which case it is an integer number os charactersd. This attribute applies only whe the `type` attribute is set to `text`, `search`, `tel`, `url`, `email`, or `password`, otherwise it is ignored.
+          * The Input size.
          */
-        "size"?: number;
+        "size"?: 'small' | 'default' | 'large';
         /**
           * If `true`, the element will have its spelling and grammar checked.
          */
@@ -584,6 +596,10 @@ declare namespace LocalJSX {
           * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `any` or a positive floating point number.
          */
         "step"?: string;
+        /**
+          * Instructional text that show before the input has a value. The Input text help.
+         */
+        "textHelp"?: string;
         /**
           * The type of control to display. The default type is `text`.
          */

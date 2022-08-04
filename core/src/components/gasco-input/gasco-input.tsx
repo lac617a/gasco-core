@@ -70,10 +70,33 @@ export class GascoInput implements ComponentInterface {
    */
   @Prop() placeholder?: string;
 
+  // /**
+  //  * The initial size of the control. This value is in pixels inless the value of the type attribute is `text` or `password`, in which case it is an integer number os charactersd. This attribute applies only whe the `type` attribute is set to `text`, `search`, `tel`, `url`, `email`, or `password`, otherwise it is ignored.
+  //  */
+  // @Prop() size?: number;
+
   /**
-   * The initial size of the control. This value is in pixels inless the value of the type attribute is `text` or `password`, in which case it is an integer number os charactersd. This attribute applies only whe the `type` attribute is set to `text`, `search`, `tel`, `url`, `email`, or `password`, otherwise it is ignored.
+   * The Input size.
    */
-  @Prop() size?: number;
+  @Prop({ reflect: true }) size?: 'small' | 'default' | 'large';
+
+  /**
+   * Instructional text that show before the input has a value.
+   * The Input label.
+   */
+  @Prop() label?: string;
+
+  /**
+   * Instructional text that show before the input has a value.
+   * The Input text help.
+   */
+  @Prop({ reflect: true }) textHelp?: string;
+
+  /**
+   * Instructional text that show before the input has a value.
+   * The Input text help.
+   */
+  @Prop() limit?: boolean;
 
   /**
    * The type of control to display. The default type is `text`.
@@ -146,11 +169,6 @@ export class GascoInput implements ComponentInterface {
     * Possible values are: `any` or a positive floating point number.
     */
   @Prop() step?: string;
-
-  /**
-   * If `true`, the user interact with the input mode code.
-   */
-  @Prop() code = false;
 
   //? WATCHs
   @Watch('disabled')
@@ -249,15 +267,14 @@ export class GascoInput implements ComponentInterface {
   }
 
 
-  //? FUNCTIONs GLOBALs
-  private onComposition = (v: boolean): void => {
-    this.isComposing = v;
-  };
-
   //? FUNCTIONs PRIVATEs
   private getValue(): string {
     return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
   }
+
+  private onComposition = (v: boolean): void => {
+    this.isComposing = v;
+  };
 
   private emitStyle() {
     this.gascoStyle.emit({
@@ -385,15 +402,17 @@ export class GascoInput implements ComponentInterface {
   render() {
     const value = this.getValue();
     const labelId = this.inputId + '-lbl';
-
+    const finalSize = this.size === undefined && false ? 'small' : this.size;
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
         class={createColorClasses(this.color, {
           'has-value': this.hasValue(),
           'has-focus': this.hasFocus,
-          'gasco-input-code': this.code !== false,
+          [`input-${finalSize}`]: finalSize !== undefined,
         })}>
+        <slot name="start"></slot>
+        {this.label && (<span class="native-input-label">{this.label}</span>)}
         <input
           class="native-input"
           ref={(input) => (this.nativeInput = input)}
@@ -416,7 +435,6 @@ export class GascoInput implements ComponentInterface {
           required={this.required}
           spellcheck={this.spellcheck}
           step={this.step}
-          size={this.size}
           type={this.type}
           value={value}
           onInput={this.onInput}
@@ -425,7 +443,8 @@ export class GascoInput implements ComponentInterface {
           onKeyDown={this.onKeydown}
           {...this.inheritedAttributes}
         />
-        {this.clearInput && !this.readonly && !this.disabled && !this.code && (
+        <slot name="end"></slot>
+        {this.clearInput && !this.readonly && !this.disabled  && (
           <button
             aria-label="reset"
             type="button"
@@ -435,9 +454,12 @@ export class GascoInput implements ComponentInterface {
             onKeyDown={this.clearTextInput}
           />
         )}
-        {/* {this.code && !this.clearInput && !this.readonly && !this.disabled && (
-          new Array(Number(this.maxlength)).map(i => <span>{i}</span>)
-        )} */}
+        {this.textHelp && (<span class="native-input-textHelp">{this.textHelp}</span>)}
+        {this.limit && (
+          <span class="native-input-limit">
+            {this.value.toString().length}/{this.maxlength}
+          </span>
+        )}
       </Host>
     );
   }

@@ -12,6 +12,7 @@
   --padding-start: #{$input-md-padding-start};
 
   font-size: $input-md-font-size;
+  max-width: $input-md-width;
 }
 
 .input-clear-icon {
@@ -21,4 +22,17 @@
   height: $input-md-input-clear-icon-width;
 
   background-size: $input-md-input-clear-icon-size;
+}
+
+// Material Design Button Sizes
+// --------------------------------------------------
+
+:host(.input-large) {
+  max-width: #{$input-md-large-width};
+  font-size: #{$input-md-large-font-size};
+}
+
+:host(.input-small) {
+  max-width: #{$input-md-small-width};
+  font-size: #{$input-md-small-font-size};
 }

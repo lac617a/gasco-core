@@ -1,23 +1,27 @@
 @import "../../themes/gasco.globals.md";
 @import "../gasco-item/gasco-item.md.vars";
 
+// Material Design Svg
+
+$input-md-input-eye-icon-svg:             "<svg viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.2326 13.5103C11.2187 13.5103 12.0555 13.1665 12.743 12.479C13.4305 11.7915 13.7743 10.9547 13.7743 9.96859C13.7743 8.98248 13.4305 8.14567 12.743 7.45817C12.0555 6.77067 11.2187 6.42692 10.2326 6.42692C9.24647 6.42692 8.40967 6.77067 7.72217 7.45817C7.03467 8.14567 6.69092 8.98248 6.69092 9.96859C6.69092 10.9547 7.03467 11.7915 7.72217 12.479C8.40967 13.1665 9.24647 13.5103 10.2326 13.5103ZM10.2326 12.3019C9.57981 12.3019 9.02772 12.0762 8.57633 11.6248C8.12494 11.1735 7.89925 10.6214 7.89925 9.96859C7.89925 9.31581 8.12494 8.76373 8.57633 8.31234C9.02772 7.86095 9.57981 7.63526 10.2326 7.63526C10.8854 7.63526 11.4374 7.86095 11.8888 8.31234C12.3402 8.76373 12.5659 9.31581 12.5659 9.96859C12.5659 10.6214 12.3402 11.1735 11.8888 11.6248C11.4374 12.0762 10.8854 12.3019 10.2326 12.3019ZM10.2326 16.2186C8.20481 16.2186 6.37147 15.6422 4.73258 14.4894C3.0937 13.3366 1.87147 11.8297 1.06592 9.96859C1.87147 8.10748 3.0937 6.60053 4.73258 5.44776C6.37147 4.29498 8.20481 3.71859 10.2326 3.71859C12.2604 3.71859 14.0937 4.29498 15.7326 5.44776C17.3715 6.60053 18.5937 8.10748 19.3993 9.96859C18.5937 11.8297 17.3715 13.3366 15.7326 14.4894C14.0937 15.6422 12.2604 16.2186 10.2326 16.2186ZM10.2326 14.9686C11.9131 14.9686 13.4583 14.5137 14.868 13.604C16.2777 12.6943 17.3506 11.4825 18.0867 9.96859C17.3506 8.4547 16.2777 7.2429 14.868 6.33317C13.4583 5.42345 11.9131 4.96859 10.2326 4.96859C8.55203 4.96859 7.00689 5.42345 5.59717 6.33317C4.18745 7.2429 3.10758 8.4547 2.35758 9.96859C3.10758 11.4825 4.18745 12.6943 5.59717 13.604C7.00689 14.5137 8.55203 14.9686 10.2326 14.9686Z' fill='#999999'/></svg>";
+
 // Material Design Input
 // --------------------------------------------------
 
 /// @prop - Font size of the input
-$input-md-font-size:                      inherit !default;
+$input-md-font-size:                      14px !default;
 
 /// @prop - Margin top of the input
-$input-md-padding-top:                     10px !default;
+$input-md-padding-top:                     12px !default;
 
 /// @prop - Margin end of the input
-$input-md-padding-end:                     0 !default;
+$input-md-padding-end:                     ($input-md-padding-top * 1.4) !default;
 
 /// @prop - Margin bottom of the input
-$input-md-padding-bottom:                  10px !default;
+$input-md-padding-bottom:                  12px !default;
 
 /// @prop - Margin start of the input
-$input-md-padding-start:                   ($item-md-padding-start * 0.5) !default;
+$input-md-padding-start:                   ($input-md-padding-top * 1.4) !default;
 
 /// @prop - Width of the icon used to clear the input
 $input-md-input-clear-icon-width:         30px !default;
@@ -53,25 +57,53 @@ $input-md-highlight-color-valid:          gasco-color(success, base) !default;
 $input-md-highlight-color-invalid:        gasco-color(danger, base) !default;
 
 /// @prop - Padding top of the inset input
-$input-md-inset-padding-top:              ($item-md-padding-top * 0.5) !default;
+$input-md-inset-padding-top:              ($input-md-padding-top * 0.5) !default;
 
 /// @prop - Padding end of the inset input
 $input-md-inset-padding-end:              0 !default;
 
 /// @prop - Padding bottom of the inset input
-$input-md-inset-padding-bottom:           ($item-md-padding-bottom * 0.5) !default;
+$input-md-inset-padding-bottom:           ($input-md-padding-bottom * 0.5) !default;
 
 /// @prop - Padding start of the inset input
-$input-md-inset-padding-start:            ($item-md-padding-start * 0.5) !default;
+$input-md-inset-padding-start:            ($input-md-padding-start * 0.5) !default;
 
 /// @prop - Margin top of the inset input
-$input-md-inset-margin-top:               ($item-md-padding-top * 0.5) !default;
+$input-md-inset-margin-top:               ($input-md-padding-top * 0.5) !default;
 
 /// @prop - Margin end of the inset input
-$input-md-inset-margin-end:               $item-md-padding-end !default;
+$input-md-inset-margin-end:               $input-md-padding-end !default;
 
 /// @prop - Margin bottom of the inset input
-$input-md-inset-margin-bottom:            ($item-md-padding-bottom * 0.5) !default;
+$input-md-inset-margin-bottom:            ($input-md-padding-bottom * 0.5) !default;
 
 /// @prop - Margin start of the inset input
-$input-md-inset-margin-start:             $item-md-padding-start !default;
+$input-md-inset-margin-start:             $input-md-padding-start !default;
+
+/// @prop - Height input
+$input-md-height:                         48px !default;
+
+/// @prop - @Width input
+$input-md-width:                          350px !default;
+
+/// @prop - @Border radius
+$input-md-border-radius:                  8px !default;
+
+/// @prop - @Box shadow filter
+$input-md-box-shadow:                     0px 8px 16px rgba(171, 190, 209, 0.4) !default;
+
+
+// Input Large
+/// @prop - width large input
+$input-md-large-width:                     400px !default;
+
+/// @prop - Font size of the input
+$input-md-large-font-size:                 16px !default;
+
+
+// Input Small
+/// @prop - width small input
+$input-md-small-width:                     280px !default;
+
+/// @prop - Font size of the input
+$input-md-small-font-size:                 $input-md-font-size !default;

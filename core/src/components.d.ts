@@ -243,8 +243,6 @@ export namespace Components {
          */
         "value"?: string | number | null;
     }
-    interface GascoItem {
-    }
     interface GascoToast {
         /**
           * If `true`, the toast will animate.
@@ -364,12 +362,6 @@ declare global {
         prototype: HTMLGascoInputCodeElement;
         new (): HTMLGascoInputCodeElement;
     };
-    interface HTMLGascoItemElement extends Components.GascoItem, HTMLStencilElement {
-    }
-    var HTMLGascoItemElement: {
-        prototype: HTMLGascoItemElement;
-        new (): HTMLGascoItemElement;
-    };
     interface HTMLGascoToastElement extends Components.GascoToast, HTMLStencilElement {
     }
     var HTMLGascoToastElement: {
@@ -381,7 +373,6 @@ declare global {
         "gasco-button-icon": HTMLGascoButtonIconElement;
         "gasco-input": HTMLGascoInputElement;
         "gasco-input-code": HTMLGascoInputCodeElement;
-        "gasco-item": HTMLGascoItemElement;
         "gasco-toast": HTMLGascoToastElement;
     }
 }
@@ -662,8 +653,6 @@ declare namespace LocalJSX {
          */
         "value"?: string | number | null;
     }
-    interface GascoItem {
-    }
     interface GascoToast {
         /**
           * If `true`, the toast will animate.
@@ -740,7 +729,6 @@ declare namespace LocalJSX {
         "gasco-button-icon": GascoButtonIcon;
         "gasco-input": GascoInput;
         "gasco-input-code": GascoInputCode;
-        "gasco-item": GascoItem;
         "gasco-toast": GascoToast;
     }
 }
@@ -752,7 +740,6 @@ declare module "@stencil/core" {
             "gasco-button-icon": LocalJSX.GascoButtonIcon & JSXBase.HTMLAttributes<HTMLGascoButtonIconElement>;
             "gasco-input": LocalJSX.GascoInput & JSXBase.HTMLAttributes<HTMLGascoInputElement>;
             "gasco-input-code": LocalJSX.GascoInputCode & JSXBase.HTMLAttributes<HTMLGascoInputCodeElement>;
-            "gasco-item": LocalJSX.GascoItem & JSXBase.HTMLAttributes<HTMLGascoItemElement>;
             "gasco-toast": LocalJSX.GascoToast & JSXBase.HTMLAttributes<HTMLGascoToastElement>;
         }
     }

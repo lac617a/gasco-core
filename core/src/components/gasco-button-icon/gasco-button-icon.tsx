@@ -5,7 +5,7 @@ import type {  Color } from '../../interface';
 import type { Attributes } from '../../utils/helpers';
 import { inheritAriaAttributes } from '../../utils/helpers';
 import { createColorClasses } from '../../utils/theme';
-import { ButtonInterface } from '../button/button';
+import { ButtonInterface } from '../gasco-button/gasco-button';
 
 // The interfaces are used to make sure our components
 // have the correct properties defined that are needed to pass to

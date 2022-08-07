@@ -171,33 +171,43 @@
 }
 
 
-// Clear Input Icon
+// Indicator Input Icon
 // --------------------------------------------------
 
-.input-clear-icon {
+.input-indicator-icon {
   @include margin(0);
   @include padding(0);
-  @include background-position(center);
+  @include background-position(left);
 
   border: 0;
-
+  position: relative;
   outline: none;
 
   background-color: transparent;
   background-repeat: no-repeat;
 
-  visibility: hidden;
   appearance: none;
-}
 
-.input-clear-icon:focus {
-  opacity: 0.5;
+  text-align: right;
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  margin-left: 12px;
+  color: #051C24;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  transition: 300ms;
+  &::after {
+    content: "";
+    position: absolute;
+    height: 70%;
+    width: 1px;
+    right: -10px;
+    background: var(--border-color);
+    transition: 300ms;
+  }
 }
-
-:host(.has-value) .input-clear-icon {
-  visibility: visible;
-}
-
 
 // Input Has focus
 // --------------------------------------------------
@@ -209,6 +219,11 @@
   .native-input {
     &-label, &-textHelp, &-limit {
       color: #{gasco-color(primary, base)};
+    }
+  }
+  .input-indicator-icon{
+    &::after {
+      background: #{gasco-color(primary, base)};
     }
   }
 }
@@ -234,6 +249,11 @@
       color: #{gasco-color(secondary, base)};
     }
   }
+  .input-indicator-icon{
+    &::after {
+      background: #{gasco-color(secondary, base)};
+    }
+  }
 }
 
 :host(.has-success) {
@@ -241,6 +261,11 @@
   .native-input {
     &-label, &-textHelp, &-limit {
       color: #{gasco-color(success, base)};
+    }
+  }
+  .input-indicator-icon{
+    &::after {
+      background: #{gasco-color(success, base)};
     }
   }
 }

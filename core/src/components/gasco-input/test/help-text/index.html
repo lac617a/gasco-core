@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Input with text help</title>
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+    <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+<body>
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+    body {
+      margin: 1rem;
+    }
+  </style>
+  <div style="display: grid; gap: 1rem;">
+    <div style="display: grid; gap: 1rem;">
+      <h2 class="gasco-heading:2">Large</h2>
+      <gasco-input text-help="text help" size="large" placeholder="default"></gasco-input>
+      <gasco-input text-help="text help" size="large" placeholder="with focus" label="label" class="has-focus"></gasco-input>
+      <gasco-input text-help="text help" size="large" placeholder="has-error" label="label" class="has-error"></gasco-input>
+      <gasco-input text-help="text help" size="large" placeholder="has-success" label="label" class="has-success"></gasco-input>
+      <gasco-input text-help="text help" size="large" placeholder="disabled" disabled></gasco-input>
+    </div>
+
+    <div style="display: grid; gap: 1rem;">
+      <h2 class="gasco-heading:2">Medium</h2>
+      <gasco-input text-help="text help" limit maxlength="20" placeholder="default"></gasco-input>
+      <gasco-input text-help="text help" limit maxlength="20" placeholder="with focus" label="label" class="has-focus"></gasco-input>
+      <gasco-input text-help="text help" limit maxlength="20" placeholder="has-error" label="label" class="has-error"></gasco-input>
+      <gasco-input text-help="text help" limit maxlength="20" placeholder="has-success" label="label" class="has-success"></gasco-input>
+      <gasco-input text-help="text help" limit maxlength="20" placeholder="disabled" disabled></gasco-input>
+    </div>
+
+    <div style="display: grid; gap: 1rem;">
+      <h2 class="gasco-heading:2">Small</h2>
+      <gasco-input limit maxlength="20" size="small" placeholder="default"></gasco-input>
+      <gasco-input limit maxlength="16" size="small" placeholder="with focus" label="label" class="has-focus"></gasco-input>
+      <gasco-input limit maxlength="12" size="small" placeholder="has-error" label="label" class="has-error"></gasco-input>
+      <gasco-input limit maxlength="5" size="small" placeholder="has-success" label="label" class="has-success"></gasco-input>
+      <gasco-input limit maxlength="8" size="small" placeholder="disabled" disabled></gasco-input>
+    </div>
+  </div>
+</body>
+</html>

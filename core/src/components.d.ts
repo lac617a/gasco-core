@@ -98,14 +98,6 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
-          * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
-         */
-        "clearInput": boolean;
-        /**
-          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
-         */
-        "clearOnEdit"?: boolean;
-        /**
           * The color to use from your application's color palette. Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
          */
         "color"?: Color;
@@ -118,6 +110,10 @@ export namespace Components {
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Instructional text that show before the input has a value. The Input numeric for flat country.
+         */
+        "indicator"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `none`, `text`, `tel`, `url`, `email, `numeric`, `decimal`, `search`.
          */
@@ -496,14 +492,6 @@ declare namespace LocalJSX {
          */
         "autofocus"?: boolean;
         /**
-          * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
-         */
-        "clearInput"?: boolean;
-        /**
-          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
-         */
-        "clearOnEdit"?: boolean;
-        /**
           * The color to use from your application's color palette. Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
          */
         "color"?: Color;
@@ -512,6 +500,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         "fireFocusEvents"?: boolean;
+        /**
+          * Instructional text that show before the input has a value. The Input numeric for flat country.
+         */
+        "indicator"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `none`, `text`, `tel`, `url`, `email, `numeric`, `decimal`, `search`.
          */

@@ -14,7 +14,6 @@ import { createColorClasses } from '../../utils/theme';
 export class GascoInput implements ComponentInterface {
   private nativeInput?: HTMLInputElement;
   private isComposing = false;
-  private didBlurAfterEdit = false;
   private inheritedAttributes: Attributes = {};
   private inputId = `gasco-input-${inputIds++}`;
 
@@ -48,16 +47,6 @@ export class GascoInput implements ComponentInterface {
    * This Boolean attributes lets you specify that a from control should have input focus when the page loads.
    */
   @Prop() autofocus = false;
-
-  /**
-   * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
-   */
-  @Prop() clearInput = false;
-
-  /**
-   * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
-   */
-  @Prop() clearOnEdit?: boolean;
 
   /**
    * If `true`, the user cannot interact with the input.
@@ -97,6 +86,12 @@ export class GascoInput implements ComponentInterface {
    * The Input text help.
    */
   @Prop() limit?: boolean;
+
+  /**
+   * Instructional text that show before the input has a value.
+   * The Input numeric for flat country.
+   */
+  @Prop() indicator?: boolean;
 
   /**
    * The type of control to display. The default type is `text`.
@@ -201,6 +196,9 @@ export class GascoInput implements ComponentInterface {
         * or input masking.
         */
       nativeInput.value = value.trim();
+      if (this.indicator) {
+        nativeInput.value = value.replace(/\D/,'');
+      }
     }
     this.emitStyle();
     this.gascoChange.emit({ value: typeof this.value !== 'number'  ? this.value : this.value.toString() });
@@ -287,31 +285,6 @@ export class GascoInput implements ComponentInterface {
     });
   };
 
-  private clearTextInput = (ev?: Event) => {
-    if (this.clearInput && !this.readonly && !this.disabled && ev) {
-      ev.preventDefault();
-      ev.stopPropagation();
-
-      // Attempt to focus input again after pressing clear button
-      this.setFocus();
-      this.emitStyle();
-      this.value = '';
-      this.nativeInput.value = '';
-    }
-  };
-
-  private shouldClearOnEdit() {
-    const { type, clearOnEdit } = this;
-    return clearOnEdit === undefined ? type === 'password' : clearOnEdit;
-  };
-
-  private focusChanged() {
-    // If clearOnEdit is enabled and the input blurred but has a value, set a flag
-    if (!this.hasFocus && this.shouldClearOnEdit() && this.hasValue()) {
-      this.didBlurAfterEdit = true;
-    }
-  }
-
   private onInput = (ev: Event) => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
@@ -322,7 +295,6 @@ export class GascoInput implements ComponentInterface {
 
   private onBlur = (ev: FocusEvent) => {
     this.hasFocus = false;
-    this.focusChanged();
     this.emitStyle();
 
     if (this.fireFocusEvents) {
@@ -336,25 +308,10 @@ export class GascoInput implements ComponentInterface {
 
   private onFocus = (ev: FocusEvent) => {
     this.hasFocus = true;
-    this.focusChanged();
     this.emitStyle();
 
     if (this.fireFocusEvents) {
       this.gascoFocus.emit(ev);
-    }
-  };
-
-  private onKeydown = (ev: KeyboardEvent) => {
-    if (this.shouldClearOnEdit()) {
-      // Did the input value change after it was blurred and edited?
-      // Do not clear if user is hitting Enter to submit form
-      if (this.didBlurAfterEdit && this.hasValue() && ev.key !== 'Enter') {
-        // Clear the input
-        this.clearTextInput();
-      }
-
-      // Reset the flag
-      this.didBlurAfterEdit = false;
     }
   };
 
@@ -411,8 +368,9 @@ export class GascoInput implements ComponentInterface {
           'has-focus': this.hasFocus,
           [`input-${finalSize}`]: finalSize !== undefined,
         })}>
-        <slot name="start"></slot>
         {this.label && (<span class="native-input-label">{this.label}</span>)}
+        {this.indicator && (<span class="input-indicator-icon">+56</span>)}
+        <slot name="start"></slot>
         <input
           class="native-input"
           ref={(input) => (this.nativeInput = input)}
@@ -435,25 +393,14 @@ export class GascoInput implements ComponentInterface {
           required={this.required}
           spellcheck={this.spellcheck}
           step={this.step}
-          type={this.type}
+          type={this.indicator ? 'tel' : this.type}
           value={value}
           onInput={this.onInput}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          onKeyDown={this.onKeydown}
           {...this.inheritedAttributes}
         />
         <slot name="end"></slot>
-        {this.clearInput && !this.readonly && !this.disabled  && (
-          <button
-            aria-label="reset"
-            type="button"
-            class="input-clear-icon"
-            onTouchStart={this.clearTextInput}
-            onMouseDown={this.clearTextInput}
-            onKeyDown={this.clearTextInput}
-          />
-        )}
         {this.textHelp && (<span class="native-input-textHelp">{this.textHelp}</span>)}
         {this.limit && (
           <span class="native-input-limit">

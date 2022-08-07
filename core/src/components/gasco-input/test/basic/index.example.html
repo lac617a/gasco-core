@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Example</title>
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+    <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+<body>
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+  </style>
+  <div style="display: grid; gap: 1rem;">
+    <gasco-button onclick="toggleBoolean('dynamicDisabled')"> Toggle Disabled </gasco-button>
+    <gasco-input placeholder="Hola"></gasco-input>
+    <gasco-input id="has-error" placeholder="has-error"></gasco-input>
+    <gasco-input id="has-success" placeholder="has-success"></gasco-input>
+
+    <gasco-input id="dynamicDisabled" size="small" label="contrasena">
+      <i class="material-icons" slot="start">donut_small</i>
+    </gasco-input>
+    <gasco-input size="small" label="contrasena">
+      <i class="material-icons" slot="end">donut_small</i>
+    </gasco-input>
+    <gasco-input disabled placeholder="Hola"></gasco-input>
+    <gasco-input size="large" text-help="Este campo es requerido"></gasco-input>
+    <gasco-input size="large" maxlength="10" limit></gasco-input>
+    <gasco-input size="large" text-help="Este campo es requerido" maxlength="10" limit></gasco-input>
+  </div>
+  <script>
+    document.querySelector('#has-error').addEventListener('gascoChange', (ev) => {
+      if (ev.target.value.length > 5) {
+        ev.target.classList.add('has-error');
+      } else {
+        ev.target.classList.remove('has-error');
+      }
+    });
+
+    document.querySelector('#has-success').addEventListener('gascoChange', (ev) => {
+      if (ev.target.value.length > 5) {
+        ev.target.classList.add('has-success');
+      } else {
+        ev.target.classList.remove('has-success');
+      }
+    });
+
+    function toggleBoolean(id) {
+      var el = document.getElementById(id);
+      el.disabled = !el.disabled;
+      el.toggleAttribute('disabled');
+    }
+  </script>
+</body>
+</html>

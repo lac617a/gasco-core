@@ -15,11 +15,11 @@
   max-width: $input-md-width;
 }
 
-.input-clear-icon {
-  @include svg-background-image($input-md-input-clear-icon-svg);
+.input-indicator-icon {
+  @include svg-background-image($input-md-input-flat-icon-svg);
 
   width: $input-md-input-clear-icon-width;
-  height: $input-md-input-clear-icon-width;
+  height: $input-md-input-clear-icon-width - 20;
 
   background-size: $input-md-input-clear-icon-size;
 }

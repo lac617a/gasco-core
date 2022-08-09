@@ -1,31 +1,44 @@
 @import '../gasco-input/gasco-input.scss';
 @import '../gasco-input/gasco-input.md.vars.scss';
-@import '../gasco-input/gasco-input.md.scss';
 
-:host(.sc-gasco-input-code-h) {
+// Material Design Input
+// --------------------------------------------------
+
+:host {
+  --padding-top: #{$input-md-padding-top - 4};
+  --padding-end: #{$input-md-padding-end};
+  --padding-bottom: #{$input-md-padding-bottom - 4};
+  --padding-start: #{$input-md-padding-start};
+
+  font-size: $input-md-font-size;
+  max-width: $input-md-width;
+  flex: 1 1;
+}
+
+:host(.native-input-code) {
   justify-content: center;
 }
 
-:host .native-input-code {
+.native-input-code {
   text-align: center;
   display: flex;
-  max-width: 5%;
   align-items: center;
-  &:not(:last-child)::after {
-    content: "";
-    position: relative;
-    z-index: 10;
-    width: 8px;
-    height: 8px;
-    margin-left: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    background-color: #333;
+  .native-input.code {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
   }
-  &:last-child {
-    input {
-      text-align: left;
-      margin-left: 8px;
-    }
-  }
+}
+
+// Material Design Button Sizes
+// --------------------------------------------------
+
+:host(.input-large) {
+  max-width: #{$input-md-large-width};
+  font-size: #{$input-md-large-font-size};
+}
+
+:host(.input-small) {
+  max-width: #{$input-md-small-width};
+  font-size: #{$input-md-small-font-size};
 }

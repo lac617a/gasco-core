@@ -204,6 +204,9 @@ export namespace Components {
           * This Boolean attributes lets you specify that a from control should have input focus when the page loads.
          */
         "autofocus": boolean;
+        /**
+          * We can make everything automatic after completing the code for default is false.
+         */
         "autosubmit": boolean;
         /**
           * The color to use from your application's color palette. Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
@@ -234,6 +237,14 @@ export namespace Components {
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `text`, `search`, `tel`, `url`, `email`, `"date"`, or `password`, otherwise it is ignored. When the type attribute is `date`, `pattern` will only be used in browsers that do not support the `date` input type natively.
          */
         "pattern"?: string;
+        /**
+          * With secure what you are looking for is that the fields are not seen. for default is true
+         */
+        "secure": boolean;
+        /**
+          * The Input size.
+         */
+        "size"?: 'small' | 'default' | 'large';
         /**
           * The type of control to display. The default type is `text`.
          */
@@ -597,6 +608,9 @@ declare namespace LocalJSX {
           * This Boolean attributes lets you specify that a from control should have input focus when the page loads.
          */
         "autofocus"?: boolean;
+        /**
+          * We can make everything automatic after completing the code for default is false.
+         */
         "autosubmit"?: boolean;
         /**
           * The color to use from your application's color palette. Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
@@ -644,6 +658,14 @@ declare namespace LocalJSX {
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `text`, `search`, `tel`, `url`, `email`, `"date"`, or `password`, otherwise it is ignored. When the type attribute is `date`, `pattern` will only be used in browsers that do not support the `date` input type natively.
          */
         "pattern"?: string;
+        /**
+          * With secure what you are looking for is that the fields are not seen. for default is true
+         */
+        "secure"?: boolean;
+        /**
+          * The Input size.
+         */
+        "size"?: 'small' | 'default' | 'large';
         /**
           * The type of control to display. The default type is `text`.
          */

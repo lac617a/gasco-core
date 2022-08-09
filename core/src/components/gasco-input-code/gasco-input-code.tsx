@@ -18,10 +18,14 @@ export class GascoInputCode implements ComponentInterface {
   private inheritedAttributes: Attributes = {};
   private inputId = 'gasco-input-code-';
 
-  @Prop() fireFocusEvents = true;
-  @Prop() autosubmit = false;
-  @State() hasFocus = false;
+  @Prop() fireFocusEvents: boolean = true;
+  @State() hasFocus: boolean = false;
   @Element() el!: HTMLElement;
+
+  /**
+   * We can make everything automatic after completing the code for default is false.
+   */
+  @Prop() autosubmit: boolean = false;
 
   /**
    * The color to use from your application's color palette.
@@ -43,6 +47,11 @@ export class GascoInputCode implements ComponentInterface {
    * The type of control to display. The default type is `text`.
    */
   @Prop() type: 'text' | 'number' = 'text';
+
+  /**
+   * The Input size.
+   */
+  @Prop({ reflect: true }) size?: 'small' | 'default' | 'large';
 
   /**
    * The value of the input.
@@ -71,6 +80,12 @@ export class GascoInputCode implements ComponentInterface {
    * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `text`, `search`, `tel`, `url`, `email`, `"date"`, or `password`, otherwise it is ignored. When the type attribute is `date`, `pattern` will only be used in browsers that do not support the `date` input type natively.
    */
   @Prop() pattern?: string;
+
+  /**
+   * With secure what you are looking for is that the fields are not seen.
+   * for default is true
+   */
+  @Prop() secure: boolean = true;
 
   /**
    * A simple count for the loop input
@@ -276,12 +291,14 @@ export class GascoInputCode implements ComponentInterface {
   }
 
   render() {
+    const finalSize = this.size === undefined && false ? 'small' : this.size;
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
         class={createColorClasses(this.color, {
           'has-value': this.hasValue(),
           'has-focus': this.hasFocus,
+          [`input-${finalSize}`]: finalSize !== undefined,
         })}>
         {this.arrayInput.map((value, index) => (
           <div class="native-input-code">
@@ -297,7 +314,7 @@ export class GascoInputCode implements ComponentInterface {
               pattern={this.pattern}
               type={this.type}
               value={value}
-              placeholder="0"
+              placeholder={this.secure ? '*' : '0'}
               onPaste={this.handlePaste}
               onKeyDown={(e) => this.handleType(e, inputIds)}
               onKeyDownCapture={() => this.handleGoto(inputIds)}

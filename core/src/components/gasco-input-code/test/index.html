@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <link href="../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../dist/gasco/gasco.esm.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Input - Code</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
+
+<body>
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+
+    body {
+      margin: 1rem;
+    }
+
+  </style>
+  <div style="display: grid; gap: 1rem;">
+    <div>
+      <h2 class="gasco-heading:2">Large</h2>
+      <gasco-input-code id="gasco" autosubmit size="large" maxlength="6"></gasco-input-code>
+      <gasco-input-code size="large" class="has-focus"></gasco-input-code>
+      <gasco-input-code size="large" class="has-error"></gasco-input-code>
+      <gasco-input-code size="large" class="has-success"></gasco-input-code>
+      <gasco-input-code size="large" disabled></gasco-input-code>
+    </div>
+
+    <div>
+      <h2 class="gasco-heading:2">Medium</h2>
+      <gasco-input-code></gasco-input-code>
+      <gasco-input-code class="has-focus"></gasco-input-code>
+      <gasco-input-code class="has-error"></gasco-input-code>
+      <gasco-input-code class="has-success"></gasco-input-code>
+      <gasco-input-code disabled></gasco-input-code>
+    </div>
+
+    <div>
+      <h2 class="gasco-heading:2">Small</h2>
+      <gasco-input-code size="small"></gasco-input-code>
+      <gasco-input-code size="small" class="has-focus"></gasco-input-code>
+      <gasco-input-code size="small" class="has-error"></gasco-input-code>
+      <gasco-input-code size="small" class="has-success"></gasco-input-code>
+      <gasco-input-code size="small" disabled></gasco-input-code>
+    </div>
+  </div>
+
+  <script>
+    // asi se usara con autosubmit 'gascoCodeDone', esto solo funcionara si autosubmi esta en true.
+    document.querySelector('#gasco').addEventListener('gascoCodeDone', (e) => {
+      console.log(e);
+    })
+  </script>
+</body>
+
+</html>

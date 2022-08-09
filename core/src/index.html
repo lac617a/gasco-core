@@ -17,57 +17,6 @@
   </head>
   <body>
 
-    <div style="display: grid; gap: 1rem;">
-      <gasco-button color="primary">
-        <i class="material-icons" slot="start">donut_small</i>
-        Default
-      </gasco-button>
-      <gasco-button color="primary">
-        Default
-        <i class="material-icons" slot="end">donut_small</i>
-      </gasco-button>
-      <gasco-button color="primary">
-        <i class="material-icons" slot="icon-only">donut_small</i>
-      </gasco-button>
-      <gasco-button id="exapmleProgress" progress>progress</gasco-button>
-      <gasco-button onclick="changeProgress()">Change to progress</gasco-button>
-      <gasco-button id="loading" onclick="loadingLazy()">loading lazy</gasco-button>
-    </div>
-
-    <!-- <div style="display: grid; gap: 1rem;">
-      <gasco-input color="secondary" size="100" value="default"></gasco-input>
-      <gasco-input value="required" required></gasco-input>
-      <gasco-input placeholder="Enter input"></gasco-input>
-      <gasco-input clear-input></gasco-input>
-      <gasco-input type="number" value="333"></gasco-input>
-      <gasco-input value="disabled" disabled></gasco-input>
-      <gasco-input value="readonly" readonly></gasco-input>
-      <gasco-input maxLength="3"></gasco-input>
-      <gasco-input-code id="codePanel" autofocus autosubmit></gasco-input-code>
-      <gasco-button type="submit" onclick="hanldeSubmit()">Submit</gasco-button>
-    </div> -->
-
-    <!-- <script type="text/javascript">
-      let text;
-
-      function hanldeSubmit() {
-        alert("You entered " + text);
-      }
-      window.onload = function () {
-        let codePanel = document.getElementById("codePanel");
-        codePanel.addEventListener("gascoCodeDone", function (event) {
-          text = event.detail;
-        });
-      };
-    </script> -->
-    <script>
-      function changeProgress() {
-        const progress = document.querySelector('#exapmleProgress');
-        progress.progress = !progress.progress;
-      }
-      function loadingLazy() {
-        document.querySelector('#loading').progress = true;
-      }
-    </script>
+    <gasco-input-code></gasco-input-code>
   </body>
 </html>

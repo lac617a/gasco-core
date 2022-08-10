@@ -70,19 +70,30 @@
   color: #{current-color(contrast)};
 }
 
-:host(.gasco-color) .gasco-toast-button-cancel {
+:host(.gasco-color) .toast-button-cancel {
   color: inherit;
 }
 
-:host(.gasco-color) .gasco-toast-wrapper {
-  background: #{current-color(base)};
+:host(.gasco-color.gasco-color-primary) .toast-wrapper {
+  background: #F2FCFF;
+}
+:host(.gasco-color.gasco-color-danger) .toast-wrapper {
+  background: #FFF2F2;
+}
+:host(.gasco-color.gasco-color-success) .toast-wrapper {
+  background: #F2FFFB;
+}
+:host(.gasco-color.gasco-color-warning) .toast-wrapper {
+  background: #FFFBF2;
 }
 
-:host(.gasco-color.gasco-color-secondary) .gasco-toast-wrapper {
-  background: #{gasco-color(secondary, base)};
+:host(.gasco-color) .toast-wrapper {
+  border-style: solid;
+  border-color: #{current-color(base)};
+  border-width: 2px 2px 2px 5px;
 }
 
-.gasco-toast-wrapper {
+.toast-wrapper {
   @include border-radius(var(--border-radius));
   @include position-horizontal(var(--start), var(--end));
 
@@ -103,7 +114,7 @@
   box-shadow: var(--box-shadow);
 }
 
-.gasco-toast-container {
+.toast-container {
   display: flex;
 
   align-items: center;
@@ -116,7 +127,7 @@
   contain: content;
 }
 
-.gasco-toast-content {
+.toast-content {
   display: flex;
 
   flex: 1;
@@ -124,21 +135,17 @@
   justify-content: center;
 }
 
-.gasco-toast-icon {
-  @include margin(null, null, null, 16px);
+.toast-title {
+  margin: 0;
 }
 
-.gasco-toast-message {
+.toast-message {
   flex: 1;
 
   white-space: var(--white-space);
 }
 
-.gasco-toast-button-group {
-  display: flex;
-}
-
-.gasco-toast-button {
+.toast-button {
   border: 0;
 
   outline: none;
@@ -148,12 +155,26 @@
   z-index: 0;
 }
 
-.gasco-toast-icon,
-.gasco-toast-button-icon {
-  font-size: 1.4em;
+.toast-icon {
+  padding-left: 23px;
+  align-self: baseline;
+  margin-top: 10px;
 }
 
-.gasco-toast-button-inner {
+:host(.gasco-color.gasco-color-primary) .toast-wrapper .toast-icon svg path {
+  fill: #{current-color(base)};
+}
+:host(.gasco-color.gasco-color-danger) .toast-wrapper .toast-icon svg path {
+  fill: #{current-color(base)};
+}
+:host(.gasco-color.gasco-color-success) .toast-wrapper .toast-icon svg path {
+  fill: #{current-color(base)};
+}
+:host(.gasco-color.gasco-color-warning) .toast-wrapper .toast-icon svg path {
+  fill: #{current-color(base)};
+}
+
+.toast-button-inner {
   display: flex;
 
   align-items: center;
@@ -164,7 +185,7 @@
 // --------------------------------------------------
 
 @media (any-hover: hover) {
-  .gasco-toast-button:hover {
+  .toast-button:hover {
     cursor: pointer;
   }
 }

@@ -11,13 +11,13 @@
   --button-color: #{gasco-color(primary, base)};
   --color: #{$toast-md-color};
   --max-width: #{$toast-max-width};
+  --max-width-large: #{$toast-large-max-width};
+  --max-width-small: #{$toast-small-max-width};
   --start: 8px;
-  --end: 8px;
-
-  font-size: #{$toast-md-font-size};
+  --end: inherit;
 }
 
-.gasco-toast-wrapper {
+.toast-wrapper {
   @include margin(auto);
 
   display: block;
@@ -26,61 +26,72 @@
   opacity: 1;
 
   z-index: $z-index-overlay-wrapper;
+  width: 100%;
+  max-width: var(--max-width)
 }
 
-.gasco-toast-content {
+.toast-content {
   @include padding($toast-md-content-padding-top, $toast-md-content-padding-end, $toast-md-content-padding-bottom, $toast-md-content-padding-start);
 }
 
-.gasco-toast-header {
-  margin-bottom: $toast-md-header-margin-bottom;
-
-  font-weight: $toast-md-header-font-weight;
-
-  line-height: $toast-md-header-line-height;
+.toast-title {
+  font-size: $toast-md-title-font-size;
+  line-height: $toast-md-title-line-height;
+  font-weight: $toast-md-title-font-weight;
+  color: var(--color);
 }
 
-.gasco-toast-message {
+.toast-message {
+  font-size: $toast-md-message-font-size;
   line-height: $toast-md-message-line-height;
+  font-weight: $toast-md-message-font-weight;
+  color: var(--color);
+}
+
+// Material Design Toast Size
+// --------------------------------------------------
+
+:host(.toast-large) {
+  .toast-wrapper {
+    max-width: var(--max-width-large);
+  }
+  .toast-title {
+    font-size: $toast-md-title-large-font-size;
+    line-height: $toast-md-title-large-line-height;
+  }
+  
+  .toast-message {
+    font-size: $toast-md-message-large-font-size;
+    line-height: $toast-md-message-large-line-height;
+  }
+}
+:host(.toast-small) {
+  .toast-wrapper {
+    max-width: var(--max-width-small);
+  }
+  
+  .toast-message {
+    font-size: $toast-md-message-small-font-size;
+    line-height: $toast-md-message-small-line-height;
+  }
 }
 
 
 // Material Design Toast Button
 // --------------------------------------------------
 
-
-.gasco-toast-button-group-start {
-  @include margin(null, null, null, 8px);
-}
-
-.gasco-toast-button-group-end {
-  @include margin(null, 8px, null, null);
-}
-
-.gasco-toast-button {
-  @include padding($toast-md-button-padding-top, $toast-md-button-padding-end, $toast-md-button-padding-bottom, $toast-md-button-padding-start);
-
+.toast-button {
   // necessary for ripple to work properly
   position: relative;
-
-  background-color: $toast-md-button-background-color;
-
-  font-family: var(--gasco-font-family);
-  font-size: $toast-md-button-font-size;
-  font-weight: $toast-md-button-font-weight;
-
-  letter-spacing: $toast-md-button-letter-spacing;
-
-  text-transform: $toast-md-button-text-transform;
-
-  overflow: hidden;
+  background: transparent;
+  padding-right: $toast-md-content-padding-end;
 }
 
-.gasco-toast-button-cancel {
+.toast-button-cancel {
   color: $toast-md-button-cancel-text-color;
 }
 
-.gasco-toast-button-icon-only {
+.toast-button-icon-only {
   @include border-radius($toast-md-button-icon-only-border-radius);
   @include padding($toast-md-button-icon-only-padding);
 
@@ -93,11 +104,11 @@
 // --------------------------------------------------
 
 @media (any-hover: hover) {
-  .gasco-toast-button:hover {
-    background-color: $toast-md-button-background-color-hover;
-  }
+  // .toast-button:hover {
+  //   background-color: $toast-md-button-background-color-hover;
+  // }
 
-  .gasco-toast-button-cancel:hover {
+  .toast-button-cancel:hover {
     background-color: $toast-md-button-cancel-background-color-hover;
   }
 }

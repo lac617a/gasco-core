@@ -264,7 +264,7 @@ export namespace Components {
          */
         "buttons"?: (ToastButton | string)[];
         /**
-          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`.
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
          */
         "color"?: Color;
         /**
@@ -286,17 +286,9 @@ export namespace Components {
          */
         "enterAnimation"?: AnimationBuilder;
         /**
-          * Header to be shown in the toast.
-         */
-        "header"?: string;
-        /**
           * Additional attributes to pass to the toast.
          */
         "htmlAttributes"?: { [key: string]: any };
-        /**
-          * The name of the icon to display, or the path to a valid SVG file. See `ion-icon`. https://ionic.io/ionicons
-         */
-        "icon"?: string;
         /**
           * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
          */
@@ -326,6 +318,14 @@ export namespace Components {
           * Present the toast overlay after it has been created.
          */
         "present": () => Promise<void>;
+        /**
+          * The button size.
+         */
+        "size"?: 'small' | 'default' | 'large';
+        /**
+          * If `true`, the toast will be translucent. Only applies when the mode is `"ios"` and the device supports [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
+         */
+        "translucent": boolean;
     }
 }
 export interface GascoButtonCustomEvent<T> extends CustomEvent<T> {
@@ -685,7 +685,7 @@ declare namespace LocalJSX {
          */
         "buttons"?: (ToastButton | string)[];
         /**
-          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`.
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
          */
         "color"?: Color;
         /**
@@ -701,17 +701,9 @@ declare namespace LocalJSX {
          */
         "enterAnimation"?: AnimationBuilder;
         /**
-          * Header to be shown in the toast.
-         */
-        "header"?: string;
-        /**
           * Additional attributes to pass to the toast.
          */
         "htmlAttributes"?: { [key: string]: any };
-        /**
-          * The name of the icon to display, or the path to a valid SVG file. See `ion-icon`. https://ionic.io/ionicons
-         */
-        "icon"?: string;
         /**
           * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
          */
@@ -745,6 +737,14 @@ declare namespace LocalJSX {
           * The position of the toast on the screen.
          */
         "position"?: 'top' | 'bottom' | 'middle';
+        /**
+          * The button size.
+         */
+        "size"?: 'small' | 'default' | 'large';
+        /**
+          * If `true`, the toast will be translucent. Only applies when the mode is `"ios"` and the device supports [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
+         */
+        "translucent"?: boolean;
     }
     interface IntrinsicElements {
         "gasco-button": GascoButton;

@@ -12,6 +12,7 @@ export interface GascoConfig {
    * Defaults to `true`.
    */
   rippleEffect?: boolean;
+
   /**
    * Wherever ionic will respond to hardware go back buttons in an Android device.
    * Defaults to `true` when ionic runs in a mobile device.
@@ -138,7 +139,7 @@ export interface GascoConfig {
   pickerLeave?: AnimationBuilder;
 
   /**
-   * If `true`, Ionic will enable a basic DOM sanitizer on component properties that accept custom HTML.
+   * If `true`, Gasco will enable a basic DOM sanitizer on component properties that accept custom HTML.
    */
   sanitizerEnabled?: boolean;
 
@@ -159,3 +160,18 @@ export interface GascoConfig {
   _rel?: (el: any, name: string, cb: any, opts: any) => any;
   _ce?: (eventName: string, opts: any) => any;
 }
+
+export const setupConfig = (config: GascoConfig) => {
+  const win = window as any;
+  const Gasco = win.Gasco;
+  // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+  if (Gasco && Gasco.config && Gasco.config.constructor.name !== 'Object') {
+    return;
+  }
+  win.Gasco = win.Gasco || {};
+  win.Gasco.config = {
+    ...win.Gasco.config,
+    ...config,
+  };
+  return win.Gasco.config;
+};

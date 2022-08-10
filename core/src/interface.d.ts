@@ -17,6 +17,7 @@ export {
   AnimationCallbackOptions,
 } from './utils/animation/animation-interface';
 export * from './utils/overlays-interface';
+export * from './global/config';
 
 // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
 export type AutocompleteTypes =
@@ -113,6 +114,12 @@ export interface StyleEventDetail {
 export interface BackButtonEventDetail {
   register(priority: number, handler: (processNextHandler: () => void) => Promise<any> | void): void;
 }
+
+export interface FrameworkDelegate {
+  attachViewToDom(container: any, component: any, propsOrDataObj?: any, cssClasses?: string[]): Promise<HTMLElement>;
+  removeViewFromDom(container: any, component: any): Promise<void>;
+}
+
 
 declare module './components' {
   export namespace Components {

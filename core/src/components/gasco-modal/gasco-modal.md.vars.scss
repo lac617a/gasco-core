@@ -1,0 +1,13 @@
+@import "../../themes/gasco.globals.md";
+
+// Material Design Modals
+// --------------------------------------------------
+
+/// @prop - Background color for the modal
+$modal-md-background-color:       $background-color !default;
+
+/// @prop - Box shadow color of the alert
+$modal-inset-box-shadow-color:    rgba(171, 190, 209, 0.3) !default;
+
+/// @prop - Box shadow of the alert
+$modal-inset-box-shadow:          0px 6px 12px $modal-inset-box-shadow-color !default;

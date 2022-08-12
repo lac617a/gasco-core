@@ -69,7 +69,7 @@ export const configFromURL = (win: Window) => {
 };
 
 const startsWith = (input: string, search: string): boolean => {
-  return input.substr(0, search.length) === search;
+  return input.substring(0, search.length) === search;
 };
 
 const GASCO_PREFIX = 'gasco:';

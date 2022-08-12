@@ -343,25 +343,25 @@ $size: 18px;
 }
 
 
-// Button Colors
-// --------------------------------------------------
+// // Button Colors
+// // --------------------------------------------------
 
 
-// Solid Button with Color
-:host(.button-solid.gasco-color) .button-native {
-  background: current-color(base);
-  color: current-color(contrast);
-}
+// // Solid Button with Color
+// :host(.button-solid.gasco-color) .button-native {
+//   background: current-color(base);
+//   color: current-color(contrast);
+// }
 
-// Outline Button with Color
-:host(.button-outline.gasco-color) .button-native {
-  border-color: current-color(base);
-  background: transparent;
-  color: current-color(base);
-}
+// // Outline Button with Color
+// :host(.button-outline.gasco-color) .button-native {
+//   border-color: current-color(base);
+//   background: transparent;
+//   color: current-color(base);
+// }
 
-// Clear Button with Color
-:host(.button-clear.gasco-color) .button-native {
-  background: transparent;
-  color: current-color(base);
-}
+// // Clear Button with Color
+// :host(.button-clear.gasco-color) .button-native {
+//   background: transparent;
+//   color: current-color(base);
+// }

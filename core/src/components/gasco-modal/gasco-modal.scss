@@ -1,0 +1,262 @@
+@import "./gasco-modal.vars";
+
+// Modals
+// --------------------------------------------------
+
+:host {
+  /**
+   * @prop --background: Background of the modal content
+   *
+   * @prop --border-color: Border color of the modal content
+   * @prop --border-radius: Border radius of the modal content
+   * @prop --border-width: Border width of the modal content
+   * @prop --border-style: Border style of the modal content
+   *
+   * @prop --min-width: Minimum width of the modal
+   * @prop --width: Width of the modal
+   * @prop --max-width: Maximum width of the modal
+   *
+   * @prop --min-height: Minimum height of the modal
+   * @prop --height: Height of the modal
+   * @prop --max-height: Maximum height of the modal
+   *
+   * @prop --backdrop-opacity: Opacity of the backdrop
+   */
+  --width: 100%;
+  --max-width: #{$modal-inset-max-width-large};
+  --min-height: auto;
+  --max-height: auto;
+  --overflow: hidden;
+  --border-radius: 0;
+  --border-width: 0;
+  --border-style: none;
+  --border-color: transparent;
+  --background: #{$background-color};
+  --box-shadow: none;
+  --backdrop-opacity: 0;
+
+  @include position(0, 0, 0, 0);
+
+  display: flex;
+  position: absolute;
+
+  align-items: center;
+  justify-content: center;
+
+  outline: none;
+  contain: strict;
+}
+
+.modal-wrapper, gasco-backdrop {
+  pointer-events: auto;
+}
+
+:host(.overlay-hidden) {
+  display: none;
+}
+
+.modal-wrapper,
+.modal-shadow {
+  @include border-radius(var(--border-radius));
+
+  width: var(--width);
+  max-width: var(--max-width);
+
+  // height: var(--height);
+  min-height: var(--min-height);
+  max-height: var(--max-height);
+
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-color: var(--border-color);
+
+  background: var(--background);
+
+  box-shadow: var(--box-shadow);
+  overflow: var(--overflow);
+  z-index: 10;
+}
+
+.modal-shadow {
+  position: absolute;
+
+  background: transparent;
+}
+
+
+// Sheet Modal
+// --------------------------------------------------
+
+.modal-handle {
+  @include position(5px, 0px, null, 0px);
+  @include border-radius(8px, 8px, 8px, 8px);
+  @include margin(null, auto, null, auto);
+
+  position: absolute;
+
+  width: 36px;
+  height: 5px;
+
+  /**
+   * This allows the handle to appear
+   * on top of user content in WebKit.
+   */
+  transform: translateZ(0);
+
+  background: var(--gasco-color-step-350, #c0c0be);
+
+  z-index: 11;
+}
+
+/**
+ * Ensure that the sheet modal does not
+ * completely cover the content.
+ */
+:host(.modal-sheet) {
+  --height: calc(100% - (var(--gasco-safe-area-top) + 10px));
+}
+
+:host(.modal-sheet) .modal-wrapper,
+:host(.modal-sheet) .modal-shadow {
+  position: absolute;
+  bottom: 0;
+}
+
+.modal-native {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  padding: 1rem;
+  .modal-button-close {
+    align-self: flex-end;
+    border-radius: 50%;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+  }
+  h2 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    color: #072531;
+    margin: 14px 0;
+  }
+  h2.default {
+    align-self: flex-start;
+    margin: 0 0 12px 0;
+  }
+  p {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #4D4D4D;
+    margin: 0;
+  }
+  p.default {
+    align-self: flex-start;
+    text-align: left;
+  }
+  hr {
+    width: 85%;
+    margin: 28px 0;
+    align-self: center;
+    background: #CCCCCC;
+  }
+  .modal-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+// Material Design Modal Size
+// --------------------------------------------------
+
+// :host(.modal-large) {
+//   .modal-wrapper {
+//     max-width: #{$modal-inset-max-width-large};
+//     height: #{$modal-inset-height-large};
+//   }
+// }
+// :host(.modal-small) {
+//   .modal-wrapper {
+//     max-width: #{$modal-inset-max-width-small};
+//     height: #{$modal-inset-height-small};
+//   }
+// }
+
+@media only screen and (max-width: 768px) {
+  ::slotted([slot="start"]) {
+    width: 50px;
+    height: 50px;
+  }
+  .modal-native {
+    h2 {
+      font-size: 20px;
+      line-height: 28px;
+    }
+    h2.default {
+      align-self: flex-start;
+      margin: 0 0 12px 0;
+    }
+    p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    p.default {
+      align-self: flex-start;
+      text-align: left;
+    }
+    hr {
+      width: 85%;
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  ::slotted([slot="start"]) {
+    width: 40px;
+    height: 40px;
+  }
+  .modal-native {
+    h2 {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    h2.default {
+      align-self: flex-start;
+      margin: 0 0 12px 0;
+    }
+    p {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    p.default {
+      align-self: flex-start;
+      text-align: left;
+    }
+    hr {
+      width: 85%;
+    }
+    .modal-button-group {
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 1rem;
+    }
+
+  }
+}
+
+// @media only screen and (min-width: $modal-inset-min-width) {
+//   :host {
+//     --width: #{$modal-inset-width};
+//     --height: #{$modal-inset-height-small};
+//     // --gasco-safe-area-top: 0px;
+//     // --gasco-safe-area-bottom: 0px;
+//     // --gasco-safe-area-right: 0px;
+//     // --gasco-safe-area-left: 0px;
+//   }
+// }

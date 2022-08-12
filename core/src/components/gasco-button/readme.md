@@ -74,6 +74,19 @@
 | `--transition`                   | Transition of the button                                                                                  |
 
 
+## Dependencies
+
+### Used by
+
+ - [gasco-modal](../gasco-modal)
+
+### Graph
+```mermaid
+graph TD;
+  gasco-modal --> gasco-button
+  style gasco-button fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

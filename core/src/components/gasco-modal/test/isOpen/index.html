@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Modal - isOpen</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-row-gap: 20px;
+      grid-column-gap: 20px;
+    }
+
+    .grid-item {
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #6f7378;
+      margin-top: 10px;
+      margin-left: 5px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="grid">
+    <div class="grid-item">
+      <h2 class="gasco-heading:6">Default</h2>
+      <gasco-button onclick="openModal('#gasco-modal')">Modal Waring</gasco-button>
+      <gasco-button onclick="openModal('#gasco-modal2')">Modal Acknowledgment</gasco-button>
+      <gasco-button onclick="openModal('#gasco-modal3')">Modal Pasive</gasco-button>
+    </div>
+    <div class="grid-item">
+      <h2 class="gasco-heading:6">Open, then close after 500ms</h2>
+      <gasco-button id="timeout" onclick="openModal(500)">Open Modal</gasco-button>
+    </div>
+  </div>
+
+  <gasco-modal
+    id="gasco-modal"
+    type="basic"
+    modal-title="¿Estas seguro que quieres aceptar?"
+    modal-body="Aceptando esta acción no podras volver atras">
+    <svg slot="start" width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M34.25 19.25H41.75V26.75H34.25V19.25ZM34.25 34.25H41.75V56.75H34.25V34.25ZM38 0.5C17.3 0.5 0.5 17.3 0.5 38C0.5 58.7 17.3 75.5 38 75.5C58.7 75.5 75.5 58.7 75.5 38C75.5 17.3 58.7 0.5 38 0.5ZM38 68C21.4625 68 8 54.5375 8 38C8 21.4625 21.4625 8 38 8C54.5375 8 68 21.4625 68 38C68 54.5375 54.5375 68 38 68Z" fill="#FFCD61" />
+    </svg>
+  </gasco-modal>
+
+  <gasco-modal
+    id="gasco-modal2"
+    type="simple"
+    modal-title="Acknowledgment"
+    modal-body="Aceptando esta acción no podras volver atras">
+    <svg slot="start" width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M38 0.5C17.3337 0.5 0.5 17.3337 0.5 38C0.5 58.6663 17.3337 75.5 38 75.5C58.6663 75.5 75.5 58.6663 75.5 38C75.5 17.3337 58.6663 0.5 38 0.5ZM38 8C54.613 8 68 21.387 68 38C68 54.613 54.613 68 38 68C21.387 68 8 54.613 8 38C8 21.387 21.387 8 38 8ZM54.0986 24.0986L30.5 47.6973L21.9014 39.0986L16.5986 44.4014L30.5 58.3027L59.4014 29.4014L54.0986 24.0986Z" fill="#00A3E0"/>
+    </svg>
+  </gasco-modal>
+
+  <gasco-modal
+    id="gasco-modal3"
+    modal-title="Pasive"
+    modal-body="Presents information the user needs to be aware of concerning their current workflow. Contains no actions for the user to take.">
+  </gasco-modal>
+
+
+    <script>
+      
+      const openModal = (id, timeout) => {
+        const modal = document.querySelector(id);
+        modal.isOpen = true;
+
+        if (timeout) {
+          setTimeout(() => {
+            modal.isOpen = false;
+          }, timeout);
+        }
+        modal.addEventListener('gascoModalAccepted', (e) => {
+          console.log(e);
+          // modal.isOpen = false;
+        })
+        modal.addEventListener('gascoModalDidDismiss', () => {
+          modal.isOpen = false;
+        });
+      };
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Modal - Basic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>
+    <gasco-button id="basic-modal" onclick="presentModal()">Present modal</gasco-button>
+  </p>
+  <p>
+    <gasco-button id="presentModal" class="e2ePresentModal" onclick="presentCloseModal()">
+      Present and close modal
+    </gasco-button>
+  </p>
+
+  <script>
+    window.addEventListener('gascoModalDidDismiss', function (e) {
+      console.log('DidDismiss', e);
+    });
+    window.addEventListener('gascoModalWillDismiss', function (e) {
+      console.log('WillDismiss', e);
+    });
+
+    function createModal() {
+      // create component to open
+      const element = document.createElement('div');
+      element.innerHTML = `
+        <div class="modal-native">
+          Here your code
+        </div>
+      `;
+
+      // present the modal
+      const modalElement = Object.assign(document.createElement('gasco-modal'), {
+        component: element,
+        htmlAttributes: {
+          'data-testid': 'basic-modal',
+        },
+      });
+
+      // listen for close event
+      // const button = element.querySelector('gasco-button');
+      // button.addEventListener('click', () => {
+      //   modalElement.dismiss();
+      // });
+      document.body.appendChild(modalElement);
+      return modalElement;
+    }
+
+    async function presentModal() {
+      const presentingEl = document.querySelectorAll('.gasco-page')[1];
+      const modal = createModal();
+      await modal.present(presentingEl);
+    }
+    async function presentCloseModal() {
+      const modal = createModal();
+      await modal.present();
+      await modal.dismiss();
+    }
+
+  </script>
+</body>
+
+</html>

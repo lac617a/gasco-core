@@ -282,7 +282,7 @@ const connectListeners = (doc: Document) => {
     );
 
     // handle back-button click
-    doc.addEventListener('ionBackButton', (ev) => {
+    doc.addEventListener('gascoBackButton', (ev) => {
       const lastOverlay = getOverlay(doc);
       if (lastOverlay?.backdropDismiss) {
         (ev as BackButtonEvent).detail.register(OVERLAY_BACK_BUTTON_PRIORITY, () => {

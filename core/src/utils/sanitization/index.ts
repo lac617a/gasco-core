@@ -129,7 +129,7 @@ const getElementChildren = (el: any) => {
 
 const isSanitizerEnabled = (): boolean => {
   const win = window as any;
-  const config = win?.Ionic?.config;
+  const config = win?.Gasco?.config;
   if (config) {
     if (config.get) {
       return config.get('sanitizerEnabled', true);

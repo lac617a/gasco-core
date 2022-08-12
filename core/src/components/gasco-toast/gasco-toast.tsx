@@ -67,7 +67,7 @@ export class GascoToast implements ComponentInterface, OverlayInterface {
   @Prop() duration = 0;
 
   /**
-   * The button size.
+   * The Toast size.
    */
   @Prop({ reflect: true }) size?: 'small' | 'default' | 'large';
 

@@ -5,9 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AnimationBuilder, AutocompleteTypes, Color, InputChangeEventDetail, OverlayEventDetail, StyleEventDetail, TextFieldTypes, ToastButton } from "./interface";
+import { AnimationBuilder, AutocompleteTypes, Color, ComponentProps, ComponentRef, FrameworkDelegate, InputChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, ScrollBaseDetail, ScrollDetail, StyleEventDetail, TextFieldTypes, ToastButton } from "./interface";
 import { GascoSafeString } from "./utils/sanitization";
 export namespace Components {
+    interface GascoBackdrop {
+        /**
+          * If `true`, the backdrop will stop propagation on tap.
+         */
+        "stopPropagation": boolean;
+        /**
+          * If `true`, the backdrop will can be clicked and will emit the `gascoBackdropTap` event.
+         */
+        "tappable": boolean;
+        /**
+          * If `true`, the backdrop will be visible.
+         */
+        "visible": boolean;
+    }
     interface GascoButton {
         /**
           * The type of button.
@@ -79,6 +93,60 @@ export namespace Components {
           * The type of the button.
          */
         "type": 'submit' | 'reset' | 'button';
+    }
+    interface GascoContent {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * If `true` and the content does not cause an overflow scroll, the scroll interaction will cause a bounce. If the content exceeds the bounds of ionContent, nothing will change. Note, the does not disable the system bounce on iOS. That is an OS level setting.
+         */
+        "forceOverscroll"?: boolean;
+        /**
+          * If `true`, the content will scroll behind the headers and footers. This effect can easily be seen by setting the toolbar to transparent.
+         */
+        "fullscreen": boolean;
+        /**
+          * Get the element where the actual scrolling takes place. This element can be used to subscribe to `scroll` events or manually modify `scrollTop`. However, it's recommended to use the API provided by `gasco-content`:  i.e. Using `gascoScroll`, `gascoScrollStart`, `gascoScrollEnd` for scrolling events and `scrollToPoint()` to scroll the content into a certain point.
+         */
+        "getScrollElement": () => Promise<HTMLElement>;
+        /**
+          * Scroll by a specified X/Y distance in the component.
+          * @param x The amount to scroll by on the horizontal axis.
+          * @param y The amount to scroll by on the vertical axis.
+          * @param duration The amount of time to take scrolling by that amount.
+         */
+        "scrollByPoint": (x: number, y: number, duration: number) => Promise<void>;
+        /**
+          * Because of performance reasons, gascoScroll events are disabled by default, in order to enable them and start listening from (gascoScroll), set this property to `true`.
+         */
+        "scrollEvents": boolean;
+        /**
+          * Scroll to the bottom of the component.
+          * @param duration The amount of time to take scrolling to the bottom. Defaults to `0`.
+         */
+        "scrollToBottom": (duration?: number) => Promise<void>;
+        /**
+          * Scroll to a specified X/Y location in the component.
+          * @param x The point to scroll to on the horizontal axis.
+          * @param y The point to scroll to on the vertical axis.
+          * @param duration The amount of time to take scrolling to that point. Defaults to `0`.
+         */
+        "scrollToPoint": (x: number | undefined | null, y: number | undefined | null, duration?: number) => Promise<void>;
+        /**
+          * Scroll to the top of the component.
+          * @param duration The amount of time to take scrolling to the top. Defaults to `0`.
+         */
+        "scrollToTop": (duration?: number) => Promise<void>;
+        /**
+          * If you want to enable the content scrolling in the X axis, set this property to `true`.
+         */
+        "scrollX": boolean;
+        /**
+          * If you want to disable the content scrolling in the Y axis, set this property to `false`.
+         */
+        "scrollY": boolean;
     }
     interface GascoInput {
         /**
@@ -254,6 +322,130 @@ export namespace Components {
          */
         "value"?: string | number | null;
     }
+    interface GascoModal {
+        /**
+          * If `true`, the modal will animate.
+         */
+        "animated": boolean;
+        /**
+          * A decimal value between 0 and 1 that indicates the point after which the backdrop will begin to fade in when using a sheet modal. Prior to this point, the backdrop will be hidden and the content underneath the sheet can be interacted with. This value is exclusive meaning the backdrop will become active after the value specified.
+         */
+        "backdropBreakpoint": number;
+        /**
+          * If `true`, the modal will be dismissed when the backdrop is clicked.
+         */
+        "backdropDismiss": boolean;
+        /**
+          * The breakpoints to use when creating a sheet modal. Each value in the array must be a decimal between 0 and 1 where 0 indicates the modal is fully closed and 1 indicates the modal is fully open. Values are relative to the height of the modal, not the height of the screen. One of the values in this array must be the value of the `initialBreakpoint` property. For example: [0, .25, .5, 1]
+         */
+        "breakpoints"?: number[];
+        /**
+          * Determines whether or not a modal can dismiss when calling the `dismiss` method.  If the value is `true` or the value's function returns `true`, the modal will close when trying to dismiss. If the value is `false` or the value's function returns `false`, the modal will not close when trying to dismiss.
+         */
+        "canDismiss"?: undefined | boolean | (() => Promise<boolean>);
+        /**
+          * The component to display inside of the modal.
+         */
+        "component"?: ComponentRef;
+        /**
+          * The data to pass to the modal component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "delegate"?: FrameworkDelegate;
+        /**
+          * Dismiss the modal overlay after it has been presented.
+          * @param data Any data to emit in the dismiss events.
+          * @param role The role of the element that is dismissing the modal. For example, 'cancel' or 'backdrop'.
+         */
+        "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        /**
+          * Animation to use when the modal is presented.
+         */
+        "enterAnimation"?: AnimationBuilder;
+        /**
+          * Returns the current breakpoint of a sheet style modal
+         */
+        "getCurrentBreakpoint": () => Promise<number | undefined>;
+        /**
+          * The horizontal line that displays at the top of a sheet modal. It is `true` by default when setting the `breakpoints` and `initialBreakpoint` properties.
+         */
+        "handle"?: boolean;
+        "hasController": boolean;
+        /**
+          * Additional attributes to pass to the modal.
+         */
+        "htmlAttributes"?: { [key: string]: any };
+        /**
+          * A decimal value between 0 and 1 that indicates the initial point the modal will open at when creating a sheet modal. This value must also be listed in the `breakpoints` array.
+         */
+        "initialBreakpoint"?: number;
+        /**
+          * If `true`, the modal will open. If `false`, the modal will close. Use this if you need finer grained control over presentation, otherwise just use the modalController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the modal dismisses. You will need to do that in your code.
+         */
+        "isOpen": boolean;
+        /**
+          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
+         */
+        "keyboardClose": boolean;
+        /**
+          * Animation to use when the modal is dismissed.
+         */
+        "leaveAnimation"?: AnimationBuilder;
+        /**
+          * If `true`, the modal will body.
+         */
+        "modalBody"?: string;
+        /**
+          * If `true`, the modal will title.
+         */
+        "modalTitle"?: string;
+        /**
+          * Returns a promise that resolves when the modal did dismiss.
+         */
+        "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        /**
+          * Returns a promise that resolves when the modal will dismiss.
+         */
+        "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        "overlayIndex": number;
+        /**
+          * Present the modal overlay after it has been created.
+         */
+        "present": () => Promise<void>;
+        /**
+          * The element that presented the modal. This is used for card presentation effects and for stacking multiple modals on top of each other. Only applies in iOS mode.
+         */
+        "presentingElement"?: HTMLElement;
+        /**
+          * Move a sheet style modal to a specific breakpoint. The breakpoint value must be a value defined in your `breakpoints` array.
+         */
+        "setCurrentBreakpoint": (breakpoint: number) => Promise<void>;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal. This property controls whether or not the backdrop darkens the screen when the modal is presented. It does not control whether or not the backdrop is active or present in the DOM.
+         */
+        "showBackdrop": boolean;
+        /**
+          * The Modal size.
+         */
+        "size"?: 'small' | 'default' | 'large';
+        /**
+          * If `true`, the modal can be swiped to dismiss. Only applies in iOS mode.
+          * @deprecated - To prevent modals from dismissing, use canDismiss instead.
+         */
+        "swipeToClose": boolean;
+        /**
+          * An ID corresponding to the trigger element that causes the modal to open when clicked.
+         */
+        "trigger": string | undefined;
+        /**
+          * If `"default"`, the modal will default. For default `"default"`.
+         */
+        "type"?: 'simple' | 'basic' | 'default';
+    }
     interface GascoToast {
         /**
           * If `true`, the toast will animate.
@@ -319,7 +511,7 @@ export namespace Components {
          */
         "present": () => Promise<void>;
         /**
-          * The button size.
+          * The Toast size.
          */
         "size"?: 'small' | 'default' | 'large';
         /**
@@ -327,6 +519,10 @@ export namespace Components {
          */
         "translucent": boolean;
     }
+}
+export interface GascoBackdropCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoBackdropElement;
 }
 export interface GascoButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -336,6 +532,10 @@ export interface GascoButtonIconCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoButtonIconElement;
 }
+export interface GascoContentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoContentElement;
+}
 export interface GascoInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoInputElement;
@@ -344,11 +544,21 @@ export interface GascoInputCodeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoInputCodeElement;
 }
+export interface GascoModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoModalElement;
+}
 export interface GascoToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoToastElement;
 }
 declare global {
+    interface HTMLGascoBackdropElement extends Components.GascoBackdrop, HTMLStencilElement {
+    }
+    var HTMLGascoBackdropElement: {
+        prototype: HTMLGascoBackdropElement;
+        new (): HTMLGascoBackdropElement;
+    };
     interface HTMLGascoButtonElement extends Components.GascoButton, HTMLStencilElement {
     }
     var HTMLGascoButtonElement: {
@@ -360,6 +570,12 @@ declare global {
     var HTMLGascoButtonIconElement: {
         prototype: HTMLGascoButtonIconElement;
         new (): HTMLGascoButtonIconElement;
+    };
+    interface HTMLGascoContentElement extends Components.GascoContent, HTMLStencilElement {
+    }
+    var HTMLGascoContentElement: {
+        prototype: HTMLGascoContentElement;
+        new (): HTMLGascoContentElement;
     };
     interface HTMLGascoInputElement extends Components.GascoInput, HTMLStencilElement {
     }
@@ -373,6 +589,12 @@ declare global {
         prototype: HTMLGascoInputCodeElement;
         new (): HTMLGascoInputCodeElement;
     };
+    interface HTMLGascoModalElement extends Components.GascoModal, HTMLStencilElement {
+    }
+    var HTMLGascoModalElement: {
+        prototype: HTMLGascoModalElement;
+        new (): HTMLGascoModalElement;
+    };
     interface HTMLGascoToastElement extends Components.GascoToast, HTMLStencilElement {
     }
     var HTMLGascoToastElement: {
@@ -380,14 +602,35 @@ declare global {
         new (): HTMLGascoToastElement;
     };
     interface HTMLElementTagNameMap {
+        "gasco-backdrop": HTMLGascoBackdropElement;
         "gasco-button": HTMLGascoButtonElement;
         "gasco-button-icon": HTMLGascoButtonIconElement;
+        "gasco-content": HTMLGascoContentElement;
         "gasco-input": HTMLGascoInputElement;
         "gasco-input-code": HTMLGascoInputCodeElement;
+        "gasco-modal": HTMLGascoModalElement;
         "gasco-toast": HTMLGascoToastElement;
     }
 }
 declare namespace LocalJSX {
+    interface GascoBackdrop {
+        /**
+          * Emitted when the backdrop is tapped.
+         */
+        "onGascoBackdropTap"?: (event: GascoBackdropCustomEvent<void>) => void;
+        /**
+          * If `true`, the backdrop will stop propagation on tap.
+         */
+        "stopPropagation"?: boolean;
+        /**
+          * If `true`, the backdrop will can be clicked and will emit the `gascoBackdropTap` event.
+         */
+        "tappable"?: boolean;
+        /**
+          * If `true`, the backdrop will be visible.
+         */
+        "visible"?: boolean;
+    }
     interface GascoButton {
         /**
           * The type of button.
@@ -475,6 +718,44 @@ declare namespace LocalJSX {
           * The type of the button.
          */
         "type"?: 'submit' | 'reset' | 'button';
+    }
+    interface GascoContent {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * If `true` and the content does not cause an overflow scroll, the scroll interaction will cause a bounce. If the content exceeds the bounds of ionContent, nothing will change. Note, the does not disable the system bounce on iOS. That is an OS level setting.
+         */
+        "forceOverscroll"?: boolean;
+        /**
+          * If `true`, the content will scroll behind the headers and footers. This effect can easily be seen by setting the toolbar to transparent.
+         */
+        "fullscreen"?: boolean;
+        /**
+          * Emitted while scrolling. This event is disabled by default. Set `scrollEvents` to `true` to enable.
+         */
+        "onGascoScroll"?: (event: GascoContentCustomEvent<ScrollDetail>) => void;
+        /**
+          * Emitted when the scroll has ended. This event is disabled by default. Set `scrollEvents` to `true` to enable.
+         */
+        "onGascoScrollEnd"?: (event: GascoContentCustomEvent<ScrollBaseDetail>) => void;
+        /**
+          * Emitted when the scroll has started. This event is disabled by default. Set `scrollEvents` to `true` to enable.
+         */
+        "onGascoScrollStart"?: (event: GascoContentCustomEvent<ScrollBaseDetail>) => void;
+        /**
+          * Because of performance reasons, gascoScroll events are disabled by default, in order to enable them and start listening from (gascoScroll), set this property to `true`.
+         */
+        "scrollEvents"?: boolean;
+        /**
+          * If you want to enable the content scrolling in the X axis, set this property to `true`.
+         */
+        "scrollX"?: boolean;
+        /**
+          * If you want to disable the content scrolling in the Y axis, set this property to `false`.
+         */
+        "scrollY"?: boolean;
     }
     interface GascoInput {
         /**
@@ -675,6 +956,148 @@ declare namespace LocalJSX {
          */
         "value"?: string | number | null;
     }
+    interface GascoModal {
+        /**
+          * If `true`, the modal will animate.
+         */
+        "animated"?: boolean;
+        /**
+          * A decimal value between 0 and 1 that indicates the point after which the backdrop will begin to fade in when using a sheet modal. Prior to this point, the backdrop will be hidden and the content underneath the sheet can be interacted with. This value is exclusive meaning the backdrop will become active after the value specified.
+         */
+        "backdropBreakpoint"?: number;
+        /**
+          * If `true`, the modal will be dismissed when the backdrop is clicked.
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * The breakpoints to use when creating a sheet modal. Each value in the array must be a decimal between 0 and 1 where 0 indicates the modal is fully closed and 1 indicates the modal is fully open. Values are relative to the height of the modal, not the height of the screen. One of the values in this array must be the value of the `initialBreakpoint` property. For example: [0, .25, .5, 1]
+         */
+        "breakpoints"?: number[];
+        /**
+          * Determines whether or not a modal can dismiss when calling the `dismiss` method.  If the value is `true` or the value's function returns `true`, the modal will close when trying to dismiss. If the value is `false` or the value's function returns `false`, the modal will not close when trying to dismiss.
+         */
+        "canDismiss"?: undefined | boolean | (() => Promise<boolean>);
+        /**
+          * The component to display inside of the modal.
+         */
+        "component"?: ComponentRef;
+        /**
+          * The data to pass to the modal component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "delegate"?: FrameworkDelegate;
+        /**
+          * Animation to use when the modal is presented.
+         */
+        "enterAnimation"?: AnimationBuilder;
+        /**
+          * The horizontal line that displays at the top of a sheet modal. It is `true` by default when setting the `breakpoints` and `initialBreakpoint` properties.
+         */
+        "handle"?: boolean;
+        "hasController"?: boolean;
+        /**
+          * Additional attributes to pass to the modal.
+         */
+        "htmlAttributes"?: { [key: string]: any };
+        /**
+          * A decimal value between 0 and 1 that indicates the initial point the modal will open at when creating a sheet modal. This value must also be listed in the `breakpoints` array.
+         */
+        "initialBreakpoint"?: number;
+        /**
+          * If `true`, the modal will open. If `false`, the modal will close. Use this if you need finer grained control over presentation, otherwise just use the modalController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the modal dismisses. You will need to do that in your code.
+         */
+        "isOpen"?: boolean;
+        /**
+          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
+         */
+        "keyboardClose"?: boolean;
+        /**
+          * Animation to use when the modal is dismissed.
+         */
+        "leaveAnimation"?: AnimationBuilder;
+        /**
+          * If `true`, the modal will body.
+         */
+        "modalBody"?: string;
+        /**
+          * If `true`, the modal will title.
+         */
+        "modalTitle"?: string;
+        /**
+          * Emitted after the modal has accepted. Shorthand for gascoModalAccepted.
+         */
+        "onAccepted"?: (event: GascoModalCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the modal has dismissed. Shorthand for gascoModalDidDismiss.
+         */
+        "onDidDismiss"?: (event: GascoModalCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the modal has presented. Shorthand for gascoModalWillDismiss.
+         */
+        "onDidPresent"?: (event: GascoModalCustomEvent<void>) => void;
+        /**
+          * Emitted after the modal breakpoint has changed.
+         */
+        "onGascoBreakpointDidChange"?: (event: GascoModalCustomEvent<ModalBreakpointChangeEventDetail>) => void;
+        /**
+          * Emitted after the modal has accepted.
+         */
+        "onGascoModalAccepted"?: (event: GascoModalCustomEvent<any>) => void;
+        /**
+          * Emitted after the modal has dismissed.
+         */
+        "onGascoModalDidDismiss"?: (event: GascoModalCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the modal has presented.
+         */
+        "onGascoModalDidPresent"?: (event: GascoModalCustomEvent<void>) => void;
+        /**
+          * Emitted before the modal has dismissed.
+         */
+        "onGascoModalWillDismiss"?: (event: GascoModalCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted before the modal has presented.
+         */
+        "onGascoModalWillPresent"?: (event: GascoModalCustomEvent<void>) => void;
+        /**
+          * Emitted before the modal has dismissed. Shorthand for gascoModalWillDismiss.
+         */
+        "onWillDismiss"?: (event: GascoModalCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted before the modal has presented. Shorthand for gascoModalWillPresent.
+         */
+        "onWillPresent"?: (event: GascoModalCustomEvent<void>) => void;
+        "overlayIndex": number;
+        /**
+          * The element that presented the modal. This is used for card presentation effects and for stacking multiple modals on top of each other. Only applies in iOS mode.
+         */
+        "presentingElement"?: HTMLElement;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal. This property controls whether or not the backdrop darkens the screen when the modal is presented. It does not control whether or not the backdrop is active or present in the DOM.
+         */
+        "showBackdrop"?: boolean;
+        /**
+          * The Modal size.
+         */
+        "size"?: 'small' | 'default' | 'large';
+        /**
+          * If `true`, the modal can be swiped to dismiss. Only applies in iOS mode.
+          * @deprecated - To prevent modals from dismissing, use canDismiss instead.
+         */
+        "swipeToClose"?: boolean;
+        /**
+          * An ID corresponding to the trigger element that causes the modal to open when clicked.
+         */
+        "trigger"?: string | undefined;
+        /**
+          * If `"default"`, the modal will default. For default `"default"`.
+         */
+        "type"?: 'simple' | 'basic' | 'default';
+    }
     interface GascoToast {
         /**
           * If `true`, the toast will animate.
@@ -738,7 +1161,7 @@ declare namespace LocalJSX {
          */
         "position"?: 'top' | 'bottom' | 'middle';
         /**
-          * The button size.
+          * The Toast size.
          */
         "size"?: 'small' | 'default' | 'large';
         /**
@@ -747,10 +1170,13 @@ declare namespace LocalJSX {
         "translucent"?: boolean;
     }
     interface IntrinsicElements {
+        "gasco-backdrop": GascoBackdrop;
         "gasco-button": GascoButton;
         "gasco-button-icon": GascoButtonIcon;
+        "gasco-content": GascoContent;
         "gasco-input": GascoInput;
         "gasco-input-code": GascoInputCode;
+        "gasco-modal": GascoModal;
         "gasco-toast": GascoToast;
     }
 }
@@ -758,10 +1184,13 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "gasco-backdrop": LocalJSX.GascoBackdrop & JSXBase.HTMLAttributes<HTMLGascoBackdropElement>;
             "gasco-button": LocalJSX.GascoButton & JSXBase.HTMLAttributes<HTMLGascoButtonElement>;
             "gasco-button-icon": LocalJSX.GascoButtonIcon & JSXBase.HTMLAttributes<HTMLGascoButtonIconElement>;
+            "gasco-content": LocalJSX.GascoContent & JSXBase.HTMLAttributes<HTMLGascoContentElement>;
             "gasco-input": LocalJSX.GascoInput & JSXBase.HTMLAttributes<HTMLGascoInputElement>;
             "gasco-input-code": LocalJSX.GascoInputCode & JSXBase.HTMLAttributes<HTMLGascoInputCodeElement>;
+            "gasco-modal": LocalJSX.GascoModal & JSXBase.HTMLAttributes<HTMLGascoModalElement>;
             "gasco-toast": LocalJSX.GascoToast & JSXBase.HTMLAttributes<HTMLGascoToastElement>;
         }
     }

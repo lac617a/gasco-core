@@ -5,6 +5,8 @@ export * from './components';
 export * from './index';
 export * from './components/gasco-input/gasco-input-interface';
 export * from './components/gasco-toast/gasco-toast-interface';
+export * from './components/gasco-modal/gasco-modal-interface';
+export * from './components/gasco-content/gasco-content-interface';
 
 // Types from utils
 export {
@@ -18,6 +20,8 @@ export {
 } from './utils/animation/animation-interface';
 export * from './utils/overlays-interface';
 export * from './global/config';
+export { Gesture, GestureDetail } from './utils/gesture';
+
 
 // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
 export type AutocompleteTypes =
@@ -107,6 +111,10 @@ type LiteralUnion<T extends U, U = string> = T | (U & Record<never, never>);
 export type Color = LiteralUnion<PredefinedColors, string>;
 export type CssClassMap = { [className: string]: boolean };
 export type BackButtonEvent = CustomEvent<BackButtonEventDetail>;
+export type ComponentTags = string;
+export type ComponentRef = Function | HTMLElement | string | null;
+// eslint-disable-next-line
+export type ComponentProps<T = null> = { [key: string]: any };
 
 export interface StyleEventDetail {
   [styleName: string]: boolean;

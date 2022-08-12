@@ -1,0 +1,19 @@
+@import "../../themes/gasco.globals";
+
+// Modals
+// --------------------------------------------------
+
+/// @prop - Max width of the modal inset
+$modal-inset-max-width:         550px !default;
+
+
+// Modal Large
+
+/// @prop - Max width of the large modal inset
+$modal-inset-max-width-large:   644px !default;
+
+
+// Modal Small
+
+/// @prop - Max width of the modal inset small
+$modal-inset-max-width-small:   299px !default;

@@ -1,0 +1,6 @@
+@import "./gasco-backdrop";
+@import "./gasco-backdrop.md.vars";
+
+:host {
+  background-color: $backdrop-md-color;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Item - Disabled</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  </head>
+
+  <body>
+        <gasco-list>
+          <gasco-list-header>
+            <gasco-label>Single Input Disabled Items</gasco-label>
+          </gasco-list-header>
+
+          <gasco-item disabled>
+            <gasco-label>Disabled Item</gasco-label>
+          </gasco-item>
+
+          <gasco-item disabled button>
+            <gasco-label>Disabled Item Button</gasco-label>
+          </gasco-item>
+
+          <gasco-item disabled>
+            <gasco-label>Disabled Item Anchor</gasco-label>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-label>Disabled Input</gasco-label>
+            <gasco-input placeholder="Disabled" disabled></gasco-input>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-label>Disabled Toggle</gasco-label>
+            <gasco-toggle disabled checked slot="end"></gasco-toggle>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-label>Disabled Checkbox</gasco-label>
+            <gasco-checkbox disabled checked slot="start"></gasco-checkbox>
+          </gasco-item>
+        </gasco-list>
+
+        <gasco-list>
+          <gasco-list-header>
+            <gasco-label>Multiple Input Disabled Items</gasco-label>
+          </gasco-list-header>
+
+          <gasco-item>
+            <gasco-checkbox disabled slot="start"></gasco-checkbox>
+            <gasco-input placeholder="Disabled Checkbox w/ Input"></gasco-input>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-checkbox disabled slot="end"></gasco-checkbox>
+            <gasco-input placeholder="Disabled Checkbox w/ Input"></gasco-input>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-radio disabled slot="start"></gasco-radio>
+            <gasco-input placeholder="Disabled Radio w/ Input"></gasco-input>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-radio disabled slot="end"></gasco-radio>
+            <gasco-input placeholder="Disabled Radio w/ Input"></gasco-input>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-checkbox disabled slot="start"></gasco-checkbox>
+            <gasco-label>Checkbox + Radio</gasco-label>
+            <gasco-radio slot="end"></gasco-radio>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-checkbox disabled slot="start"></gasco-checkbox>
+            <gasco-radio slot="start"></gasco-radio>
+            <gasco-label>Checkbox + Radio</gasco-label>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-checkbox slot="start"></gasco-checkbox>
+            <gasco-label>Checkbox + Range</gasco-label>
+            <gasco-range disabled value="45"></gasco-range>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-checkbox slot="start"></gasco-checkbox>
+            <gasco-label>Checkbox + Toggle</gasco-label>
+            <gasco-toggle disabled value="45"></gasco-toggle>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-checkbox disabled slot="start"></gasco-checkbox>
+            <gasco-label>Checkbox + Buttons</gasco-label>
+            <gasco-button slot="end">Default</gasco-button>
+            <gasco-button slot="end">Buttons</gasco-button>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-label>Disabled Input</gasco-label>
+            <gasco-input slot="start" placeholder="Disabled" disabled></gasco-input>
+            <gasco-label>Friends</gasco-label>
+            <gasco-label>Enemies</gasco-label>
+          </gasco-item>
+
+          <gasco-item>
+            <gasco-checkbox slot="start" disabled></gasco-checkbox>
+            <gasco-label>Disabled Checkbox</gasco-label>
+          </gasco-item>
+        </gasco-list>
+
+    <script>
+      const disabledEls = document.querySelectorAll('[disabled]');
+
+      function toggleDisabled() {
+        for (var i = 0; i < disabledEls.length; i++) {
+          disabledEls[i].disabled = !disabledEls[i].disabled;
+        }
+      }
+    </script>
+  </body>
+</html>

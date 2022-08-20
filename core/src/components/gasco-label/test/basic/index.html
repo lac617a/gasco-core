@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Label - Basic</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+    <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  </head>
+
+  <body>
+        <div class="gasco-padding">
+          <gasco-label>Default</gasco-label>
+
+          <gasco-label color="secondary">Secondary</gasco-label>
+
+          <gasco-label color="tertiary">Tertiary</gasco-label>
+
+          <gasco-label color="danger">Danger</gasco-label>
+
+          <gasco-label class="custom">Custom</gasco-label>
+        </div>
+
+        <gasco-list>
+          <gasco-item>
+            <gasco-label>Default</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item>
+            <gasco-label color="tertiary">Tertiary</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item>
+            <gasco-label class="custom">Custom</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item>
+            <gasco-label class="gasco-text-wrap">Wrap label this label just goes on and on and on</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item>
+            <gasco-label position="fixed">Fixed</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item>
+            <gasco-label position="floating">Floating</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item class="floating-color">
+            <gasco-label position="floating" color="success">Floating: Success</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item>
+            <gasco-label position="stacked">Stacked</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item class="stacked-color">
+            <gasco-label position="stacked" color="danger">Stacked: Danger</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+        </gasco-list>
+
+        <gasco-list>
+          <gasco-item color="tertiary">
+            <gasco-label position="floating">(Item: Tertiary) Floating</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item color="primary">
+            <gasco-label position="stacked">(Item: Primary) Stacked</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item class="floating-color" color="tertiary">
+            <gasco-label position="floating" color="success">(Item: Tertiary) Floating: Success</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+          <gasco-item class="stacked-color" color="primary">
+            <gasco-label position="stacked" color="danger">(Item: Primary) Stacked: Danger</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+        </gasco-list>
+
+
+      <style>
+        .custom {
+          color: lightblue;
+        }
+      </style>
+
+      <script>
+        const labels = document.querySelectorAll('.floating-color gasco-label, .stacked-color gasco-label');
+
+        function changeColors() {
+          for (label of labels) {
+            const currentColor = label.color;
+            label.color = currentColor === 'success' ? 'danger' : 'success';
+          }
+        }
+      </script>
+    </gasco-app>
+  </body>
+</html>

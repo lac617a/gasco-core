@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Label - Standalone</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link href="../../../../../css/core.css" rel="stylesheet" />
+    <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  </head>
+
+  <body>
+    <h1>Default</h1>
+    <gasco-label>Default</gasco-label>
+    <gasco-label>Wrap label this label just goes on and on and on</gasco-label>
+    <gasco-label position="fixed">Fixed</gasco-label>
+    <gasco-label position="floating" style="margin-bottom: 30px">Floating</gasco-label>
+    <gasco-label position="stacked">Stacked</gasco-label>
+
+    <h1>Colors</h1>
+    <gasco-label color="primary">Primary</gasco-label>
+    <gasco-label color="secondary">Secondary</gasco-label>
+    <gasco-label color="tertiary">Tertiary</gasco-label>
+    <gasco-label color="success">Success</gasco-label>
+    <gasco-label color="warning">Warning</gasco-label>
+    <gasco-label color="danger">Danger</gasco-label>
+    <gasco-label color="light">Light</gasco-label>
+    <gasco-label color="medium">Medium</gasco-label>
+    <gasco-label color="dark" class="custom">Dark</gasco-label>
+    <gasco-label class="custom">Custom</gasco-label>
+
+    <style>
+      .custom {
+        --color: hotpink;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkbox - Basic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+<style>
+  gasco-checkbox.checkbox-part::part(mark) {
+    transform: scale(0.5);
+    transform-origin: center;
+  }
+
+</style>
+
+<body>
+  <gasco-item onClick="clickItem()">
+    <gasco-label>Clickable Item</gasco-label>
+    <gasco-checkbox></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Default</gasco-label>
+    <gasco-checkbox checked></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Primary</gasco-label>
+    <gasco-checkbox checked color="primary" slot="end"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Secondary</gasco-label>
+    <gasco-checkbox disabled checked color="secondary"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Tertiary</gasco-label>
+    <gasco-checkbox checked color="tertiary"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Success</gasco-label>
+    <gasco-checkbox checked color="success"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Warning</gasco-label>
+    <gasco-checkbox checked color="warning"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Dark</gasco-label>
+    <gasco-checkbox checked color="dark" style="--size: 100px"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Danger</gasco-label>
+    <gasco-checkbox checked color="danger" slot="start"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Light</gasco-label>
+    <gasco-checkbox checked color="light" slot="start"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Medium</gasco-label>
+    <gasco-checkbox checked color="medium" slot="start"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Dark</gasco-label>
+    <gasco-checkbox checked color="dark" slot="start" style="--size: 100px"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Checkmark width</gasco-label>
+    <gasco-checkbox checked color="dark" slot="start" style="--checkmark-width: 7"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Checkmark ::part</gasco-label>
+    <gasco-checkbox checked color="dark" slot="start" class="checkbox-part"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Unchecked by Default</gasco-label>
+    <gasco-checkbox></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Disabled</gasco-label>
+    <gasco-checkbox disabled></gasco-checkbox>
+  </gasco-item>
+
+  <script>
+    const inputs = document.querySelectorAll('gasco-checkbox');
+
+    for (var i = 0; i < inputs.length; i++) {
+      const input = inputs[i];
+
+      input.addEventListener('gascoBlur', function () {
+        console.log('Listen gascoBlur: fired');
+      });
+
+      input.addEventListener('gascoFocus', function () {
+        console.log('Listen gascoFocus: fired');
+      });
+
+      input.addEventListener('gascoChange', function (ev) {
+        console.log('Listen gascoChange: fired', ev.detail);
+      });
+
+      input.addEventListener('click', function () {
+        console.log('Listen click: fired');
+      });
+    }
+
+    const clickItem = () => {
+      console.log('Item click: fired');
+    };
+
+  </script>
+</body>
+
+</html>

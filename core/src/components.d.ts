@@ -5,7 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AnimationBuilder, AutocompleteTypes, Color, ComponentProps, ComponentRef, FrameworkDelegate, InputChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, ScrollBaseDetail, ScrollDetail, StyleEventDetail, TextFieldTypes, ToastButton } from "./interface";
+import { AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, FrameworkDelegate, InputChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, ScrollBaseDetail, ScrollDetail, StyleEventDetail, TextFieldTypes, ToastButton } from "./interface";
+import { CounterFormatter } from "./components/gasco-item/gasco-item-interface";
 import { GascoSafeString } from "./utils/sanitization";
 export namespace Components {
     interface GascoBackdrop {
@@ -93,6 +94,29 @@ export namespace Components {
           * The type of the button.
          */
         "type": 'submit' | 'reset' | 'button';
+    }
+    interface GascoCheckbox {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        "color"?: Color;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the checkbox will visually appear as indeterminate.
+         */
+        "indeterminate": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
+         */
+        "value": any | null;
     }
     interface GascoContent {
         /**
@@ -322,6 +346,102 @@ export namespace Components {
          */
         "value"?: string | number | null;
     }
+    interface GascoItem {
+        /**
+          * If `true`, a button tag will be rendered and the item will be tappable.
+         */
+        "button": boolean;
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+         */
+        "color"?: Color;
+        /**
+          * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `ion-input` or `ion-textarea`.
+         */
+        "counter": boolean;
+        /**
+          * A callback used to format the counter text. By default the counter text is set to "itemLength / maxLength".
+         */
+        "counterFormatter"?: CounterFormatter;
+        /**
+          * If `true`, a detail arrow will appear on the item. Defaults to `false` unless the `mode` is `ios` and an `href` or `button` property is present.
+         */
+        "detail"?: boolean;
+        /**
+          * The icon to use when `detail` is set to `true`.
+         */
+        "detailIcon": string;
+        /**
+          * If `true`, the user cannot interact with the item.
+         */
+        "disabled": boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download": string | undefined;
+        /**
+          * The fill for the item. If `'solid'` the item will have a background. If `'outline'` the item will be transparent with a border. Only available in `md` mode.
+         */
+        "fill"?: 'outline' | 'solid';
+        /**
+          * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
+         */
+        "href": string | undefined;
+        /**
+          * How the bottom border should be displayed on the item.
+         */
+        "lines"?: 'full' | 'inset' | 'none';
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
+          * When using a router, it specifies the transition animation when navigating to another page using `href`.
+         */
+        "routerAnimation": AnimationBuilder | undefined;
+        /**
+          * The shape of the item. If "round" it will have increased border radius.
+         */
+        "shape"?: 'round';
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
+         */
+        "target": string | undefined;
+        /**
+          * The type of the button. Only used when an `onclick` or `button` property is present.
+         */
+        "type": 'submit' | 'reset' | 'button';
+    }
+    interface GascoLabel {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+         */
+        "color"?: Color;
+        /**
+          * The position determines where and how the label behaves inside an item.
+         */
+        "position"?: 'fixed' | 'stacked' | 'floating';
+    }
+    interface GascoList {
+        /**
+          * If `true`, the list will have margin around it and rounded corners.
+         */
+        "inset": boolean;
+        /**
+          * How the bottom border should be displayed on all items.
+         */
+        "lines"?: 'full' | 'inset' | 'none';
+    }
+    interface GascoListHeader {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * How the bottom border should be displayed on the list header.
+         */
+        "lines"?: 'full' | 'inset' | 'none';
+    }
     interface GascoModal {
         /**
           * If `true`, the modal will animate.
@@ -446,6 +566,26 @@ export namespace Components {
          */
         "type"?: 'simple' | 'basic' | 'default';
     }
+    interface GascoRadio {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+         */
+        "color"?: Color;
+        /**
+          * If `true`, the user cannot interact with the radio.
+         */
+        "disabled": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "setButtonTabindex": (value: number) => Promise<void>;
+        "setFocus": (ev: any) => Promise<void>;
+        /**
+          * the value of the radio.
+         */
+        "value"?: any | null;
+    }
     interface GascoToast {
         /**
           * If `true`, the toast will animate.
@@ -532,6 +672,10 @@ export interface GascoButtonIconCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoButtonIconElement;
 }
+export interface GascoCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoCheckboxElement;
+}
 export interface GascoContentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoContentElement;
@@ -544,9 +688,17 @@ export interface GascoInputCodeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoInputCodeElement;
 }
+export interface GascoLabelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoLabelElement;
+}
 export interface GascoModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoModalElement;
+}
+export interface GascoRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoRadioElement;
 }
 export interface GascoToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -571,6 +723,12 @@ declare global {
         prototype: HTMLGascoButtonIconElement;
         new (): HTMLGascoButtonIconElement;
     };
+    interface HTMLGascoCheckboxElement extends Components.GascoCheckbox, HTMLStencilElement {
+    }
+    var HTMLGascoCheckboxElement: {
+        prototype: HTMLGascoCheckboxElement;
+        new (): HTMLGascoCheckboxElement;
+    };
     interface HTMLGascoContentElement extends Components.GascoContent, HTMLStencilElement {
     }
     var HTMLGascoContentElement: {
@@ -589,11 +747,41 @@ declare global {
         prototype: HTMLGascoInputCodeElement;
         new (): HTMLGascoInputCodeElement;
     };
+    interface HTMLGascoItemElement extends Components.GascoItem, HTMLStencilElement {
+    }
+    var HTMLGascoItemElement: {
+        prototype: HTMLGascoItemElement;
+        new (): HTMLGascoItemElement;
+    };
+    interface HTMLGascoLabelElement extends Components.GascoLabel, HTMLStencilElement {
+    }
+    var HTMLGascoLabelElement: {
+        prototype: HTMLGascoLabelElement;
+        new (): HTMLGascoLabelElement;
+    };
+    interface HTMLGascoListElement extends Components.GascoList, HTMLStencilElement {
+    }
+    var HTMLGascoListElement: {
+        prototype: HTMLGascoListElement;
+        new (): HTMLGascoListElement;
+    };
+    interface HTMLGascoListHeaderElement extends Components.GascoListHeader, HTMLStencilElement {
+    }
+    var HTMLGascoListHeaderElement: {
+        prototype: HTMLGascoListHeaderElement;
+        new (): HTMLGascoListHeaderElement;
+    };
     interface HTMLGascoModalElement extends Components.GascoModal, HTMLStencilElement {
     }
     var HTMLGascoModalElement: {
         prototype: HTMLGascoModalElement;
         new (): HTMLGascoModalElement;
+    };
+    interface HTMLGascoRadioElement extends Components.GascoRadio, HTMLStencilElement {
+    }
+    var HTMLGascoRadioElement: {
+        prototype: HTMLGascoRadioElement;
+        new (): HTMLGascoRadioElement;
     };
     interface HTMLGascoToastElement extends Components.GascoToast, HTMLStencilElement {
     }
@@ -605,10 +793,16 @@ declare global {
         "gasco-backdrop": HTMLGascoBackdropElement;
         "gasco-button": HTMLGascoButtonElement;
         "gasco-button-icon": HTMLGascoButtonIconElement;
+        "gasco-checkbox": HTMLGascoCheckboxElement;
         "gasco-content": HTMLGascoContentElement;
         "gasco-input": HTMLGascoInputElement;
         "gasco-input-code": HTMLGascoInputCodeElement;
+        "gasco-item": HTMLGascoItemElement;
+        "gasco-label": HTMLGascoLabelElement;
+        "gasco-list": HTMLGascoListElement;
+        "gasco-list-header": HTMLGascoListHeaderElement;
         "gasco-modal": HTMLGascoModalElement;
+        "gasco-radio": HTMLGascoRadioElement;
         "gasco-toast": HTMLGascoToastElement;
     }
 }
@@ -718,6 +912,45 @@ declare namespace LocalJSX {
           * The type of the button.
          */
         "type"?: 'submit' | 'reset' | 'button';
+    }
+    interface GascoCheckbox {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        "color"?: Color;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the checkbox will visually appear as indeterminate.
+         */
+        "indeterminate"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onGascoBlur"?: (event: GascoCheckboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onGascoChange"?: (event: GascoCheckboxCustomEvent<CheckboxChangeEventDetail>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onGascoFocus"?: (event: GascoCheckboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the styles change.
+         */
+        "onGascoStyle"?: (event: GascoCheckboxCustomEvent<StyleEventDetail>) => void;
+        /**
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
+         */
+        "value"?: any | null;
     }
     interface GascoContent {
         /**
@@ -956,6 +1189,110 @@ declare namespace LocalJSX {
          */
         "value"?: string | number | null;
     }
+    interface GascoItem {
+        /**
+          * If `true`, a button tag will be rendered and the item will be tappable.
+         */
+        "button"?: boolean;
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+         */
+        "color"?: Color;
+        /**
+          * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `ion-input` or `ion-textarea`.
+         */
+        "counter"?: boolean;
+        /**
+          * A callback used to format the counter text. By default the counter text is set to "itemLength / maxLength".
+         */
+        "counterFormatter"?: CounterFormatter;
+        /**
+          * If `true`, a detail arrow will appear on the item. Defaults to `false` unless the `mode` is `ios` and an `href` or `button` property is present.
+         */
+        "detail"?: boolean;
+        /**
+          * The icon to use when `detail` is set to `true`.
+         */
+        "detailIcon"?: string;
+        /**
+          * If `true`, the user cannot interact with the item.
+         */
+        "disabled"?: boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string | undefined;
+        /**
+          * The fill for the item. If `'solid'` the item will have a background. If `'outline'` the item will be transparent with a border. Only available in `md` mode.
+         */
+        "fill"?: 'outline' | 'solid';
+        /**
+          * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
+         */
+        "href"?: string | undefined;
+        /**
+          * How the bottom border should be displayed on the item.
+         */
+        "lines"?: 'full' | 'inset' | 'none';
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
+          * When using a router, it specifies the transition animation when navigating to another page using `href`.
+         */
+        "routerAnimation"?: AnimationBuilder | undefined;
+        /**
+          * The shape of the item. If "round" it will have increased border radius.
+         */
+        "shape"?: 'round';
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
+         */
+        "target"?: string | undefined;
+        /**
+          * The type of the button. Only used when an `onclick` or `button` property is present.
+         */
+        "type"?: 'submit' | 'reset' | 'button';
+    }
+    interface GascoLabel {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+         */
+        "color"?: Color;
+        /**
+          * Emitted when the color changes.
+         */
+        "onIonColor"?: (event: GascoLabelCustomEvent<StyleEventDetail>) => void;
+        /**
+          * Emitted when the styles change.
+         */
+        "onIonStyle"?: (event: GascoLabelCustomEvent<StyleEventDetail>) => void;
+        /**
+          * The position determines where and how the label behaves inside an item.
+         */
+        "position"?: 'fixed' | 'stacked' | 'floating';
+    }
+    interface GascoList {
+        /**
+          * If `true`, the list will have margin around it and rounded corners.
+         */
+        "inset"?: boolean;
+        /**
+          * How the bottom border should be displayed on all items.
+         */
+        "lines"?: 'full' | 'inset' | 'none';
+    }
+    interface GascoListHeader {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * How the bottom border should be displayed on the list header.
+         */
+        "lines"?: 'full' | 'inset' | 'none';
+    }
     interface GascoModal {
         /**
           * If `true`, the modal will animate.
@@ -1098,6 +1435,36 @@ declare namespace LocalJSX {
          */
         "type"?: 'simple' | 'basic' | 'default';
     }
+    interface GascoRadio {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+         */
+        "color"?: Color;
+        /**
+          * If `true`, the user cannot interact with the radio.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the radio button loses focus.
+         */
+        "onIonBlur"?: (event: GascoRadioCustomEvent<void>) => void;
+        /**
+          * Emitted when the radio button has focus.
+         */
+        "onIonFocus"?: (event: GascoRadioCustomEvent<void>) => void;
+        /**
+          * Emitted when the styles change.
+         */
+        "onIonStyle"?: (event: GascoRadioCustomEvent<StyleEventDetail>) => void;
+        /**
+          * the value of the radio.
+         */
+        "value"?: any | null;
+    }
     interface GascoToast {
         /**
           * If `true`, the toast will animate.
@@ -1173,10 +1540,16 @@ declare namespace LocalJSX {
         "gasco-backdrop": GascoBackdrop;
         "gasco-button": GascoButton;
         "gasco-button-icon": GascoButtonIcon;
+        "gasco-checkbox": GascoCheckbox;
         "gasco-content": GascoContent;
         "gasco-input": GascoInput;
         "gasco-input-code": GascoInputCode;
+        "gasco-item": GascoItem;
+        "gasco-label": GascoLabel;
+        "gasco-list": GascoList;
+        "gasco-list-header": GascoListHeader;
         "gasco-modal": GascoModal;
+        "gasco-radio": GascoRadio;
         "gasco-toast": GascoToast;
     }
 }
@@ -1187,10 +1560,16 @@ declare module "@stencil/core" {
             "gasco-backdrop": LocalJSX.GascoBackdrop & JSXBase.HTMLAttributes<HTMLGascoBackdropElement>;
             "gasco-button": LocalJSX.GascoButton & JSXBase.HTMLAttributes<HTMLGascoButtonElement>;
             "gasco-button-icon": LocalJSX.GascoButtonIcon & JSXBase.HTMLAttributes<HTMLGascoButtonIconElement>;
+            "gasco-checkbox": LocalJSX.GascoCheckbox & JSXBase.HTMLAttributes<HTMLGascoCheckboxElement>;
             "gasco-content": LocalJSX.GascoContent & JSXBase.HTMLAttributes<HTMLGascoContentElement>;
             "gasco-input": LocalJSX.GascoInput & JSXBase.HTMLAttributes<HTMLGascoInputElement>;
             "gasco-input-code": LocalJSX.GascoInputCode & JSXBase.HTMLAttributes<HTMLGascoInputCodeElement>;
+            "gasco-item": LocalJSX.GascoItem & JSXBase.HTMLAttributes<HTMLGascoItemElement>;
+            "gasco-label": LocalJSX.GascoLabel & JSXBase.HTMLAttributes<HTMLGascoLabelElement>;
+            "gasco-list": LocalJSX.GascoList & JSXBase.HTMLAttributes<HTMLGascoListElement>;
+            "gasco-list-header": LocalJSX.GascoListHeader & JSXBase.HTMLAttributes<HTMLGascoListHeaderElement>;
             "gasco-modal": LocalJSX.GascoModal & JSXBase.HTMLAttributes<HTMLGascoModalElement>;
+            "gasco-radio": LocalJSX.GascoRadio & JSXBase.HTMLAttributes<HTMLGascoRadioElement>;
             "gasco-toast": LocalJSX.GascoToast & JSXBase.HTMLAttributes<HTMLGascoToastElement>;
         }
     }

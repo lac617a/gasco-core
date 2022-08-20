@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Item - Fill</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<style>
+  .custom gasco-item {
+    --border-width: 5px;
+    --highlight-height: 7px;
+  }
+
+</style>
+
+<body>
+  <p>Filled</p>
+  <gasco-item fill="solid">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item fill="solid">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="solid">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="solid">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="solid">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="solid">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+
+  <p>Shaped Filled</p>
+  <gasco-item fill="solid" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item fill="solid" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="solid" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="solid" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="solid" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="solid" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+
+  <p>Outlined</p>
+  <gasco-item fill="outline">
+    <gasco-label position="floating">Standards</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="outline">
+    <gasco-label position="floating">Standards</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="outline">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="outline">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+
+  <p>Shaped Outlined</p>
+  <gasco-item fill="outline" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="outline" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="outline" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item class="ion-invalid" fill="outline" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+
+  <p>Input Without Label</p>
+  <gasco-item fill="solid">
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline">
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline" shape="round">
+    <gasco-input></gasco-input>
+  </gasco-item>
+
+  <p>Input With Character Counter</p>
+  <gasco-item fill="solid" counter="true">
+    <gasco-input maxlength="10"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline" counter="true">
+    <gasco-input value="Has Initial Value" maxlength="20"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline" shape="round" counter="true">
+    <gasco-input maxlength="10"></gasco-input>
+  </gasco-item>
+
+  <p>Disable</p>
+  <gasco-item disabled fill="solid">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item disabled fill="outline">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input value="Has Initial Value"></gasco-input>
+  </gasco-item>
+  <gasco-item disabled fill="outline" shape="round">
+    <gasco-label position="floating">Standard</gasco-label>
+    <gasco-input></gasco-input>
+  </gasco-item>
+  <gasco-item disabled fill="solid" counter="true">
+    <gasco-label position="floating">Standard</gasco-label>
+  </gasco-item>
+  <gasco-item disabled fill="outline" counter="true">
+    <gasco-label position="floating">Standard</gasco-label>
+  </gasco-item>
+  <gasco-item disabled fill="outline" shape="round" counter="true">
+    <gasco-label position="floating">Standard</gasco-label>
+  </gasco-item>
+
+  <p>Custom Styles</p>
+  <gasco-item fill="solid" counter="true">
+    <gasco-input maxlength="10"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline" counter="true">
+    <gasco-input value="Has Initial Value" maxlength="20"></gasco-input>
+  </gasco-item>
+  <gasco-item fill="outline" shape="round" counter="true">
+    <gasco-input maxlength="10"></gasco-input>
+  </gasco-item>
+</body>
+
+</html>

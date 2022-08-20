@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Item - Text</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <gasco-list>
+    <gasco-list-header>
+      <gasco-label> List Header </gasco-label>
+    </gasco-list-header>
+    <gasco-item>
+      <gasco-label> Item </gasco-label>
+    </gasco-item>
+    <gasco-item-divider>
+      <gasco-label> Item Divider </gasco-label>
+    </gasco-item-divider>
+    <gasco-item>
+      <gasco-label> Item </gasco-label>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-item>
+    <gasco-label> Plain Ol' div with some text </gasco-label>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label> Single line text that should have ellipses when it doesn't all fit in the item </gasco-label>
+  </gasco-item>
+
+  <gasco-item lines="none">
+    <gasco-label> Single line item with no lines </gasco-label>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label class="gasco-text-wrap">
+      Multiline text that should wrap when it is too long to fit on one line in the item. Attribute on .item
+    </gasco-label>
+  </gasco-item>
+
+  <gasco-item color="secondary">
+    <gasco-label class="gasco-text-wrap">
+      <h1>H1 Title Text</h1>
+      <p>Paragraph line 1</p>
+    </gasco-label>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label class="gasco-text-wrap">
+      <h2>H2 Title Text</h2>
+      <p>Paragraph line 1</p>
+    </gasco-label>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label class="gasco-text-wrap">
+      <gasco-text color="primary">
+        <h3>H3 Title Text</h3>
+      </gasco-text>
+      <p>Paragraph line 1</p>
+      <gasco-text color="secondary">
+        <p>Paragraph line 2 secondary</p>
+      </gasco-text>
+    </gasco-label>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label class="gasco-text-wrap">
+      <h4>H4 Title Text</h4>
+      <p>Paragraph line 1</p>
+      <p>Paragraph line 2</p>
+      <p>Paragraph line 3</p>
+    </gasco-label>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label> Item using inner gasco-label </gasco-label>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label> gasco-label </gasco-label>
+    <div>div</div>
+  </gasco-item>
+
+  <style>
+    .outer-content {
+      --background: #f2f2f2;
+    }
+
+  </style>
+</body>
+
+</html>

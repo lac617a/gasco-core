@@ -196,8 +196,11 @@ export class GascoInput implements ComponentInterface {
         * or input masking.
         */
       nativeInput.value = value.trim();
-      if (this.indicator) {
-        nativeInput.value = value.replace(/\D/,'');
+    } else if (this.indicator) {
+      if (nativeInput.value.length === 1) {
+        this.value = this.value + ' ';
+      } else if (nativeInput.value.length === 6) {
+        this.value = this.value + ' ';
       }
     }
     this.emitStyle();
@@ -384,7 +387,7 @@ export class GascoInput implements ComponentInterface {
           min={this.min}
           max={this.max}
           minLength={this.minlength}
-          maxLength={this.maxlength}
+          maxLength={this.indicator ? 11 : this.maxlength}
           multiple={this.multiple}
           name={this.name}
           pattern={this.pattern}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>List - Icons</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+    <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  </head>
+
+  <body>
+        <gasco-list>
+          <gasco-list-header lines="full">
+            <gasco-label> Categories </gasco-label>
+          </gasco-list-header>
+          <gasco-item button>
+            <gasco-label> Attractions </gasco-label>
+          </gasco-item>
+          <gasco-item button>
+            <gasco-label> Dining </gasco-label>
+          </gasco-item>
+          <gasco-item button>
+            <gasco-label> Education </gasco-label>
+          </gasco-item>
+          <gasco-item button lines="full">
+            <gasco-label> Travel </gasco-label>
+          </gasco-item>
+        </gasco-list>
+
+        <gasco-list>
+          <gasco-list-header lines="full">
+            <gasco-label> Information </gasco-label>
+          </gasco-list-header>
+          <gasco-item>
+            <gasco-label> Attendees </gasco-label>
+            <gasco-select slot="end" value="1">
+              <gasco-select-option value="1">1</gasco-select-option>
+              <gasco-select-option value="2">2</gasco-select-option>
+              <gasco-select-option value="3">3</gasco-select-option>
+            </gasco-select>
+          </gasco-item>
+          <gasco-item lines="full">
+            <gasco-label> Round-trip </gasco-label>
+            <gasco-toggle checked></gasco-toggle>
+          </gasco-item>
+        </gasco-list>
+
+        <gasco-list>
+          <gasco-list-header lines="full">
+            <gasco-label> Contact </gasco-label>
+          </gasco-list-header>
+          <gasco-item>
+            <gasco-label> Name </gasco-label>
+            <gasco-input placeholder="xxxxx"></gasco-input>
+          </gasco-item>
+          <gasco-item lines="full">
+            <gasco-label> Phone Number </gasco-label>
+            <gasco-input placeholder="(xxx) xxx-xxxx" type="number"></gasco-input>
+          </gasco-item>
+        </gasco-list>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkbox - Indeterminate</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body onLoad="onLoad()">
+
+  <div class="gasco-padding-start">
+    <!-- Default to unchecked -->
+    <label for="unchecked">Unchecked</label>
+    <input name="unchecked" id="unchecked" type="checkbox" />
+    <br />
+
+    <!-- Default to checked -->
+    <label for="checked">Checked</label>
+    <input name="checked" id="checked" type="checkbox" checked />
+    <br />
+
+    <!-- Default to indeterminate -->
+    <label for="indeterminate">Indeterminate</label>
+    <input name="indeterminate" id="indeterminate" type="checkbox" class="indeterminate" />
+    <br />
+
+    <!-- Default to checked / indeterminate -->
+    <label for="both">Checked / Indeterminate</label>
+    <input name="both" id="both" type="checkbox" checked class="indeterminate" />
+    <br />
+  </div>
+
+  <gasco-list-header>
+    <gasco-label> Gasco </gasco-label>
+  </gasco-list-header>
+  <gasco-item>
+    <gasco-label>Unchecked</gasco-label>
+    <gasco-checkbox slot="end"></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Checked</gasco-label>
+    <gasco-checkbox slot="end" checked></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Indeterminate</gasco-label>
+    <gasco-checkbox slot="end" indeterminate></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label>Checked / Indeterminate</gasco-label>
+    <gasco-checkbox slot="end" checked indeterminate></gasco-checkbox>
+  </gasco-item>
+
+  <gasco-list-header>
+    <gasco-label> Colors </gasco-label>
+  </gasco-list-header>
+  <div class="gasco-padding-start">
+    <gasco-checkbox aria-label="Default Indeterminate" indeterminate></gasco-checkbox>
+    <gasco-checkbox aria-label="Secondary Indeterminate" indeterminate color="secondary"></gasco-checkbox>
+    <gasco-checkbox aria-label="Tertiary Indeterminate" indeterminate color="tertiary"></gasco-checkbox>
+    <gasco-checkbox aria-label="Success Indeterminate" indeterminate color="success"></gasco-checkbox>
+    <gasco-checkbox aria-label="Warning Indeterminate" indeterminate color="warning"></gasco-checkbox>
+    <gasco-checkbox aria-label="Danger Indeterminate" indeterminate color="danger"></gasco-checkbox>
+    <gasco-checkbox aria-label="Dark Indeterminate" indeterminate color="dark"></gasco-checkbox>
+    <gasco-checkbox aria-label="Medium Indeterminate" indeterminate color="medium"></gasco-checkbox>
+    <gasco-checkbox aria-label="Light Indeterminate" indeterminate color="light"></gasco-checkbox>
+  </div>
+
+  <gasco-list-header>
+    <gasco-label> Parent </gasco-label>
+  </gasco-list-header>
+
+  <ul>
+    <li>
+      <gasco-checkbox aria-labelledby="tall-label-0" indeterminate></gasco-checkbox>
+      <label id="tall-label-0">Tall Things</label>
+      <ul>
+        <li>
+          <gasco-checkbox aria-labelledby="tall-label-1" checked></gasco-checkbox>
+          <label id="tall-label-1">Skyscrapers</label>
+        </li>
+        <li>
+          <gasco-checkbox aria-labelledby="tall-label-2"></gasco-checkbox>
+          <label id="tall-label-2">Trees</label>
+        </li>
+        <li>
+          <gasco-checkbox aria-labelledby="tall-label-3"></gasco-checkbox>
+          <label id="tall-label-3">Giants</label>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <style>
+    ul {
+      list-style: none;
+      margin: 5px 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    ul label {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 4px;
+    }
+
+  </style>
+
+  <script>
+    var indeterminateCheckboxes = document.getElementsByClassName('indeterminate');
+
+    for (var i = 0; i < indeterminateCheckboxes.length; i++) {
+      var checkbox = indeterminateCheckboxes[i];
+      checkbox.indeterminate = true;
+    }
+
+    function onLoad() {
+      var checkboxes = document.getElementsByTagName('gasco-checkbox');
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        var checkbox = checkboxes[i];
+        checkbox.addEventListener('gascoChange', function (event) {
+          checkboxChanged(this, event);
+        });
+      }
+    }
+
+    function checkboxChanged(el, ev) {
+      var isParent = el.id === 'tall';
+
+      if (isParent) {
+        checkChildren(el.checked);
+      } else {
+        checkParent();
+      }
+    }
+
+    function checkParent() {
+      var parent = document.getElementById('tall');
+      var children = getChildren();
+      var countChecked = 0;
+
+      for (var i = 0; i < children.length; i++) {
+        var child = children[i];
+        if (child.checked) {
+          countChecked = ++countChecked;
+        }
+      }
+
+      // None checked, uncheck parent
+      if (countChecked == 0) {
+        parent.checked = false;
+        parent.indeterminate = false;
+        // All checked, check parent
+      } else if (countChecked == children.length) {
+        parent.checked = true;
+        parent.indeterminate = false;
+        // One checked, indeterminate parent
+      } else {
+        parent.indeterminate = true;
+      }
+    }
+
+    function checkChildren(shouldCheck) {
+      var children = getChildren();
+      for (var i = 0; i < children.length; i++) {
+        var child = children[i];
+        child.checked = shouldCheck;
+      }
+    }
+
+    function getChildren() {
+      return document.querySelectorAll('gasco-checkbox[name^=tall-]');
+    }
+
+  </script>
+</body>
+
+</html>

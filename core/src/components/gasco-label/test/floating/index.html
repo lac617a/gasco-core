@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Label - Floating</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+    <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  </head>
+
+  <body>
+        <gasco-list>
+          <gasco-list-header>
+            <gasco-label>Default</gasco-label>
+          </gasco-list-header>
+
+          <gasco-item>
+            <gasco-label position="floating">Input</gasco-label>
+            <gasco-input></gasco-input>
+          </gasco-item>
+        </gasco-list>
+
+        <gasco-list>
+          <gasco-list-header>
+            <gasco-label>Placeholders</gasco-label>
+          </gasco-list-header>
+
+          <gasco-item>
+            <gasco-label position="floating">Input</gasco-label>
+            <gasco-input placeholder="Placeholder Text"></gasco-input>
+          </gasco-item>
+        </gasco-list>
+
+        <gasco-list>
+          <gasco-list-header>
+            <gasco-label>Values</gasco-label>
+          </gasco-list-header>
+
+          <gasco-item>
+            <gasco-label position="floating">Input</gasco-label>
+            <gasco-input value="Input Value"></gasco-input>
+          </gasco-item>
+      </gasco-content>
+
+      <style>
+        gasco-content {
+          --background: #f6f6f6;
+        }
+
+        gasco-list {
+          background: transparent !important;
+        }
+      </style>
+    </gasco-app>
+  </body>
+</html>

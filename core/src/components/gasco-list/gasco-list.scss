@@ -1,0 +1,21 @@
+@import "../../themes/gasco.globals";
+
+
+// List
+// --------------------------------------------------
+
+gasco-list {
+  @include margin(0);
+  @include padding(0);
+
+  display: block;
+
+  contain: content;
+  list-style-type: none;
+}
+
+gasco-list.list-inset {
+  transform: translateZ(0);
+
+  overflow: hidden;
+}

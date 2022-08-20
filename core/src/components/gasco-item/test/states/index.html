@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Item - States</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+
+  <gasco-item button>
+    <gasco-label>gasco-item[button]</gasco-label>
+  </gasco-item>
+
+  <gasco-item button class="gasco-focused">
+    <gasco-label>gasco-item[button] focused</gasco-label>
+  </gasco-item>
+
+  <gasco-item button class="gasco-focused custom-radius">
+    <gasco-label>gasco-item[button] border-radius focused</gasco-label>
+  </gasco-item>
+
+  <gasco-item button class="gasco-activated">
+    <gasco-label>gasco-item[button] activated</gasco-label>
+  </gasco-item>
+
+  <gasco-item color="warning" button>
+    <gasco-label>gasco-item[button]</gasco-label>
+  </gasco-item>
+
+  <gasco-item color="warning" button class="gasco-focused">
+    <gasco-label>gasco-item[button] focused</gasco-label>
+  </gasco-item>
+
+  <gasco-item color="warning" button class="gasco-activated">
+    <gasco-label>gasco-item[button] activated</gasco-label>
+  </gasco-item>
+
+  <style>
+    .custom {
+      --color: rebeccapurple;
+    }
+
+    .custom-radius {
+      --border-radius: 0 50px 50px 0;
+    }
+
+  </style>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Item - Icons</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <gasco-item color="primary" lines="none">
+    <gasco-label> gasco-item w/ color </gasco-label>
+    <gasco-icon name="trash" slot="start"></gasco-icon>
+  </gasco-item>
+
+  <gasco-item detail>
+    <gasco-label> gasco-item [detail] attr </gasco-label>
+  </gasco-item>
+
+  <gasco-item href="#">
+    <gasco-label> a[gasco-item] w/ push detail </gasco-label>
+  </gasco-item>
+
+  <gasco-item onclick="testClick(event)">
+    <gasco-label> button[gasco-item] w/ push detail </gasco-label>
+  </gasco-item>
+
+  <gasco-item detail detail-icon="arrow-down">
+    <gasco-label>Detail with icon arrow down</gasco-label>
+  </gasco-item>
+
+  <gasco-item detail detail-icon="home">
+    <gasco-label>Detail with icon home</gasco-label>
+  </gasco-item>
+
+  <gasco-item detail detail-icon="/src/components/item/test/icons/heart-broken.svg">
+    <gasco-label>Detail with custom icon svg</gasco-label>
+  </gasco-item>
+
+  <gasco-item href="#">
+    <gasco-label> a[gasco-item] w/ right side default icon </gasco-label>
+    <gasco-icon name="information-circle" slot="end"></gasco-icon>
+  </gasco-item>
+
+  <gasco-item href="#">
+    <gasco-label> a[gasco-item] w/ right side large icon </gasco-label>
+    <gasco-icon name="information-circle" size="large" slot="end"></gasco-icon>
+  </gasco-item>
+
+  <gasco-item href="#">
+    <gasco-label> a[gasco-item] w/ right side small icon </gasco-label>
+    <gasco-icon name="information-circle" size="small" slot="end"></gasco-icon>
+  </gasco-item>
+
+  <gasco-item onclick="testClick(event)">
+    <gasco-icon name="star" slot="start"></gasco-icon>
+    <gasco-label> button[gasco-item] w/ left side icon </gasco-label>
+  </gasco-item>
+
+  <gasco-item onclick="testClick(event)" detail="false">
+    <gasco-icon name="flag" slot="start"></gasco-icon>
+    <gasco-label> button[gasco-item][detail="false"] </gasco-label>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-icon name="flag" slot="start"></gasco-icon>
+    <gasco-label> gasco-item w/ both side icons </gasco-label>
+    <gasco-icon name="checkmark" slot="end"></gasco-icon>
+  </gasco-item>
+
+  <gasco-item href="#">
+    <gasco-label> a[gasco-item] w/ two right side icons </gasco-label>
+    <gasco-icon name="checkmark-circle" slot="end"></gasco-icon>
+    <gasco-icon name="shuffle" slot="end"></gasco-icon>
+  </gasco-item>
+
+  <gasco-item onclick="testClick(event)">
+    <gasco-icon name="clipboard" slot="start"></gasco-icon>
+    <gasco-icon name="remove-circle" slot="start"></gasco-icon>
+    <gasco-label> button[gasco-item] w/ two left side icons </gasco-label>
+  </gasco-item>
+
+  <gasco-item onclick="testClick(event)">
+    <gasco-label> Red Balloons </gasco-label>
+    <gasco-badge slot="end">99</gasco-badge>
+  </gasco-item>
+
+  <gasco-item>
+    <gasco-label> Problems </gasco-label>
+    <gasco-badge slot="end">99</gasco-badge>
+  </gasco-item>
+
+  <script>
+    function testClick(ev) {
+      console.log('CLICK!', ev.target.tagName, ev.target.textContent.trim());
+    }
+
+  </script>
+</body>
+
+</html>

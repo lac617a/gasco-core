@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Radio - a11y</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <div class="native-radio-group">
+    <p>Select a maintenance drone (native):</p>
+
+    <div>
+      <input type="radio" id="huey" name="drone" value="huey" checked />
+      <label for="huey">Huey</label>
+    </div>
+
+    <div>
+      <input type="radio" id="dewey" name="drone" value="dewey" />
+      <label for="dewey">Dewey</label>
+    </div>
+
+    <div>
+      <input type="radio" id="fooey" value="fooey" disabled />
+      <label for="fooey">Fooey</label>
+    </div>
+
+    <div>
+      <input type="radio" id="louie" name="drone" value="louie" />
+      <label for="louie">Louie</label>
+    </div>
+  </div>
+
+  <gasco-list>
+    <gasco-list-header>
+      <gasco-label> Select a maintenance drone: </gasco-label>
+    </gasco-list-header>
+    <gasco-item>
+      <gasco-label>Huey</gasco-label>
+      <gasco-radio slot="start" value="huey"></gasco-radio>
+    </gasco-item>
+
+    <gasco-item>
+      <gasco-label>Dewey</gasco-label>
+      <gasco-radio slot="start" value="dewey"></gasco-radio>
+    </gasco-item>
+
+    <gasco-item>
+      <gasco-label>Fooey</gasco-label>
+      <gasco-radio slot="start" value="fooey" color="secondary" disabled></gasco-radio>
+    </gasco-item>
+
+    <gasco-item>
+      <gasco-label>Louie</gasco-label>
+      <gasco-radio slot="start" value="louie"></gasco-radio>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-item>
+      <gasco-label>Huey</gasco-label>
+      <gasco-radio slot="start" value="huey" color="danger"></gasco-radio>
+    </gasco-item>
+
+    <gasco-item>
+      <gasco-label>Dewey</gasco-label>
+      <gasco-radio slot="start" value="dewey" color="secondary"></gasco-radio>
+    </gasco-item>
+
+    <gasco-item>
+      <gasco-label>Fooey</gasco-label>
+      <gasco-radio slot="start" value="fooey" color="secondary" disabled></gasco-radio>
+    </gasco-item>
+
+    <gasco-item>
+      <gasco-label>Louie</gasco-label>
+      <gasco-radio slot="start" value="louie" color="tertiary"></gasco-radio>
+    </gasco-item>
+  </gasco-list>
+
+  <div style="padding: 10px 16px">
+    <h5>Custom Labels</h5>
+    <div>
+      <gasco-radio id="custom-huey" value="huey"></gasco-radio>
+      <label for="custom-huey">Huey</label>
+    </div>
+    <div>
+      <gasco-radio id="custom-dewey" value="dewey"></gasco-radio>
+      <label for="custom-dewey">Dewey</label>
+    </div>
+    <div>
+      <gasco-radio id="custom-fooey" value="fooey" disabled></gasco-radio>
+      <label for="custom-fooey">Fooey</label>
+    </div>
+    <div>
+      <gasco-radio id="custom-louie" value="louie"></gasco-radio>
+      <label for="custom-louie">Louie</label>
+    </div>
+  </div>
+</body>
+
+<style>
+  gasco-list {
+    margin-bottom: 10px !important;
+  }
+
+  .native-radio-group {
+    background: white;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+  }
+
+  .native-radio-group div {
+    margin: 10px 0;
+  }
+
+</style>
+
+<script>
+  const inputs = document.querySelectorAll('gasco-radio');
+
+  for (var i = 0; i < inputs.length; i++) {
+    const input = inputs[i];
+
+    input.addEventListener('gascoBlur', function () {
+      console.log('Listen gascoBlur: fired');
+    });
+
+    input.addEventListener('gascoFocus', function () {
+      console.log('Listen gascoFocus: fired');
+    });
+
+    input.addEventListener('gascoChange', function (ev) {
+      console.log('Listen gascoChange: fired', ev.detail);
+    });
+
+    input.addEventListener('click', function () {
+      console.log('Listen click: fired');
+    });
+  }
+
+</script>
+
+</html>

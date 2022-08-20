@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Radio - Standalone</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/core.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <h1>Default</h1>
+  <gasco-radio aria-label="Default"></gasco-radio>
+  <gasco-radio aria-label="Default" value="radio"></gasco-radio>
+
+  <h1>Colors: Unchecked</h1>
+  <gasco-radio aria-label="Primary" color="primary"></gasco-radio>
+  <gasco-radio aria-label="Secondary" color="secondary"></gasco-radio>
+  <gasco-radio aria-label="Tertiary" color="tertiary"></gasco-radio>
+  <gasco-radio aria-label="Success" color="success"></gasco-radio>
+  <gasco-radio aria-label="Warning" color="warning"></gasco-radio>
+  <gasco-radio aria-label="Danger" color="danger"></gasco-radio>
+  <gasco-radio aria-label="Light" color="light"></gasco-radio>
+  <gasco-radio aria-label="Medium" color="medium"></gasco-radio>
+  <gasco-radio aria-label="Dark" color="dark"></gasco-radio>
+
+  <h1>Colors: Checked</h1>
+  <gasco-radio aria-label="Primary" color="primary" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Secondary" color="secondary" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Tertiary" color="tertiary" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Success" color="success" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Warning" color="warning" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Danger" color="danger" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Light" color="light" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Medium" color="medium" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Dark" color="dark" value="radio"></gasco-radio>
+
+  <h1>Disabled</h1>
+  <gasco-radio aria-label="Default" disabled></gasco-radio>
+  <gasco-radio aria-label="Secondary" color="secondary" disabled></gasco-radio>
+  <gasco-radio aria-label="Default" disabled value="radio"></gasco-radio>
+  <gasco-radio aria-label="Secondary" color="secondary" disabled value="radio"></gasco-radio>
+
+  <h1>Custom</h1>
+
+  <gasco-radio aria-label="Custom" class="custom"></gasco-radio>
+  <gasco-radio aria-label="Custom" class="custom" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Custom Tertiary" class="custom" color="tertiary" value="radio"></gasco-radio>
+  <gasco-radio aria-label="Custom Size" class="custom-size" color="danger" value="radio"></gasco-radio>
+
+  <style>
+    /* to be able to see the radio buttons */
+    .radio-ios {
+      border: 1px solid #dedede;
+      padding: 10px 5px;
+    }
+
+    .custom {
+      --color: orange;
+      --color-checked: hotpink;
+    }
+
+    .ios .custom-size {
+      width: 60px;
+      height: 96px;
+    }
+
+    .md .custom-size {
+      --border-width: 8px;
+
+      width: 80px;
+      height: 80px;
+    }
+
+  </style>
+</body>
+
+</html>

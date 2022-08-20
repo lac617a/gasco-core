@@ -15,7 +15,7 @@ export const printGascoWarning = (message: string) => {
  * @param message - The string message to be logged to the console.
  * @param params - Additional arguments to supply to the console.error.
  */
-export const printGasoError = (message: string, ...params: any) => {
+export const printGascoError = (message: string, ...params: any) => {
   return console.error(`[Gasco Error]: ${message}`, ...params);
 };
 

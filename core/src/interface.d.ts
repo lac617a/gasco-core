@@ -7,6 +7,10 @@ export * from './components/gasco-input/gasco-input-interface';
 export * from './components/gasco-toast/gasco-toast-interface';
 export * from './components/gasco-modal/gasco-modal-interface';
 export * from './components/gasco-content/gasco-content-interface';
+export * from './components/gasco-checkbox/gasco-checkbox-interface';
+export * from './components/gasco-item/gasco-item-interface';
+
+
 
 // Types from utils
 export {

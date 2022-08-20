@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Item - Alignment</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <link href="../../../../../scripts/testing/styles.css" rel="stylesheet" />
+  <script src="../../../../../scripts/testing/scripts.js"></script>
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <gasco-list>
+    <gasco-list-header>Leading Icons</gasco-list-header>
+    <gasco-item>
+      <gasco-icon slot="start" name="radio-button-off"></gasco-icon>
+      <gasco-input placeholder="Choose Starting Point"></gasco-input>
+    </gasco-item>
+    <gasco-item>
+      <gasco-icon slot="start" name="pin"></gasco-icon>
+      <gasco-select placeholder="Choose Really Really Long Destination Here">
+        <gasco-select-option>Madison, WI</gasco-select-option>
+        <gasco-select-option>Atlanta, GA</gasco-select-option>
+      </gasco-select>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>Default Labels</gasco-list-header>
+    <gasco-item>
+      <gasco-label>From</gasco-label>
+      <gasco-input placeholder="Choose Starting Point"></gasco-input>
+    </gasco-item>
+    <gasco-item>
+      <gasco-label>Destination</gasco-label>
+      <gasco-select placeholder="Choose Really Really Long Destination Here">
+        <gasco-select-option>Madison, WI</gasco-select-option>
+        <gasco-select-option>Atlanta, GA</gasco-select-option>
+      </gasco-select>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>Fixed Labels</gasco-list-header>
+    <gasco-item>
+      <gasco-label position="fixed">From</gasco-label>
+      <gasco-input placeholder="Choose Starting Point"></gasco-input>
+    </gasco-item>
+    <gasco-item>
+      <gasco-label position="fixed">Destination</gasco-label>
+      <gasco-select placeholder="Choose Really Really Long Destination Here">
+        <gasco-select-option>Madison, WI</gasco-select-option>
+        <gasco-select-option>Atlanta, GA</gasco-select-option>
+      </gasco-select>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>Floating Labels</gasco-list-header>
+    <gasco-item>
+      <gasco-label position="floating">From</gasco-label>
+      <gasco-input></gasco-input>
+    </gasco-item>
+    <gasco-item>
+      <gasco-label position="floating">Destination</gasco-label>
+      <gasco-select>
+        <gasco-select-option>Madison, WI</gasco-select-option>
+        <gasco-select-option>Atlanta, GA</gasco-select-option>
+      </gasco-select>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>Stacked Labels</gasco-list-header>
+    <gasco-item>
+      <gasco-label position="stacked">From</gasco-label>
+      <gasco-input placeholder="Choose Starting Point"></gasco-input>
+    </gasco-item>
+    <gasco-item>
+      <gasco-label position="stacked">Destination</gasco-label>
+      <gasco-select placeholder="Choose Really Really Long Destination Here">
+        <gasco-select-option>Madison, WI</gasco-select-option>
+        <gasco-select-option>Atlanta, GA</gasco-select-option>
+      </gasco-select>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>End Labels</gasco-list-header>
+    <gasco-item>
+      <gasco-label slot="end">From</gasco-label>
+      <gasco-input placeholder="Choose Starting Point"></gasco-input>
+    </gasco-item>
+    <gasco-item>
+      <gasco-label slot="end">Destination</gasco-label>
+      <gasco-select placeholder="Choose Really Really Long Destination Here">
+        <gasco-select-option>Madison, WI</gasco-select-option>
+        <gasco-select-option>Atlanta, GA</gasco-select-option>
+      </gasco-select>
+    </gasco-item>
+  </gasco-list>
+
+  <style>
+    gasco-item {
+      --border-width: 0;
+      --inner-border-width: 0;
+      --background: #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+  </style>
+</body>
+
+</html>

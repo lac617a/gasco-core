@@ -24,7 +24,7 @@
   <div style="display: grid; gap: 1rem;">
     <div style="display: grid; gap: 1rem;">
       <h2 class="gasco-heading:2">Large</h2>
-      <gasco-input size="large" indicator placeholder="default"></gasco-input>
+      <gasco-input size="large" pattern="[0-9]*" indicator placeholder="default"></gasco-input>
       <gasco-input size="large" indicator placeholder="with focus" label="label" class="has-focus"></gasco-input>
       <gasco-input size="large" indicator placeholder="has-error" label="label" class="has-error"></gasco-input>
       <gasco-input size="large" indicator placeholder="has-success" label="label" class="has-success"></gasco-input>
@@ -49,5 +49,10 @@
       <gasco-input indicator size="small" placeholder="disabled" disabled></gasco-input>
     </div>
   </div>
+  <script>
+    document.querySelector('gasco-input').addEventListener('gascoChange', (e) => {
+      console.log(e.target.value.replaceAll(' ', ''))
+    })
+  </script>
 </body>
 </html>

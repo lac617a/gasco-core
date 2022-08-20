@@ -356,7 +356,7 @@ export namespace Components {
          */
         "color"?: Color;
         /**
-          * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `ion-input` or `ion-textarea`.
+          * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `gasco-input` or `gasco-textarea`.
          */
         "counter": boolean;
         /**
@@ -1199,7 +1199,7 @@ declare namespace LocalJSX {
          */
         "color"?: Color;
         /**
-          * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `ion-input` or `ion-textarea`.
+          * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `gasco-input` or `gasco-textarea`.
          */
         "counter"?: boolean;
         /**
@@ -1263,11 +1263,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the color changes.
          */
-        "onIonColor"?: (event: GascoLabelCustomEvent<StyleEventDetail>) => void;
+        "onGascoColor"?: (event: GascoLabelCustomEvent<StyleEventDetail>) => void;
         /**
           * Emitted when the styles change.
          */
-        "onIonStyle"?: (event: GascoLabelCustomEvent<StyleEventDetail>) => void;
+        "onGascoStyle"?: (event: GascoLabelCustomEvent<StyleEventDetail>) => void;
         /**
           * The position determines where and how the label behaves inside an item.
          */
@@ -1451,15 +1451,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the radio button loses focus.
          */
-        "onIonBlur"?: (event: GascoRadioCustomEvent<void>) => void;
+        "onGascoBlur"?: (event: GascoRadioCustomEvent<void>) => void;
         /**
           * Emitted when the radio button has focus.
          */
-        "onIonFocus"?: (event: GascoRadioCustomEvent<void>) => void;
+        "onGascoFocus"?: (event: GascoRadioCustomEvent<void>) => void;
         /**
           * Emitted when the styles change.
          */
-        "onIonStyle"?: (event: GascoRadioCustomEvent<StyleEventDetail>) => void;
+        "onGascoStyle"?: (event: GascoRadioCustomEvent<StyleEventDetail>) => void;
         /**
           * the value of the radio.
          */

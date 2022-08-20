@@ -30,13 +30,13 @@ export class GascoLabel implements ComponentInterface {
    * Emitted when the color changes.
    * @internal
    */
-  @Event() ionColor!: EventEmitter<StyleEventDetail>;
+  @Event() gascoColor!: EventEmitter<StyleEventDetail>;
 
   /**
    * Emitted when the styles change.
    * @internal
    */
-  @Event() ionStyle!: EventEmitter<StyleEventDetail>;
+  @Event() gascoStyle!: EventEmitter<StyleEventDetail>;
 
   @State() noAnimate = false;
 
@@ -68,7 +68,7 @@ export class GascoLabel implements ComponentInterface {
   private emitColor() {
     const { color } = this;
 
-    this.ionColor.emit({
+    this.gascoColor.emit({
       'item-label-color': color !== undefined,
       [`gasco-color-${color}`]: color !== undefined,
     });
@@ -81,7 +81,7 @@ export class GascoLabel implements ComponentInterface {
     // to override the classes added by the label that
     // is a direct child of the item
     if (!inRange) {
-      this.ionStyle.emit({
+      this.gascoStyle.emit({
         label: true,
         [`label-${position}`]: position !== undefined,
       });

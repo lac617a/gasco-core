@@ -17,10 +17,10 @@
 
 ## Events
 
-| Event      | Description                                | Type                |
-| ---------- | ------------------------------------------ | ------------------- |
-| `ionBlur`  | Emitted when the radio button loses focus. | `CustomEvent<void>` |
-| `ionFocus` | Emitted when the radio button has focus.   | `CustomEvent<void>` |
+| Event        | Description                                | Type                |
+| ------------ | ------------------------------------------ | ------------------- |
+| `gascoBlur`  | Emitted when the radio button loses focus. | `CustomEvent<void>` |
+| `gascoFocus` | Emitted when the radio button has focus.   | `CustomEvent<void>` |
 
 
 ## Shadow Parts

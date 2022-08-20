@@ -57,17 +57,17 @@ export class GascoRadio implements ComponentInterface {
    * Emitted when the styles change.
    * @internal
    */
-  @Event() ionStyle!: EventEmitter<StyleEventDetail>;
+  @Event() gascoStyle!: EventEmitter<StyleEventDetail>;
 
   /**
    * Emitted when the radio button has focus.
    */
-  @Event() ionFocus!: EventEmitter<void>;
+  @Event() gascoFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the radio button loses focus.
    */
-  @Event() ionBlur!: EventEmitter<void>;
+  @Event() gascoBlur!: EventEmitter<void>;
 
   /** @internal */
   @Method()
@@ -98,7 +98,7 @@ export class GascoRadio implements ComponentInterface {
   @Watch('checked')
   @Watch('disabled')
   emitStyle() {
-    this.ionStyle.emit({
+    this.gascoStyle.emit({
       'radio-checked': this.checked,
       'interactive-disabled': this.disabled,
     });
@@ -109,11 +109,11 @@ export class GascoRadio implements ComponentInterface {
   };
 
   private onFocus = () => {
-    this.ionFocus.emit();
+    this.gascoFocus.emit();
   };
 
   private onBlur = () => {
-    this.ionBlur.emit();
+    this.gascoBlur.emit();
   };
 
   render() {

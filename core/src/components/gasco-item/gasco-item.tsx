@@ -103,7 +103,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   @Prop() lines?: 'full' | 'inset' | 'none';
 
   /**
-   * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `ion-input` or `ion-textarea`.
+   * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `gasco-input` or `gasco-textarea`.
    */
   @Prop() counter = false;
 
@@ -138,14 +138,14 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
     this.updateCounterOutput(this.getFirstInput());
   }
 
-  @Listen('ionChange')
+  @Listen('gascoChange')
   handleIonChange(ev: CustomEvent<InputChangeEventDetail>) {
     if (this.counter && ev.target === this.getFirstInput()) {
       this.updateCounterOutput(ev.target as HTMLGascoInputElement);
     }
   }
 
-  @Listen('ionColor')
+  @Listen('gascoColor')
   labelColorChanged(ev: CustomEvent<string>) {
     const { color } = this;
 
@@ -157,7 +157,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
     }
   }
 
-  @Listen('ionStyle')
+  @Listen('gascoStyle')
   itemStyle(ev: CustomEvent<StyleEventDetail>) {
     ev.stopPropagation();
 
@@ -224,17 +224,17 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   // interfering with their individual click events
   private setMultipleInputs() {
     // The following elements have a clickable cover that is relative to the entire item
-    const covers = this.el.querySelectorAll('ion-checkbox, ion-datetime, ion-select, ion-radio');
+    const covers = this.el.querySelectorAll('gasco-checkbox, gasco-datetime, gasco-select, gasco-radio');
 
     // The following elements can accept focus alongside the previous elements
     // therefore if these elements are also a child of item, we don't want the
     // input cover on top of those interfering with their clicks
     const inputs = this.el.querySelectorAll(
-      'ion-input, ion-range, ion-searchbar, ion-segment, ion-textarea, ion-toggle'
+      'gasco-input, gasco-range, gasco-searchbar, gasco-segment, gasco-textarea, gasco-toggle'
     );
 
     // The following elements should also stay clickable when an input with cover is present
-    const clickables = this.el.querySelectorAll('ion-anchor, ion-button, a, button');
+    const clickables = this.el.querySelectorAll('gasco-anchor, gasco-button, a, button');
 
     // Check for multiple inputs to change the position of the input cover to relative
     // for all of the covered inputs above
@@ -249,7 +249,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   // that should get the hover, focused and activated states UNLESS it has multiple
   // inputs, then those need to individually get each click
   private hasCover(): boolean {
-    const inputs = this.el.querySelectorAll('ion-checkbox, ion-datetime, ion-select, ion-radio');
+    const inputs = this.el.querySelectorAll('gasco-checkbox, gasco-datetime, gasco-select, gasco-radio');
     return inputs.length === 1 && !this.multipleInputs;
   }
 
@@ -264,12 +264,12 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   }
 
   private isFocusable(): boolean {
-    const focusableChild = this.el.querySelector('.ion-focusable');
+    const focusableChild = this.el.querySelector('.gasco-focusable');
     return this.canActivate() || focusableChild !== null;
   }
 
   private getFirstInput(): HTMLGascoInputElement {
-    const inputs = this.el.querySelectorAll('ion-input, ion-textarea') as NodeListOf<
+    const inputs = this.el.querySelectorAll('gasco-input, gasco-textarea') as NodeListOf<
       HTMLGascoInputElement
     >;
     return inputs[0];
@@ -280,7 +280,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   // but is opening the keyboard. It will no longer be needed with
   // iOS 14.
   private delegateFocus(ev: Event, input: HTMLGascoInputElement) {
-    const clickedItem = (ev.target as HTMLElement).tagName === 'ION-ITEM';
+    const clickedItem = (ev.target as HTMLElement).tagName === 'gasco-ITEM';
     let firstActive = false;
 
     // If the first input is the same as the active element we need
@@ -290,7 +290,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
       firstActive = input.querySelector('input, textarea') === document.activeElement;
     }
 
-    // Only focus the first input if we clicked on an ion-item
+    // Only focus the first input if we clicked on an gasco-item
     // and the first input exists
     if (clickedItem && (firstActive || !this.multipleInputs)) {
       input.fireFocusEvents = false;
@@ -362,7 +362,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
     });
     const ariaDisabled = disabled || childStyles['item-interactive-disabled'] ? 'true' : null;
     const fillValue = fill || 'none';
-    const inList = hostContext('ion-list', this.el);
+    const inList = hostContext('gasco-list', this.el);
     return (
       <Host
         aria-disabled={ariaDisabled}
@@ -398,7 +398,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
         <div class="item-bottom">
           <slot name="error"></slot>
           <slot name="helper"></slot>
-          {counterString && <ion-note class="item-counter">{counterString}</ion-note>}
+          {counterString && <gasco-note class="item-counter">{counterString}</gasco-note>}
         </div>
       </Host>
     );

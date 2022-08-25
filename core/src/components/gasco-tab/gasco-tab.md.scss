@@ -1,0 +1,19 @@
+@import "./gasco-tab";
+@import "./gasco-tab.md.vars";
+
+// Material Design Segment
+// --------------------------------------------------
+
+:host {
+  --background: transparent;
+  border-bottom-width: 1px;
+  border-bottom-color: #ABBED1;
+  border-bottom-style: solid;
+}
+
+// Segment: Scrollable
+// --------------------------------------------------
+
+:host(.segment-scrollable) ::slotted(gasco-tab-button) {
+  min-width: auto;
+}

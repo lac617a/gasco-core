@@ -6,6 +6,8 @@ import type {
   BackButtonEvent,
   HTMLGascoOverlayElement,
   OverlayInterface,
+  ModalOptions,
+  PopoverOptions,
   ToastOptions,
 } from '../interface';
 
@@ -30,7 +32,10 @@ const createController = <Opts extends object, HTMLElm>(tagName: string) => {
   };
 };
 
+export const TooltipController = /*@__PURE__*/ createController<PopoverOptions, HTMLGascoTooltipElement>('gasco-tooltip');
 export const toastController = /*@__PURE__*/ createController<ToastOptions, HTMLGascoToastElement>('gasco-toast');
+export const modalController = /*@__PURE__*/ createController<ModalOptions, HTMLGascoModalElement>('gasco-modal');
+
 
 export const prepareOverlay = <T extends HTMLGascoOverlayElement>(el: T) => {
   if (typeof document !== 'undefined') {
@@ -111,11 +116,11 @@ const focusLastDescendant = (ref: Element, overlay: HTMLGascoOverlayElement) => 
  * Traps keyboard focus inside of overlay components.
  * Based on https://w3c.github.io/aria-practices/examples/dialog-modal/alertdialog.html
  * This includes the following components: Action Sheet, Alert, Loading, Modal,
- * Picker, and Popover.
+ * Picker, and tooltip.
  * Should NOT include: Toast
  */
 const trapKeyboardFocus = (ev: Event, doc: Document) => {
-  const lastOverlay = getOverlay(doc, 'gasco-alert,gasco-actgasco-sheet,gasco-loading,gasco-modal,gasco-picker,gasco-popover');
+  const lastOverlay = getOverlay(doc, 'gasco-alert,gasco-action-sheet,gasco-loading,gasco-modal,gasco-picker,gasco-tooltip');
   const target = ev.target as HTMLElement | null;
 
   /**
@@ -319,7 +324,7 @@ export const dismissOverlay = (
 
 export const getOverlays = (doc: Document, selector?: string): HTMLGascoOverlayElement[] => {
   if (selector === undefined) {
-    selector = 'gasco-alert,gasco-action-sheet,gasco-loading,gasco-modal,gasco-picker,gasco-popover,gasco-toast';
+    selector = 'gasco-alert,gasco-action-sheet,gasco-loading,gasco-modal,gasco-picker,gasco-tooltip,gasco-toast';
   }
   return (Array.from(doc.querySelectorAll(selector)) as HTMLGascoOverlayElement[]).filter((c) => c.overlayIndex > 0);
 };

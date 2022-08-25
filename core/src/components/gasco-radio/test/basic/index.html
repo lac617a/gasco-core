@@ -3,225 +3,57 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Radio - Basic</title>
+  <title>Checkbox - Basic</title>
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
   <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
   <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
 </head>
-
 <body>
-  <gasco-list>
-    <gasco-label>Pizza Toppings (Unchecked Group)</gasco-label>
-    <gasco-item>
-      <gasco-label>Pepperoni</gasco-label>
-      <gasco-radio slot="start" value="pepperoni" id="groupedRadio"></gasco-radio>
-    </gasco-item>
-
-    <gasco-item>
-      <gasco-label>Sausage</gasco-label>
-      <gasco-radio slot="start" value="sausage"></gasco-radio>
-    </gasco-item>
-
-    <gasco-item>
-      <gasco-label>Pineapple</gasco-label>
-      <gasco-radio slot="start" value="pineapple"></gasco-radio>
-    </gasco-item>
-    <gasco-list>
-      <gasco-label>Fruits (Group w/ values)</gasco-label>
-      <gasco-item>
-        <gasco-label>Apple</gasco-label>
-        <gasco-radio slot="start" value="apple"></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-label>Grape, checked, disabled</gasco-label>
-        <gasco-radio slot="start" id="grapeChecked" value="grape" disabled></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-label>Cherry</gasco-label>
-        <gasco-radio slot="start" color="danger" value="cherry"></gasco-radio>
-      </gasco-item>
-
-      <gasco-label>Extra Pizza Topping (Group w/ no values)</gasco-label>
-      <gasco-item>
-        <gasco-label>Pepperoni</gasco-label>
-        <gasco-radio slot="end" name="pepperoni" value="pepperoni" id="pepperoni-radio"></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-label>Sausage</gasco-label>
-        <gasco-radio slot="end" color="danger" name="sausage" value="sausage"></gasco-radio>
-      </gasco-item>
-
-      <gasco-label>Veggies (Group w/ allow empty)</gasco-label>
-      <gasco-item>
-        <gasco-label>Carrot</gasco-label>
-        <gasco-radio slot="end" value="carrot"></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-label>Tomato</gasco-label>
-        <gasco-radio slot="end" value="tomato"></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-label>Broccoli</gasco-label>
-        <gasco-radio id="dangerRadio" slot="end" color="danger" value="broccoli"></gasco-radio>
-      </gasco-item>
-
-      <gasco-label>Custom (Group w/ allow empty)</gasco-label>
-
-      <gasco-item>
-        <gasco-label>Custom</gasco-label>
-        <gasco-radio slot="end" color="danger" value="custom"
-          style="--border-radius: 2px; --inner-border-radius: 10px 0px 10px 0px"></gasco-radio>
-      </gasco-item>
-
-      <gasco-label>Part (Group w/ allow empty)</gasco-label>
-
-      <gasco-item>
-        <gasco-label>Radio ::part</gasco-label>
-        <gasco-radio slot="end" value="custom" class="radio-part"></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-button slot="start" onClick="toggleBoolean('grapeChecked', 'checked')" fill="outline" size="small">
-          Checked</gasco-button>
-        <gasco-button slot="start" onClick="toggleBoolean('grapeChecked', 'disabled')" fill="outline" size="small">
-          Disabled</gasco-button>
-        <gasco-button slot="end" onClick="printRadioValues()" fill="outline" size="small">Print</gasco-button>
-        <gasco-button slot="end" onClick="toggleString('dangerRadio', 'color', 'danger', 'secondary')" fill="outline"
-          size="small" color="danger">Color</gasco-button>
-      </gasco-item>
-    </gasco-list>
-
-    <pre id="valuesCode"></pre>
-
-    <gasco-list>
-      <gasco-list-header>
-        <gasco-label> No Radio Group </gasco-label>
-      </gasco-list-header>
-      <gasco-item>
-        <gasco-label>Kiwi, (ionChange) Secondary color</gasco-label>
-        <gasco-radio slot="start" color="secondary" id="ungroupedRadio"></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-label>Checkbox right, checked, really long text that should ellipsis</gasco-label>
-        <gasco-radio slot="end" color="danger"></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-label>Checkbox right side</gasco-label>
-        <gasco-radio slot="end"></gasco-radio>
-      </gasco-item>
-
-      <gasco-item>
-        <gasco-label>Button w/ right side default icon, really long text that should ellipsis</gasco-label>
-        <gasco-icon name="information-circle" slot="end"></gasco-icon>
-      </gasco-item>
-    </gasco-list>
-
-    <p>
-      <gasco-radio id="standAloneChecked"></gasco-radio>
-      Stand-alone checkbox:
-      <span id="standAloneCheckedSpan"></span>
-    </p>
-
-    <gasco-item>
-      <gasco-label>Checkbox / Toggle</gasco-label>
-      <gasco-radio slot="start" id="checked"></gasco-radio>
-    </gasco-item>
-    <gasco-item>
-      <gasco-label>Checked</gasco-label>
-      <gasco-radio slot="start" checked></gasco-radio>
-    </gasco-item>
-    <gasco-item>
-      <gasco-label>Disabled</gasco-label>
-      <gasco-radio slot="start" disabled></gasco-radio>
-    </gasco-item>
-  </gasco-list>
+  <div style="padding: 1rem;">
+    <gasco-radio></gasco-radio>
+    <gasco-radio disabled></gasco-radio>
+    <div>
+      <p style="display: flex;align-items: center; gap: 1rem;">
+        <gasco-radio></gasco-radio>
+        <gasco-label>Radio</gasco-label>
+      </p>
+      <p style="display: flex;align-items: center; gap: 1rem;">
+        <gasco-radio disabled></gasco-radio>
+        <gasco-label>Radio</gasco-label>
+      </p>
+    </div>
+  </div>
 
   <script>
-    const radio = document.getElementById('pepperoni-radio');
-    if (radio) {
-      radio.addEventListener('gascoSelect', (ev) => {
-        console.log(ev.detail);
+    const inputs = document.querySelectorAll('gasco-radio');
+
+    for (var i = 0; i < inputs.length; i++) {
+      const input = inputs[i];
+
+      input.addEventListener('gascoBlur', function () {
+        console.log('Listen gascoBlur: fired');
+      });
+
+      input.addEventListener('gascoFocus', function () {
+        console.log('Listen gascoFocus: fired');
+      });
+
+      input.addEventListener('gascoChange', function (ev) {
+        console.log('Listen gascoChange: fired', ev.detail);
+      });
+
+      input.addEventListener('click', function () {
+        console.log('Listen click: fired');
       });
     }
-    var radioValues = ['fruitRadio', 'pizzaRadio', 'veggiesRadio'];
-    printRadioValues();
 
-    function printForm(ev) {
-      console.log('TODO get working with forms');
-    }
-
-    function printRadioValues() {
-      var html = 'Values:<br>';
-
-      for (var i = 0; i < radioValues.length; i++) {
-        var radio = radioValues[i];
-        var el = document.getElementById(radio);
-        html += '<span>' + radio + ': ' + el.value + ' </span><br>';
-      }
-
-      var valueEle = document.getElementById('valuesCode');
-      valueEle.innerHTML = html;
-    }
-
-    function toggleBoolean(id, prop) {
-      var el = document.getElementById(id);
-
-      var isTrue = el[prop] ? false : true;
-      el[prop] = isTrue;
-      console.debug('in toggleBoolean, setting', prop, 'to', isTrue);
-    }
-
-    function toggleString(id, prop, firstVal, secondVal) {
-      var el = document.getElementById(id);
-
-      var stringVal = el[prop] == firstVal ? secondVal : firstVal;
-      el[prop] = stringVal;
-      console.debug('in toggleString, setting', prop, 'to', stringVal);
-    }
+    const clickItem = () => {
+      console.log('Item click: fired');
+    };
 
   </script>
-
-  <style>
-    .outer-content {
-      --background: #f2f2f2;
-    }
-
-    .radio-test pre {
-      background: #f6f6f6;
-      border: 1px solid #ddd;
-      padding: 15px 10px;
-      margin-top: -20px;
-    }
-
-    .radio-part::part(container) {
-      background: rgba(255, 0, 0, 0.3);
-      border-color: darkred;
-    }
-
-    .radio-part::part(mark) {
-      background: hotpink;
-    }
-
-    .radio-part.radio-checked::part(container) {
-      background: rgba(0, 255, 0, 0.3);
-      border-color: darkgreen;
-    }
-
-    .radio-part.radio-checked::part(mark) {
-      background: purple;
-    }
-
-  </style>
-  </gasco-app>
 </body>
 
 </html>

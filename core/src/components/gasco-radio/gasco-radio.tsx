@@ -33,15 +33,19 @@ export class GascoRadio implements ComponentInterface {
 
   /**
    * The color to use from your application's color palette.
-   * Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`.
-   * For more information on colors, see [theming](/docs/theming/basics).
+   * Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`.
    */
-  @Prop({ reflect: true }) color?: Color;
+  @Prop({ reflect: true }) color?: Color = 'primary';
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId;
+
+  /**
+   * If `true`, the radio is selected.
+   */
+  @Prop({mutable: true}) ischecked = false;
 
   /**
    * If `true`, the user cannot interact with the radio.
@@ -144,7 +148,7 @@ export class GascoRadio implements ComponentInterface {
         <label htmlFor={inputId}>{labelText}</label>
         <input
           type="radio"
-          checked={checked}
+          checked={checked &&  this.ischecked}
           disabled={disabled}
           tabindex="-1"
           id={inputId}

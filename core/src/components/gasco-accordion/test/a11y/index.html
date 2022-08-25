@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Accordion - a11y</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <h1>Accordion Group - a11y</h1>
+
+  <gasco-accordion value="personal-information">
+    <gasco-item slot="header">
+      <gasco-label>Personal Information</gasco-label>
+    </gasco-item>
+
+    <gasco-list slot="content">
+      <gasco-item>
+        <gasco-label>Name</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>Email</gasco-label>
+        <gasco-input type="email"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>Phone</gasco-label>
+        <gasco-input type="tel"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>Extension</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>Country</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>City/Province</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+    </gasco-list>
+  </gasco-accordion>
+
+  <gasco-accordion value="billing-address">
+    <gasco-item slot="header">
+      <gasco-label>Billing Address</gasco-label>
+    </gasco-item>
+
+    <gasco-list slot="content">
+      <gasco-item>
+        <gasco-label>Address 1</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>Address 2</gasco-label>
+        <gasco-input type="email"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>City</gasco-label>
+        <gasco-input type="tel"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>State</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>Zip Code</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+    </gasco-list>
+  </gasco-accordion>
+
+  <gasco-accordion value="shipping-address">
+    <gasco-item slot="header">
+      <gasco-label>Shipping Address</gasco-label>
+    </gasco-item>
+
+    <gasco-list slot="content">
+      <gasco-item>
+        <gasco-label>Address 1</gasco-label>
+        <gasco-input id="address1" type="text"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>Address 2</gasco-label>
+        <gasco-input type="email"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>City</gasco-label>
+        <gasco-input type="tel"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>State</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+      <gasco-item>
+        <gasco-label>Zip Code</gasco-label>
+        <gasco-input type="text"></gasco-input>
+      </gasco-item>
+    </gasco-list>
+  </gasco-accordion>
+</body>
+
+</html>

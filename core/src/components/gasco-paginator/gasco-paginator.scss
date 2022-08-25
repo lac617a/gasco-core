@@ -1,0 +1,97 @@
+@import '../../themes/gasco.globals.scss';
+
+:host {
+  display: block;
+  padding: 20px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+:host(.gasco-paginator.paginator-with-select) {
+  display: flex;
+  justify-content: space-between;
+  .paginator-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .paginator-size {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
+
+:host button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  display: inline-block;
+}
+
+:host .paginator-pages {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .wrap-buttons {
+    display: flex;
+    button {
+      display: flex;
+      padding: 6px 2px;
+      align-items: center;
+      transition: 300ms;
+      border-radius: 4px;
+      &:hover {
+        background: #{gasco-color(light, base)};
+      }
+    }
+  }
+  .wrap-indicator {
+    display: flex;
+    gap: 8px;
+    @include padding(0, 8px, 0, 8px);
+    .paginator-indicator {
+      position: relative;
+      padding: 2px 8px;
+      user-select: none;
+      z-index: 1;
+      transition: all 0.1s linear;
+      &:hover::after {
+        background: #{gasco-color(light, base)};
+      }
+      &.active-indicator {
+        color: #ffffff !important;
+        &::after {
+          background: #{gasco-color(primary, base)};
+        }
+      }
+      &.disabled {
+        cursor: default;
+        color: #bbb;
+  
+        &:hover {
+          border-color: #fafafa;
+        }
+      }
+      &::after {
+        @include border-radius(32px, 32px, 32px, 32px);
+        @include padding(4px, 4px, 4px, 4px);
+      
+        position: absolute;
+      
+        top: 50%;
+        left: 50%;
+      
+        width: 20px;
+        height: 20px;
+      
+        transform: translate(-50%, -50%);
+      
+        content: " ";
+      
+        z-index: -1;
+      }
+    }
+  }
+}

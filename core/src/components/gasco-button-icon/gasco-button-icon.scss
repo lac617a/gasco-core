@@ -18,12 +18,13 @@
 // MD Only Icons Button Sizes
 // --------------------------------------------------
 
-:host(.button-solid.button-large),
-:host(.button-outline.button-large) {
+:host(.button-large.button-solid.gasco-button-icon),
+:host(.button-large.button-outline) {
   width: #{$button-md-large-height};
 }
 
-:host(.button-solid.button-small),
-:host(.button-outline.button-small) {
+:host(.button-small.button-solid.gasco-button-icon),
+:host(.button-small.button-clear.gasco-button-icon) 
+:host(.button-small.button-outline.gasco-button-icon) {
   width: #{$button-md-small-height};
 }

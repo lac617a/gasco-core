@@ -40,16 +40,16 @@ $item-md-padding-bottom:                    11px !default;
 $item-md-padding-start:                     16px !default;
 
 /// @prop - Border bottom width for the item when lines are displayed
-$item-md-border-bottom-width:               1px !default;
+$item-md-border-top-width:                  1px !default;
 
 /// @prop - Border bottom style for the item when lines are displayed
-$item-md-border-bottom-style:               solid !default;
+$item-md-border-top-style:                  solid !default;
 
 /// @prop - Border bottom color for the item when lines are displayed
-$item-md-border-bottom-color:               $item-md-border-color !default;
+$item-md-border-top-color:                  gasco-color(light, contrast) !default;
 
 /// @prop - Border bottom for the item when lines are displayed
-$item-md-border-bottom:                     $item-md-border-bottom-width $item-md-border-bottom-style $item-md-border-color !default;
+$item-md-border-top:                     $item-md-border-top-width $item-md-border-top-style $item-md-border-top-color !default;
 
 // Item Input
 // --------------------------------------------------
@@ -64,13 +64,13 @@ $item-md-input-fill-solid-background-color-hover:      $background-color-step-10
 $item-md-input-fill-solid-background-color-focus:      $background-color-step-150 !default;
 
 /// @prop - Color of the item input highlight
-$item-md-input-highlight-color:             ion-color(primary, base) !default;
+$item-md-input-highlight-color:               gasco-color(primary, base) !default;
 
 /// @prop - Color of the item input highlight when valid
-$item-md-input-highlight-color-valid:       ion-color(success, base) !default;
+$item-md-input-highlight-color-valid:         gasco-color(success, base) !default;
 
 /// @prop - Color of the item input highlight when invalid
-$item-md-input-highlight-color-invalid:     ion-color(danger, base) !default;
+$item-md-input-highlight-color-invalid:       gasco-color(danger, base) !default;
 
 /// @prop - Color of the item border when `fill` is set
 $item-md-input-fill-border-color:           $background-color-step-500 !default;
@@ -113,7 +113,7 @@ $item-md-fill-outline-label-padding:        4px !default;
 $item-md-start-slot-margin-start:           null !default;
 
 /// @prop - Margin end for the start slot
-$item-md-start-slot-margin-end:             32px !default;
+$item-md-start-slot-margin-end:             20px !default;
 
 /// @prop - Margin start for the end slot
 $item-md-end-slot-margin-start:             32px !default;

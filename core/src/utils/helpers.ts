@@ -1,5 +1,8 @@
+import type { EventEmitter } from '@stencil/core';
+
 declare const __zone_symbol__requestAnimationFrame: any;
 declare const requestAnimationFrame: any;
+import type { Side } from '../interface';
 
 export type Attributes = { [key: string]: any };
 
@@ -296,4 +299,114 @@ export const renderHiddenInput = (
     input.name = name;
     input.value = value || '';
   }
+};
+
+export const assert = (actual: any, reason: string) => {
+  if (!actual) {
+    const message = 'ASSERT: ' + reason;
+    console.error(message);
+    debugger; // eslint-disable-line
+    throw new Error(message);
+  }
+};
+
+/**
+ * @hidden
+ * Given a side, return if it should be on the end
+ * based on the value of dir
+ * @param side the side
+ * @param isRTL whether the application dir is rtl
+ */
+export const isEndSide = (side: Side): boolean => {
+  const isRTL = document.dir === 'rtl';
+  switch (side) {
+    case 'start':
+      return isRTL;
+    case 'end':
+      return !isRTL;
+    default:
+      throw new Error(`"${side}" is not a valid value for [side]. Use "start" or "end" instead.`);
+  }
+};
+
+export const debounceEvent = (event: EventEmitter, wait: number): EventEmitter => {
+  const original = (event as any)._original || event;
+  return {
+    _original: event,
+    emit: debounce(original.emit.bind(original), wait),
+  } as EventEmitter;
+};
+
+export const debounce = (func: (...args: any[]) => void, wait = 0) => {
+  let timer: any;
+  return (...args: any[]): any => {
+    clearTimeout(timer);
+    timer = setTimeout(func, wait, ...args);
+  };
+};
+
+export const pointerCoord = (ev: any): { x: number; y: number } => {
+  // get X coordinates for either a mouse click
+  // or a touch depending on the given event
+  if (ev) {
+    const changedTouches = ev.changedTouches;
+    if (changedTouches && changedTouches.length > 0) {
+      const touch = changedTouches[0];
+      return { x: touch.clientX, y: touch.clientY };
+    }
+    if (ev.pageX !== undefined) {
+      return { x: ev.pageX, y: ev.pageY };
+    }
+  }
+  return { x: 0, y: 0 };
+};
+
+export const transitionEndAsync = (el: HTMLElement | null, expectedDuration = 0) => {
+  return new Promise((resolve) => {
+    transitionEnd(el, expectedDuration, resolve);
+  });
+};
+
+/**
+ * Allows developer to wait for a transition
+ * to finish and fallback to a timer if the
+ * transition is cancelled or otherwise
+ * never finishes. Also see transitionEndAsync
+ * which is an await-able version of this.
+ */
+const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (ev?: TransitionEvent) => void) => {
+  let unRegTrans: (() => void) | undefined;
+  let animationTimeout: any;
+  const opts: any = { passive: true };
+  const ANIMATION_FALLBACK_TIMEOUT = 500;
+
+  const unregister = () => {
+    if (unRegTrans) {
+      unRegTrans();
+    }
+  };
+
+  const onTransitionEnd = (ev?: Event) => {
+    if (ev === undefined || el === ev.target) {
+      unregister();
+      callback(ev as TransitionEvent);
+    }
+  };
+
+  if (el) {
+    el.addEventListener('webkitTransitionEnd', onTransitionEnd, opts);
+    el.addEventListener('transitionend', onTransitionEnd, opts);
+    animationTimeout = setTimeout(onTransitionEnd, expectedDuration + ANIMATION_FALLBACK_TIMEOUT);
+
+    unRegTrans = () => {
+      if (animationTimeout) {
+        clearTimeout(animationTimeout);
+        animationTimeout = undefined;
+      }
+      el.removeEventListener('webkitTransitionEnd', onTransitionEnd, opts);
+      el.removeEventListener('transitionend', onTransitionEnd, opts);
+    };
+  }
+
+  return unregister;
 };

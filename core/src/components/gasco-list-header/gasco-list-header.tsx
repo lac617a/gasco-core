@@ -9,7 +9,7 @@ import { createColorClasses } from '../../utils/theme';
   styleUrl: 'gasco-list-header.md.scss',
   shadow: true,
 })
-export class ListHeader implements ComponentInterface {
+export class GascoListHeader implements ComponentInterface {
   /**
    * The color to use from your application's color palette.
    * Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.

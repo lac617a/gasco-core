@@ -89,7 +89,7 @@ export interface GascoConfig {
   modalEnter?: AnimationBuilder;
 
   /**
-   * Provides a custom enter animation for all `gasco-popover`, overriding the default "animation".
+   * Provides a custom enter animation for all `gasco-tooltip`, overriding the default "animation".
    */
   popoverEnter?: AnimationBuilder;
 
@@ -124,7 +124,7 @@ export interface GascoConfig {
   modalLeave?: AnimationBuilder;
 
   /**
-   * Provides a custom leave animation for all `gasco-popover`, overriding the default "animation".
+   * Provides a custom leave animation for all `gasco-tooltip`, overriding the default "animation".
    */
   popoverLeave?: AnimationBuilder;
 

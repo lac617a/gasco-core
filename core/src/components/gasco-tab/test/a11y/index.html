@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Tabs - a11y</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <link href="../../../../../css/core.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <h1>Tab</h1>
+  <gasco-tab aria-label="Tab Options" select-on-focus>
+    <gasco-tab-button value="bookmarks" checked>
+      <gasco-label>Bookmarks</gasco-label>
+    </gasco-tab-button>
+    <gasco-tab-button value="reading-list">
+      <gasco-label>Reading List</gasco-label>
+    </gasco-tab-button>
+    <gasco-tab-button disabled value="shared-links">
+      <gasco-label>Shared Links</gasco-label>
+    </gasco-tab-button>
+  </gasco-tab>
+</body>
+
+</html>

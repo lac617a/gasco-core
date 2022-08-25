@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Segment - Basic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body onload="listenForEvent()">
+  <gasco-tab class="event-tester" value="Free">
+    <gasco-tab-button value="Paid"> PaidPaidPaid </gasco-tab-button>
+    <gasco-tab-button value="Free"> Free </gasco-tab-button>
+    <gasco-tab-button value="Top"> Top </gasco-tab-button>
+  </gasco-tab>
+
+  <gasco-tab name="dynamicPropDisable" disabled>
+    <gasco-tab-button value="Bookmarks"> Bookmarks </gasco-tab-button>
+    <gasco-tab-button value="Reading List"> Reading List </gasco-tab-button>
+    <gasco-tab-button value="Shared Links"> Shared Links </gasco-tab-button>
+  </gasco-tab>
+
+  <gasco-tab name="dynamicAttrElem" value="active">
+    <gasco-tab-button value="active"> Active </gasco-tab-button>
+    <gasco-tab-button name="dynamicAttrDisable" value="disabled" disabled="true">
+      Disabled
+    </gasco-tab-button>
+    <gasco-tab-button value="inactive" disabled="false"> Inactive </gasco-tab-button>
+  </gasco-tab>
+
+  <gasco-tab value="all">
+    <gasco-tab-button value="all"> All </gasco-tab-button>
+    <gasco-tab-button value="missed"> Missed </gasco-tab-button>
+  </gasco-tab>
+
+  <gasco-tab value="segment">
+    <gasco-tab-button value="segment"> Segment </gasco-tab-button>
+    <gasco-tab-button value="outside"> Outside </gasco-tab-button>
+    <gasco-tab-button value="content"> Content </gasco-tab-button>
+  </gasco-tab>
+
+    <div class="gasco-padding">
+      <gasco-tab>
+        <gasco-tab-button>
+          <gasco-label>Seg 1</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button>
+          <gasco-label>Seg 2</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button>
+          <gasco-label>Seg 3</gasco-label>
+        </gasco-tab-button>
+      </gasco-tab>
+
+      <gasco-tab class="segment-no-animate" value="is">
+        <gasco-tab-button value="animate">
+          <gasco-label>Animate</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button value="is">
+          <gasco-label>Is</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button value="false">
+          <gasco-label>False</gasco-label>
+        </gasco-tab-button>
+      </gasco-tab>
+
+      <gasco-tab color="dark" value="Reading List">
+        <gasco-tab-button value="Bookmarks">
+          <gasco-icon name="book"></gasco-icon>
+        </gasco-tab-button>
+        <gasco-tab-button value="Reading List">
+          <gasco-icon name="search"></gasco-icon>
+        </gasco-tab-button>
+        <gasco-tab-button value="Shared Links">
+          <gasco-icon name="time"></gasco-icon>
+        </gasco-tab-button>
+      </gasco-tab>
+
+      <gasco-tab>
+        <gasco-tab-button value="330">
+          <gasco-label>330ml</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button value="440">
+          <gasco-label>440ml</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button disabled value="500">
+          <gasco-label>500ml</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button value="custom">
+          <gasco-icon name="create"></gasco-icon>
+        </gasco-tab-button>
+      </gasco-tab>
+
+      <gasco-tab name="dynamicPropDisable" disabled>
+        <gasco-tab-button value="Bookmarks">
+          <gasco-label>Bookmarks</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button value="Reading List">
+          <gasco-label>Reading List</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button value="Shared Links">
+          <gasco-label>Shared Links</gasco-label>
+        </gasco-tab-button>
+      </gasco-tab>
+
+      <gasco-tab id="finalSegment" name="dynamicAttrElem" value="active">
+        <gasco-tab-button value="active">
+          <gasco-label>Active</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button name="dynamicAttrDisable" value="disabled" disabled="true">
+          <gasco-label>Disabled</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button value="inactive" disabled="false">
+          <gasco-label>Inactive</gasco-label>
+        </gasco-tab-button>
+      </gasco-tab>
+
+      <gasco-tab name="dynamicAttrElem">
+        <gasco-tab-button value="active">
+          <gasco-label>Active</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button name="dynamicAttrDisable" value="disabled" disabled="true">
+          <gasco-label>Disabled</gasco-label>
+        </gasco-tab-button>
+        <gasco-tab-button value="inactive" disabled="false">
+          <gasco-label>Inactive</gasco-label>
+        </gasco-tab-button>
+      </gasco-tab>
+
+      <gasco-tab>
+        <gasco-tab-button value="active">
+          <div class="square red"></div>
+        </gasco-tab-button>
+        <gasco-tab-button name="dynamicAttrDisable">
+          <div class="square green"></div>
+        </gasco-tab-button>
+        <gasco-tab-button value="inactive">
+          <div class="square blue"></div>
+        </gasco-tab-button>
+      </gasco-tab>
+
+      <!-- Dynamic Buttons -->
+      <gasco-tab id="dynamicButtons"></gasco-tab>
+    </div>
+
+    <div class="gasco-padding-horizontal">
+      <gasco-button expand="block" onClick="toggleDisabled()">Toggle Disabled</gasco-button>
+    </div>
+    <div class="gasco-padding">
+      <gasco-button expand="block" color="secondary" onClick="toggleValue()">Toggle Value</gasco-button>
+    </div>
+    <div class="gasco-padding-horizontal">
+      <gasco-button expand="block" color="tertiary" onClick="toggleSwipeGesture()">Toggle Swipe Gesture</gasco-button>
+    </div>
+
+    <script>
+      var dynamicAttrDisable = document.getElementsByName('dynamicAttrDisable');
+      var dynamicPropDisable = document.getElementsByName('dynamicPropDisable');
+
+      function toggleDisabled() {
+        for (var i = 0; i < dynamicAttrDisable.length; i++) {
+          const attrIsDisabled = dynamicAttrDisable[i].getAttribute('disabled') === 'true' ? false : true;
+          dynamicAttrDisable[i].setAttribute('disabled', attrIsDisabled);
+        }
+        for (var i = 0; i < dynamicPropDisable.length; i++) {
+          const propIsDisabled = dynamicPropDisable[i].disabled === true ? false : true;
+          dynamicPropDisable[i].disabled = propIsDisabled;
+        }
+      }
+
+      function toggleValue() {
+        var dynamicAttrElem = document.getElementsByName('dynamicAttrElem');
+        for (var i = 0; i < dynamicAttrElem.length; i++) {
+          var dynamicAttrValue = dynamicAttrElem[i].getAttribute('value');
+
+          if (dynamicAttrValue === 'active') {
+            dynamicAttrElem[i].setAttribute('value', 'inactive');
+          } else if (dynamicAttrValue === 'inactive') {
+            dynamicAttrElem[i].setAttribute('value', 'disabled');
+          } else {
+            dynamicAttrElem[i].setAttribute('value', 'active');
+          }
+        }
+      }
+
+      function toggleSwipeGesture() {
+        const ionSegmentElement = document.querySelectorAll('gasco-tab');
+        for (var i = 0; i < ionSegmentElement.length; i++) {
+          ionSegmentElement[i].swipeGesture = !ionSegmentElement[i].swipeGesture;
+        }
+      }
+
+      async function listenForEvent() {
+        const ionSegmentElement = document.querySelector('gasco-tab.event-tester');
+        ionSegmentElement.addEventListener('gascoChange', (event) => {
+          console.log('event.target: ', event.target.value);
+        });
+      }
+
+      var dynamicButtons = document.getElementById('dynamicButtons');
+      updateSegmentButtons(2);
+
+      setTimeout(function () {
+        updateSegmentButtons(4);
+      }, 4000);
+
+      function updateSegmentButtons(length) {
+        const buttonsLength = dynamicButtons.children.length;
+        const begin = buttonsLength === 0 ? 0 : buttonsLength;
+
+        for (var i = begin; i < length; i++) {
+          const button = document.createElement('gasco-tab-button');
+          button.value = `segment-${i}`;
+          button.innerHTML = `<gasco-label>Btn ${i}</gasco-label>`;
+
+          dynamicButtons.appendChild(button);
+        }
+      }
+
+    </script>
+  </gasco-content>
+
+  <style>
+    .square {
+      width: 20px;
+      height: 20px;
+      background: black;
+    }
+
+    .square.red {
+      background: red;
+    }
+
+    .square.green {
+      background: green;
+    }
+
+    .square.blue {
+      background: blue;
+    }
+
+    gasco-content gasco-tab {
+      margin-bottom: 10px;
+    }
+
+    .segment-no-animate gasco-tab-button {
+      --indicator-transition: none;
+      --indicator-transform: none;
+    }
+
+  </style>
+  </gasco-app>
+</body>
+
+</html>

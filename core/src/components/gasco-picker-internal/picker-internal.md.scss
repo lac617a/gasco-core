@@ -1,0 +1,10 @@
+@import "./picker-internal.scss";
+@import "../../themes/gasco.globals.md";
+
+:host .picker-before {
+  background: linear-gradient(to bottom, var(--background, var(--gasco-background-color, #fff)) 20%, rgba(var(--background-rgb, var(--gasco-background-color-rgb, 255, 255, 255)), 0) 90%);
+}
+
+:host .picker-after {
+  background: linear-gradient(to top, var(--background, var(--gasco-background-color, #fff)) 30%, rgba(var(--background-rgb, var(--gasco-background-color-rgb, 255, 255, 255)), 0) 90%);
+}

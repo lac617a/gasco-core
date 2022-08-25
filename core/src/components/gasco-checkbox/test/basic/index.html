@@ -10,94 +10,43 @@
   <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
   <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
 </head>
-<style>
-  gasco-checkbox.checkbox-part::part(mark) {
-    transform: scale(0.5);
-    transform-origin: center;
-  }
-
-</style>
-
 <body>
-  <gasco-item onClick="clickItem()">
-    <gasco-label>Clickable Item</gasco-label>
+  <div style="padding: 1rem;">
     <gasco-checkbox></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Default</gasco-label>
     <gasco-checkbox checked></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Primary</gasco-label>
-    <gasco-checkbox checked color="primary" slot="end"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Secondary</gasco-label>
-    <gasco-checkbox disabled checked color="secondary"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Tertiary</gasco-label>
-    <gasco-checkbox checked color="tertiary"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Success</gasco-label>
-    <gasco-checkbox checked color="success"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Warning</gasco-label>
-    <gasco-checkbox checked color="warning"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Dark</gasco-label>
-    <gasco-checkbox checked color="dark" style="--size: 100px"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Danger</gasco-label>
-    <gasco-checkbox checked color="danger" slot="start"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Light</gasco-label>
-    <gasco-checkbox checked color="light" slot="start"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Medium</gasco-label>
-    <gasco-checkbox checked color="medium" slot="start"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Dark</gasco-label>
-    <gasco-checkbox checked color="dark" slot="start" style="--size: 100px"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Checkmark width</gasco-label>
-    <gasco-checkbox checked color="dark" slot="start" style="--checkmark-width: 7"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Checkmark ::part</gasco-label>
-    <gasco-checkbox checked color="dark" slot="start" class="checkbox-part"></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Unchecked by Default</gasco-label>
-    <gasco-checkbox></gasco-checkbox>
-  </gasco-item>
-
-  <gasco-item>
-    <gasco-label>Disabled</gasco-label>
+    <gasco-checkbox aria-label="Default Indeterminate" indeterminate></gasco-checkbox>
+    <gasco-checkbox disabled checked></gasco-checkbox>
     <gasco-checkbox disabled></gasco-checkbox>
-  </gasco-item>
+    <div>
+      <p style="display: flex;align-items: center; gap: 1rem;">
+        <gasco-checkbox></gasco-checkbox>
+        <gasco-label>Checkbox</gasco-label>
+      </p>
+      <p style="display: flex;align-items: center; gap: 1rem;">
+        <gasco-checkbox checked></gasco-checkbox>
+        <gasco-label>Checkbox</gasco-label>
+      </p>
+      <p style="display: flex;align-items: center; gap: 1rem;">
+        <gasco-checkbox disabled checked></gasco-checkbox>
+        <gasco-label>Checkbox</gasco-label>
+      </p>
+      <p style="display: flex;align-items: center; gap: 1rem;">
+        <gasco-checkbox disabled></gasco-checkbox>
+        <gasco-label>Checkbox</gasco-label>
+      </p>
+    </div>
+    <div>
+      <h2>Indeterminate</h2>
+      <p style="display: flex;align-items: center; gap: 1rem;">
+        <gasco-checkbox indeterminate></gasco-checkbox>
+        <gasco-label>Indeterminate</gasco-label>
+      </p>
+      <p style="display: flex;align-items: center; gap: 1rem;">
+        <gasco-checkbox disabled indeterminate></gasco-checkbox>
+        <gasco-label>Indeterminate</gasco-label>
+      </p>
+    </div>
+  </div>
 
   <script>
     const inputs = document.querySelectorAll('gasco-checkbox');

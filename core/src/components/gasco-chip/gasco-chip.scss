@@ -1,0 +1,146 @@
+@import "../../themes/gasco.globals";
+
+:host {
+  /**
+   * @prop --background: Background of the chip
+   * @prop --color: Color of the chip
+   */
+  --background: #{rgba($text-color-rgb, .12)};
+  --color: #{rgba($text-color-rgb, .87)};
+
+  @include border-radius(16px);
+  @include font-smoothing();
+  @include margin(4px);
+  @include padding(7px, 12px);
+
+  display: inline-flex;
+
+  position: relative;
+
+  align-items: center;
+
+  height: 32px;
+
+  background: var(--background);
+  color: var(--color);
+
+  font-family: $font-family-base;
+  font-size: 14px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+:host(.chip-disabled) {
+  cursor: default;
+  opacity: .4;
+  pointer-events: none;
+}
+
+// Chip Colors
+// ---------------------------------------------
+
+:host(.gasco-color) {
+  background: current-color(base, .08);
+  color: current-color(shade);
+}
+
+:host(.gasco-color:focus) {
+  background: current-color(base, .12);
+}
+
+:host(.gasco-color.gasco-activated) {
+  background: current-color(base, .16);
+}
+
+
+// Outline Chip
+// ---------------------------------------------
+
+:host(.chip-outline) {
+  border-width: 1px;
+  border-style: solid;
+}
+
+:host(.chip-outline) {
+  border-color: rgba(0, 0, 0, .32);
+
+  background: transparent;
+}
+
+:host(.chip-outline.gasco-color) {
+  border-color: current-color(base, .32);
+}
+
+:host(.chip-outline:not(.gasco-color):focus) {
+  background: rgba(0, 0, 0, .04);
+}
+
+:host(.chip-outline.gasco-activated:not(.gasco-color)) {
+  background: rgba(0, 0, 0, .08);
+}
+
+
+// Chip Icon
+// ---------------------------------------------
+
+::slotted(gasco-icon) {
+  font-size: 20px;
+}
+
+:host(:not(.gasco-color)) ::slotted(gasco-icon) {
+  color: rgba(0, 0, 0, .54);
+}
+
+::slotted(gasco-icon:first-child) {
+  @include margin(-4px, 8px, -4px, -4px);
+}
+
+::slotted(gasco-icon:last-child) {
+  @include margin(-4px, -4px, -4px, 8px);
+}
+
+
+
+// Chip: Focus
+// ---------------------------------------------
+
+:host(:focus) {
+  outline: none;
+}
+
+:host(:focus) {
+  --background: #{rgba($text-color-rgb, .16)};
+}
+
+
+// Chip: Activated
+// ---------------------------------------------
+
+:host(.gasco-activated) {
+  --background: #{rgba($text-color-rgb, .20)};
+}
+
+
+// Chip: Hover
+// ---------------------------------------------
+
+@media (any-hover: hover) {
+  :host(:hover) {
+    --background: #{rgba($text-color-rgb, .16)};
+  }
+
+  :host(.gasco-color:hover) {
+    background: current-color(base, .12);
+  }
+
+  :host(.chip-outline:not(.gasco-color):hover) {
+    background: rgba($text-color-rgb, .04);
+  }
+}

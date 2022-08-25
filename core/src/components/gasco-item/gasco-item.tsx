@@ -67,6 +67,11 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   @Prop() disabled = false;
 
   /**
+   * If `true`, the user cannot interact with the item.
+   */
+  @Prop() divider = false;
+
+  /**
    * This attribute instructs browsers to download a URL instead of navigating to
    * it, so the user will be prompted to save it as a local file. If the attribute
    * has a value, it is used as the pre-filled file name in the Save prompt
@@ -100,7 +105,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   /**
    * How the bottom border should be displayed on the item.
    */
-  @Prop() lines?: 'full' | 'inset' | 'none';
+  @Prop() lines?: 'full' | 'inset' | 'none' = 'full';
 
   /**
    * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `gasco-input` or `gasco-textarea`.
@@ -333,13 +338,13 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
 
   render() {
     const {
-      counterString,
       download,
       fill,
       labelColorStyles,
       lines,
       disabled,
       href,
+      divider,
       rel,
       shape,
       target,
@@ -374,6 +379,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
             [`item-lines-${lines}`]: lines !== undefined,
             [`item-fill-${fillValue}`]: true,
             [`item-shape-${shape}`]: shape !== undefined,
+            'item-divider': divider,
             'item-disabled': disabled,
             'in-list': inList,
             'item-multiple-inputs': this.multipleInputs,
@@ -398,7 +404,6 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
         <div class="item-bottom">
           <slot name="error"></slot>
           <slot name="helper"></slot>
-          {counterString && <gasco-note class="item-counter">{counterString}</gasco-note>}
         </div>
       </Host>
     );

@@ -7,13 +7,15 @@
 :host {
   --background: transparent;
   --color: #{$list-header-md-color};
-  --border-color: #{$item-md-border-bottom-color};
+  --border-color: #{$item-md-border-top-color};
 
   @include padding-horizontal(calc(var(--gasco-safe-area-left, 0) + #{$list-header-md-padding-start}), null);
 
   min-height: $list-header-md-min-height;
 
   font-size: $list-header-md-font-size;
+  box-shadow: 0px 2px 4px rgba(171, 190, 209, 0.6);
+  border-radius: 4px;
 }
 
 // List Header Lines
@@ -22,9 +24,9 @@
 // Full lines - apply the border to the list header
 // Inset lines - apply the border to the list header inner
 :host(.list-header-lines-full) {
-  --border-width: #{0 0 $item-md-border-bottom-width 0};
+  --border-width: #{$item-md-border-top-width 0 0 0};
 }
 
 :host(.list-header-lines-inset) {
-  --inner-border-width: #{0 0 $item-md-border-bottom-width 0};
+  --inner-border-width: #{$item-md-border-top-width 0 0 0};
 }

@@ -9,8 +9,13 @@ export * from './components/gasco-modal/gasco-modal-interface';
 export * from './components/gasco-content/gasco-content-interface';
 export * from './components/gasco-checkbox/gasco-checkbox-interface';
 export * from './components/gasco-item/gasco-item-interface';
-
-
+export * from './components/gasco-menu/gasco-menu-interface';
+export * from './components/gasco-range/gasco-range-interface';
+export * from './components/gasco-tab/gasco-tab-interface';
+export * from './components/gasco-tooltip/gasco-tooltip-interface';
+export * from './components/gasco-datetime/gasco-datetime-interface';
+export * from './components/gasco-accordion-group/gasco-accordion-group-interface';
+export * from './components/gasco-paginator/gasco-paginator-interface';
 
 // Types from utils
 export {

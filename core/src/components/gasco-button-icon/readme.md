@@ -12,7 +12,7 @@
 | `buttonType` | `button-type` | The type of button.                                                                                                | `string`                                                                                                                                         | `'button'`  |
 | `color`      | `color`       | The color to use from your application's color palette. Default options are: `"primary"`.                          | `"danger" \| "dark" \| "light" \| "medium" \| "primary" \| "secondary" \| "success" \| "tertiary" \| "warning" \| string & Record<never, never>` | `'primary'` |
 | `disabled`   | `disabled`    | If `true`, the user cannot interact with the button.                                                               | `boolean`                                                                                                                                        | `false`     |
-| `fill`       | `fill`        | Set to `"clear"` for a transparent button, to `"outline"` for a transparent button with a border, or to `"solid"`. | `"default" \| "outline" \| "solid"`                                                                                                              | `'solid'`   |
+| `fill`       | `fill`        | Set to `"clear"` for a transparent button, to `"outline"` for a transparent button with a border, or to `"solid"`. | `"clear" \| "outline" \| "solid"`                                                                                                                | `'solid'`   |
 | `progress`   | `progress`    | If `true`, the user cannot interact with the button in progress.                                                   | `boolean`                                                                                                                                        | `false`     |
 | `shape`      | `shape`       | The button shape.                                                                                                  | `"round"`                                                                                                                                        | `undefined` |
 | `size`       | `size`        | The button size.                                                                                                   | `"default" \| "large" \| "small"`                                                                                                                | `undefined` |
@@ -69,6 +69,19 @@
 | `--ripple-color`                 | Color of the button ripple effect                                                                         |
 | `--transition`                   | Transition of the button                                                                                  |
 
+
+## Dependencies
+
+### Used by
+
+ - [gasco-datetime](../gasco-datetime)
+
+### Graph
+```mermaid
+graph TD;
+  gasco-datetime --> gasco-button-icon
+  style gasco-button-icon fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

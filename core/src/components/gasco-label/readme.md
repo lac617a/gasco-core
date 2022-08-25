@@ -20,6 +20,19 @@
 | `--color` | Color of the label |
 
 
+## Dependencies
+
+### Used by
+
+ - [gasco-datetime](../gasco-datetime)
+
+### Graph
+```mermaid
+graph TD;
+  gasco-datetime --> gasco-label
+  style gasco-label fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

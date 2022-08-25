@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Menu - Basic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  <script>
+    const forceCSSAnimations = new URLSearchParams(window.location.search).get('gasco:_forceCSSAnimations');
+    if (forceCSSAnimations) {
+      window.Animation = null;
+    }
+
+  </script>
+  <script type="module">
+    import { menuController } from '../../../../../dist/gasco/index.esm.js';
+      window.menuController = menuController;
+    </script>
+</head>
+
+<body>
+  <gasco-menu side="start" menu-id="first" id="start-menu" content-id="main" class="menu-part" aria-label="start menu">
+    <gasco-header>
+      <gasco-toolbar color="primary">
+        <gasco-title>Start Menu</gasco-title>
+      </gasco-toolbar>
+    </gasco-header>
+    <gasco-content>
+      <gasco-list>
+        <gasco-item>
+          <gasco-button id="start-menu-button">Button</gasco-button>
+        </gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+      </gasco-list>
+    </gasco-content>
+  </gasco-menu>
+
+  <gasco-menu side="start" menu-id="custom" class="my-custom-menu" id="custom-menu" content-id="main">
+    <gasco-header>
+      <gasco-toolbar color="tertiary">
+        <gasco-title>Custom Menu</gasco-title>
+      </gasco-toolbar>
+    </gasco-header>
+    <gasco-content>
+      <gasco-list>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+      </gasco-list>
+    </gasco-content>
+  </gasco-menu>
+
+  <gasco-menu side="end" type="push" id="end-menu" content-id="main">
+    <gasco-header>
+      <gasco-toolbar color="danger">
+        <gasco-title>End Menu</gasco-title>
+      </gasco-toolbar>
+    </gasco-header>
+    <gasco-content>
+      <gasco-list>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+        <gasco-item>Menu Item</gasco-item>
+      </gasco-list>
+    </gasco-content>
+  </gasco-menu>
+
+  <div class="gasco-page" id="main">
+    <gasco-header>
+      <gasco-toolbar>
+        <gasco-title>Menu - Basic</gasco-title>
+      </gasco-toolbar>
+    </gasco-header>
+    <gasco-content class="gasco-padding">
+      <gasco-button expand="block" id="open-first" onclick="openFirst()">Open Start Menu</gasco-button>
+      <gasco-button expand="block" onclick="openEnd()">Open End Menu</gasco-button>
+      <gasco-button expand="block" onclick="openCustom()">Open Custom Menu</gasco-button>
+    </gasco-content>
+  </div>
+
+  <style>
+    .my-custom-menu {
+      --width: 500px;
+    }
+
+    .menu-part::part(backdrop) {
+      background-color: rgba(255, 0, 255, 0.5);
+    }
+
+    .menu-part::part(container) {
+      border-radius: 0 20px 20px 0;
+
+      box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+    }
+
+  </style>
+
+  <script>
+    async function openFirst() {
+      await menuController.enable(true, 'first');
+      await menuController.open('first');
+    }
+
+    async function openEnd() {
+      await menuController.open('end');
+    }
+
+    async function openCustom() {
+      await menuController.enable(true, 'custom');
+      await menuController.open('custom');
+    }
+
+  </script>
+</body>
+
+</html>

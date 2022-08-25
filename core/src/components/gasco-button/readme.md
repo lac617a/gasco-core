@@ -78,11 +78,13 @@
 
 ### Used by
 
+ - [gasco-datetime](../gasco-datetime)
  - [gasco-modal](../gasco-modal)
 
 ### Graph
 ```mermaid
 graph TD;
+  gasco-datetime --> gasco-button
   gasco-modal --> gasco-button
   style gasco-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

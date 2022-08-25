@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Range - Basic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../../css/ionic.bundle.css" rel="stylesheet" />
+  <link href="../../../../../scripts/testing/styles.css" rel="stylesheet" />
+  <script src="../../../../../scripts/testing/scripts.js"></script>
+  <script nomodule src="../../../../../dist/ionic/ionic.js"></script>
+  <script type="module" src="../../../../../dist/ionic/ionic.esm.js"></script>
+</head>
+<style>
+  .range-part::part(bar) {
+    background: red;
+  }
+
+  .range-part::part(tick) {
+    background: purple;
+  }
+
+  .range-part::part(bar-active) {
+    background: green;
+  }
+
+  .range-part::part(tick-active) {
+    background: orange;
+  }
+
+  .range-part::part(knob) {
+    background: hotpink;
+  }
+
+  .ios.range-part::part(pin) {
+    background: orange;
+
+    top: -13px;
+
+    height: 20px;
+
+    line-height: 4px;
+    border-radius: 4px;
+
+    transform: translate(0, 0, 0);
+  }
+
+  .md.range-part::part(pin),
+  .md.range-part::part(pin)::before {
+    background: orange;
+  }
+
+</style>
+
+<body>
+  <gasco-list>
+    <gasco-list-header>
+      <gasco-label> Range color </gasco-label>
+    </gasco-list-header>
+    <gasco-item>
+      <gasco-range id="basic" value="20" aria-label="Default Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range value="60" color="light" step="10" pin="true" aria-label="Light Pin Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range value="80" color="dark" step="10" snaps="true" pin="true" aria-label="Dark Pin Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range pin="true" color="secondary" value="86" aria-label="Secondary Dual Range">
+        <gasco-icon small name="sunny" slot="start"></gasco-icon>
+        <gasco-icon name="sunny" slot="end"></gasco-icon>
+      </gasco-range>
+      <gasco-range pin="true" color="danger" value="54" aria-label="Danger Dual Range">
+        <gasco-icon small name="thermometer" slot="start"></gasco-icon>
+        <gasco-icon name="thermometer" slot="end"></gasco-icon>
+      </gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-label position="stacked">Stacked Label</gasco-label>
+      <gasco-range value="40" id="stacked-range">
+        <gasco-label slot="start">Start</gasco-label>
+        <gasco-label slot="end">End</gasco-label>
+      </gasco-range>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>
+      <gasco-label> Dynamic Value </gasco-label>
+    </gasco-list-header>
+    <gasco-item>
+      <gasco-range pin="true" step="0" color="secondary" id="progressValue" aria-label="Progress Range"></gasco-range>
+      <div id="progressValueResult" slot="end"></div>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range pin="true" color="danger" id="brightnessValue" aria-label="Brightness Range"></gasco-range>
+      <div id="brightnessValueResult" slot="end"></div>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range pin="true" color="dark" id="contrastValue" aria-label="Contrast Range"></gasco-range>
+      <div id="contrastValueResult" slot="end"></div>
+    </gasco-item>
+    <gasco-button onclick="increaseRangeValues()"> Increase Values </gasco-button>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>
+      <gasco-label> Mode </gasco-label>
+    </gasco-list-header>
+    <gasco-item>
+      <gasco-range value="50" mode="md" aria-label="Material Design Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range value="50" mode="ios" aria-label="iOS Range"></gasco-range>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>
+      <gasco-label> Options </gasco-label>
+    </gasco-list-header>
+    <gasco-item>
+      <gasco-range class="range-part" min="-200" max="200" step="10" snaps="true" pin="true" dual-knobs="true"
+        aria-label="Custom Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range pin="true" aria-label="Custom Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range min="-200" max="200" step="10" snaps="true" pin="true" aria-label="Custom Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range min="1000" max="2000" step="100" snaps="true" id="range" aria-label="Custom Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range min="1000" max="2000" step="100" snaps="true" ticks="false" aria-label="Custom Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range dual-knobs="true" id="multiKnob" aria-label="Custom Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range id="debounce" debounce="5000" aria-label="Custom Range"></gasco-range>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-button onclick="elTest()">Test</gasco-button>
+
+  <gasco-list>
+    <gasco-list-header>
+      <gasco-label> Coupled sliders </gasco-label>
+    </gasco-list-header>
+    <gasco-item>
+      <gasco-range min="0" value="0" max="50" id="minRange" aria-label="Coupled Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range min="50" value="100" max="100" id="maxRange" aria-label="Coupled Range"></gasco-range>
+    </gasco-item>
+    <gasco-item>
+      <gasco-range min="0" value="50" max="100" id="targetRange" aria-label="Coupled Range"></gasco-range>
+    </gasco-item>
+  </gasco-list>
+
+  <gasco-list>
+    <gasco-list-header>
+      <gasco-label> Custom pin label </gasco-label>
+    </gasco-list-header>
+    <gasco-item>
+      <gasco-range pin min="1" step="0.1" max="2" id="customLabel"></gasco-range>
+    </gasco-item>
+  </gasco-list>
+
+  <script>
+    const progressValue = document.getElementById('progressValue');
+    const brightnessValue = document.getElementById('brightnessValue');
+    const contrastValue = document.getElementById('contrastValue');
+
+    const ranges = [progressValue, brightnessValue, contrastValue];
+
+    for (var i = 0; i < ranges.length; i++) {
+      var el = ranges[i];
+      el.value = (i + 1) * 10;
+      updateRangeResult(el);
+
+      el.addEventListener('gascoChange', function (ev) {
+        updateRangeResult(ev.target);
+      });
+    }
+
+    progressValue.addEventListener('gascoChange', function (ev) {
+      console.log(ev.detail.value);
+      brightnessValue.value = ev.detail.value;
+      contrastValue.value = ev.target.value;
+    });
+
+    function updateRangeResult(el) {
+      var resultEl = document.getElementById(`${el.id}Result`);
+      resultEl.innerHTML = Math.round(el.value);
+    }
+
+    function increaseRangeValues() {
+      for (var i = 0; i < ranges.length; i++) {
+        var el = ranges[i];
+        var newValue = el.value + 10;
+
+        if (newValue > 100) {
+          newValue = 10;
+        }
+
+        el.value = newValue;
+      }
+    }
+
+    var knob = document.getElementById('multiKnob');
+    var debounceRange = document.getElementById('debounce');
+    knob.value = {
+      lower: 33,
+      upper: 60,
+    };
+
+    function elTest() {
+      var range = document.getElementById('range');
+      range.disabled = !range.disabled;
+    }
+
+    const minRange = document.getElementById('minRange');
+    const maxRange = document.getElementById('maxRange');
+    const targetRange = document.getElementById('targetRange');
+
+    minRange.addEventListener('gascoChange', function (ev) {
+      targetRange.min = ev.detail.value;
+    });
+
+    maxRange.addEventListener('gascoChange', function (ev) {
+      targetRange.max = ev.detail.value;
+    });
+
+    const rangePart = document.querySelector('.range-part');
+    rangePart.value = {
+      lower: '-100',
+      upper: '100',
+    };
+
+    const customLabel = document.getElementById('customLabel');
+    customLabel.pinFormatter = (value) => value.toFixed(1);
+
+  </script>
+</body>
+
+</html>

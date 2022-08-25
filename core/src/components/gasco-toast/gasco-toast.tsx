@@ -248,7 +248,7 @@ export class GascoToast implements ComponentInterface, OverlayInterface {
           'toast-translucent': this.translucent,
           [`toast-${finalSize}`]: finalSize !== undefined,
         })}
-        onIonToastWillDismiss={this.dispatchCancelHandler}
+        onGascoToastWillDismiss={this.dispatchCancelHandler}
       >
         <div class={wrapperClass}>
           <div class="toast-container" part="container">

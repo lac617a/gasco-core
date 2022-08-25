@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Datetime - Basic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(250px, 1fr));
+      grid-row-gap: 20px;
+      grid-column-gap: 20px;
+    }
+
+    h2 {
+      font-size: 12px;
+      font-weight: normal;
+
+      color: #6f7378;
+
+      margin-top: 10px;
+      margin-left: 5px;
+    }
+
+    @media screen and (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 0;
+      }
+    }
+
+    .options-popover {
+      --width: 300px;
+    }
+
+    gasco-modal.ios,
+    gasco-tooltip.datetime-popover.ios {
+      --width: 350px;
+      --height: 420px;
+    }
+
+    gasco-modal.md,
+    gasco-tooltip.datetime-popover.md {
+      --width: 350px;
+    }
+
+    gasco-datetime {
+      width: 350px;
+    }
+
+    body.dark {
+      --gasco-color-primary: #428cff;
+      --gasco-color-primary-rgb: 66, 140, 255;
+      --gasco-color-primary-contrast: #ffffff;
+      --gasco-color-primary-contrast-rgb: 255, 255, 255;
+      --gasco-color-primary-shade: #3a7be0;
+      --gasco-color-primary-tint: #5598ff;
+
+      --gasco-color-secondary: #50c8ff;
+      --gasco-color-secondary-rgb: 80, 200, 255;
+      --gasco-color-secondary-contrast: #ffffff;
+      --gasco-color-secondary-contrast-rgb: 255, 255, 255;
+      --gasco-color-secondary-shade: #46b0e0;
+      --gasco-color-secondary-tint: #62ceff;
+
+      --gasco-color-tertiary: #6a64ff;
+      --gasco-color-tertiary-rgb: 106, 100, 255;
+      --gasco-color-tertiary-contrast: #ffffff;
+      --gasco-color-tertiary-contrast-rgb: 255, 255, 255;
+      --gasco-color-tertiary-shade: #5d58e0;
+      --gasco-color-tertiary-tint: #7974ff;
+
+      --gasco-color-success: #2fdf75;
+      --gasco-color-success-rgb: 47, 223, 117;
+      --gasco-color-success-contrast: #000000;
+      --gasco-color-success-contrast-rgb: 0, 0, 0;
+      --gasco-color-success-shade: #29c467;
+      --gasco-color-success-tint: #44e283;
+
+      --gasco-color-warning: #ffd534;
+      --gasco-color-warning-rgb: 255, 213, 52;
+      --gasco-color-warning-contrast: #000000;
+      --gasco-color-warning-contrast-rgb: 0, 0, 0;
+      --gasco-color-warning-shade: #e0bb2e;
+      --gasco-color-warning-tint: #ffd948;
+
+      --gasco-color-danger: #ff4961;
+      --gasco-color-danger-rgb: 255, 73, 97;
+      --gasco-color-danger-contrast: #ffffff;
+      --gasco-color-danger-contrast-rgb: 255, 255, 255;
+      --gasco-color-danger-shade: #e04055;
+      --gasco-color-danger-tint: #ff5b71;
+
+      --gasco-color-dark: #f4f5f8;
+      --gasco-color-dark-rgb: 244, 245, 248;
+      --gasco-color-dark-contrast: #000000;
+      --gasco-color-dark-contrast-rgb: 0, 0, 0;
+      --gasco-color-dark-shade: #d7d8da;
+      --gasco-color-dark-tint: #f5f6f9;
+
+      --gasco-color-medium: #989aa2;
+      --gasco-color-medium-rgb: 152, 154, 162;
+      --gasco-color-medium-contrast: #000000;
+      --gasco-color-medium-contrast-rgb: 0, 0, 0;
+      --gasco-color-medium-shade: #86888f;
+      --gasco-color-medium-tint: #a2a4ab;
+
+      --gasco-color-light: #222428;
+      --gasco-color-light-rgb: 34, 36, 40;
+      --gasco-color-light-contrast: #ffffff;
+      --gasco-color-light-contrast-rgb: 255, 255, 255;
+      --gasco-color-light-shade: #1e2023;
+      --gasco-color-light-tint: #383a3e;
+    }
+
+    /*
+       * iOS Dark Theme
+       * -------------------------------------------
+       */
+
+    .ios body.dark {
+      --gasco-background-color: #000000;
+      --gasco-background-color-rgb: 0, 0, 0;
+
+      --gasco-text-color: #ffffff;
+      --gasco-text-color-rgb: 255, 255, 255;
+
+      --gasco-color-step-50: #0d0d0d;
+      --gasco-color-step-100: #1a1a1a;
+      --gasco-color-step-150: #262626;
+      --gasco-color-step-200: #333333;
+      --gasco-color-step-250: #404040;
+      --gasco-color-step-300: #4d4d4d;
+      --gasco-color-step-350: #595959;
+      --gasco-color-step-400: #666666;
+      --gasco-color-step-450: #737373;
+      --gasco-color-step-500: #808080;
+      --gasco-color-step-550: #8c8c8c;
+      --gasco-color-step-600: #999999;
+      --gasco-color-step-650: #a6a6a6;
+      --gasco-color-step-700: #b3b3b3;
+      --gasco-color-step-750: #bfbfbf;
+      --gasco-color-step-800: #cccccc;
+      --gasco-color-step-850: #d9d9d9;
+      --gasco-color-step-900: #e6e6e6;
+      --gasco-color-step-950: #f2f2f2;
+
+      --gasco-item-background: #000000;
+
+      --gasco-card-background: #1c1c1d;
+    }
+
+    .ios body.dark gasco-modal {
+      --gasco-background-color: var(--gasco-color-step-100);
+      --gasco-toolbar-background: var(--gasco-color-step-150);
+      --gasco-toolbar-border-color: var(--gasco-color-step-250);
+      --gasco-item-background: var(--gasco-color-step-150);
+    }
+
+    /*
+       * Material Design Dark Theme
+       * -------------------------------------------
+       */
+
+    .md body.dark {
+      --gasco-background-color: #121212;
+      --gasco-background-color-rgb: 18, 18, 18;
+
+      --gasco-text-color: #ffffff;
+      --gasco-text-color-rgb: 255, 255, 255;
+
+      --gasco-border-color: #222222;
+
+      --gasco-color-step-50: #1e1e1e;
+      --gasco-color-step-100: #2a2a2a;
+      --gasco-color-step-150: #363636;
+      --gasco-color-step-200: #414141;
+      --gasco-color-step-250: #4d4d4d;
+      --gasco-color-step-300: #595959;
+      --gasco-color-step-350: #656565;
+      --gasco-color-step-400: #717171;
+      --gasco-color-step-450: #7d7d7d;
+      --gasco-color-step-500: #898989;
+      --gasco-color-step-550: #949494;
+      --gasco-color-step-600: #a0a0a0;
+      --gasco-color-step-650: #acacac;
+      --gasco-color-step-700: #b8b8b8;
+      --gasco-color-step-750: #c4c4c4;
+      --gasco-color-step-800: #d0d0d0;
+      --gasco-color-step-850: #dbdbdb;
+      --gasco-color-step-900: #e7e7e7;
+      --gasco-color-step-950: #f3f3f3;
+
+      --gasco-item-background: #1e1e1e;
+
+      --gasco-toolbar-background: #1f1f1f;
+
+      --gasco-tab-bar-background: #1f1f1f;
+
+      --gasco-card-background: #1e1e1e;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div style="display: grid; gap: 1rem; margin: 1rem;">
+    <gasco-input label="calendar" calendar id="calendar">
+      <i slot="end" class="material-icons" slot="start">web_asset</i>
+    </gasco-input>
+  
+    <gasco-input label="no-calendar"></gasco-input>
+  </div>
+
+
+  <script>
+    const calendar = document.querySelector('gasco-input');
+
+    calendar.addEventListener('gascoFocus', (e) => {
+      console.log('Listen gascoFocus: fired');
+      console.log(e.target);
+    });
+
+    calendar.addEventListener('gascoBlur', (e) => {
+      console.log('Listen gascoFocus: fired');
+      console.log(e.target);
+    });
+
+  </script>
+</body>
+
+</html>

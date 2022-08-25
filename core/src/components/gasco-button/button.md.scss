@@ -83,7 +83,7 @@
 // Material Design Button Sizes
 // --------------------------------------------------
 
-:host(.button-large) {
+:host(.button-large:not(.gasco-button-icon)) {
   --padding-top: #{$button-md-large-padding-top};
   --padding-start: #{$button-md-large-padding-start};
   --padding-end: #{$button-md-large-padding-end};
@@ -94,7 +94,7 @@
   font-size: #{$button-md-large-font-size};
 }
 
-:host(.button-small) {
+:host(.button-small:not(.gasco-button-icon)) {
   --padding-top: #{$button-md-small-padding-top};
   --padding-start: #{$button-md-small-padding-start};
   --padding-end: #{$button-md-small-padding-end};

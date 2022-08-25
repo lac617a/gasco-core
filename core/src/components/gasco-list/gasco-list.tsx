@@ -5,7 +5,7 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
   tag: 'gasco-list',
   styleUrl: 'gasco-list.md.scss',
 })
-export class List implements ComponentInterface {
+export class GascoList implements ComponentInterface {
   @Element() el!: HTMLElement;
 
   /**

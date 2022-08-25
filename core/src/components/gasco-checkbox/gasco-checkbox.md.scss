@@ -23,6 +23,7 @@
 
   width: var(--size);
   height: var(--size);
+  transition: 300ms;
 }
 
 .checkbox-icon path {
@@ -46,7 +47,18 @@
 
 // TODO .item-md.item-checkbox-disabled gasco-label
 :host(.checkbox-disabled) {
-  opacity: $checkbox-md-disabled-opacity;
+  .checkbox-icon {
+    --border-color-checked: #EBEBEB;
+    --background-checked: #EBEBEB;
+    --background: #EBEBEB;
+    --border-color: #CCCCCC;
+    path {
+      --checkmark-color: #CCCCCC;
+    }
+  }
+  gasco-label {
+    opacity: $checkbox-md-disabled-opacity;
+  }
 }
 
 
@@ -54,8 +66,9 @@
 // --------------------------------------------------------
 
 :host(.in-item) {
+  @include margin(0, 12px, 0, 0);
   // end position by default
-  @include margin($checkbox-md-item-end-margin-top, $checkbox-md-item-end-margin-end, $checkbox-md-item-end-margin-bottom, $checkbox-md-item-end-margin-start);
+  // @include margin($checkbox-md-item-end-margin-top, $checkbox-md-item-end-margin-end, $checkbox-md-item-end-margin-bottom, $checkbox-md-item-end-margin-start);
 
   display: block;
 
@@ -63,10 +76,23 @@
 }
 
 :host(.in-item[slot="start"]) {
-  @include margin($checkbox-md-item-start-margin-top, $checkbox-md-item-start-margin-end, $checkbox-md-item-start-margin-bottom, $checkbox-md-item-start-margin-start);
+  @include margin(0, 12px, 0, 0);
 }
 
 // REVIEW
 // .checkbox-md + .item-inner gasco-label {
 //   @include margin-horizontal(0, null);
 // }
+
+@media only screen and (max-width: 480px) {
+  :host {
+    --size: 18px;
+  }
+}
+
+// Checkbox Hover
+@media (any-hover: hover) {
+  :host(:hover) {
+    box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
+  }
+}

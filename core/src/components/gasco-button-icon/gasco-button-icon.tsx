@@ -51,7 +51,7 @@ export class GascoButtonIcon implements ComponentInterface, ButtonInterface {
    * Set to `"clear"` for a transparent button, to `"outline"` for a transparent
    * button with a border, or to `"solid"`.
    */
-  @Prop({ reflect: true, mutable: true }) fill?: | 'outline' | 'solid' | 'default' = 'solid';
+  @Prop({ reflect: true, mutable: true }) fill?: | 'outline' | 'solid' | 'clear' = 'solid';
 
   /**
    * The button shape.
@@ -83,10 +83,6 @@ export class GascoButtonIcon implements ComponentInterface, ButtonInterface {
     this.inheritedAttributes = inheritAriaAttributes(this.el);
   }
 
-  private get hasIconOnly() {
-    return !!this.el.querySelector('[slot="icon-only"]');
-  }
-
   private onFocus = () => this.gascoFocus.emit();
 
   private onBlur = () => this.gascoBlur.emit();
@@ -101,7 +97,6 @@ export class GascoButtonIcon implements ComponentInterface, ButtonInterface {
       disabled,
       progress,
       buttonType,
-      hasIconOnly,
       inheritedAttributes,
     } = this;
     const finalSize = size === undefined && this.inItem ? 'small' : size;
@@ -115,9 +110,9 @@ export class GascoButtonIcon implements ComponentInterface, ButtonInterface {
           [`${buttonType}-${finalSize}`]: finalSize !== undefined,
           [`${buttonType}-${shape}`]: shape !== undefined,
           [`${buttonType}-${fill}`]: true,
-          'button-has-icon-only': hasIconOnly,
           'button-disabled': disabled,
           'gasco-activatable': true,
+          'gasco-button-icon': true,
           'gasco-focusable': true,
         })}
       >

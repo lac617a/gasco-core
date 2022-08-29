@@ -1,0 +1,20 @@
+@import '../../themes//gasco.globals.scss';
+
+:host {
+  --margin-inline: 10px;
+  --margin-block: 0;
+  --height-divider: 2px;
+  --background: #{gasco-color(primary, base)};
+}
+
+.divider-native {
+  @include margin(var(--margin-inline), var(--margin-block), var(--margin-inline), var(--margin-block));
+  height: var(--height-divider);
+  width: 100%;
+  max-width: 100%;
+  background: #{current-color(base)};
+}
+
+:host(.divider-round) .divider-native {
+  border-radius: 100px;
+}

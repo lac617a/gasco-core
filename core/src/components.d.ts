@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, DatetimeParts, FrameworkDelegate, InputChangeEventDetail, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
+import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, ChipChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, DatetimeParts, FrameworkDelegate, InputChangeEventDetail, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
 import { CounterFormatter } from "./components/gasco-item/gasco-item-interface";
 import { PickerColumnItem } from "./components/gasco-picker-column-internal/picker-column-internal-interfaces";
 import { PickerInternalChangeEventDetail } from "./components/gasco-picker-internal/picker-internal-interfaces";
@@ -61,6 +61,92 @@ export namespace Components {
           * The value of the accordion group.
          */
         "value"?: string | string[] | null;
+    }
+    interface GascoAutocomplete {
+        /**
+          * If `true`, enable searchbar animation.
+         */
+        "animated": boolean;
+        /**
+          * Set the input's autocomplete property.
+         */
+        "autocomplete": AutocompleteTypes;
+        /**
+          * Set the input's autocorrect property.
+         */
+        "autocorrect": 'on' | 'off';
+        /**
+          * Set the cancel button icon. Only applies to `md` mode. Defaults to `arrow-back-sharp`.
+         */
+        "cancelButtonIcon": string;
+        /**
+          * Set the the cancel button text. Only applies to `ios` mode.
+         */
+        "cancelButtonText": string;
+        /**
+          * Set the clear icon. Defaults to `close-circle` for `ios` and `close-sharp` for `md`.
+         */
+        "clearIcon"?: string;
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`.
+         */
+        "color"?: Color;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `gascoChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Set the input's placeholder. `placeholder` can accept either plaintext or HTML as a string. To display characters normally reserved for HTML, they must be escaped. For example `<Ionic>` would become `&lt;Ionic&gt;`  For more information: [Security Documentation](https://ionicframework.com/docs/faq/security)
+         */
+        "placeholder": string;
+        /**
+          * The icon to use as the search icon. Defaults to `search-outline` in `ios` mode and `search-sharp` in `md` mode.
+         */
+        "searchIcon"?: string;
+        /**
+          * Sets focus on the specified `ion-searchbar`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Sets the behavior for the cancel button. Defaults to `"never"`. Setting to `"focus"` shows the cancel button on focus. Setting to `"never"` hides the cancel button. Setting to `"always"` shows the cancel button regardless of focus state.
+         */
+        "showCancelButton": 'never' | 'focus' | 'always';
+        /**
+          * Sets the behavior for the clear button. Defaults to `"focus"`. Setting to `"focus"` shows the clear button on focus if the input is not empty. Setting to `"never"` hides the clear button. Setting to `"always"` shows the clear button regardless of focus state, but only if the input is not empty.
+         */
+        "showClearButton": 'never' | 'focus' | 'always';
+        /**
+          * If `true`, enable spellcheck on the input.
+         */
+        "spellcheck": boolean;
+        /**
+          * Values that the auto-complete textbox should search for
+         */
+        "suggestionlist": string[];
+        /**
+          * Set the type of the input.
+         */
+        "type": string;
+        /**
+          * the value of the searchbar.
+         */
+        "value"?: string | null;
     }
     interface GascoBackdrop {
         /**
@@ -149,6 +235,36 @@ export namespace Components {
         "type": 'submit' | 'reset' | 'button';
     }
     interface GascoCard {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * card direction, default is "vertical".
+         */
+        "direction"?: 'horizontal' | 'horizontal-reverse' | 'vertical';
+        /**
+          * If `true`, the user cannot interact with the card.
+         */
+        "disabled": boolean;
+    }
+    interface GascoCardContent {
+    }
+    interface GascoCardHeader {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * If `true`, the card header will be translucent.
+         */
+        "translucent": boolean;
+    }
+    interface GascoCardTitle {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`. For more information on colors, see [theming](/docs/theming/basics).
+         */
+        "color"?: Color;
     }
     interface GascoCheckbox {
         /**
@@ -175,7 +291,7 @@ export namespace Components {
     }
     interface GascoChip {
         /**
-          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
          */
         "color"?: Color;
         /**
@@ -183,9 +299,9 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Display an outline style button.
+          * The button size.
          */
-        "outline": boolean;
+        "size"?: 'small' | 'default' | 'large';
     }
     interface GascoContent {
         /**
@@ -360,6 +476,14 @@ export namespace Components {
         "yearValues"?: number[] | number | string;
     }
     interface GascoDivider {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * The Divider shape.
+         */
+        "shape"?: 'round';
     }
     interface GascoInput {
         /**
@@ -1188,6 +1312,10 @@ export interface GascoAccordionGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoAccordionGroupElement;
 }
+export interface GascoAutocompleteCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoAutocompleteElement;
+}
 export interface GascoBackdropCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoBackdropElement;
@@ -1203,6 +1331,10 @@ export interface GascoButtonIconCustomEvent<T> extends CustomEvent<T> {
 export interface GascoCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoCheckboxElement;
+}
+export interface GascoChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoChipElement;
 }
 export interface GascoContentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1277,6 +1409,12 @@ declare global {
         prototype: HTMLGascoAccordionGroupElement;
         new (): HTMLGascoAccordionGroupElement;
     };
+    interface HTMLGascoAutocompleteElement extends Components.GascoAutocomplete, HTMLStencilElement {
+    }
+    var HTMLGascoAutocompleteElement: {
+        prototype: HTMLGascoAutocompleteElement;
+        new (): HTMLGascoAutocompleteElement;
+    };
     interface HTMLGascoBackdropElement extends Components.GascoBackdrop, HTMLStencilElement {
     }
     var HTMLGascoBackdropElement: {
@@ -1300,6 +1438,24 @@ declare global {
     var HTMLGascoCardElement: {
         prototype: HTMLGascoCardElement;
         new (): HTMLGascoCardElement;
+    };
+    interface HTMLGascoCardContentElement extends Components.GascoCardContent, HTMLStencilElement {
+    }
+    var HTMLGascoCardContentElement: {
+        prototype: HTMLGascoCardContentElement;
+        new (): HTMLGascoCardContentElement;
+    };
+    interface HTMLGascoCardHeaderElement extends Components.GascoCardHeader, HTMLStencilElement {
+    }
+    var HTMLGascoCardHeaderElement: {
+        prototype: HTMLGascoCardHeaderElement;
+        new (): HTMLGascoCardHeaderElement;
+    };
+    interface HTMLGascoCardTitleElement extends Components.GascoCardTitle, HTMLStencilElement {
+    }
+    var HTMLGascoCardTitleElement: {
+        prototype: HTMLGascoCardTitleElement;
+        new (): HTMLGascoCardTitleElement;
     };
     interface HTMLGascoCheckboxElement extends Components.GascoCheckbox, HTMLStencilElement {
     }
@@ -1442,10 +1598,14 @@ declare global {
     interface HTMLElementTagNameMap {
         "gasco-accordion": HTMLGascoAccordionElement;
         "gasco-accordion-group": HTMLGascoAccordionGroupElement;
+        "gasco-autocomplete": HTMLGascoAutocompleteElement;
         "gasco-backdrop": HTMLGascoBackdropElement;
         "gasco-button": HTMLGascoButtonElement;
         "gasco-button-icon": HTMLGascoButtonIconElement;
         "gasco-card": HTMLGascoCardElement;
+        "gasco-card-content": HTMLGascoCardContentElement;
+        "gasco-card-header": HTMLGascoCardHeaderElement;
+        "gasco-card-title": HTMLGascoCardTitleElement;
         "gasco-checkbox": HTMLGascoCheckboxElement;
         "gasco-chip": HTMLGascoChipElement;
         "gasco-content": HTMLGascoContentElement;
@@ -1523,6 +1683,112 @@ declare namespace LocalJSX {
           * The value of the accordion group.
          */
         "value"?: string | string[] | null;
+    }
+    interface GascoAutocomplete {
+        /**
+          * If `true`, enable searchbar animation.
+         */
+        "animated"?: boolean;
+        /**
+          * Set the input's autocomplete property.
+         */
+        "autocomplete"?: AutocompleteTypes;
+        /**
+          * Set the input's autocorrect property.
+         */
+        "autocorrect"?: 'on' | 'off';
+        /**
+          * Set the cancel button icon. Only applies to `md` mode. Defaults to `arrow-back-sharp`.
+         */
+        "cancelButtonIcon"?: string;
+        /**
+          * Set the the cancel button text. Only applies to `ios` mode.
+         */
+        "cancelButtonText"?: string;
+        /**
+          * Set the clear icon. Defaults to `close-circle` for `ios` and `close-sharp` for `md`.
+         */
+        "clearIcon"?: string;
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`.
+         */
+        "color"?: Color;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `gascoChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onGascoBlur"?: (event: GascoAutocompleteCustomEvent<void>) => void;
+        /**
+          * Emitted when the cancel button is clicked.
+         */
+        "onGascoCancel"?: (event: GascoAutocompleteCustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onGascoChange"?: (event: GascoAutocompleteCustomEvent<SearchbarChangeEventDetail>) => void;
+        /**
+          * Emitted when the clear input button is clicked.
+         */
+        "onGascoClear"?: (event: GascoAutocompleteCustomEvent<void>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onGascoFocus"?: (event: GascoAutocompleteCustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onGascoInput"?: (event: GascoAutocompleteCustomEvent<KeyboardEvent>) => void;
+        /**
+          * Emitted when the styles change.
+         */
+        "onGascoStyle"?: (event: GascoAutocompleteCustomEvent<StyleEventDetail>) => void;
+        /**
+          * Set the input's placeholder. `placeholder` can accept either plaintext or HTML as a string. To display characters normally reserved for HTML, they must be escaped. For example `<Ionic>` would become `&lt;Ionic&gt;`  For more information: [Security Documentation](https://ionicframework.com/docs/faq/security)
+         */
+        "placeholder"?: string;
+        /**
+          * The icon to use as the search icon. Defaults to `search-outline` in `ios` mode and `search-sharp` in `md` mode.
+         */
+        "searchIcon"?: string;
+        /**
+          * Sets the behavior for the cancel button. Defaults to `"never"`. Setting to `"focus"` shows the cancel button on focus. Setting to `"never"` hides the cancel button. Setting to `"always"` shows the cancel button regardless of focus state.
+         */
+        "showCancelButton"?: 'never' | 'focus' | 'always';
+        /**
+          * Sets the behavior for the clear button. Defaults to `"focus"`. Setting to `"focus"` shows the clear button on focus if the input is not empty. Setting to `"never"` hides the clear button. Setting to `"always"` shows the clear button regardless of focus state, but only if the input is not empty.
+         */
+        "showClearButton"?: 'never' | 'focus' | 'always';
+        /**
+          * If `true`, enable spellcheck on the input.
+         */
+        "spellcheck"?: boolean;
+        /**
+          * Values that the auto-complete textbox should search for
+         */
+        "suggestionlist"?: string[];
+        /**
+          * Set the type of the input.
+         */
+        "type"?: string;
+        /**
+          * the value of the searchbar.
+         */
+        "value"?: string | null;
     }
     interface GascoBackdrop {
         /**
@@ -1631,6 +1897,36 @@ declare namespace LocalJSX {
         "type"?: 'submit' | 'reset' | 'button';
     }
     interface GascoCard {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * card direction, default is "vertical".
+         */
+        "direction"?: 'horizontal' | 'horizontal-reverse' | 'vertical';
+        /**
+          * If `true`, the user cannot interact with the card.
+         */
+        "disabled"?: boolean;
+    }
+    interface GascoCardContent {
+    }
+    interface GascoCardHeader {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * If `true`, the card header will be translucent.
+         */
+        "translucent"?: boolean;
+    }
+    interface GascoCardTitle {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`. For more information on colors, see [theming](/docs/theming/basics).
+         */
+        "color"?: Color;
     }
     interface GascoCheckbox {
         /**
@@ -1673,7 +1969,7 @@ declare namespace LocalJSX {
     }
     interface GascoChip {
         /**
-          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
          */
         "color"?: Color;
         /**
@@ -1681,9 +1977,21 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Display an outline style button.
+          * Emitted when the chip loses focus.
          */
-        "outline"?: boolean;
+        "onGascoBlur"?: (event: GascoChipCustomEvent<void>) => void;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onGascoChange"?: (event: GascoChipCustomEvent<ChipChangeEventDetail>) => void;
+        /**
+          * Emitted when the chip has focus.
+         */
+        "onGascoFocus"?: (event: GascoChipCustomEvent<void>) => void;
+        /**
+          * The button size.
+         */
+        "size"?: 'small' | 'default' | 'large';
     }
     interface GascoContent {
         /**
@@ -1855,6 +2163,14 @@ declare namespace LocalJSX {
         "yearValues"?: number[] | number | string;
     }
     interface GascoDivider {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * The Divider shape.
+         */
+        "shape"?: 'round';
     }
     interface GascoInput {
         /**
@@ -2791,10 +3107,14 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "gasco-accordion": GascoAccordion;
         "gasco-accordion-group": GascoAccordionGroup;
+        "gasco-autocomplete": GascoAutocomplete;
         "gasco-backdrop": GascoBackdrop;
         "gasco-button": GascoButton;
         "gasco-button-icon": GascoButtonIcon;
         "gasco-card": GascoCard;
+        "gasco-card-content": GascoCardContent;
+        "gasco-card-header": GascoCardHeader;
+        "gasco-card-title": GascoCardTitle;
         "gasco-checkbox": GascoCheckbox;
         "gasco-chip": GascoChip;
         "gasco-content": GascoContent;
@@ -2826,10 +3146,14 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gasco-accordion": LocalJSX.GascoAccordion & JSXBase.HTMLAttributes<HTMLGascoAccordionElement>;
             "gasco-accordion-group": LocalJSX.GascoAccordionGroup & JSXBase.HTMLAttributes<HTMLGascoAccordionGroupElement>;
+            "gasco-autocomplete": LocalJSX.GascoAutocomplete & JSXBase.HTMLAttributes<HTMLGascoAutocompleteElement>;
             "gasco-backdrop": LocalJSX.GascoBackdrop & JSXBase.HTMLAttributes<HTMLGascoBackdropElement>;
             "gasco-button": LocalJSX.GascoButton & JSXBase.HTMLAttributes<HTMLGascoButtonElement>;
             "gasco-button-icon": LocalJSX.GascoButtonIcon & JSXBase.HTMLAttributes<HTMLGascoButtonIconElement>;
             "gasco-card": LocalJSX.GascoCard & JSXBase.HTMLAttributes<HTMLGascoCardElement>;
+            "gasco-card-content": LocalJSX.GascoCardContent & JSXBase.HTMLAttributes<HTMLGascoCardContentElement>;
+            "gasco-card-header": LocalJSX.GascoCardHeader & JSXBase.HTMLAttributes<HTMLGascoCardHeaderElement>;
+            "gasco-card-title": LocalJSX.GascoCardTitle & JSXBase.HTMLAttributes<HTMLGascoCardTitleElement>;
             "gasco-checkbox": LocalJSX.GascoCheckbox & JSXBase.HTMLAttributes<HTMLGascoCheckboxElement>;
             "gasco-chip": LocalJSX.GascoChip & JSXBase.HTMLAttributes<HTMLGascoChipElement>;
             "gasco-content": LocalJSX.GascoContent & JSXBase.HTMLAttributes<HTMLGascoContentElement>;

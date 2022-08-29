@@ -1,0 +1,66 @@
+@import "./gasco-card-content";
+@import "./gasco-card-content.md.vars";
+
+// Material Design Card Content
+// --------------------------------------------------
+
+.card-content {
+  @include padding($card-md-padding-top, $card-md-padding-end, $card-md-padding-bottom, $card-md-padding-start);
+
+  font-size: $card-content-md-font-size;
+
+  line-height: $card-content-md-line-height;
+  font-weight: $card-content-md-font-weight;
+
+  h1 {
+    @include margin(0, 0, 2px);
+
+    font-size: 24px;
+    font-weight: normal;
+  }
+
+  h2 {
+    @include margin(2px, 0);
+
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include margin(2px, 0);
+
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  p {
+    @include margin(0, 0, 2px);
+
+    font-size: 14px;
+    font-weight: normal;
+
+    line-height: 1.5;
+  }
+}
+
+gasco-card-header + .card-content {
+  padding-top: 0;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .card-content {
+    font-size: $card-content-md-font-size;
+    line-height: $card-content-md-line-height;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .card-content {
+    font-size: $card-content-md-font-size-small;
+    line-height: $card-content-md-line-height-small;
+  }
+}

@@ -2,13 +2,15 @@
 
 :host {
   /**
-   * @prop --background: Background of the chip
    * @prop --color: Color of the chip
    */
-  --background: #{rgba($text-color-rgb, .12)};
-  --color: #{rgba($text-color-rgb, .87)};
+  --color: #{gasco-color(primary, base)};
+  --border-color: #{gasco-color(primary, base)};
+  --border-width: 1px;
+  --border-style: solid;
+  --background: transparent;
 
-  @include border-radius(16px);
+  @include border-radius(100px);
   @include font-smoothing();
   @include margin(4px);
   @include padding(7px, 12px);
@@ -19,15 +21,15 @@
 
   align-items: center;
 
-  height: 32px;
+  height: 28px;
 
-  background: var(--background);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
   color: var(--color);
 
   font-family: $font-family-base;
-  font-size: 14px;
-
-  line-height: 1;
 
   cursor: pointer;
 
@@ -35,24 +37,43 @@
 
   vertical-align: middle;
   box-sizing: border-box;
+
+  transition: 300ms;
 }
 
 :host(.chip-disabled) {
+  transition: 300ms;
   cursor: default;
-  opacity: .4;
+  opacity: .8;
   pointer-events: none;
 }
+
+:host(.chip-disabled.chip-outline) {
+  border-color: #{gasco-color(light, contrast)} !important;
+  background: #EBEBEB !important;
+}
+:host(.chip-disabled.chip-outline.gasco-color) {
+  color: #{gasco-color(light, contrast)} !important;
+}
+
 
 // Chip Colors
 // ---------------------------------------------
 
 :host(.gasco-color) {
+  transition: 300ms;
   background: current-color(base, .08);
-  color: current-color(shade);
+  color: current-color(base);
 }
 
 :host(.gasco-color:focus) {
-  background: current-color(base, .12);
+  color: #FFF;
+  background: current-color(base) !important;
+}
+
+:host(.gasco-color:active) {
+  color: #FFF;
+  background: current-color(base) !important;
 }
 
 :host(.gasco-color.gasco-activated) {
@@ -64,18 +85,15 @@
 // ---------------------------------------------
 
 :host(.chip-outline) {
-  border-width: 1px;
-  border-style: solid;
-}
-
-:host(.chip-outline) {
-  border-color: rgba(0, 0, 0, .32);
-
+  transition: 300ms;
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-color: var(--border-color);
   background: transparent;
 }
 
 :host(.chip-outline.gasco-color) {
-  border-color: current-color(base, .32);
+  border-color: current-color(base);
 }
 
 :host(.chip-outline:not(.gasco-color):focus) {
@@ -84,6 +102,22 @@
 
 :host(.chip-outline.gasco-activated:not(.gasco-color)) {
   background: rgba(0, 0, 0, .08);
+}
+
+
+// Chip Size
+// ---------------------------------------------
+:host(.chip-outline.chip-large) {
+  height: 32px;
+  
+  font-size: 18px;
+  line-height: 28px;
+}
+:host(.chip-outline.chip-small) {
+  height: 26px;
+
+  font-size: 14px;
+  line-height: 20px;
 }
 
 
@@ -123,8 +157,8 @@
 // Chip: Activated
 // ---------------------------------------------
 
-:host(.gasco-activated) {
-  --background: #{rgba($text-color-rgb, .20)};
+:host(:active) {
+  --background: current-color(base);
 }
 
 
@@ -132,12 +166,12 @@
 // ---------------------------------------------
 
 @media (any-hover: hover) {
-  :host(:hover) {
+  :host(:hover) { 
     --background: #{rgba($text-color-rgb, .16)};
   }
 
   :host(.gasco-color:hover) {
-    background: current-color(base, .12);
+    background: current-color(base, 0.1);
   }
 
   :host(.chip-outline:not(.gasco-color):hover) {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Autocomplete - Basic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <div style="display: grid; gap: 1rem; margin: 1rem;">
+    <gasco-autocomplete id="autocomplete"></gasco-autocomplete>
+    <gasco-autocomplete autocorrect="off" autocomplete="off" spellcheck="true"></gasco-autocomplete>
+    <gasco-autocomplete disabled></gasco-autocomplete>
+  </div>
+
+  <script>
+    var testArr = ['the', 'valid', 'strings', 'for', 'search', 'auto', 'complete', 'foo', 'bar'];
+    const autocomplete = document.querySelector('#autocomplete');
+
+    autocomplete.addEventListener('gascoFocus', (e) => {
+      autocomplete.suggestionlist = testArr;
+    });
+
+    autocomplete.addEventListener('gascoChange', (e) => {
+      console.log(e.target.value);
+    });
+
+  </script>
+</body>
+
+</html>

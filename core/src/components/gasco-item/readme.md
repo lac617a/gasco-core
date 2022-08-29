@@ -92,11 +92,13 @@
 
 ### Used by
 
+ - [gasco-autocomplete](../gasco-autocomplete)
  - [gasco-datetime](../gasco-datetime)
 
 ### Graph
 ```mermaid
 graph TD;
+  gasco-autocomplete --> gasco-item
   gasco-datetime --> gasco-item
   style gasco-item fill:#f9f,stroke:#333,stroke-width:4px
 ```

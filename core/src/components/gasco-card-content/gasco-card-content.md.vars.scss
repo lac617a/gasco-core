@@ -1,0 +1,47 @@
+@import "../../themes/gasco.globals.md";
+
+// Material Design Card Content
+// --------------------------------------------------
+
+/// @prop - Padding top of the card
+$card-md-padding-top:                 13px !default;
+
+/// @prop - Padding right of the card
+$card-md-padding-end:                 16px !default;
+
+/// @prop - Padding bottom of the card
+$card-md-padding-bottom:              13px !default;
+
+/// @prop - Padding start of the card
+$card-md-padding-start:               16px !default;
+
+/// @prop - Font size of the card
+$card-content-md-font-size:           16px !default;
+
+/// @prop - Line height of the card
+$card-content-md-line-height:         24px !default;
+
+/// @prop - Font weight of the card
+$card-content-md-font-weight:         400 !default;
+
+
+
+
+// Card-content Large
+// --------------------------------------------------
+
+/// @prop - Font size of the card
+$card-content-md-font-size-large:     18px !default;
+
+/// @prop - Line height of the card
+$card-content-md-line-height-large:   28px !default;
+
+
+// Card-content Small
+// --------------------------------------------------
+
+/// @prop - Font size of the card
+$card-content-md-font-size-small:     14px !default;
+
+/// @prop - Line height of the card
+$card-content-md-line-height-small:   20px !default;

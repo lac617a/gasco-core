@@ -1,0 +1,13 @@
+@import "./gasco-card-header";
+@import "./gasco-card-header.md.vars";
+
+// Material Design Card Header
+// --------------------------------------------------
+
+:host {
+  @include padding($card-md-header-padding-top, $card-md-header-padding-end, $card-md-header-padding-bottom, $card-md-header-padding-start);
+}
+
+::slotted(gasco-card-title:not(:first-child)) {
+  margin-top: 8px;
+}

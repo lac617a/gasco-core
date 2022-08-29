@@ -16,6 +16,8 @@ export * from './components/gasco-tooltip/gasco-tooltip-interface';
 export * from './components/gasco-datetime/gasco-datetime-interface';
 export * from './components/gasco-accordion-group/gasco-accordion-group-interface';
 export * from './components/gasco-paginator/gasco-paginator-interface';
+export * from './components/gasco-autocomplete/gasco-autocomplete-interface';
+export * from './components/gasco-chip/gasco-chip-interface';
 
 // Types from utils
 export {

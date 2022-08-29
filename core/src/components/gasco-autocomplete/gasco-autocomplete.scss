@@ -1,0 +1,210 @@
+@import "../../themes/gasco.globals";
+
+// Searchbar
+// --------------------------------------------------
+
+:host {
+  /**
+   * @prop --background: Background of the searchbar input
+   * @prop --box-shadow: Box shadow of the searchbar input
+   * @prop --border-radius: Border radius of the searchbar input
+   * @prop --cancel-button-color: Color of the searchbar cancel button
+   * @prop --clear-button-color: Color of the searchbar clear button
+   * @prop --color: Color of the searchbar text
+   * @prop --icon-color: Color of the searchbar icon
+   * @prop --placeholder-color: Color of the searchbar placeholder
+   * @prop --placeholder-font-style: Font style of the searchbar placeholder
+   * @prop --placeholder-font-weight: Font weight of the searchbar placeholder
+   * @prop --placeholder-opacity: Opacity of the searchbar placeholder
+   */
+  --box-shadow: 0px 4px 10px rgba(171, 190, 209, 0.4);
+  --placeholder-color: #{gasco-color(medium, base)};
+  --placeholder-font-style: initial;
+  --placeholder-font-weight: initial;
+  --placeholder-opacity: .5;
+  --background: transparent;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: #{gasco-color(medium, base)};
+  --color: #{gasco-color(medium, base)};
+
+  @include border-radius(var(--border-radius));
+
+  @include font-smoothing();
+
+  display: flex;
+  position: relative;
+
+  align-items: center;
+
+  width: 100%;
+
+  color: var(--color);
+
+  font-family: $font-family-base;
+  box-sizing: border-box;
+
+  border-style: var(--border-style);
+  border-color: var(--border-color);
+  border-width: var(--border-width);
+  background: var(--background);
+  transition: 300ms;
+}
+
+:host(.gasco-color) {
+  color: current-color(contrast);
+}
+
+:host(.gasco-color) .searchbar-input {
+  background: current-color(base);
+}
+
+:host(.gasco-color) .searchbar-clear-button,
+:host(.gasco-color) .searchbar-cancel-button,
+:host(.gasco-color) .searchbar-search-icon {
+  color: inherit;
+}
+
+.searchbar-search-icon {
+  // Don't let them tap on the icon
+  color: var(--icon-color);
+
+  pointer-events: none;
+}
+
+.searchbar-input-container {
+  display: block;
+  position: relative;
+
+  flex-shrink: 1;
+
+  width: 100%;
+}
+
+.searchbar-input {
+  @include text-inherit();
+  transition: 300ms;
+
+  display: block;
+
+  width: 100%;
+
+  border: 0;
+
+  outline: none;
+
+  background: var(--background);
+
+  font-family: inherit;
+
+  box-sizing: border-box;
+  appearance: none;
+
+  &::placeholder {
+    color: var(--placeholder-color);
+
+    font-family: inherit;
+    font-style: var(--placeholder-font-style);
+    font-weight: var(--placeholder-font-weight);
+
+    opacity: var(--placeholder-opacity);
+  }
+
+  &::-webkit-search-cancel-button,
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+.searchbar-cancel-button {
+  @include margin(0);
+
+  display: none;
+
+  height: 100%;
+
+  border: 0;
+
+  outline: none;
+
+  color: var(--cancel-button-color);
+
+  cursor: pointer;
+  appearance: none;
+}
+
+.searchbar-cancel-button > div {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.searchbar-clear-button {
+  @include margin(0);
+  @include padding(0);
+
+  display: none;
+
+  min-height: 0;
+
+  outline: none;
+
+  color: var(--clear-button-color);
+  appearance: none;
+}
+
+:host(.searchbar-has-value.searchbar-should-show-clear) .searchbar-clear-button {
+  display: block;
+}
+
+// DISABLED
+:host(.searchbar-disabled) {
+  cursor: default;
+  pointer-events: none;
+  --border-color: #{gasco-color(light, base)} !important;
+  --background: #{gasco-color(light, base)} !important;
+}
+:host(.searchbar-disabled) {
+  opacity: .8;
+}
+
+:host(.searchbar-disabled) .native-input-label {
+  --background: #{gasco-color(light, base)};
+}
+
+// Input Has focus
+// --------------------------------------------------
+// When the input has focus, then the input cover should be hidden
+
+:host(.searchbar-has-focus) {
+  pointer-events: none;
+  --border-color: #{gasco-color(primary, base)} !important;
+  .searchbar-input {
+    &-label, &-textHelp, &-limit {
+      color: #{gasco-color(primary, base)};
+    }
+  }
+}
+
+:host(.searchbar-has-focus) [slot="start"] {
+  color: #{gasco-color(primary, base)};
+}
+
+:host(.searchbar-has-focus) input,
+:host(.searchbar-has-focus) a,
+:host(.searchbar-has-focus) button {
+  pointer-events: auto;
+}
+
+// Input Hover
+@media (any-hover: hover) {
+  :host(:not([disabled]):hover) {
+    box-shadow: var(--box-shadow);
+    --border-color: #{gasco-color(dark, base)};
+    border-radius: var(--border-radius);
+  }
+}

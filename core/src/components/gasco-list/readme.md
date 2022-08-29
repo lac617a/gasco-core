@@ -13,6 +13,19 @@
 | `lines`  | `lines`   | How the bottom border should be displayed on all items.             | `"full" \| "inset" \| "none"` | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [gasco-autocomplete](../gasco-autocomplete)
+
+### Graph
+```mermaid
+graph TD;
+  gasco-autocomplete --> gasco-list
+  style gasco-list fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

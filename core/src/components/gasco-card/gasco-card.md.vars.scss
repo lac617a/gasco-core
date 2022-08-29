@@ -1,0 +1,42 @@
+@import "../../themes/gasco.globals.md";
+
+// Material Design Card
+// --------------------------------------------------
+
+$card-md-background:                  $background-color-value;
+
+/// @prop - Margin top of the card
+$card-md-margin-top:                  10px !default;
+
+/// @prop - Margin end of the card
+$card-md-margin-end:                  10px !default;
+
+/// @prop - Margin bottom of the card
+$card-md-margin-bottom:               10px !default;
+
+/// @prop - Margin start of the card
+$card-md-margin-start:                10px !default;
+
+/// @prop - Box shadow of the card
+$card-md-box-shadow:                  0px 4px 8px rgba(171, 190, 209, 0.4) !default;
+
+/// @prop - Border radius of the card
+$card-md-border-radius:               8px !default;
+
+/// @prop - Font size of the card
+$card-md-font-size:                   14px !default;
+
+/// @prop - Line height of the card
+$card-md-line-height:                 1.5 !default;
+
+
+// Material Design Card vertical
+// --------------------------------------------------
+
+$card-max-width-vertical:             480px !default;
+
+
+// Material Design Card horizontal
+// --------------------------------------------------
+
+$card-max-width-horizontal:           802px !default;

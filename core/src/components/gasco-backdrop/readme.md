@@ -25,6 +25,7 @@
 
 ### Used by
 
+ - [gasco-dialog](../gasco-dialog)
  - [gasco-menu](../gasco-menu)
  - [gasco-modal](../gasco-modal)
  - [gasco-tooltip](../gasco-tooltip)
@@ -32,6 +33,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  gasco-dialog --> gasco-backdrop
   gasco-menu --> gasco-backdrop
   gasco-modal --> gasco-backdrop
   gasco-tooltip --> gasco-backdrop

@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Gasco web component</title>
 
-    <script type="module" src="/build/gasco.esm.js"></script>
-    <script nomodule src="/build/gasco.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-  </head>
-  <body>
-    <gasco-chip>input</gasco-chip>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Gasco web component</title>
+
+  <script type="module" src="/build/gasco.esm.js"></script>
+  <script nomodule src="/build/gasco.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
+
+<body>
+
+  <p>
+    <gasco-button id="gasco-dialog" onclick="openModal('#gasco-dialog')">Present dialog</gasco-button>
+  </p>
+  <p>
+    <gasco-button id="gasco-dialog2" onclick="openModal('#gasco-dialog2')">
+      Present and close modal
+    </gasco-button>
+  </p>
+
+  <script>
+    const openModal = (id, timeout) => {
+      const modal = document.querySelector(id);
+      modal.isOpen = true;
+
+      if (timeout) {
+        setTimeout(() => {
+          modal.isOpen = false;
+        }, timeout);
+      }
+      modal.addEventListener('gascoModalDidDismiss', () => {
+        modal.isOpen = false;
+      });
+    };
+
+  </script>
+  <gasco-dialog>
+
+  </gasco-dialog>
 
 
 
@@ -25,7 +53,7 @@
 
 
 
-    <!-- <gasco-paginator page="1" page-size="10" item-count="100" select-list="[10,20,30]"></gasco-paginator>
+  <!-- <gasco-paginator page="1" page-size="10" item-count="100" select-list="[10,20,30]"></gasco-paginator>
     <script>
       const paginator = document.querySelector('gasco-paginator');
 
@@ -55,5 +83,6 @@
           });
       }
     </script> -->
-  </body>
+</body>
+
 </html>

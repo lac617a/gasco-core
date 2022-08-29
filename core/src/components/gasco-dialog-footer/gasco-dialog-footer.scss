@@ -1,0 +1,17 @@
+@import "../../themes/gasco.globals";
+
+// Dialog Footer
+// --------------------------------------------------
+
+:host {
+  --background: transparent;
+  --color: inherit;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  background: var(--background);
+  color: var(--color);
+}

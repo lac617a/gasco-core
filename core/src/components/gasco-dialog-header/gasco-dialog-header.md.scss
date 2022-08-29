@@ -1,0 +1,13 @@
+@import "./gasco-dialog-header";
+@import "../gasco-card-header/gasco-card-header.md.vars";
+
+// Material Design Dialog Header
+// --------------------------------------------------
+
+:host {
+  @include padding($card-md-header-padding-top, $card-md-header-padding-end, $card-md-header-padding-bottom, $card-md-header-padding-start);
+}
+
+::slotted(gasco-dialog-title:not(:first-child)) {
+  margin-top: 8px;
+}

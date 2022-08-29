@@ -1,0 +1,24 @@
+@import "./gasco-dialog-footer";
+@import "../gasco-card-header/gasco-card-header.md.vars";
+
+// Material Design Dialog Footer
+// --------------------------------------------------
+
+:host {
+  @include margin($card-md-header-padding-top, $card-md-header-padding-end, $card-md-header-padding-bottom, $card-md-header-padding-start);
+  justify-content: flex-end;
+}
+
+::slotted(gasco-dialog-content:not(:first-child)) {
+  margin-top: 8px;
+}
+
+:host(.dialog-footer-left) {
+  justify-content: flex-start;
+
+}
+
+::slotted(gasco-input) {
+  margin-top: 1rem;
+  text-align: left;
+}

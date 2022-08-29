@@ -475,6 +475,154 @@ export namespace Components {
          */
         "yearValues"?: number[] | number | string;
     }
+    interface GascoDialog {
+        /**
+          * If `true`, the dialog will animate.
+         */
+        "animated": boolean;
+        /**
+          * A decimal value between 0 and 1 that indicates the point after which the backdrop will begin to fade in when using a sheet modal. Prior to this point, the backdrop will be hidden and the content underneath the sheet can be interacted with. This value is exclusive meaning the backdrop will become active after the value specified.
+         */
+        "backdropBreakpoint": number;
+        /**
+          * If `true`, the dialog will be dismissed when the backdrop is clicked.
+         */
+        "backdropDismiss": boolean;
+        /**
+          * The breakpoints to use when creating a sheet modal. Each value in the array must be a decimal between 0 and 1 where 0 indicates the modal is fully closed and 1 indicates the modal is fully open. Values are relative to the height of the modal, not the height of the screen. One of the values in this array must be the value of the `initialBreakpoint` property. For example: [0, .25, .5, 1]
+         */
+        "breakpoints"?: number[];
+        /**
+          * Determines whether or not a dialog can dismiss when calling the `dismiss` method.  If the value is `true` or the value's function returns `true`, the dialog will close when trying to dismiss. If the value is `false` or the value's function returns `false`, the dialog will not close when trying to dismiss.
+         */
+        "canDismiss"?: undefined | boolean | (() => Promise<boolean>);
+        /**
+          * The component to display inside of the modal.
+         */
+        "component"?: ComponentRef;
+        /**
+          * The data to pass to the modal component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "delegate"?: FrameworkDelegate;
+        /**
+          * Dismiss the dialog overlay after it has been presented.
+          * @param data Any data to emit in the dismiss events.
+          * @param role The role of the element that is dismissing the dialog. For example, 'cancel' or 'backdrop'.
+         */
+        "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        /**
+          * Animation to use when the modal is presented.
+         */
+        "enterAnimation"?: AnimationBuilder;
+        /**
+          * Returns the current breakpoint of a sheet style dialog
+         */
+        "getCurrentBreakpoint": () => Promise<number | undefined>;
+        /**
+          * The horizontal line that displays at the top of a sheet modal. It is `true` by default when setting the `breakpoints` and `initialBreakpoint` properties.
+         */
+        "handle"?: boolean;
+        "hasController": boolean;
+        /**
+          * Additional attributes to pass to the dialog.
+         */
+        "htmlAttributes"?: { [key: string]: any };
+        /**
+          * A decimal value between 0 and 1 that indicates the initial point the modal will open at when creating a sheet modal. This value must also be listed in the `breakpoints` array.
+         */
+        "initialBreakpoint"?: number;
+        /**
+          * If `true`, the dialog will open. If `false`, the dialog will close. Use this if you need finer grained control over presentation, otherwise just use the modalController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the dialog dismisses. You will need to do that in your code.
+         */
+        "isOpen": boolean;
+        /**
+          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
+         */
+        "keyboardClose": boolean;
+        /**
+          * Animation to use when the modal is dismissed.
+         */
+        "leaveAnimation"?: AnimationBuilder;
+        /**
+          * Returns a promise that resolves when the dialog did dismiss.
+         */
+        "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        /**
+          * Returns a promise that resolves when the dialog will dismiss.
+         */
+        "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        "overlayIndex": number;
+        /**
+          * Present the dialog overlay after it has been created.
+         */
+        "present": () => Promise<void>;
+        /**
+          * The element that presented the dialog. This is used for card presentation effects and for stacking multiple modals on top of each other. Only applies in iOS mode.
+         */
+        "presentingElement"?: HTMLElement;
+        /**
+          * Move a sheet style dialog to a specific breakpoint. The breakpoint value must be a value defined in your `breakpoints` array.
+         */
+        "setCurrentBreakpoint": (breakpoint: number) => Promise<void>;
+        /**
+          * If `true`, a backdrop will be displayed behind the dialog. This property controls whether or not the backdrop darkens the screen when the dialog is presented. It does not control whether or not the backdrop is active or present in the DOM.
+         */
+        "showBackdrop": boolean;
+        /**
+          * The Modal size.
+         */
+        "size"?: 'small' | 'default' | 'large';
+        /**
+          * If `true`, the dialog can be swiped to dismiss. Only applies in iOS mode.
+          * @deprecated - To prevent modals from dismissing, use canDismiss instead.
+         */
+        "swipeToClose": boolean;
+        /**
+          * An ID corresponding to the trigger element that causes the dialog to open when clicked.
+         */
+        "trigger": string | undefined;
+        /**
+          * If `"default"`, the dialog will default. For default `"default"`.
+         */
+        "type"?: string;
+        /**
+          * If `true`, the dialog will button close.
+         */
+        "withclose": boolean;
+    }
+    interface GascoDialogContent {
+    }
+    interface GascoDialogFooter {
+        /**
+          * If `true`, the card footer will be line.
+         */
+        "line"?: boolean;
+        /**
+          * If `true`, the card footer will be line.
+         */
+        "position"?: 'left' | 'right';
+        /**
+          * If `true`, the card footer will be translucent.
+         */
+        "translucent": boolean;
+    }
+    interface GascoDialogHeader {
+        /**
+          * If `true`, the card header will be translucent.
+         */
+        "translucent": boolean;
+    }
+    interface GascoDialogTitle {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
+         */
+        "color"?: Color;
+    }
     interface GascoDivider {
         /**
           * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
@@ -1344,6 +1492,10 @@ export interface GascoDatetimeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoDatetimeElement;
 }
+export interface GascoDialogCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoDialogElement;
+}
 export interface GascoInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoInputElement;
@@ -1481,6 +1633,36 @@ declare global {
         prototype: HTMLGascoDatetimeElement;
         new (): HTMLGascoDatetimeElement;
     };
+    interface HTMLGascoDialogElement extends Components.GascoDialog, HTMLStencilElement {
+    }
+    var HTMLGascoDialogElement: {
+        prototype: HTMLGascoDialogElement;
+        new (): HTMLGascoDialogElement;
+    };
+    interface HTMLGascoDialogContentElement extends Components.GascoDialogContent, HTMLStencilElement {
+    }
+    var HTMLGascoDialogContentElement: {
+        prototype: HTMLGascoDialogContentElement;
+        new (): HTMLGascoDialogContentElement;
+    };
+    interface HTMLGascoDialogFooterElement extends Components.GascoDialogFooter, HTMLStencilElement {
+    }
+    var HTMLGascoDialogFooterElement: {
+        prototype: HTMLGascoDialogFooterElement;
+        new (): HTMLGascoDialogFooterElement;
+    };
+    interface HTMLGascoDialogHeaderElement extends Components.GascoDialogHeader, HTMLStencilElement {
+    }
+    var HTMLGascoDialogHeaderElement: {
+        prototype: HTMLGascoDialogHeaderElement;
+        new (): HTMLGascoDialogHeaderElement;
+    };
+    interface HTMLGascoDialogTitleElement extends Components.GascoDialogTitle, HTMLStencilElement {
+    }
+    var HTMLGascoDialogTitleElement: {
+        prototype: HTMLGascoDialogTitleElement;
+        new (): HTMLGascoDialogTitleElement;
+    };
     interface HTMLGascoDividerElement extends Components.GascoDivider, HTMLStencilElement {
     }
     var HTMLGascoDividerElement: {
@@ -1610,6 +1792,11 @@ declare global {
         "gasco-chip": HTMLGascoChipElement;
         "gasco-content": HTMLGascoContentElement;
         "gasco-datetime": HTMLGascoDatetimeElement;
+        "gasco-dialog": HTMLGascoDialogElement;
+        "gasco-dialog-content": HTMLGascoDialogContentElement;
+        "gasco-dialog-footer": HTMLGascoDialogFooterElement;
+        "gasco-dialog-header": HTMLGascoDialogHeaderElement;
+        "gasco-dialog-title": HTMLGascoDialogTitleElement;
         "gasco-divider": HTMLGascoDividerElement;
         "gasco-input": HTMLGascoInputElement;
         "gasco-input-code": HTMLGascoInputCodeElement;
@@ -2161,6 +2348,172 @@ declare namespace LocalJSX {
           * Values used to create the list of selectable years. By default the year values range between the `min` and `max` datetime inputs. However, to control exactly which years to display, the `yearValues` input can take a number, an array of numbers, or string of comma separated numbers. For example, to show upcoming and recent leap years, then this input's value would be `yearValues="2024,2020,2016,2012,2008"`.
          */
         "yearValues"?: number[] | number | string;
+    }
+    interface GascoDialog {
+        /**
+          * If `true`, the dialog will animate.
+         */
+        "animated"?: boolean;
+        /**
+          * A decimal value between 0 and 1 that indicates the point after which the backdrop will begin to fade in when using a sheet modal. Prior to this point, the backdrop will be hidden and the content underneath the sheet can be interacted with. This value is exclusive meaning the backdrop will become active after the value specified.
+         */
+        "backdropBreakpoint"?: number;
+        /**
+          * If `true`, the dialog will be dismissed when the backdrop is clicked.
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * The breakpoints to use when creating a sheet modal. Each value in the array must be a decimal between 0 and 1 where 0 indicates the modal is fully closed and 1 indicates the modal is fully open. Values are relative to the height of the modal, not the height of the screen. One of the values in this array must be the value of the `initialBreakpoint` property. For example: [0, .25, .5, 1]
+         */
+        "breakpoints"?: number[];
+        /**
+          * Determines whether or not a dialog can dismiss when calling the `dismiss` method.  If the value is `true` or the value's function returns `true`, the dialog will close when trying to dismiss. If the value is `false` or the value's function returns `false`, the dialog will not close when trying to dismiss.
+         */
+        "canDismiss"?: undefined | boolean | (() => Promise<boolean>);
+        /**
+          * The component to display inside of the modal.
+         */
+        "component"?: ComponentRef;
+        /**
+          * The data to pass to the modal component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "delegate"?: FrameworkDelegate;
+        /**
+          * Animation to use when the modal is presented.
+         */
+        "enterAnimation"?: AnimationBuilder;
+        /**
+          * The horizontal line that displays at the top of a sheet modal. It is `true` by default when setting the `breakpoints` and `initialBreakpoint` properties.
+         */
+        "handle"?: boolean;
+        "hasController"?: boolean;
+        /**
+          * Additional attributes to pass to the dialog.
+         */
+        "htmlAttributes"?: { [key: string]: any };
+        /**
+          * A decimal value between 0 and 1 that indicates the initial point the modal will open at when creating a sheet modal. This value must also be listed in the `breakpoints` array.
+         */
+        "initialBreakpoint"?: number;
+        /**
+          * If `true`, the dialog will open. If `false`, the dialog will close. Use this if you need finer grained control over presentation, otherwise just use the modalController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the dialog dismisses. You will need to do that in your code.
+         */
+        "isOpen"?: boolean;
+        /**
+          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
+         */
+        "keyboardClose"?: boolean;
+        /**
+          * Animation to use when the modal is dismissed.
+         */
+        "leaveAnimation"?: AnimationBuilder;
+        /**
+          * Emitted after the dialog has accepted. Shorthand for gascoDialogAccepted.
+         */
+        "onAccepted"?: (event: GascoDialogCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the dialog has dismissed. Shorthand for gascoDialogDidDismiss.
+         */
+        "onDidDismiss"?: (event: GascoDialogCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the dialog has presented. Shorthand for gascoDialogWillDismiss.
+         */
+        "onDidPresent"?: (event: GascoDialogCustomEvent<void>) => void;
+        /**
+          * Emitted after the dialog breakpoint has changed.
+         */
+        "onGascoBreakpointDidChange"?: (event: GascoDialogCustomEvent<ModalBreakpointChangeEventDetail>) => void;
+        /**
+          * Emitted after the dialog has accepted.
+         */
+        "onGascoDialogAccepted"?: (event: GascoDialogCustomEvent<any>) => void;
+        /**
+          * Emitted after the dialog has dismissed.
+         */
+        "onGascoDialogDidDismiss"?: (event: GascoDialogCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the dialog has presented.
+         */
+        "onGascoDialogDidPresent"?: (event: GascoDialogCustomEvent<void>) => void;
+        /**
+          * Emitted before the dialog has dismissed.
+         */
+        "onGascoDialogWillDismiss"?: (event: GascoDialogCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted before the dialog has presented.
+         */
+        "onGascoDialogWillPresent"?: (event: GascoDialogCustomEvent<void>) => void;
+        /**
+          * Emitted before the dialog has dismissed. Shorthand for gascoDialogWillDismiss.
+         */
+        "onWillDismiss"?: (event: GascoDialogCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted before the dialog has presented. Shorthand for gascoDialogWillPresent.
+         */
+        "onWillPresent"?: (event: GascoDialogCustomEvent<void>) => void;
+        "overlayIndex": number;
+        /**
+          * The element that presented the dialog. This is used for card presentation effects and for stacking multiple modals on top of each other. Only applies in iOS mode.
+         */
+        "presentingElement"?: HTMLElement;
+        /**
+          * If `true`, a backdrop will be displayed behind the dialog. This property controls whether or not the backdrop darkens the screen when the dialog is presented. It does not control whether or not the backdrop is active or present in the DOM.
+         */
+        "showBackdrop"?: boolean;
+        /**
+          * The Modal size.
+         */
+        "size"?: 'small' | 'default' | 'large';
+        /**
+          * If `true`, the dialog can be swiped to dismiss. Only applies in iOS mode.
+          * @deprecated - To prevent modals from dismissing, use canDismiss instead.
+         */
+        "swipeToClose"?: boolean;
+        /**
+          * An ID corresponding to the trigger element that causes the dialog to open when clicked.
+         */
+        "trigger"?: string | undefined;
+        /**
+          * If `"default"`, the dialog will default. For default `"default"`.
+         */
+        "type"?: string;
+        /**
+          * If `true`, the dialog will button close.
+         */
+        "withclose"?: boolean;
+    }
+    interface GascoDialogContent {
+    }
+    interface GascoDialogFooter {
+        /**
+          * If `true`, the card footer will be line.
+         */
+        "line"?: boolean;
+        /**
+          * If `true`, the card footer will be line.
+         */
+        "position"?: 'left' | 'right';
+        /**
+          * If `true`, the card footer will be translucent.
+         */
+        "translucent"?: boolean;
+    }
+    interface GascoDialogHeader {
+        /**
+          * If `true`, the card header will be translucent.
+         */
+        "translucent"?: boolean;
+    }
+    interface GascoDialogTitle {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
+         */
+        "color"?: Color;
     }
     interface GascoDivider {
         /**
@@ -3119,6 +3472,11 @@ declare namespace LocalJSX {
         "gasco-chip": GascoChip;
         "gasco-content": GascoContent;
         "gasco-datetime": GascoDatetime;
+        "gasco-dialog": GascoDialog;
+        "gasco-dialog-content": GascoDialogContent;
+        "gasco-dialog-footer": GascoDialogFooter;
+        "gasco-dialog-header": GascoDialogHeader;
+        "gasco-dialog-title": GascoDialogTitle;
         "gasco-divider": GascoDivider;
         "gasco-input": GascoInput;
         "gasco-input-code": GascoInputCode;
@@ -3158,6 +3516,11 @@ declare module "@stencil/core" {
             "gasco-chip": LocalJSX.GascoChip & JSXBase.HTMLAttributes<HTMLGascoChipElement>;
             "gasco-content": LocalJSX.GascoContent & JSXBase.HTMLAttributes<HTMLGascoContentElement>;
             "gasco-datetime": LocalJSX.GascoDatetime & JSXBase.HTMLAttributes<HTMLGascoDatetimeElement>;
+            "gasco-dialog": LocalJSX.GascoDialog & JSXBase.HTMLAttributes<HTMLGascoDialogElement>;
+            "gasco-dialog-content": LocalJSX.GascoDialogContent & JSXBase.HTMLAttributes<HTMLGascoDialogContentElement>;
+            "gasco-dialog-footer": LocalJSX.GascoDialogFooter & JSXBase.HTMLAttributes<HTMLGascoDialogFooterElement>;
+            "gasco-dialog-header": LocalJSX.GascoDialogHeader & JSXBase.HTMLAttributes<HTMLGascoDialogHeaderElement>;
+            "gasco-dialog-title": LocalJSX.GascoDialogTitle & JSXBase.HTMLAttributes<HTMLGascoDialogTitleElement>;
             "gasco-divider": LocalJSX.GascoDivider & JSXBase.HTMLAttributes<HTMLGascoDividerElement>;
             "gasco-input": LocalJSX.GascoInput & JSXBase.HTMLAttributes<HTMLGascoInputElement>;
             "gasco-input-code": LocalJSX.GascoInputCode & JSXBase.HTMLAttributes<HTMLGascoInputCodeElement>;

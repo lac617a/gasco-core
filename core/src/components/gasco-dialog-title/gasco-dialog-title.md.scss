@@ -1,0 +1,31 @@
+@import "./gasco-dialog-title";
+@import "../gasco-card-title/gasco-card-title.md.vars";
+
+// Material Design Card Title
+// --------------------------------------------------
+
+:host {
+  --color: #072531;
+
+  @include margin($card-md-title-margin-top, $card-md-title-margin-end, $card-md-title-margin-bottom, $card-md-title-margin-start);
+  @include padding($card-md-title-padding-top, $card-md-title-padding-end, $card-md-title-padding-bottom, $card-md-title-padding-start);
+
+  font-size: $card-md-title-font-size-large;
+  font-weight: $card-md-title-font-weight;
+
+  line-height: $card-md-title-line-height-large;
+}
+
+@media only screen and (max-width: 768px) {
+  :host {  
+    font-size: $card-md-title-font-size;
+    line-height: $card-md-title-line-height;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  :host {  
+    font-size: $card-md-title-font-size-small;
+    line-height: $card-md-title-line-height-small;
+  }
+}

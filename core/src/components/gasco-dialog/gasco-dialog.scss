@@ -1,0 +1,14 @@
+@import '../gasco-modal/gasco-modal.md.scss';
+
+.modal-wrapper {
+  border-radius: 4px;
+}
+
+.modal-native {
+  padding: 0;
+  text-align: left;
+}
+
+.modal-native .modal-button-close {
+  @include margin(16px, 16px, 0, 0);
+}

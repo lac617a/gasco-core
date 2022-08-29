@@ -1,0 +1,77 @@
+@import "./gasco-dialog-content";
+@import "../gasco-card-content/gasco-card-content.md.vars.scss";
+
+// Material Design Card Content
+// --------------------------------------------------
+
+.dialog-content {
+  @include padding($card-md-padding-top, $card-md-padding-end, $card-md-padding-bottom, $card-md-padding-start);
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: left;
+
+  h1 {
+    @include margin(0, 0, 2px);
+
+    font-size: 24px;
+    font-weight: normal;
+  }
+
+  h2 {
+    @include margin(2px, 0);
+
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include margin(2px, 0);
+
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  p {
+    @include margin(0, 0, 2px);
+
+    font-size: 14px;
+    font-weight: normal;
+
+    line-height: 1.5;
+  }
+}
+
+gasco-dialog-header + .dialog-content {
+  padding-top: 0;
+}
+.dialog-content + gasco-dialog-footer {
+  margin-top: 0;
+}
+
+.dialog-content + gasco-dialog-footer.dialog-footer-line {
+  padding-top: 8px;
+  border-top-color: gasco-color(light, contrast);
+  border-top-width: 2px;
+  border-top-style: solid;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .dialog-content {
+    font-size: $card-content-md-font-size;
+    line-height: $card-content-md-line-height;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .dialog-content {
+    font-size: $card-content-md-font-size-small;
+    line-height: $card-content-md-line-height-small;
+  }
+}

@@ -9,8 +9,17 @@ $item-md-min-height:                        48px !default;
 /// @prop - Color of the item paragraph
 $item-md-paragraph-text-color:              $text-color-step-400 !default;
 
+/// @prop - Font color of the item
+$item-md-color:                             #4D4D4D !default;
+
 /// @prop - Font size of the item
 $item-md-font-size:                         16px !default;
+
+/// @prop - Line height of the item
+$item-md-line-height:                       24px !default;
+
+/// @prop - Font weight of the item
+$item-md-font-weight:                       400 !default;
 
 /// @prop - Width of the avatar in the item
 $item-md-avatar-width:                      40px !default;
@@ -116,7 +125,7 @@ $item-md-start-slot-margin-start:           null !default;
 $item-md-start-slot-margin-end:             20px !default;
 
 /// @prop - Margin start for the end slot
-$item-md-end-slot-margin-start:             32px !default;
+$item-md-end-slot-margin-start:             20px !default;
 
 /// @prop - Margin end for the end slot
 $item-md-end-slot-margin-end:               null !default;

@@ -48,7 +48,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   /**
    * If `true`, a button tag will be rendered and the item will be tappable.
    */
-  @Prop() button = false;
+  @Prop() button = true;
 
   /**
    * If `true`, a detail arrow will appear on the item. Defaults to `false` unless the `mode`
@@ -144,7 +144,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   }
 
   @Listen('gascoChange')
-  handleIonChange(ev: CustomEvent<InputChangeEventDetail>) {
+  handleGascoChange(ev: CustomEvent<InputChangeEventDetail>) {
     if (this.counter && ev.target === this.getFirstInput()) {
       this.updateCounterOutput(ev.target as HTMLGascoInputElement);
     }
@@ -201,7 +201,6 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   componentDidUpdate() {
     // Do not use @Listen here to avoid making all items
     // appear as clickable to screen readers
-    // https://github.com/ionic-team/ionic-framework/issues/22011
     const input = this.getFirstInput();
     if (input && !this.clickListener) {
       this.clickListener = (ev: Event) => this.delegateFocus(ev, input);
@@ -235,11 +234,11 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
     // therefore if these elements are also a child of item, we don't want the
     // input cover on top of those interfering with their clicks
     const inputs = this.el.querySelectorAll(
-      'gasco-input, gasco-range, gasco-searchbar, gasco-segment, gasco-textarea, gasco-toggle'
+      'gasco-input, gasco-range, gasco-autocomplete'
     );
 
     // The following elements should also stay clickable when an input with cover is present
-    const clickables = this.el.querySelectorAll('gasco-anchor, gasco-button, a, button');
+    const clickables = this.el.querySelectorAll('gasco-button, a, button');
 
     // Check for multiple inputs to change the position of the input cover to relative
     // for all of the covered inputs above
@@ -285,7 +284,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
   // but is opening the keyboard. It will no longer be needed with
   // iOS 14.
   private delegateFocus(ev: Event, input: HTMLGascoInputElement) {
-    const clickedItem = (ev.target as HTMLElement).tagName === 'gasco-ITEM';
+    const clickedItem = (ev.target as HTMLElement).tagName === 'GASCO-ITEM';
     let firstActive = false;
 
     // If the first input is the same as the active element we need

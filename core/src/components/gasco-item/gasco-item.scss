@@ -93,6 +93,7 @@
 
   overflow: hidden;
   box-sizing: border-box;
+  transition: 300ms;
 }
 
 
@@ -201,13 +202,17 @@
     var(--padding-bottom),
     calc(var(--padding-start) + var(--gasco-safe-area-left, 0px))
   );
-  @include text-inherit();
 
   display: flex;
   position: relative;
 
   align-items: inherit;
   justify-content: inherit;
+
+  color: var(--color);
+  font-size: $item-md-font-size;
+  font-weight: $item-md-font-weight;
+  line-height: $item-md-line-height;
 
   width: 100%;
   min-height: var(--min-height);
@@ -221,6 +226,7 @@
   outline: none;
 
   background: var(--background);
+  transition: 300ms;
 
   overflow: inherit;
   box-sizing: border-box;

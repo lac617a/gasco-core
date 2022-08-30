@@ -107,8 +107,8 @@ graph TD;
   gasco-datetime --> gasco-label
   gasco-datetime --> ion-icon
   gasco-datetime --> gasco-button-icon
-  gasco-datetime --> gasco-tooltip
-  gasco-tooltip --> gasco-backdrop
+  gasco-datetime --> gasco-popover
+  gasco-popover --> gasco-backdrop
   style gasco-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Popover - Basic</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+    <link href="../../../../../scripts/testing/styles.css" rel="stylesheet" />
+    <script src="../../../../../scripts/testing/scripts.js"></script>
+    <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  </head>
+  <script type="module">
+    import { popoverController } from '../../../../dist/gasco/index.esm.js';
+    window.popoverController = popoverController;
+  </script>
+
+  <body>
+  
+        <gasco-button
+          id="basic-popover"
+          expand="block"
+          onclick="presentPopover({ component: 'profile-page', event: event, htmlAttributes: { 'data-testid': 'basic-popover' } })"
+        >
+          Show Popover</gasco-button
+        >
+        <gasco-button
+          id="translucent-popover"
+          expand="block"
+          onclick="presentPopover({ component: 'translucent-page', event: event, translucent: true })"
+          >Show Translucent Popover</gasco-button
+        >
+        <gasco-button
+          id="long-list-popover"
+          expand="block"
+          color="secondary"
+          onclick="presentPopover({ component: 'list-page', event: event })"
+          >Show Long List Popover</gasco-button
+        >
+        <gasco-button
+          id="no-event-popover"
+          expand="block"
+          color="danger"
+          onclick="presentPopover({ component: 'profile-page' })"
+          >No Event Popover</gasco-button
+        >
+        <gasco-button
+          id="custom-class-popover"
+          expand="block"
+          color="tertiary"
+          onclick="presentPopover({ component: 'translucent-page', event: event, cssClass: 'my-custom-class' })"
+          >Custom Class Popover</gasco-button
+        >
+        <gasco-button id="header-popover" expand="block" onclick="presentPopover({ component: 'header-page' })"
+          >Popover With Header</gasco-button
+        >
+        <gasco-button
+          id="translucent-header-popover"
+          expand="block"
+          onclick="presentPopover({ component: 'translucent-header-page' })"
+          >Popover With Translucent Header</gasco-button
+        >
+        <gasco-button
+          id="popover-with-textarea"
+          expand="block"
+          onclick="presentPopover({ component: 'textarea-page', event: event, htmlAttributes: { 'data-testid': 'popover-with-textarea'} })"
+        >
+          Popover With Textarea</gasco-button
+        >
+
+      <style>
+        .my-custom-class {
+          --background: rgba(40, 173, 218, 0.6);
+          --width: 300px;
+          --box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
+
+          color: white;
+        }
+      </style>
+
+      <script>
+        async function presentPopover(opts) {
+          const popover = await popoverController.create(opts);
+          await popover.present();
+        }
+
+        class ProfilePage extends HTMLElement {
+          constructor() {
+            super();
+          }
+
+          connectedCallback() {
+            this.innerHTML = `
+          <gasco-content>
+            <gasco-list>
+              <gasco-list-header><gasco-label>Ionic</gasco-label></gasco-list-header>
+              <gasco-item button><gasco-label>Item 0</gasco-label></gasco-item>
+              <gasco-item button><gasco-label>Item 1</gasco-label></gasco-item>
+              <gasco-item button><gasco-label>Item 2</gasco-label></gasco-item>
+              <gasco-item button><gasco-label>Item 3</gasco-label></gasco-item>
+            </gasco-list>
+          </gasco-content>
+        `;
+          }
+        }
+
+        customElements.define('profile-page', ProfilePage);
+
+        class ListPage extends HTMLElement {
+          constructor() {
+            super();
+          }
+
+          connectedCallback() {
+            let items = '';
+            for (var i = 0; i < 30; i++) {
+              items += '<gasco-item><gasco-label>Item ' + i + '</gasco-label></gasco-item>';
+            }
+
+            this.innerHTML =
+              `
+          <gasco-content>
+            <gasco-list>
+              <gasco-list-header><gasco-label>Ionic</gasco-label></gasco-list-header>
+              ` +
+              items +
+              `
+            </gasco-list>
+          </gasco-content>
+        `;
+          }
+        }
+
+        customElements.define('list-page', ListPage);
+
+        class TranslucentPage extends HTMLElement {
+          constructor() {
+            super();
+          }
+
+          connectedCallback() {
+            this.innerHTML = `
+          <div class="gasco-padding">
+            <h1>Translucent Popover</h1>
+          </div>
+        `;
+          }
+        }
+
+        customElements.define('translucent-page', TranslucentPage);
+
+        class HeaderPage extends HTMLElement {
+          constructor() {
+            super();
+          }
+
+          connectedCallback() {
+            this.innerHTML = `
+          <gasco-header>
+            <gasco-toolbar>
+              <gasco-title>Header</gasco-title>
+            </gasco-toolbar>
+          </gasco-header>
+
+          <gasco-content class="gasco-padding" color="primary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.In rutrum tortor lacus, ac interdum ipsum bibendum vel.Aenean non nibh gravida, ullamcorper mi at, tempor nulla.Proin malesuada tellus ut ullamcorper accumsan.Donec semper justo vulputate neque tempus ultricies.Proin non aliquet ipsum.Praesent mauris sem, facilisis eu justo nec, euismod imperdiet tellus.Duis eget justo congue, lacinia orci sed, fermentum urna.Quisque sed massa faucibus, interdum dolor rhoncus, molestie erat.Proin suscipit ante non mauris volutpat egestas.Donec a ultrices ligula.Mauris in felis vel dui consectetur viverra.Nam vitae quam in arcu aliquam aliquam.Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.Cras non velit nisl.Donec viverra, magna quis vestibulum volutpat, metus ante tincidunt augue, non porta nisi mi sit amet neque.Proin dapibus eros vitae nibh tincidunt, blandit rhoncus est porttitor.
+          </gasco-content>
+        `;
+          }
+        }
+
+        customElements.define('header-page', HeaderPage);
+
+        class TranslucentHeaderPage extends HTMLElement {
+          constructor() {
+            super();
+          }
+
+          connectedCallback() {
+            this.innerHTML = `
+          <gasco-header translucent>
+            <gasco-toolbar>
+              <gasco-title>Header</gasco-title>
+            </gasco-toolbar>
+          </gasco-header>
+
+          <gasco-content class="gasco-padding" fullscreen color="primary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.In rutrum tortor lacus, ac interdum ipsum bibendum vel.Aenean non nibh gravida, ullamcorper mi at, tempor nulla.Proin malesuada tellus ut ullamcorper accumsan.Donec semper justo vulputate neque tempus ultricies.Proin non aliquet ipsum.Praesent mauris sem, facilisis eu justo nec, euismod imperdiet tellus.Duis eget justo congue, lacinia orci sed, fermentum urna.Quisque sed massa faucibus, interdum dolor rhoncus, molestie erat.Proin suscipit ante non mauris volutpat egestas.Donec a ultrices ligula.Mauris in felis vel dui consectetur viverra.Nam vitae quam in arcu aliquam aliquam.Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.Cras non velit nisl.Donec viverra, magna quis vestibulum volutpat, metus ante tincidunt augue, non porta nisi mi sit amet neque.Proin dapibus eros vitae nibh tincidunt, blandit rhoncus est porttitor.
+          </gasco-content>
+
+          <gasco-footer translucent>
+            <gasco-toolbar>
+              <gasco-title>Footer</gasco-title>
+            </gasco-toolbar>
+          </gasco-footer>
+        `;
+          }
+        }
+
+        customElements.define('translucent-header-page', TranslucentHeaderPage);
+
+        class TextAreaPage extends HTMLElement {
+          constructor() {
+            super();
+          }
+
+          connectedCallback() {
+            this.innerHTML = `
+          <gasco-content>
+            <gasco-textarea rows="4" style="max-height: 44px; overflow-y: auto;" value="the cursor in this <gasco-textarea>\nmust be able to be moved\nwith the arrow keys and\nhome and end keys"></gasco-textarea>
+            <textarea rows="4" style="display:block;width: 100%;border: 0;padding: 8px; max-height: 44px; overflow-y: auto">the cursor in this <textarea>\nmust be able to be moved\nwith the arrow keys and\nhome and end keys</textarea>
+          </gasco-content>
+        `;
+          }
+        }
+
+        customElements.define('textarea-page', TextAreaPage);
+      </script>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Popover - Position</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 40px;
+    grid-column-gap: 20px;
+  }
+
+  .grid-item {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 12px;
+    font-weight: normal;
+
+    color: #6f7378;
+
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+
+  gasco-popover {
+    --width: 75px !important;
+  }
+
+  @media screen and (max-width: 400px) {
+    .grid {
+      grid-template-columns: 1fr;
+      padding: 0px;
+    }
+  }
+
+</style>
+
+<div class="grid">
+  <div class="grid-item">
+    <h2>Top, Start</h2>
+    <gasco-button id="top-start">Click to Open</gasco-button>
+    <gasco-popover class="top-start-popover" trigger="top-start" side="top" alignment="start" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Top, Center</h2>
+    <gasco-button id="top-center">Click to Open</gasco-button>
+    <gasco-popover class="top-center-popover" trigger="top-center" side="top" alignment="center" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Top, End</h2>
+    <gasco-button id="top-end">Click to Open</gasco-button>
+    <gasco-popover class="top-end-popover" trigger="top-end" side="top" alignment="end" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Right, Start</h2>
+    <gasco-button id="right-start">Click to Open</gasco-button>
+    <gasco-popover class="right-start-popover" trigger="right-start" side="right" alignment="start"
+      show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Right, Center</h2>
+    <gasco-button id="right-center">Click to Open</gasco-button>
+    <gasco-popover class="right-center-popover" trigger="right-center" side="right" alignment="center"
+      show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Right, End</h2>
+    <gasco-button id="right-end">Click to Open</gasco-button>
+    <gasco-popover class="right-end-popover" trigger="right-end" side="right" alignment="end" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Bottom, Start</h2>
+    <gasco-button id="bottom-start">Click to Open</gasco-button>
+    <gasco-popover class="bottom-start-popover" trigger="bottom-start" side="bottom" alignment="start"
+      show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Bottom, Center</h2>
+    <gasco-button id="bottom-center">Click to Open</gasco-button>
+    <gasco-popover class="bottom-center-popover" trigger="bottom-center" side="bottom" alignment="center"
+      show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Bottom, End</h2>
+    <gasco-button id="bottom-end">Click to Open</gasco-button>
+    <gasco-popover class="bottom-end-popover" trigger="bottom-end" side="bottom" alignment="end" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Left, Start</h2>
+    <gasco-button id="left-start">Click to Open</gasco-button>
+    <gasco-popover class="left-start-popover" trigger="left-start" side="left" alignment="start" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Left, Center</h2>
+    <gasco-button id="left-center">Click to Open</gasco-button>
+    <gasco-popover class="left-center-popover" trigger="left-center" side="left" alignment="center"
+      show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Left, End</h2>
+    <gasco-button id="left-end">Click to Open</gasco-button>
+    <gasco-popover class="left-end-popover" trigger="left-end" side="left" alignment="end" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Start, Start</h2>
+    <gasco-button id="start-start">Click to Open</gasco-button>
+    <gasco-popover class="start-start-popover" trigger="start-start" side="start" alignment="start"
+      show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Start, Center</h2>
+    <gasco-button id="start-center">Click to Open</gasco-button>
+    <gasco-popover class="start-center-popover" trigger="start-center" side="start" alignment="center"
+      show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>Start, End</h2>
+    <gasco-button id="start-end">Click to Open</gasco-button>
+    <gasco-popover class="start-end-popover" trigger="start-end" side="start" alignment="end" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>End, Start</h2>
+    <gasco-button id="end-start">Click to Open</gasco-button>
+    <gasco-popover class="end-start-popover" trigger="end-start" side="end" alignment="start" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>End, Center</h2>
+    <gasco-button id="end-center">Click to Open</gasco-button>
+    <gasco-popover class="end-center-popover" trigger="end-center" side="end" alignment="center" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+
+  <div class="grid-item">
+    <h2>End, End</h2>
+    <gasco-button id="end-end">Click to Open</gasco-button>
+    <gasco-popover class="end-end-popover" trigger="end-end" side="end" alignment="end" show-backdrop="false">
+      <list-page></list-page>
+    </gasco-popover>
+  </div>
+</div>
+
+<script>
+  class ListPage extends HTMLElement {
+    constructor() {
+      super();
+
+      this.innerHTML = `
+      <gasco-content class="gasco-padding">
+        Hello
+      </gasco-content>
+      `;
+    }
+  }
+
+  customElements.define('list-page', ListPage);
+
+</script>
+</body>
+
+</html>

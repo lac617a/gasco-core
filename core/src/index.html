@@ -16,35 +16,25 @@
 </head>
 
 <body>
+  <style>
+    .row {
+      margin: 4rem;
+    }
+  </style>
 
-  <p>
-    <gasco-button id="gasco-dialog" onclick="openModal('#gasco-dialog')">Present dialog</gasco-button>
-  </p>
-  <p>
-    <gasco-button id="gasco-dialog2" onclick="openModal('#gasco-dialog2')">
-      Present and close modal
-    </gasco-button>
-  </p>
+  <div class="row">
+    <gasco-tooltip label="Esto es requerido">
+      <gasco-label>holaa</gasco-label>
+    </gasco-tooltip>
 
-  <script>
-    const openModal = (id, timeout) => {
-      const modal = document.querySelector(id);
-      modal.isOpen = true;
+    <gasco-tooltip label="Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae unde eius cum numquam natus ut dignissimos atque, maxime temporibus suscipit culpa, minus quisquam repellat voluptatum ab sed, assumenda voluptates? Vel!" position="bottom">
+      <gasco-label>holaa</gasco-label>
+    </gasco-tooltip>
 
-      if (timeout) {
-        setTimeout(() => {
-          modal.isOpen = false;
-        }, timeout);
-      }
-      modal.addEventListener('gascoModalDidDismiss', () => {
-        modal.isOpen = false;
-      });
-    };
-
-  </script>
-  <gasco-dialog>
-
-  </gasco-dialog>
+    <gasco-tooltip label="Indica dirección para que este pedido...">
+      <gasco-button>Hola</gasco-button>
+    </gasco-tooltip>
+  </div>
 
 
 

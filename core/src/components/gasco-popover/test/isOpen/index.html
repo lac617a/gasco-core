@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Popover - isOpen</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-row-gap: 20px;
+      grid-column-gap: 20px;
+
+      padding: 200px;
+    }
+
+    .grid-item {
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 12px;
+      font-weight: normal;
+
+      color: #6f7378;
+
+      margin-top: 10px;
+      margin-left: 5px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="grid">
+    <div class="grid-item">
+      <h2>Default</h2>
+      <gasco-button id="default" onclick="openPopover(event)">Open Popover</gasco-button>
+    </div>
+    <div class="grid-item">
+      <h2>Open, then close after 500ms</h2>
+      <gasco-button id="timeout" onclick="openPopover(event, 500)">Open Popover</gasco-button>
+    </div>
+  </div>
+
+  <gasco-popover>
+    <gasco-content class="gasco-padding"> Hello World </gasco-content>
+  </gasco-popover>
+
+  <script>
+    const popover = document.querySelector('gasco-popover');
+
+    const openPopover = (ev, timeout) => {
+      popover.event = ev;
+      popover.isOpen = true;
+
+      if (timeout) {
+        setTimeout(() => {
+          popover.isOpen = false;
+        }, timeout);
+      }
+    };
+
+    popover.addEventListener('gascoPopoverDidDismiss', () => {
+      popover.isOpen = false;
+    });
+
+  </script>
+</body>
+
+</html>

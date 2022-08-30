@@ -2,7 +2,7 @@ import 'ionicons';
 
 export { createAnimation } from './utils/animation/animation';
 export { GascoSafeString } from './utils/sanitization';
-export { toastController, modalController, TooltipController } from './utils/overlays';
+export { toastController, modalController, popoverController } from './utils/overlays';
 export { componentOnReady } from './utils/helpers';
 export { getTimeGivenProgression } from './utils/animation/cubic-bezier';
 export { menuController } from './utils/menu-controller';

@@ -61,7 +61,7 @@ import {
 export class GascoDatetime implements ComponentInterface {
   private inputId = `gasco-dt-${datetimeIds++}`;
   private calendarBodyRef?: HTMLElement;
-  private popoverRef?: HTMLGascoTooltipElement;
+  private popoverRef?: HTMLGascoPopoverElement;
   private clearFocusVisible?: () => void;
   private overlayIsPresenting = false;
 
@@ -501,9 +501,9 @@ export class GascoDatetime implements ComponentInterface {
   }
 
   private closeParentOverlay = () => {
-    const popoverOrModal = this.el.closest('gasco-modal, gasco-tooltip') as
+    const popoverOrModal = this.el.closest('gasco-modal, gasco-popover') as
       | HTMLGascoModalElement
-      | HTMLGascoTooltipElement
+      | HTMLGascoPopoverElement
       | null;
     if (popoverOrModal) {
       popoverOrModal.dismiss();
@@ -1051,7 +1051,7 @@ export class GascoDatetime implements ComponentInterface {
    * cancel that IO callback.
    */
   private initializeOverlayListener = () => {
-    const overlay = this.el.closest('gasco-tooltip, gasco-modal');
+    const overlay = this.el.closest('gasco-popover, gasco-modal');
     if (overlay === null) {
       return;
     }
@@ -1620,7 +1620,7 @@ export class GascoDatetime implements ComponentInterface {
       >
         {getFormattedTime(this.activePartsClone, use24Hour)}
       </button>,
-      <gasco-tooltip
+      <gasco-popover
         alignment="center"
         translucent
         overlayIndex={1}
@@ -1647,7 +1647,7 @@ export class GascoDatetime implements ComponentInterface {
         ref={(el) => (this.popoverRef = el)}
       >
         {this.renderTimePicker(hoursItems, minutesItems, ampmItems, use24Hour)}
-      </gasco-tooltip>,
+      </gasco-popover>,
     ];
   }
 

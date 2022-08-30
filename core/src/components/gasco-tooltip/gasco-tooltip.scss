@@ -1,133 +1,81 @@
-@import "./gasco-tooltip.vars";
-
-// Popover
-// --------------------------------------------------
-
 :host {
-  /**
-   * @prop --background: Background of the popover
-   * @prop --box-shadow: Box shadow of the popover
-   *
-   * @prop --min-width: Minimum width of the popover
-   * @prop --width: Width of the popover
-   * @prop --max-width: Maximum width of the popover
-   *
-   * @prop --min-height: Minimum height of the popover
-   * @prop --height: Height of the popover
-   * @prop --max-height: Maximum height of the popover
-   *
-   * @prop --backdrop-opacity: Opacity of the backdrop
-   *
-   * @prop --offset-x: The amount to move the popover by on the x-axis
-   * @prop --offset-y: The amount to move the popover by on the y-axis
-   */
-  --background: #{$popover-background-color};
-  --min-width: 0;
-  --min-height: 0;
-  --max-width: auto;
-  --height: auto;
-  --offset-x: 0px;
-  --offset-y: 0px;
-
-  @include position(0, 0, 0, 0);
-
-  display: flex;
-  position: fixed;
-
-  align-items: center;
-  justify-content: center;
-
-  outline: none;
-
-  color: $popover-text-color;
-
-  z-index: $z-index-overlay;
+  position: relative;
+  cursor: default;
 }
-
-/**
- * With nested popovers, only the popover that
- * was first presented has a popover. This is the
- * parent popover and allows us to easily
- * track all nested popovers from a single backdrop.
- * As a result, nested popovers do not have backdrops
- * and their container should not be clickable.
- * This ensures that users can click the parent backdrop
- * while still interacting with the nested popover inner
- * content.
- */
-:host(.popover-nested) {
-  pointer-events: none;
-}
-
-:host(.popover-nested) .popover-wrapper {
-  pointer-events: auto;
-}
-
-:host(.overlay-hidden) {
-  display: none;
-}
-
-.popover-wrapper {
-  opacity: 0;
-  z-index: $z-index-overlay-wrapper;
-}
-
-.popover-content {
-  display: flex;
+:host .tooltip-show {
   position: absolute;
+  left: 0;
+  z-index: 99999;
+  background: #999999;
+  border-radius: 4px;
+  visibility: hidden;
 
-  flex-direction: column;
-
-  width: var(--width);
-  min-width: var(--min-width);
-  max-width: var(--max-width);
-
-  height: var(--height);
-  min-height: var(--min-height);
-  max-height: var(--max-height);
-
-  background: var(--background);
-
-  box-shadow: var(--box-shadow);
-
-  overflow: auto;
-  z-index: $z-index-overlay-wrapper;
-}
-
-.popover-viewport {
-  --ion-safe-area-top: 0px;
-  --ion-safe-area-right: 0px;
-  --ion-safe-area-bottom: 0px;
-  --ion-safe-area-left: 0px;
+  max-width: 274px;
+  width: max-content;
+  word-wrap: break-word;
+  
+  padding: 4px 12px;
   display: flex;
+  align-items: center;
 
-  flex-direction: column;
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
 
-  overflow: hidden;
-}
-
-// Nested Popovers
-// --------------------------------------------------
-:host(.popover-nested.popover-side-left) {
-  --offset-x: 5px;
-}
-
-:host(.popover-nested.popover-side-right) {
-  --offset-x: -5px;
-}
-
-:host(.popover-nested.popover-side-start) {
-  --offset-x: 5px;
-
-  @include rtl() {
-    --offset-x: -5px;
+  filter: drop-shadow(0px 4px 8px rgba(171, 190, 209, 0.4));
+  transition: ease-in 200ms all;
+  &:before {
+    background-color: #999999;
+    border-radius: 1px;
+    bottom: -3px;
+    content: "";
+    height: 8px;
+    width: 8px;
+    left: 10px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 }
 
-:host(.popover-nested.popover-side-end) {
-  --offset-x: -5px;
+:host .tooltip-show.tooltip-top {
+  top: calc(100% - 75px);;
+  opacity: 0;
+  transform: translateY(-20px);
+}
 
-  @include rtl() {
-    --offset-x: 5px;
+:host .tooltip-show.tooltip-bottom {
+  opacity: 0;
+  bottom: calc(100% - 75px);;
+  transform: translateY(20px);
+  &:before {
+    top: -3px;
+    bottom: inherit;
+    content: "";
+    position: absolute;
+  }
+}
+
+// Tooltip Hover
+@media (any-hover: hover) {
+  :host(:hover) .tooltip-show.tooltip-top,
+  :host(:hover) .tooltip-show.tooltip-bottom {
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :host .tooltip-show {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  :host .tooltip-show {
+    font-size: 14px;
+    line-height: 20px;
   }
 }

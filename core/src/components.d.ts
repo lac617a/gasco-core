@@ -1120,6 +1120,120 @@ export namespace Components {
     }
     interface GascoPickerInternal {
     }
+    interface GascoPopover {
+        /**
+          * Describes how to align the popover content with the `reference` point. Defaults to `'center'` for `ios` mode, and `'start'` for `md` mode.
+         */
+        "alignment"?: PositionAlign;
+        /**
+          * If `true`, the popover will animate.
+         */
+        "animated": boolean;
+        /**
+          * If `true`, the popover will display an arrow that points at the `reference` when running in `ios` mode. Does not apply in `md` mode.
+         */
+        "arrow": boolean;
+        /**
+          * If `true`, the popover will be dismissed when the backdrop is clicked.
+         */
+        "backdropDismiss": boolean;
+        /**
+          * The component to display inside of the popover. You only need to use this if you are not using a JavaScript framework. Otherwise, you can just slot your component inside of `gasco-popover`.
+         */
+        "component"?: ComponentRef;
+        /**
+          * The data to pass to the popover component. You only need to use this if you are not using a JavaScript framework. Otherwise, you can just set the props directly on your component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "delegate"?: FrameworkDelegate;
+        /**
+          * Dismiss the popover overlay after it has been presented.
+          * @param data Any data to emit in the dismiss events.
+          * @param role The role of the element that is dismissing the popover. For example, 'cancel' or 'backdrop'.
+          * @param dismissParentPopover If `true`, dismissing this popover will also dismiss a parent popover if this popover is nested. Defaults to `true`.
+         */
+        "dismiss": (data?: any, role?: string, dismissParentPopover?: boolean) => Promise<boolean>;
+        /**
+          * If `true`, the popover will be automatically dismissed when the content has been clicked.
+         */
+        "dismissOnSelect": boolean;
+        /**
+          * Animation to use when the popover is presented.
+         */
+        "enterAnimation"?: AnimationBuilder;
+        /**
+          * The event to pass to the popover animation.
+         */
+        "event": any;
+        "getParentPopover": () => Promise<HTMLGascoPopoverElement | null>;
+        "hasController": boolean;
+        /**
+          * Additional attributes to pass to the popover.
+         */
+        "htmlAttributes"?: PopoverAttributes;
+        /**
+          * If `true`, the popover will open. If `false`, the popover will close. Use this if you need finer grained control over presentation, otherwise just use the popoverController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the popover dismisses. You will need to do that in your code.
+         */
+        "isOpen": boolean;
+        /**
+          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
+         */
+        "keyboardClose": boolean;
+        "keyboardEvents": boolean;
+        /**
+          * Animation to use when the popover is dismissed.
+         */
+        "leaveAnimation"?: AnimationBuilder;
+        /**
+          * Returns a promise that resolves when the popover did dismiss.
+         */
+        "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        /**
+          * Returns a promise that resolves when the popover will dismiss.
+         */
+        "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        "overlayIndex": number;
+        /**
+          * Present the popover overlay after it has been created. Developers can pass a mouse, touch, or pointer event to position the popover relative to where that event was dispatched.
+         */
+        "present": (event?: MouseEvent | TouchEvent | PointerEvent | CustomEvent) => Promise<void>;
+        /**
+          * When opening a popover from a trigger, we should not be modifying the `event` prop from inside the component. Additionally, when pressing the "Right" arrow key, we need to shift focus to the first descendant in the newly presented popover.
+         */
+        "presentFromTrigger": (event?: any, focusDescendant?: boolean) => Promise<void>;
+        /**
+          * Describes what to position the popover relative to. If `'trigger'`, the popover will be positioned relative to the trigger button. If passing in an event, this is determined via event.target. If `'event'`, the popover will be positioned relative to the x/y coordinates of the trigger action. If passing in an event, this is determined via event.clientX and event.clientY.
+         */
+        "reference": PositionReference;
+        /**
+          * If `true`, a backdrop will be displayed behind the popover. This property controls whether or not the backdrop darkens the screen when the popover is presented. It does not control whether or not the backdrop is active or present in the DOM.
+         */
+        "showBackdrop": boolean;
+        /**
+          * Describes which side of the `reference` point to position the popover on. The `'start'` and `'end'` values are RTL-aware, and the `'left'` and `'right'` values are not.
+         */
+        "side": PositionSide;
+        /**
+          * Describes how to calculate the popover width. If `'cover'`, the popover width will match the width of the trigger. If `'auto'`, the popover width will be determined by the content in the popover.
+         */
+        "size": PopoverSize;
+        /**
+          * If `true`, the popover will be translucent. Only applies when the mode is `"ios"` and the device supports [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
+         */
+        "translucent": boolean;
+        /**
+          * An ID corresponding to the trigger element that causes the popover to open. Use the `trigger-action` property to customize the interaction that results in the popover opening.
+         */
+        "trigger": string | undefined;
+        /**
+          * Describes what kind of interaction with the trigger that should cause the popover to open. Does not apply when the `trigger` property is `undefined`. If `'click'`, the popover will be presented when the trigger is left clicked. If `'hover'`, the popover will be presented when a pointer hovers over the trigger. If `'context-menu'`, the popover will be presented when the trigger is right clicked on desktop and long pressed on mobile. This will also prevent your device's normal context menu from appearing.
+         */
+        "triggerAction": TriggerAction;
+    }
     interface GascoProgress {
         /**
           * If the buffer and value are smaller than 1, the buffer circles will show. The buffer should be between [0, 1].
@@ -1339,121 +1453,25 @@ export namespace Components {
     }
     interface GascoTooltip {
         /**
-          * Describes how to align the popover content with the `reference` point. Defaults to `'center'` for `ios` mode, and `'start'` for `md` mode.
+          * If `true`, the tooltip will be visible.
          */
-        "alignment"?: PositionAlign;
+        "label"?: string;
         /**
-          * If `true`, the popover will animate.
+          * If `true`, the tooltip will be position.
          */
-        "animated": boolean;
+        "position"?: 'top' | 'bottom';
         /**
-          * If `true`, the popover will display an arrow that points at the `reference` when running in `ios` mode. Does not apply in `md` mode.
+          * If `true`, the tooltip will stop propagation on tap.
          */
-        "arrow": boolean;
+        "stopPropagation": boolean;
         /**
-          * If `true`, the popover will be dismissed when the backdrop is clicked.
+          * If `true`, the tooltip will can be clicked and will emit the `gascoTooltip` event.
          */
-        "backdropDismiss": boolean;
+        "tappable": boolean;
         /**
-          * The component to display inside of the popover. You only need to use this if you are not using a JavaScript framework. Otherwise, you can just slot your component inside of `ion-popover`.
+          * If `true`, the tooltip will be visible.
          */
-        "component"?: ComponentRef;
-        /**
-          * The data to pass to the popover component. You only need to use this if you are not using a JavaScript framework. Otherwise, you can just set the props directly on your component.
-         */
-        "componentProps"?: ComponentProps;
-        /**
-          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
-         */
-        "cssClass"?: string | string[];
-        "delegate"?: FrameworkDelegate;
-        /**
-          * Dismiss the popover overlay after it has been presented.
-          * @param data Any data to emit in the dismiss events.
-          * @param role The role of the element that is dismissing the popover. For example, 'cancel' or 'backdrop'.
-          * @param dismissParentPopover If `true`, dismissing this popover will also dismiss a parent popover if this popover is nested. Defaults to `true`.
-         */
-        "dismiss": (data?: any, role?: string, dismissParentPopover?: boolean) => Promise<boolean>;
-        /**
-          * If `true`, the popover will be automatically dismissed when the content has been clicked.
-         */
-        "dismissOnSelect": boolean;
-        /**
-          * Animation to use when the popover is presented.
-         */
-        "enterAnimation"?: AnimationBuilder;
-        /**
-          * The event to pass to the popover animation.
-         */
-        "event": any;
-        "getParentPopover": () => Promise<HTMLGascoTooltipElement | null>;
-        "hasController": boolean;
-        /**
-          * Additional attributes to pass to the popover.
-         */
-        "htmlAttributes"?: PopoverAttributes;
-        /**
-          * If `true`, the popover will open. If `false`, the popover will close. Use this if you need finer grained control over presentation, otherwise just use the popoverController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the popover dismisses. You will need to do that in your code.
-         */
-        "isOpen": boolean;
-        /**
-          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
-         */
-        "keyboardClose": boolean;
-        "keyboardEvents": boolean;
-        /**
-          * Animation to use when the popover is dismissed.
-         */
-        "leaveAnimation"?: AnimationBuilder;
-        /**
-          * The mode determines which platform styles to use.
-         */
-        "mode"?: "ios" | "md";
-        /**
-          * Returns a promise that resolves when the popover did dismiss.
-         */
-        "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
-        /**
-          * Returns a promise that resolves when the popover will dismiss.
-         */
-        "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
-        "overlayIndex": number;
-        /**
-          * Present the popover overlay after it has been created. Developers can pass a mouse, touch, or pointer event to position the popover relative to where that event was dispatched.
-         */
-        "present": (event?: MouseEvent | TouchEvent | PointerEvent | CustomEvent) => Promise<void>;
-        /**
-          * When opening a popover from a trigger, we should not be modifying the `event` prop from inside the component. Additionally, when pressing the "Right" arrow key, we need to shift focus to the first descendant in the newly presented popover.
-         */
-        "presentFromTrigger": (event?: any, focusDescendant?: boolean) => Promise<void>;
-        /**
-          * Describes what to position the popover relative to. If `'trigger'`, the popover will be positioned relative to the trigger button. If passing in an event, this is determined via event.target. If `'event'`, the popover will be positioned relative to the x/y coordinates of the trigger action. If passing in an event, this is determined via event.clientX and event.clientY.
-         */
-        "reference": PositionReference;
-        /**
-          * If `true`, a backdrop will be displayed behind the popover. This property controls whether or not the backdrop darkens the screen when the popover is presented. It does not control whether or not the backdrop is active or present in the DOM.
-         */
-        "showBackdrop": boolean;
-        /**
-          * Describes which side of the `reference` point to position the popover on. The `'start'` and `'end'` values are RTL-aware, and the `'left'` and `'right'` values are not.
-         */
-        "side": PositionSide;
-        /**
-          * Describes how to calculate the popover width. If `'cover'`, the popover width will match the width of the trigger. If `'auto'`, the popover width will be determined by the content in the popover.
-         */
-        "size": PopoverSize;
-        /**
-          * If `true`, the popover will be translucent. Only applies when the mode is `"ios"` and the device supports [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
-         */
-        "translucent": boolean;
-        /**
-          * An ID corresponding to the trigger element that causes the popover to open. Use the `trigger-action` property to customize the interaction that results in the popover opening.
-         */
-        "trigger": string | undefined;
-        /**
-          * Describes what kind of interaction with the trigger that should cause the popover to open. Does not apply when the `trigger` property is `undefined`. If `'click'`, the popover will be presented when the trigger is left clicked. If `'hover'`, the popover will be presented when a pointer hovers over the trigger. If `'context-menu'`, the popover will be presented when the trigger is right clicked on desktop and long pressed on mobile. This will also prevent your device's normal context menu from appearing.
-         */
-        "triggerAction": TriggerAction;
+        "visible": boolean;
     }
 }
 export interface GascoAccordionGroupCustomEvent<T> extends CustomEvent<T> {
@@ -1527,6 +1545,10 @@ export interface GascoPickerColumnInternalCustomEvent<T> extends CustomEvent<T> 
 export interface GascoPickerInternalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoPickerInternalElement;
+}
+export interface GascoPopoverCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoPopoverElement;
 }
 export interface GascoRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1735,6 +1757,12 @@ declare global {
         prototype: HTMLGascoPickerInternalElement;
         new (): HTMLGascoPickerInternalElement;
     };
+    interface HTMLGascoPopoverElement extends Components.GascoPopover, HTMLStencilElement {
+    }
+    var HTMLGascoPopoverElement: {
+        prototype: HTMLGascoPopoverElement;
+        new (): HTMLGascoPopoverElement;
+    };
     interface HTMLGascoProgressElement extends Components.GascoProgress, HTMLStencilElement {
     }
     var HTMLGascoProgressElement: {
@@ -1809,6 +1837,7 @@ declare global {
         "gasco-paginator": HTMLGascoPaginatorElement;
         "gasco-picker-column-internal": HTMLGascoPickerColumnInternalElement;
         "gasco-picker-internal": HTMLGascoPickerInternalElement;
+        "gasco-popover": HTMLGascoPopoverElement;
         "gasco-progress": HTMLGascoProgressElement;
         "gasco-radio": HTMLGascoRadioElement;
         "gasco-range": HTMLGascoRangeElement;
@@ -3070,6 +3099,128 @@ declare namespace LocalJSX {
     interface GascoPickerInternal {
         "onGascoInputModeChange"?: (event: GascoPickerInternalCustomEvent<PickerInternalChangeEventDetail>) => void;
     }
+    interface GascoPopover {
+        /**
+          * Describes how to align the popover content with the `reference` point. Defaults to `'center'` for `ios` mode, and `'start'` for `md` mode.
+         */
+        "alignment"?: PositionAlign;
+        /**
+          * If `true`, the popover will animate.
+         */
+        "animated"?: boolean;
+        /**
+          * If `true`, the popover will display an arrow that points at the `reference` when running in `ios` mode. Does not apply in `md` mode.
+         */
+        "arrow"?: boolean;
+        /**
+          * If `true`, the popover will be dismissed when the backdrop is clicked.
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * The component to display inside of the popover. You only need to use this if you are not using a JavaScript framework. Otherwise, you can just slot your component inside of `gasco-popover`.
+         */
+        "component"?: ComponentRef;
+        /**
+          * The data to pass to the popover component. You only need to use this if you are not using a JavaScript framework. Otherwise, you can just set the props directly on your component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "delegate"?: FrameworkDelegate;
+        /**
+          * If `true`, the popover will be automatically dismissed when the content has been clicked.
+         */
+        "dismissOnSelect"?: boolean;
+        /**
+          * Animation to use when the popover is presented.
+         */
+        "enterAnimation"?: AnimationBuilder;
+        /**
+          * The event to pass to the popover animation.
+         */
+        "event"?: any;
+        "hasController"?: boolean;
+        /**
+          * Additional attributes to pass to the popover.
+         */
+        "htmlAttributes"?: PopoverAttributes;
+        /**
+          * If `true`, the popover will open. If `false`, the popover will close. Use this if you need finer grained control over presentation, otherwise just use the popoverController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the popover dismisses. You will need to do that in your code.
+         */
+        "isOpen"?: boolean;
+        /**
+          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
+         */
+        "keyboardClose"?: boolean;
+        "keyboardEvents"?: boolean;
+        /**
+          * Animation to use when the popover is dismissed.
+         */
+        "leaveAnimation"?: AnimationBuilder;
+        /**
+          * Emitted after the popover has dismissed. Shorthand for gascoPopoverDidDismiss.
+         */
+        "onDidDismiss"?: (event: GascoPopoverCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the popover has presented. Shorthand for gascoPopoverWillDismiss.
+         */
+        "onDidPresent"?: (event: GascoPopoverCustomEvent<void>) => void;
+        /**
+          * Emitted after the popover has dismissed.
+         */
+        "onGascoPopoverDidDismiss"?: (event: GascoPopoverCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the popover has presented.
+         */
+        "onGascoPopoverDidPresent"?: (event: GascoPopoverCustomEvent<void>) => void;
+        /**
+          * Emitted before the popover has dismissed.
+         */
+        "onGascoPopoverWillDismiss"?: (event: GascoPopoverCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted before the popover has presented.
+         */
+        "onGascoPopoverWillPresent"?: (event: GascoPopoverCustomEvent<void>) => void;
+        /**
+          * Emitted before the popover has dismissed. Shorthand for gascoPopoverWillDismiss.
+         */
+        "onWillDismiss"?: (event: GascoPopoverCustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted before the popover has presented. Shorthand for gascoPopoverWillPresent.
+         */
+        "onWillPresent"?: (event: GascoPopoverCustomEvent<void>) => void;
+        "overlayIndex": number;
+        /**
+          * Describes what to position the popover relative to. If `'trigger'`, the popover will be positioned relative to the trigger button. If passing in an event, this is determined via event.target. If `'event'`, the popover will be positioned relative to the x/y coordinates of the trigger action. If passing in an event, this is determined via event.clientX and event.clientY.
+         */
+        "reference"?: PositionReference;
+        /**
+          * If `true`, a backdrop will be displayed behind the popover. This property controls whether or not the backdrop darkens the screen when the popover is presented. It does not control whether or not the backdrop is active or present in the DOM.
+         */
+        "showBackdrop"?: boolean;
+        /**
+          * Describes which side of the `reference` point to position the popover on. The `'start'` and `'end'` values are RTL-aware, and the `'left'` and `'right'` values are not.
+         */
+        "side"?: PositionSide;
+        /**
+          * Describes how to calculate the popover width. If `'cover'`, the popover width will match the width of the trigger. If `'auto'`, the popover width will be determined by the content in the popover.
+         */
+        "size"?: PopoverSize;
+        /**
+          * If `true`, the popover will be translucent. Only applies when the mode is `"ios"` and the device supports [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
+         */
+        "translucent"?: boolean;
+        /**
+          * An ID corresponding to the trigger element that causes the popover to open. Use the `trigger-action` property to customize the interaction that results in the popover opening.
+         */
+        "trigger"?: string | undefined;
+        /**
+          * Describes what kind of interaction with the trigger that should cause the popover to open. Does not apply when the `trigger` property is `undefined`. If `'click'`, the popover will be presented when the trigger is left clicked. If `'hover'`, the popover will be presented when a pointer hovers over the trigger. If `'context-menu'`, the popover will be presented when the trigger is right clicked on desktop and long pressed on mobile. This will also prevent your device's normal context menu from appearing.
+         */
+        "triggerAction"?: TriggerAction;
+    }
     interface GascoProgress {
         /**
           * If the buffer and value are smaller than 1, the buffer circles will show. The buffer should be between [0, 1].
@@ -3333,129 +3484,29 @@ declare namespace LocalJSX {
     }
     interface GascoTooltip {
         /**
-          * Describes how to align the popover content with the `reference` point. Defaults to `'center'` for `ios` mode, and `'start'` for `md` mode.
+          * If `true`, the tooltip will be visible.
          */
-        "alignment"?: PositionAlign;
+        "label"?: string;
         /**
-          * If `true`, the popover will animate.
+          * Emitted when the tooltip is tapped.
          */
-        "animated"?: boolean;
+        "onGascoTooltip"?: (event: GascoTooltipCustomEvent<void>) => void;
         /**
-          * If `true`, the popover will display an arrow that points at the `reference` when running in `ios` mode. Does not apply in `md` mode.
+          * If `true`, the tooltip will be position.
          */
-        "arrow"?: boolean;
+        "position"?: 'top' | 'bottom';
         /**
-          * If `true`, the popover will be dismissed when the backdrop is clicked.
+          * If `true`, the tooltip will stop propagation on tap.
          */
-        "backdropDismiss"?: boolean;
+        "stopPropagation"?: boolean;
         /**
-          * The component to display inside of the popover. You only need to use this if you are not using a JavaScript framework. Otherwise, you can just slot your component inside of `ion-popover`.
+          * If `true`, the tooltip will can be clicked and will emit the `gascoTooltip` event.
          */
-        "component"?: ComponentRef;
+        "tappable"?: boolean;
         /**
-          * The data to pass to the popover component. You only need to use this if you are not using a JavaScript framework. Otherwise, you can just set the props directly on your component.
+          * If `true`, the tooltip will be visible.
          */
-        "componentProps"?: ComponentProps;
-        /**
-          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
-         */
-        "cssClass"?: string | string[];
-        "delegate"?: FrameworkDelegate;
-        /**
-          * If `true`, the popover will be automatically dismissed when the content has been clicked.
-         */
-        "dismissOnSelect"?: boolean;
-        /**
-          * Animation to use when the popover is presented.
-         */
-        "enterAnimation"?: AnimationBuilder;
-        /**
-          * The event to pass to the popover animation.
-         */
-        "event"?: any;
-        "hasController"?: boolean;
-        /**
-          * Additional attributes to pass to the popover.
-         */
-        "htmlAttributes"?: PopoverAttributes;
-        /**
-          * If `true`, the popover will open. If `false`, the popover will close. Use this if you need finer grained control over presentation, otherwise just use the popoverController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the popover dismisses. You will need to do that in your code.
-         */
-        "isOpen"?: boolean;
-        /**
-          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
-         */
-        "keyboardClose"?: boolean;
-        "keyboardEvents"?: boolean;
-        /**
-          * Animation to use when the popover is dismissed.
-         */
-        "leaveAnimation"?: AnimationBuilder;
-        /**
-          * The mode determines which platform styles to use.
-         */
-        "mode"?: "ios" | "md";
-        /**
-          * Emitted after the popover has dismissed. Shorthand for gascoTooltipDidDismiss.
-         */
-        "onDidDismiss"?: (event: GascoTooltipCustomEvent<OverlayEventDetail>) => void;
-        /**
-          * Emitted after the popover has presented. Shorthand for gascoTooltipWillDismiss.
-         */
-        "onDidPresent"?: (event: GascoTooltipCustomEvent<void>) => void;
-        /**
-          * Emitted after the popover has dismissed.
-         */
-        "onGascoTooltipDidDismiss"?: (event: GascoTooltipCustomEvent<OverlayEventDetail>) => void;
-        /**
-          * Emitted after the popover has presented.
-         */
-        "onGascoTooltipDidPresent"?: (event: GascoTooltipCustomEvent<void>) => void;
-        /**
-          * Emitted before the popover has dismissed.
-         */
-        "onGascoTooltipWillDismiss"?: (event: GascoTooltipCustomEvent<OverlayEventDetail>) => void;
-        /**
-          * Emitted before the popover has presented.
-         */
-        "onGascoTooltipWillPresent"?: (event: GascoTooltipCustomEvent<void>) => void;
-        /**
-          * Emitted before the popover has dismissed. Shorthand for gascoTooltipWillDismiss.
-         */
-        "onWillDismiss"?: (event: GascoTooltipCustomEvent<OverlayEventDetail>) => void;
-        /**
-          * Emitted before the popover has presented. Shorthand for gascoTooltipWillPresent.
-         */
-        "onWillPresent"?: (event: GascoTooltipCustomEvent<void>) => void;
-        "overlayIndex": number;
-        /**
-          * Describes what to position the popover relative to. If `'trigger'`, the popover will be positioned relative to the trigger button. If passing in an event, this is determined via event.target. If `'event'`, the popover will be positioned relative to the x/y coordinates of the trigger action. If passing in an event, this is determined via event.clientX and event.clientY.
-         */
-        "reference"?: PositionReference;
-        /**
-          * If `true`, a backdrop will be displayed behind the popover. This property controls whether or not the backdrop darkens the screen when the popover is presented. It does not control whether or not the backdrop is active or present in the DOM.
-         */
-        "showBackdrop"?: boolean;
-        /**
-          * Describes which side of the `reference` point to position the popover on. The `'start'` and `'end'` values are RTL-aware, and the `'left'` and `'right'` values are not.
-         */
-        "side"?: PositionSide;
-        /**
-          * Describes how to calculate the popover width. If `'cover'`, the popover width will match the width of the trigger. If `'auto'`, the popover width will be determined by the content in the popover.
-         */
-        "size"?: PopoverSize;
-        /**
-          * If `true`, the popover will be translucent. Only applies when the mode is `"ios"` and the device supports [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
-         */
-        "translucent"?: boolean;
-        /**
-          * An ID corresponding to the trigger element that causes the popover to open. Use the `trigger-action` property to customize the interaction that results in the popover opening.
-         */
-        "trigger"?: string | undefined;
-        /**
-          * Describes what kind of interaction with the trigger that should cause the popover to open. Does not apply when the `trigger` property is `undefined`. If `'click'`, the popover will be presented when the trigger is left clicked. If `'hover'`, the popover will be presented when a pointer hovers over the trigger. If `'context-menu'`, the popover will be presented when the trigger is right clicked on desktop and long pressed on mobile. This will also prevent your device's normal context menu from appearing.
-         */
-        "triggerAction"?: TriggerAction;
+        "visible"?: boolean;
     }
     interface IntrinsicElements {
         "gasco-accordion": GascoAccordion;
@@ -3489,6 +3540,7 @@ declare namespace LocalJSX {
         "gasco-paginator": GascoPaginator;
         "gasco-picker-column-internal": GascoPickerColumnInternal;
         "gasco-picker-internal": GascoPickerInternal;
+        "gasco-popover": GascoPopover;
         "gasco-progress": GascoProgress;
         "gasco-radio": GascoRadio;
         "gasco-range": GascoRange;
@@ -3533,6 +3585,7 @@ declare module "@stencil/core" {
             "gasco-paginator": LocalJSX.GascoPaginator & JSXBase.HTMLAttributes<HTMLGascoPaginatorElement>;
             "gasco-picker-column-internal": LocalJSX.GascoPickerColumnInternal & JSXBase.HTMLAttributes<HTMLGascoPickerColumnInternalElement>;
             "gasco-picker-internal": LocalJSX.GascoPickerInternal & JSXBase.HTMLAttributes<HTMLGascoPickerInternalElement>;
+            "gasco-popover": LocalJSX.GascoPopover & JSXBase.HTMLAttributes<HTMLGascoPopoverElement>;
             "gasco-progress": LocalJSX.GascoProgress & JSXBase.HTMLAttributes<HTMLGascoProgressElement>;
             "gasco-radio": LocalJSX.GascoRadio & JSXBase.HTMLAttributes<HTMLGascoRadioElement>;
             "gasco-range": LocalJSX.GascoRange & JSXBase.HTMLAttributes<HTMLGascoRangeElement>;

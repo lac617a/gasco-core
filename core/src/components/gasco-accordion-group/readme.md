@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event       | Description                                  | Type                                                |
-| ----------- | -------------------------------------------- | --------------------------------------------------- |
-| `ionChange` | Emitted when the value property has changed. | `CustomEvent<AccordionGroupChangeEventDetail<any>>` |
+| Event         | Description                                  | Type                                                |
+| ------------- | -------------------------------------------- | --------------------------------------------------- |
+| `gascoChange` | Emitted when the value property has changed. | `CustomEvent<AccordionGroupChangeEventDetail<any>>` |
 
 
 ----------------------------------------------

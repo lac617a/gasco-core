@@ -1,351 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Accordion - Basic</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <link href="../../../../../css/ionic.bundle.css" rel="stylesheet" />
-    <link href="../../../../../scripts/testing/styles.css" rel="stylesheet" />
-    <script src="../../../../../scripts/testing/scripts.js"></script>
-    <script type="module" src="../../../../../dist/ionic/ionic.esm.js"></script>
-    <style>
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        grid-row-gap: 20px;
-        grid-column-gap: 20px;
-      }
-      h2 {
-        font-size: 12px;
-        font-weight: normal;
 
-        color: #6f7378;
+<head>
+  <meta charset="UTF-8" />
+  <title>Accordion - Basic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
 
-        margin-top: 10px;
-        margin-left: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <ion-app>
-      <ion-header translucent="true">
-        <ion-toolbar>
-          <ion-title>Accordion - Basic</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content fullscreen="true" color="light">
-        <ion-header collapse="condense">
-          <ion-toolbar color="light">
-            <ion-title size="large">Accordion - Basic</ion-title>
-          </ion-toolbar>
-        </ion-header>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
-        <div class="grid ion-padding">
-          <div class="grid-item">
-            <h2>Inset, Color</h2>
-            <ion-accordion-group expand="inset" value="attractions">
-              <ion-accordion value="attractions">
-                <ion-item color="primary" slot="header" button detail="false">
-                  <ion-icon slot="start" ios="film-outline" md="film"></ion-icon>
-                  <ion-label>Attractions</ion-label>
-                </ion-item>
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Movie Theaters</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Amusement Parks</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Mini Golf</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="dining">
-                <ion-item color="warning" slot="header" button detail="false">
-                  <ion-icon slot="start" name="pizza"></ion-icon>
-                  <ion-label>Dining</ion-label>
-                </ion-item>
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Breakfast & Brunch</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>New American</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Sushi Bars</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="games">
-                <ion-item color="danger" slot="header" button detail="false">
-                  <ion-icon slot="start" ios="game-controller-outline" md="game-controller"></ion-icon>
-                  <ion-label>Games</ion-label>
-                </ion-item>
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+    .grid {
+      display: block;
+    }
 
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Xbox</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Playstation</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Switch</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="exercise">
-                <ion-item color="success" slot="header" button detail="false">
-                  <ion-icon slot="start" ios="bicycle-outline" md="bicycle"></ion-icon>
-                  <ion-label>Exercise</ion-label>
-                </ion-item>
+    h2 {
+      font-size: 12px;
+      font-weight: normal;
 
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Jog</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Swim</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Nap</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-            </ion-accordion-group>
-          </div>
+      color: #6f7378;
 
-          <div class="grid-item">
-            <h2>Inset</h2>
-            <ion-accordion-group expand="inset" value="attractions">
-              <ion-accordion value="attractions">
-                <ion-item slot="header" button detail="false">
-                  <ion-icon slot="start" ios="film-outline" md="film"></ion-icon>
-                  <ion-label>Attractions</ion-label>
-                </ion-item>
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Movie Theaters</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Amusement Parks</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Mini Golf</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="dining">
-                <ion-item slot="header" button detail="false">
-                  <ion-icon slot="start" name="pizza"></ion-icon>
-                  <ion-label>Dining</ion-label>
-                </ion-item>
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Breakfast & Brunch</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>New American</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Sushi Bars</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="games">
-                <ion-item slot="header" button detail="false">
-                  <ion-icon slot="start" ios="game-controller-outline" md="game-controller"></ion-icon>
-                  <ion-label>Games</ion-label>
-                </ion-item>
+      margin-top: 10px;
+      margin-left: 5px;
+    }
 
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Xbox</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Playstation</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Switch</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="exercise">
-                <ion-item slot="header" button detail="false">
-                  <ion-icon slot="start" ios="bicycle-outline" md="bicycle"></ion-icon>
-                  <ion-label>Exercise</ion-label>
-                </ion-item>
+  </style>
+</head>
 
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Jog</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Swim</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Nap</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-            </ion-accordion-group>
-          </div>
+<body>
 
-          <div class="grid-item">
-            <h2>Compact, Color</h2>
-            <ion-accordion-group value="attractions">
-              <ion-accordion value="attractions">
-                <ion-item color="primary" slot="header" button detail="false">
-                  <ion-icon slot="start" ios="film-outline" md="film"></ion-icon>
-                  <ion-label>Attractions</ion-label>
-                </ion-item>
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Movie Theaters</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Amusement Parks</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Mini Golf</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="dining">
-                <ion-item color="warning" slot="header" button detail="false">
-                  <ion-icon slot="start" name="pizza"></ion-icon>
-                  <ion-label>Dining</ion-label>
-                </ion-item>
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Breakfast & Brunch</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>New American</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Sushi Bars</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="games">
-                <ion-item color="danger" slot="header" button detail="false">
-                  <ion-icon slot="start" ios="game-controller-outline" md="game-controller"></ion-icon>
-                  <ion-label>Games</ion-label>
-                </ion-item>
+  <div class="grid gasco-padding">
+    <div class="grid-item">
+      <gasco-accordion-group value="dog">
 
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Xbox</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Playstation</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Switch</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="exercise">
-                <ion-item color="success" slot="header" button detail="false">
-                  <ion-icon slot="start" ios="bicycle-outline" md="bicycle"></ion-icon>
-                  <ion-label>Exercise</ion-label>
-                </ion-item>
+        <gasco-accordion value="dog">
+          <gasco-item slot="header" detail="false">
+            <gasco-label>¿Cómo comprar?</gasco-label>
+            <gasco-label>Subtitle</gasco-label>
+          </gasco-item>
+          <gasco-accordion-content>
+            <p>Este es el interior del expasion Panel, aca va texto de prueba sobre como comprar el producto.</p>
+          </gasco-accordion-content>
+        </gasco-accordion>
 
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Jog</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Swim</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Nap</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-            </ion-accordion-group>
-          </div>
+        <gasco-accordion value="dining">
+          <gasco-item slot="header" detail="false">
+            <gasco-label>¿Cuáles son las políticas de compra?</gasco-label>
+          </gasco-item>
+          <gasco-accordion-content>
+            <div>
+              <p>Este es el interior del expasion Panel, aca va texto de prueba sobre como comprar el producto.</p>
+              <p>Este es el interior del expasion Panel, aca va texto de prueba sobre como comprar el producto.</p>
+              <p>Este es el interior del expasion Panel, aca va texto de prueba sobre como comprar el producto.</p>
+            </div>
+          </gasco-accordion-content>
+        </gasco-accordion>
 
-          <div class="grid-item">
-            <h2>Compact</h2>
-            <ion-accordion-group value="attractions">
-              <ion-accordion value="attractions">
-                <ion-item slot="header" button detail="false">
-                  <ion-icon slot="start" ios="film-outline" md="film"></ion-icon>
-                  <ion-label>Attractions</ion-label>
-                </ion-item>
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Movie Theaters</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Amusement Parks</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Mini Golf</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="dining">
-                <ion-item slot="header" button detail="false">
-                  <ion-icon slot="start" name="pizza"></ion-icon>
-                  <ion-label>Dining</ion-label>
-                </ion-item>
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Breakfast & Brunch</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>New American</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Sushi Bars</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="games">
-                <ion-item slot="header" button detail="false">
-                  <ion-icon slot="start" ios="game-controller-outline" md="game-controller"></ion-icon>
-                  <ion-label>Games</ion-label>
-                </ion-item>
+        <gasco-accordion value="games">
+          <gasco-item slot="header" detail="false">
+            <gasco-label>No llego mi pedido ¿qué hago?</gasco-label>
+          </gasco-item>
 
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Xbox</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Playstation</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Switch</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-              <ion-accordion value="exercise">
-                <ion-item slot="header" button detail="false">
-                  <ion-icon slot="start" ios="bicycle-outline" md="bicycle"></ion-icon>
-                  <ion-label>Exercise</ion-label>
-                </ion-item>
+          <gasco-accordion-content>
+            <p>Este es el interior del expasion Panel, aca va texto de prueba sobre como comprar el producto.</p>
+          </gasco-accordion-content>
+        </gasco-accordion>
+      </gasco-accordion-group>
+    </div>
+  </div>
+</body>
 
-                <ion-list lines="none" slot="content">
-                  <ion-item>
-                    <ion-label>Jog</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Swim</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Nap</ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-accordion>
-            </ion-accordion-group>
-          </div>
-        </div>
-      </ion-content>
-    </ion-app>
-  </body>
 </html>

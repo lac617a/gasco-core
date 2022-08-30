@@ -1,0 +1,23 @@
+@import "../gasco-card-content/gasco-card-content.md.scss";
+
+// Accordion Content
+// --------------------------------------------------
+
+.card-content {
+  @include padding(0);
+  > div,
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6,
+  > p,
+  > small {
+    @include padding(0, 1rem, 1rem);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #072531;
+  }
+}

@@ -50,7 +50,7 @@ export class GascoAccordionGroup implements ComponentInterface {
   /**
    * Emitted when the value property has changed.
    */
-  @Event() ionChange!: EventEmitter<AccordionGroupChangeEventDetail>;
+  @Event() gascoChange!: EventEmitter<AccordionGroupChangeEventDetail>;
 
   @Watch('value')
   valueChanged() {
@@ -65,7 +65,7 @@ export class GascoAccordionGroup implements ComponentInterface {
     if (!multiple && Array.isArray(value)) {
       this.value = value[0];
     } else {
-      this.ionChange.emit({ value: this.value });
+      this.gascoChange.emit({ value: this.value });
     }
   }
 
@@ -98,7 +98,7 @@ export class GascoAccordionGroup implements ComponentInterface {
      * Make sure focus is in the header, not the body, of the accordion. This ensures
      * that if there are any interactable elements in the body, their keyboard
      * interaction doesn't get stolen by the accordion. Example: using up/down keys
-     * in ion-textarea.
+     * in gasco-textarea.
      */
     const activeAccordionHeader = activeElement.closest('gasco-accordion [slot="header"]');
     if (!activeAccordionHeader) {
@@ -226,8 +226,7 @@ export class GascoAccordionGroup implements ComponentInterface {
           'accordion-group-readonly': readonly,
           [`accordion-group-expand-${expand}`]: true,
         }}
-        role="presentation"
-      >
+        role="presentation">
         <slot></slot>
       </Host>
     );

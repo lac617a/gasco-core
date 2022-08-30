@@ -34,6 +34,8 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GascoAccordionContent {
+    }
     interface GascoAccordionGroup {
         /**
           * If `true`, all accordions inside of the accordion group will animate when expanding or collapsing.
@@ -1577,6 +1579,12 @@ declare global {
         prototype: HTMLGascoAccordionElement;
         new (): HTMLGascoAccordionElement;
     };
+    interface HTMLGascoAccordionContentElement extends Components.GascoAccordionContent, HTMLStencilElement {
+    }
+    var HTMLGascoAccordionContentElement: {
+        prototype: HTMLGascoAccordionContentElement;
+        new (): HTMLGascoAccordionContentElement;
+    };
     interface HTMLGascoAccordionGroupElement extends Components.GascoAccordionGroup, HTMLStencilElement {
     }
     var HTMLGascoAccordionGroupElement: {
@@ -1807,6 +1815,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "gasco-accordion": HTMLGascoAccordionElement;
+        "gasco-accordion-content": HTMLGascoAccordionContentElement;
         "gasco-accordion-group": HTMLGascoAccordionGroupElement;
         "gasco-autocomplete": HTMLGascoAutocompleteElement;
         "gasco-backdrop": HTMLGascoBackdropElement;
@@ -1870,6 +1879,8 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface GascoAccordionContent {
+    }
     interface GascoAccordionGroup {
         /**
           * If `true`, all accordions inside of the accordion group will animate when expanding or collapsing.
@@ -1890,7 +1901,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value property has changed.
          */
-        "onIonChange"?: (event: GascoAccordionGroupCustomEvent<AccordionGroupChangeEventDetail>) => void;
+        "onGascoChange"?: (event: GascoAccordionGroupCustomEvent<AccordionGroupChangeEventDetail>) => void;
         /**
           * If `true`, the accordion group cannot be interacted with, but does not alter the opacity.
          */
@@ -3510,6 +3521,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "gasco-accordion": GascoAccordion;
+        "gasco-accordion-content": GascoAccordionContent;
         "gasco-accordion-group": GascoAccordionGroup;
         "gasco-autocomplete": GascoAutocomplete;
         "gasco-backdrop": GascoBackdrop;
@@ -3555,6 +3567,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gasco-accordion": LocalJSX.GascoAccordion & JSXBase.HTMLAttributes<HTMLGascoAccordionElement>;
+            "gasco-accordion-content": LocalJSX.GascoAccordionContent & JSXBase.HTMLAttributes<HTMLGascoAccordionContentElement>;
             "gasco-accordion-group": LocalJSX.GascoAccordionGroup & JSXBase.HTMLAttributes<HTMLGascoAccordionGroupElement>;
             "gasco-autocomplete": LocalJSX.GascoAutocomplete & JSXBase.HTMLAttributes<HTMLGascoAutocompleteElement>;
             "gasco-backdrop": LocalJSX.GascoBackdrop & JSXBase.HTMLAttributes<HTMLGascoBackdropElement>;

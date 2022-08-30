@@ -16,7 +16,7 @@
   --background-hover-opacity: .04;
   --border-color: #{$item-md-border-top-color};
   --color: #{$item-md-color};
-  --transition: opacity 15ms linear, background-color 15ms linear;
+  --transition: all 15ms linear;
   --padding-start: #{$item-md-padding-start};
   --inner-padding-end: #{$item-md-padding-end};
   --inner-border-width: #{$item-md-border-top-width 0 0 0};
@@ -411,4 +411,3 @@
 .item-counter {
   letter-spacing: #{$item-md-input-counter-letter-spacing};
 }
-

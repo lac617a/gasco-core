@@ -172,6 +172,12 @@
       background: #{current-color(contrast)};
     }
   }
+
+  :host-context(.accordion-animated) .item-native {
+    &::after {
+      background:  #F2FCFF !important;
+    }
+  }
 }
 
 
@@ -359,6 +365,10 @@ button, a {
 
   overflow: inherit;
   box-sizing: border-box;
+}
+
+:host-context(.accordion-animated) .input-wrapper {
+  gap: 2rem;
 }
 
 :host(.item-label-stacked),

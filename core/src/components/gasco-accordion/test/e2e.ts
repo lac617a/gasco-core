@@ -3,21 +3,21 @@ import { newE2EPage } from '@stencil/core/testing';
 test('should properly set readonly on child accordions', async () => {
   const page = await newE2EPage({
     html: `
-      <ion-accordion-group animated="false">
-        <ion-accordion>
-          <ion-item slot="header">Label</ion-item>
+      <gasco-accordion-group animated="false">
+        <gasco-accordion>
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-      </ion-accordion-group>
+        </gasco-accordion>
+      </gasco-accordion-group>
     `,
   });
 
-  const accordion = await page.find('ion-accordion');
+  const accordion = await page.find('gasco-accordion');
   const value = await accordion.getProperty('readonly');
 
   expect(value).toBe(false);
 
-  await page.$eval('ion-accordion-group', (el: HTMLIonAccordionGroupElement) => {
+  await page.$eval('gasco-accordion-group', (el: HTMLGascoAccordionGroupElement) => {
     el.readonly = true;
   });
 
@@ -30,21 +30,21 @@ test('should properly set readonly on child accordions', async () => {
 test('should properly set disabled on child accordions', async () => {
   const page = await newE2EPage({
     html: `
-      <ion-accordion-group animated="false">
-        <ion-accordion>
-          <ion-item slot="header">Label</ion-item>
+      <gasco-accordion-group animated="false">
+        <gasco-accordion>
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-      </ion-accordion-group>
+        </gasco-accordion>
+      </gasco-accordion-group>
     `,
   });
 
-  const accordion = await page.find('ion-accordion');
+  const accordion = await page.find('gasco-accordion');
   const value = await accordion.getProperty('disabled');
 
   expect(value).toBe(false);
 
-  await page.$eval('ion-accordion-group', (el: HTMLIonAccordionGroupElement) => {
+  await page.$eval('gasco-accordion-group', (el: HTMLGascoAccordionGroupElement) => {
     el.disabled = true;
   });
 

@@ -8,21 +8,36 @@
   /**
    * @prop --color: Color of the label
    */
-  --color: initial;
+  --color: #072531;
 
   display: block;
 
   color: var(--color);
 
   font-family: $font-family-base;
-  font-size: inherit;
-
+  font-size: initial;
   text-overflow: ellipsis;
 
   white-space: nowrap;
 
   overflow: hidden;
   box-sizing: border-box;
+}
+
+:host-context(.accordion-animated) {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 36px;
+  text-align: left;
+  color: var(--color);
+  max-width: max-content;
+}
+
+:host-context(.accordion-animated):nth-child(2) {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #4D4D4D;
 }
 
 :host(.gasco-color) {
@@ -92,4 +107,11 @@
   text-overflow: inherit;
 
   overflow: inherit;
+}
+
+@media only screen and (max-width: 768px) {
+  :host-context(.accordion-animated) {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }

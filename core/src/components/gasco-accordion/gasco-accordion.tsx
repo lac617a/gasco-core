@@ -195,10 +195,12 @@ export class GascoAccordion implements ComponentInterface {
       return;
     }
 
-    const iconEl = document.createElement('gasco-icon');
+    const iconEl = document.createElement('i');
     iconEl.slot = toggleIconSlot;
+    iconEl.textContent = 'expand_more';
     // iconEl.lazy = false;
     // iconEl.icon = toggleIcon;
+    iconEl.classList.add('material-icons');
     iconEl.classList.add('gasco-accordion-toggle-icon');
     iconEl.setAttribute('aria-hidden', 'true');
 
@@ -433,7 +435,7 @@ export class GascoAccordion implements ComponentInterface {
           ref={(contentEl) => (this.contentEl = contentEl)}
         >
           <div id="content-wrapper" ref={(contentElWrapper) => (this.contentElWrapper = contentElWrapper)}>
-            <slot name="content"></slot>
+            <slot></slot>
           </div>
         </div>
       </Host>

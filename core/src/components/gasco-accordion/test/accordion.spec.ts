@@ -1,32 +1,32 @@
 import { newSpecPage } from '@stencil/core/testing';
 
-import { AccordionGroup } from '../../accordion-group/accordion-group.tsx';
-import { Item } from '../../item/item.tsx';
-import { Accordion } from '../accordion.tsx';
+import { GascoAccordionGroup } from '../../gasco-accordion-group/gasco-accordion-group.tsx';
+import { GascoItem } from '../../gasco-item/gasco-item.tsx';
+import { GascoAccordion } from '../gasco-accordion.tsx';
 
 it('should open correct accordions', async () => {
   const page = await newSpecPage({
-    components: [Item, Accordion, AccordionGroup],
+    components: [GascoItem, GascoAccordion, GascoAccordionGroup],
     html: `
-      <ion-accordion-group animated="false">
-        <ion-accordion value="first">
-          <ion-item slot="header">Label</ion-item>
+      <gasco-accordion-group animated="false">
+        <gasco-accordion value="first">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="second">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="second">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="third">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="third">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-      </ion-accordion-group>
+        </gasco-accordion>
+      </gasco-accordion-group>
     `,
   });
 
-  const accordionGroup = page.body.querySelector('ion-accordion-group');
-  const accordions = accordionGroup.querySelectorAll('ion-accordion');
+  const accordionGroup = page.body.querySelector('gasco-accordion-group');
+  const accordions = accordionGroup.querySelectorAll('gasco-accordion');
 
   accordions.forEach((accordion) => {
     expect(accordion.classList.contains('accordion-collapsed')).toEqual(true);
@@ -42,27 +42,27 @@ it('should open correct accordions', async () => {
 
 it('should not open more than one accordion when multiple="false"', async () => {
   const page = await newSpecPage({
-    components: [Item, Accordion, AccordionGroup],
+    components: [GascoItem, GascoAccordion, GascoAccordionGroup],
     html: `
-      <ion-accordion-group animated="false">
-        <ion-accordion value="first">
-          <ion-item slot="header">Label</ion-item>
+      <gasco-accordion-group animated="false">
+        <gasco-accordion value="first">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="second">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="second">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="third">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="third">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-      </ion-accordion-group>
+        </gasco-accordion>
+      </gasco-accordion-group>
     `,
   });
 
-  const accordionGroup = page.body.querySelector('ion-accordion-group');
-  const accordions = accordionGroup.querySelectorAll('ion-accordion');
+  const accordionGroup = page.body.querySelector('gasco-accordion-group');
+  const accordions = accordionGroup.querySelectorAll('gasco-accordion');
 
   accordions.forEach((accordion) => {
     expect(accordion.classList.contains('accordion-collapsed')).toEqual(true);
@@ -78,27 +78,27 @@ it('should not open more than one accordion when multiple="false"', async () => 
 
 it('should open more than one accordion when multiple="true"', async () => {
   const page = await newSpecPage({
-    components: [Item, Accordion, AccordionGroup],
+    components: [GascoItem, GascoAccordion, GascoAccordionGroup],
     html: `
-      <ion-accordion-group multiple="true" animated="false">
-        <ion-accordion value="first">
-          <ion-item slot="header">Label</ion-item>
+      <gasco-accordion-group multiple="true" animated="false">
+        <gasco-accordion value="first">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="second">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="second">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="third">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="third">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-      </ion-accordion-group>
+        </gasco-accordion>
+      </gasco-accordion-group>
     `,
   });
 
-  const accordionGroup = page.body.querySelector('ion-accordion-group');
-  const accordions = accordionGroup.querySelectorAll('ion-accordion');
+  const accordionGroup = page.body.querySelector('gasco-accordion-group');
+  const accordions = accordionGroup.querySelectorAll('gasco-accordion');
 
   accordions.forEach((accordion) => {
     expect(accordion.classList.contains('accordion-collapsed')).toEqual(true);
@@ -114,27 +114,27 @@ it('should open more than one accordion when multiple="true"', async () => {
 
 it('should render with accordion open', async () => {
   const page = await newSpecPage({
-    components: [Item, Accordion, AccordionGroup],
+    components: [GascoItem, GascoAccordion, GascoAccordionGroup],
     html: `
-      <ion-accordion-group value="first" animated="false">
-        <ion-accordion value="first">
-          <ion-item slot="header">Label</ion-item>
+      <gasco-accordion-group value="first" animated="false">
+        <gasco-accordion value="first">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="second">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="second">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="third">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="third">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-      </ion-accordion-group>
+        </gasco-accordion>
+      </gasco-accordion-group>
     `,
   });
 
-  const accordionGroup = page.body.querySelector('ion-accordion-group');
-  const accordions = accordionGroup.querySelectorAll('ion-accordion');
+  const accordionGroup = page.body.querySelector('gasco-accordion-group');
+  const accordions = accordionGroup.querySelectorAll('gasco-accordion');
 
   expect(accordions[0].classList.contains('accordion-collapsed')).toEqual(false);
   expect(accordions[1].classList.contains('accordion-collapsed')).toEqual(true);
@@ -143,27 +143,27 @@ it('should render with accordion open', async () => {
 
 it('should accept a string when multiple="true"', async () => {
   const page = await newSpecPage({
-    components: [Item, Accordion, AccordionGroup],
+    components: [GascoItem, GascoAccordion, GascoAccordionGroup],
     html: `
-      <ion-accordion-group multiple="true" value="first" animated="false">
-        <ion-accordion value="first">
-          <ion-item slot="header">Label</ion-item>
+      <gasco-accordion-group multiple="true" value="first" animated="false">
+        <gasco-accordion value="first">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="second">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="second">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-        <ion-accordion value="third">
-          <ion-item slot="header">Label</ion-item>
+        </gasco-accordion>
+        <gasco-accordion value="third">
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-      </ion-accordion-group>
+        </gasco-accordion>
+      </gasco-accordion-group>
     `,
   });
 
-  const accordionGroup = page.body.querySelector('ion-accordion-group');
-  const accordions = accordionGroup.querySelectorAll('ion-accordion');
+  const accordionGroup = page.body.querySelector('gasco-accordion-group');
+  const accordions = accordionGroup.querySelectorAll('gasco-accordion');
 
   expect(accordions[0].classList.contains('accordion-collapsed')).toEqual(false);
   expect(accordions[1].classList.contains('accordion-collapsed')).toEqual(true);
@@ -172,27 +172,27 @@ it('should accept a string when multiple="true"', async () => {
 
 it('should set default values if not provided', async () => {
   const page = await newSpecPage({
-    components: [Item, Accordion, AccordionGroup],
+    components: [GascoItem, GascoAccordion, GascoAccordionGroup],
     html: `
-      <ion-accordion-group animated="false">
-        <ion-accordion>
-          <ion-item slot="header">Label</ion-item>
+      <gasco-accordion-group animated="false">
+        <gasco-accordion>
+          <gasco-item slot="header">Label</gasco-item>
           <div slot="content">Content</div>
-        </ion-accordion>
-      </ion-accordion-group>
+        </gasco-accordion>
+      </gasco-accordion-group>
     `,
   });
 
-  const accordionGroup = page.body.querySelector('ion-accordion-group');
-  const accordion = accordionGroup.querySelector('ion-accordion');
+  const accordionGroup = page.body.querySelector('gasco-accordion-group');
+  const accordion = accordionGroup.querySelector('gasco-accordion');
 
   /**
    * ID is determined via an auto incrementing counter
-   * so do not hard code ion-accordion-0 as it might
+   * so do not hard code gasco-accordion-0 as it might
    * change depending on how many accordions
    * are used in these tests.
    */
-  expect(accordion.value).toContain('ion-accordion-');
+  expect(accordion.value).toContain('gasco-accordion-');
 
   accordionGroup.value = accordion.value;
   await page.waitForChanges();

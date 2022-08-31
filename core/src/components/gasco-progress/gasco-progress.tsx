@@ -30,6 +30,16 @@ export class GascoProgress implements ComponentInterface {
   @Prop() reversed = false;
 
   /**
+   * If true, reverse the progress bar direction.
+   */
+  @Prop() progress: 'line' | 'circle' = 'line';
+
+  /**
+   * The Progress size only for circle.
+   */
+  @Prop({ reflect: true }) size?: 'small' | 'default' | 'large';
+
+  /**
    * The value determines how much of the active bar should display when the
    * `type` is `"determinate"`.
    * The value should be between [0, 1].
@@ -46,10 +56,11 @@ export class GascoProgress implements ComponentInterface {
    * The color to use from your application's color palette.
    * Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"``.
    */
-  @Prop({ reflect: true }) color?: Color;
+  @Prop({ reflect: true }) color?: Color = 'primary';
 
   render() {
-    const { color, type, reversed, value, buffer } = this;
+    const finalSize = this.size === undefined && false? 'small' : this.size;
+    const { color, type, reversed, value, buffer, progress } = this;
     const paused = config.getBoolean('_testing');
     return (
       <Host
@@ -58,29 +69,57 @@ export class GascoProgress implements ComponentInterface {
         aria-valuemin="0"
         aria-valuemax="1"
         class={createColorClasses(color, {
-          [`progress-bar-${type}`]: true,
           'progress-paused': paused,
+          [`progress-bar-${type}`]: true,
+          [`progress-${progress}`]: true,
+          [`progress-${finalSize}`]: finalSize !== undefined,
           'progress-bar-reversed': document.dir === 'rtl' ? !reversed : reversed,
         })}
       >
-        {type === 'indeterminate' ? renderIndeterminate() : renderProgress(value, buffer)}
+        {progress === 'line' ? (
+          type === 'indeterminate' ? renderIndeterminate() : renderProgress(value, buffer)
+        ) : (
+          type === 'indeterminate' ? renderIndeterminateCircle() : renderProgressCircle(value)
+        )}
       </Host>
     );
   }
 }
 
-const renderIndeterminate = () => {
+const renderIndeterminateCircle = () => (
+  <div class="gasco-progress-circle-infinite">
+      <div class="gasco-circle-infinite"></div>
+  </div>
+);
+
+const renderProgressCircle = (value: number) => {
+  const finalValue = clamp(0, value, 1);
   return (
-    <div part="track" class="progress-buffer-bar">
-      <div class="indeterminate-bar-primary">
-        <span part="progress" class="progress-indeterminate"></span>
+    <div class="gasco-progress-circle" data-progress={Math.ceil(finalValue * 100)}>
+      <div class="gasco-circle">
+        <div class="full gasco-progress-circle__slice">
+          <div class="gasco-progress-circle__fill"></div>
+        </div>
+        <div class="gasco-progress-circle__slice">
+          <div class="gasco-progress-circle__fill"></div>
+          <div class="gasco-progress-circle__fill gasco-progress-circle__bar"></div>
+        </div>
       </div>
-      <div class="indeterminate-bar-secondary">
-        <span part="progress" class="progress-indeterminate"></span>
-      </div>
+      <div class="gasco-progress-circle__overlay"></div>
     </div>
-  );
-};
+  )
+}
+
+const renderIndeterminate = () => (
+  <div part="track" class="progress-buffer-bar">
+    <div class="indeterminate-bar-primary">
+      <span part="progress" class="progress-indeterminate"></span>
+    </div>
+    <div class="indeterminate-bar-secondary">
+      <span part="progress" class="progress-indeterminate"></span>
+    </div>
+  </div>
+);
 
 const renderProgress = (value: number, buffer: number) => {
   const finalValue = clamp(0, value, 1);
@@ -96,7 +135,7 @@ const renderProgress = (value: number, buffer: number) => {
      * instead of removing the element to avoid flickering.
      */
     <div
-      class={{ 'buffer-circles-container': true, 'ion-hide': finalBuffer === 1 }}
+      class={{ 'buffer-circles-container': true, 'gasco-hide': finalBuffer === 1 }}
       style={{ transform: `translateX(${finalBuffer * 100}%)` }}
     >
       <div class="buffer-circles-container" style={{ transform: `translateX(-${finalBuffer * 100}%)` }}>

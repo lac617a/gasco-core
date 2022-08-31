@@ -1,8 +1,206 @@
 @import "./gasco-progress";
 
+$circle-size: 55px;
+$circle-color: gasco-color(primary, base);
+$inset-size: $circle-size - 15px;
+$inset-color: #FFF;
+$transition-length: 1s;
+$margin-overlay: $circle-size - $inset-size;
+
+
 // Material Design Progress bar
 // --------------------------------------------------
 
 :host {
+  --color-progress-circle: #{$circle-color};
+  --background-inset-circle: #{$inset-color};
+}
+
+:host(.progress-line) {
   height: 4px;
+}
+
+:host(.progress-circle) {
+  height: $circle-size;
+}
+
+:host(.progress-circle) .gasco-progress-circle {
+  margin: 0 auto;
+  width: $circle-size;
+  height: $circle-size;
+
+  background: current-color(base, 0.1);
+  border-radius: 50%;
+
+  &-infinite {
+    margin: 0 auto;
+    width: $circle-size;
+    height: $circle-size;
+
+    .gasco-circle-infinite {
+      position: absolute;
+      border-width: 8px;
+      width: $inset-size - 1;
+      height: $inset-size - 1;
+
+      border-style: solid;
+      border-color: current-color(base, 0.1);
+      border-bottom-color: var(--color-progress-circle);
+
+      border-radius: 50%;
+
+      animation: rotation 1s linear infinite;
+
+    }
+  }
+
+  .gasco-progress-circle__slice,
+  .gasco-progress-circle__fill {
+    width: $circle-size;
+    height: $circle-size;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform $transition-length;
+    border-radius: 50%;
+  }
+
+  .gasco-progress-circle__slice {
+    clip: rect(0px, $circle-size, $circle-size, calc(#{$circle-size} / 2));
+
+    .gasco-progress-circle__fill {
+      clip: rect(0px, calc(#{$circle-size} / 2), $circle-size, 0px);
+      background: var(--color-progress-circle);
+    }
+  }
+
+  .gasco-progress-circle__overlay {
+    width: $inset-size;
+    height: $inset-size;
+    position: absolute;
+    contain: size;
+    margin-left: calc(#{$margin-overlay} / 2);
+    margin-top: calc(#{$margin-overlay} / 2);
+
+    background: var(--background-inset-circle);
+    border-radius: 50%;
+  }
+
+  $i: 0;
+  $increment: calc(180deg / 100);
+
+  @while $i <=100 {
+    &[data-progress='#{$i}'] {
+
+      .gasco-progress-circle__slice.full,
+      .gasco-progress-circle__fill {
+        transform: rotate($increment * $i);
+      }
+
+      .gasco-progress-circle__fill.gasco-progress-circle__bar {
+        transform: rotate($increment * $i * 2);
+      }
+
+      $i: $i+1;
+    }
+  }
+}
+
+// Progress Size
+// ---------------------------------------------------
+:host(.progress-circle.progress-large) {
+  $circle-size: 75px;
+  $inset-size: $circle-size - 25px;
+  $margin-overlay: $circle-size - $inset-size;
+
+  height: $circle-size;
+
+  .gasco-progress-circle {
+    width: $circle-size;
+    height: $circle-size;
+    &-infinite {
+      width: $circle-size;
+      height: $circle-size;
+
+      .gasco-circle-infinite {
+        border-width: 12px;
+        width: $inset-size;
+        height: $inset-size;
+      }
+    }
+
+    .gasco-progress-circle__slice,
+    .gasco-progress-circle__fill {
+      width: $circle-size;
+      height: $circle-size;
+    }
+
+    .gasco-progress-circle__slice {
+      clip: rect(0px, $circle-size, $circle-size, calc(#{$circle-size} / 2));
+
+      .gasco-progress-circle__fill {
+        clip: rect(0px, calc(#{$circle-size} / 2), $circle-size, 0px);
+      }
+    }
+
+    .gasco-progress-circle__overlay {
+      width: $inset-size;
+      height: $inset-size;
+      margin-left: calc(#{$margin-overlay} / 2);
+      margin-top: calc(#{$margin-overlay} / 2);
+    }
+  }
+
+}
+
+:host(.progress-circle.progress-medium) {
+  $circle-size: 60px;
+  $inset-size: $circle-size - 20px;
+  $margin-overlay: $circle-size - $inset-size;
+
+  height: $circle-size;
+  .gasco-progress-circle {
+    width: $circle-size;
+    height: $circle-size;
+    &-infinite {
+      width: $circle-size;
+      height: $circle-size;
+
+      .gasco-circle-infinite {
+        border-width: 10px;
+      }
+    }
+
+    .gasco-progress-circle__slice,
+    .gasco-progress-circle__fill {
+      width: $circle-size;
+      height: $circle-size;
+    }
+
+    .gasco-progress-circle__slice {
+      clip: rect(0px, $circle-size, $circle-size, calc(#{$circle-size} / 2));
+
+      .gasco-progress-circle__fill {
+        clip: rect(0px, calc(#{$circle-size} / 2), $circle-size, 0px);
+      }
+    }
+
+    .gasco-progress-circle__overlay {
+      width: $inset-size;
+      height: $inset-size;
+      margin-left: calc(#{$margin-overlay} / 2);
+      margin-top: calc(#{$margin-overlay} / 2);
+    }
+  }
+}
+
+
+/* keyFrames */
+@keyframes rotation {
+  0% {
+    transform: rotateZ(0deg)
+  }
+
+  100% {
+    transform: rotateZ(360deg)
+  }
 }

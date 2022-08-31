@@ -1248,7 +1248,15 @@ export namespace Components {
         /**
           * If true, reverse the progress bar direction.
          */
+        "progress": 'line' | 'circle';
+        /**
+          * If true, reverse the progress bar direction.
+         */
         "reversed": boolean;
+        /**
+          * The Progress size only for circle.
+         */
+        "size"?: 'small' | 'default' | 'large';
         /**
           * The state of the progress bar, based on if the time the process takes is known or not. Default options are: `"determinate"` (no animation), `"indeterminate"` (animate from left to right).
          */
@@ -3244,7 +3252,15 @@ declare namespace LocalJSX {
         /**
           * If true, reverse the progress bar direction.
          */
+        "progress"?: 'line' | 'circle';
+        /**
+          * If true, reverse the progress bar direction.
+         */
         "reversed"?: boolean;
+        /**
+          * The Progress size only for circle.
+         */
+        "size"?: 'small' | 'default' | 'large';
         /**
           * The state of the progress bar, based on if the time the process takes is known or not. Default options are: `"determinate"` (no animation), `"indeterminate"` (animate from left to right).
          */

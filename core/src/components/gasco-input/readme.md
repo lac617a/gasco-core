@@ -92,6 +92,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [gasco-select](../gasco-select)
+
 ### Depends on
 
 - [gasco-datetime](../gasco-datetime)
@@ -109,6 +113,7 @@ graph TD;
   gasco-datetime --> gasco-button-icon
   gasco-datetime --> gasco-popover
   gasco-popover --> gasco-backdrop
+  gasco-select --> gasco-input
   style gasco-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

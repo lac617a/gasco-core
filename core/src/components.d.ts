@@ -10,6 +10,7 @@ import { CounterFormatter } from "./components/gasco-item/gasco-item-interface";
 import { PickerColumnItem } from "./components/gasco-picker-column-internal/picker-column-internal-interfaces";
 import { PickerInternalChangeEventDetail } from "./components/gasco-picker-internal/picker-internal-interfaces";
 import { PinFormatter } from "./components/gasco-range/gasco-range-interface";
+import { IChoiceDetail, IChoiceProp } from "./components/gasco-select/gasco-select-interface";
 import { GascoSafeString } from "./utils/sanitization";
 export namespace Components {
     interface GascoAccordion {
@@ -1344,6 +1345,26 @@ export namespace Components {
          */
         "value": RangeValue;
     }
+    interface GascoSelect {
+        "choices"?: IChoiceProp[];
+        /**
+          * If `true`, the user cannot interact with the select.
+         */
+        "disabled": boolean;
+        /**
+          * Instructional text that show before the input has a value. The Input label.
+         */
+        "label"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Instructional text that show before the input has a value.
+         */
+        "placeholder"?: string;
+        "type"?: 'single' | 'multiple';
+    }
     interface GascoTab {
         /**
           * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
@@ -1567,6 +1588,10 @@ export interface GascoRadioCustomEvent<T> extends CustomEvent<T> {
 export interface GascoRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoRangeElement;
+}
+export interface GascoSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoSelectElement;
 }
 export interface GascoTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1797,6 +1822,12 @@ declare global {
         prototype: HTMLGascoRangeElement;
         new (): HTMLGascoRangeElement;
     };
+    interface HTMLGascoSelectElement extends Components.GascoSelect, HTMLStencilElement {
+    }
+    var HTMLGascoSelectElement: {
+        prototype: HTMLGascoSelectElement;
+        new (): HTMLGascoSelectElement;
+    };
     interface HTMLGascoTabElement extends Components.GascoTab, HTMLStencilElement {
     }
     var HTMLGascoTabElement: {
@@ -1858,6 +1889,7 @@ declare global {
         "gasco-progress": HTMLGascoProgressElement;
         "gasco-radio": HTMLGascoRadioElement;
         "gasco-range": HTMLGascoRangeElement;
+        "gasco-select": HTMLGascoSelectElement;
         "gasco-tab": HTMLGascoTabElement;
         "gasco-tab-button": HTMLGascoTabButtonElement;
         "gasco-toast": HTMLGascoToastElement;
@@ -3382,6 +3414,28 @@ declare namespace LocalJSX {
          */
         "value"?: RangeValue;
     }
+    interface GascoSelect {
+        "choices"?: IChoiceProp[];
+        /**
+          * If `true`, the user cannot interact with the select.
+         */
+        "disabled"?: boolean;
+        /**
+          * Instructional text that show before the input has a value. The Input label.
+         */
+        "label"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        "onGascoChangeSelect"?: (event: GascoSelectCustomEvent<IChoiceDetail>) => void;
+        "onGascoReady"?: (event: GascoSelectCustomEvent<any>) => void;
+        /**
+          * Instructional text that show before the input has a value.
+         */
+        "placeholder"?: string;
+        "type"?: 'single' | 'multiple';
+    }
     interface GascoTab {
         /**
           * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
@@ -3572,6 +3626,7 @@ declare namespace LocalJSX {
         "gasco-progress": GascoProgress;
         "gasco-radio": GascoRadio;
         "gasco-range": GascoRange;
+        "gasco-select": GascoSelect;
         "gasco-tab": GascoTab;
         "gasco-tab-button": GascoTabButton;
         "gasco-toast": GascoToast;
@@ -3618,6 +3673,7 @@ declare module "@stencil/core" {
             "gasco-progress": LocalJSX.GascoProgress & JSXBase.HTMLAttributes<HTMLGascoProgressElement>;
             "gasco-radio": LocalJSX.GascoRadio & JSXBase.HTMLAttributes<HTMLGascoRadioElement>;
             "gasco-range": LocalJSX.GascoRange & JSXBase.HTMLAttributes<HTMLGascoRangeElement>;
+            "gasco-select": LocalJSX.GascoSelect & JSXBase.HTMLAttributes<HTMLGascoSelectElement>;
             "gasco-tab": LocalJSX.GascoTab & JSXBase.HTMLAttributes<HTMLGascoTabElement>;
             "gasco-tab-button": LocalJSX.GascoTabButton & JSXBase.HTMLAttributes<HTMLGascoTabButtonElement>;
             "gasco-toast": LocalJSX.GascoToast & JSXBase.HTMLAttributes<HTMLGascoToastElement>;

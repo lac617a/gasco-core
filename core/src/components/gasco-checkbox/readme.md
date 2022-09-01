@@ -51,6 +51,19 @@
 | `--transition`           | Transition of the checkbox icon                |
 
 
+## Dependencies
+
+### Used by
+
+ - [gasco-select](../gasco-select)
+
+### Graph
+```mermaid
+graph TD;
+  gasco-select --> gasco-checkbox
+  style gasco-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

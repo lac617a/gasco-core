@@ -110,7 +110,7 @@ export class GascoAccordion implements ComponentInterface {
   }
 
   private setItemDefaults = () => {
-    const gascoItem = this.getSlottedHeaderIonItem();
+    const gascoItem = this.getSlottedHeaderGascoItem();
     if (!gascoItem) {
       return;
     }
@@ -135,7 +135,7 @@ export class GascoAccordion implements ComponentInterface {
     }
   };
 
-  private getSlottedHeaderIonItem = () => {
+  private getSlottedHeaderGascoItem = () => {
     const { headerEl } = this;
     if (!headerEl) {
       return;
@@ -159,7 +159,7 @@ export class GascoAccordion implements ComponentInterface {
   };
 
   private setAria = (expanded = false) => {
-    const gascoItem = this.getSlottedHeaderIonItem();
+    const gascoItem = this.getSlottedHeaderGascoItem();
     if (!gascoItem) {
       return;
     }
@@ -178,7 +178,7 @@ export class GascoAccordion implements ComponentInterface {
   };
 
   private slotToggleIcon = () => {
-    const gascoItem = this.getSlottedHeaderIonItem();
+    const gascoItem = this.getSlottedHeaderGascoItem();
     if (!gascoItem) {
       return;
     }

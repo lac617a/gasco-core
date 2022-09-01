@@ -18,6 +18,7 @@ export * from './components/gasco-accordion-group/gasco-accordion-group-interfac
 export * from './components/gasco-paginator/gasco-paginator-interface';
 export * from './components/gasco-autocomplete/gasco-autocomplete-interface';
 export * from './components/gasco-chip/gasco-chip-interface';
+export * from './components/gasco-select/gasco-select-interface';
 
 // Types from utils
 export {

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Select - basic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../dist/gasco/gasco.esm.js"></script>
+</head>
+
+<body>
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+
+    .row {
+      margin: 4rem;
+    }
+
+  </style>
+
+  <div class="gasco-padding">
+    <gasco-select label="label" type="multiple"></gasco-select>
+    <gasco-select id="select2"></gasco-select>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const select = document.querySelector('gasco-select');
+      const select2 = document.querySelector('#select2');
+
+      select.addEventListener('gascoReady', (e) => {
+        select.choices = [{
+            label: 'casa',
+            value: 'home',
+            disabled: true,
+          },
+          {
+            label: 'casa1',
+            value: 'home1',
+          },
+          {
+            label: 'casa2',
+            value: 'home2',
+          },
+          {
+            label: 'casa3',
+            value: 'home3',
+            disabled: true,
+          },
+        ];
+      });
+
+      select2.addEventListener('gascoReady', (e) => {
+        select2.choices = [{
+            label: 'casa',
+            value: 'home',
+          },
+          {
+            label: 'casa1',
+            value: 'home1',
+          },
+          {
+            label: 'casa2',
+            value: 'home2',
+          },
+          {
+            label: 'casa3',
+            value: 'home3',
+          },
+        ];
+      });
+
+      select.addEventListener('gascoChangeSelect', (e) => {
+        console.log(e.detail);
+      });
+
+      select2.addEventListener('gascoChangeSelect', (e) => {
+        console.log(e.detail);
+      });
+    });
+
+  </script>
+
+</html>

@@ -17,12 +17,51 @@
 
 <body>
   <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
     .row {
       margin: 4rem;
     }
   </style>
 
-  <div class="row">
+  <div class="gasco-padding">
+    <gasco-select type="multiple"></gasco-select>
+    <gasco-select></gasco-select>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const select = document.querySelector('gasco-select');
+  
+      select.addEventListener('gascoReady', (e) => {
+        select.choices = [
+          {
+            label: 'casa',
+            value: 'home',
+          },
+          {
+            label: 'casa1',
+            value: 'home1',
+          },
+          {
+            label: 'casa2',
+            value: 'home2',
+          },
+          {
+            label: 'casa3',
+            value: 'home3',
+          },
+        ];
+      });
+
+      select.addEventListener('gascoChangeSelect', (e) => {
+        console.log(e.detail);
+      })
+    });
+  </script>
+
+  <!-- <div class="row">
     <gasco-tooltip label="Esto es requerido">
       <gasco-label>holaa</gasco-label>
     </gasco-tooltip>
@@ -34,7 +73,7 @@
     <gasco-tooltip label="Indica dirección para que este pedido...">
       <gasco-button>Hola</gasco-button>
     </gasco-tooltip>
-  </div>
+  </div> -->
 
 
 

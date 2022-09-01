@@ -1,0 +1,29 @@
+@import '../../themes/gasco.globals.scss';
+
+.select-native {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+}
+
+.select-native gasco-input,
+.select-native gasco-list {
+  max-width: 100%;
+}
+
+
+.select-native gasco-list {
+  position: absolute;
+  @include position(55px, 0, null, 0);
+  z-index: 100;
+
+  opacity: 0;
+  contain: layout;
+  visibility: hidden;
+  transition: 300ms;
+}
+
+:host(.select-expanded) .select-native gasco-list {
+  opacity: 1;
+  visibility: visible;
+}

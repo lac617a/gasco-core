@@ -21,14 +21,14 @@ export const config: Config = {
     { components: ['gasco-backdrop'] },
     { components: ['gasco-checkbox'] },
     { components: ['gasco-progress'] },
+    { components: ['gasco-datetime'] },
     { components: ['gasco-autocomplete'] },
     { components: ['gasco-tab', 'gasco-tab-button'] },
     { components: ['gasco-input', 'gasco-input-code'] },
     { components: ['gasco-button', 'gasco-button-icon'] },
-    { components: ['gasco-datetime', 'gasco-picker', 'gasco-picker-column'] },
     { components: ['gasco-item', 'gasco-label', 'gasco-list', 'gasco-list-header'] },
     { components: ['gasco-accordion', 'gasco-accordion-content', 'gasco-accordion-group'] },
-    { components: ['gasco-card', 'gasco-card-title', 'gasco-card-header', 'gasco-card-content', 'gasco-card-footer'] },
+    { components: ['gasco-card', 'gasco-card-title', 'gasco-card-header', 'gasco-card-content'] },
     { components: ['gasco-dialog', 'gasco-dialog-title', 'gasco-dialog-header', 'gasco-dialog-content', 'gasco-dialog-footer'] },
   ],
   outputTargets: [
@@ -73,10 +73,10 @@ export const config: Config = {
     {
       type: 'docs-readme',
     },
-    // {
-    //   type: 'www',
-    //   serviceWorker: null, // disable service workers
-    // },
+    {
+      type: 'www',
+      serviceWorker: null, // disable service workers
+    },
     {
       type: 'dist-hydrate-script'
     },

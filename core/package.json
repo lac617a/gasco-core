@@ -59,9 +59,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lac617a/gasco-core.git"
+    "url": "git+https://github.com/lac617a/gasco-core.git"
   },
   "author": "yoydev",
   "homepage": "https://www.empresasgasco.com/",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lac617a/gasco-core/issues"
+  }
 }

@@ -1,20 +1,31 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
+    "alwaysStrict": true,
     "declaration": false,
+    "allowUnreachableCode": false,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "jsx": "react",
+    "jsxFactory": "h",
     "lib": [
       "dom",
       "es2017"
     ],
-    "moduleResolution": "node",
+    "baseUrl": ".",
+    "pretty": true,
     "module": "esnext",
+    "outDir": ".tmp",
     "target": "es2017",
     "noUnusedLocals": true,
+    "removeComments": false,
+    "moduleResolution": "node",
     "noUnusedParameters": true,
-    "jsx": "react",
-    "jsxFactory": "h"
+    "paths": {
+      "@utils/*": ["src/utils/*"],
+      "@utils/test": ["src/utils/test/utils"]
+    }
   },
   "include": [
     "src"

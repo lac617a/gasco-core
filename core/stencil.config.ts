@@ -1,8 +1,8 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-// import { vueOutputTarget } from '@stencil/vue-output-target';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
-// import { angularOutputTarget } from '@stencil/angular-output-target';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 
 export const config: Config = {
   namespace: 'Gasco',
@@ -40,20 +40,20 @@ export const config: Config = {
       proxiesFile: '../packages/react/src/components/proxies.ts',
       // excludeComponents: []
     }),
-    // angularOutputTarget({
-    //   componentCorePackage: '@gasco/core',
-    //   directivesProxyFile: '../angular/src/directives/proxies.ts',
-    //   directivesArrayFile: '../angular/src/directives/proxies-list.txt',
-    //   // excludeComponents: []
-    // }),
-    // vueOutputTarget({
-    //   componentCorePackage: '@gasco/core',
-    //   includePolyfills: false,
-    //   includeImportCustomElements: true,
-    //   includeDefineCustomElements: false,
-    //   proxiesFile: '../packages/vue/src/proxies.ts',
-    //   // excludeComponents: []
-    // }),
+    angularOutputTarget({
+      componentCorePackage: '@gasco/core',
+      directivesProxyFile: '../angular/src/directives/proxies.ts',
+      directivesArrayFile: '../angular/src/directives/proxies-list.txt',
+      // excludeComponents: []
+    }),
+    vueOutputTarget({
+      componentCorePackage: '@gasco/core',
+      includePolyfills: false,
+      includeImportCustomElements: true,
+      includeDefineCustomElements: false,
+      proxiesFile: '../packages/vue/src/proxies.ts',
+      // excludeComponents: []
+    }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
@@ -73,10 +73,10 @@ export const config: Config = {
     {
       type: 'docs-readme',
     },
-    {
-      type: 'www',
-      serviceWorker: null, // disable service workers
-    },
+    // {
+    //   type: 'www',
+    //   serviceWorker: null, // disable service workers
+    // },
     {
       type: 'dist-hydrate-script'
     },

@@ -34,7 +34,7 @@ export const config: Config = {
   ],
   outputTargets: [
     reactOutputTarget({
-      componentCorePackage: '@gasco/core',
+      componentCorePackage: 'gasco-core',
       includePolyfills: false,
       includeImportCustomElements: true,
       includeDefineCustomElements: false,

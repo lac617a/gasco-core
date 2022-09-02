@@ -1,6 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-import { vueOutputTarget } from '@stencil/vue-output-target';
+// import { vueOutputTarget } from '@stencil/vue-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 
@@ -46,14 +46,14 @@ export const config: Config = {
       directivesArrayFile: '../angular/src/directives/proxies-list.txt',
       // excludeComponents: []
     }),
-    vueOutputTarget({
-      componentCorePackage: '@gasco/core',
-      includePolyfills: false,
-      includeImportCustomElements: true,
-      includeDefineCustomElements: false,
-      proxiesFile: '../packages/vue/src/proxies.ts',
-      // excludeComponents: []
-    }),
+    // vueOutputTarget({
+    //   componentCorePackage: '@gasco/core',
+    //   includePolyfills: false,
+    //   includeImportCustomElements: true,
+    //   includeDefineCustomElements: false,
+    //   proxiesFile: '../packages/vue/src/proxies.ts',
+    //   // excludeComponents: []
+    // }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',

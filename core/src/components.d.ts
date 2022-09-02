@@ -448,7 +448,7 @@ export namespace Components {
         /**
           * Resets the internal state of the datetime but does not update the value. Passing a valid ISO-8601 string will reset the state of the component to the provided date. If no value is provided, the internal state will be reset to the clamped value of the min, max and today.
          */
-        "reset": (startDate?: string) => Promise<void>;
+        "reset": (startDate?: string | undefined) => Promise<void>;
         /**
           * If `true`, a "Clear" button will be rendered alongside the default "Cancel" and "OK" buttons at the bottom of the `gasco-datetime` component. Developers can also use the `button` slot if they want to customize these buttons. If custom buttons are set in the `button` slot then the default buttons will not be rendered.
          */
@@ -517,7 +517,7 @@ export namespace Components {
           * @param data Any data to emit in the dismiss events.
           * @param role The role of the element that is dismissing the dialog. For example, 'cancel' or 'backdrop'.
          */
-        "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
         /**
           * Animation to use when the modal is presented.
          */
@@ -1007,7 +1007,7 @@ export namespace Components {
           * @param data Any data to emit in the dismiss events.
           * @param role The role of the element that is dismissing the modal. For example, 'cancel' or 'backdrop'.
          */
-        "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
         /**
           * Animation to use when the modal is presented.
          */
@@ -1159,7 +1159,7 @@ export namespace Components {
           * @param role The role of the element that is dismissing the popover. For example, 'cancel' or 'backdrop'.
           * @param dismissParentPopover If `true`, dismissing this popover will also dismiss a parent popover if this popover is nested. Defaults to `true`.
          */
-        "dismiss": (data?: any, role?: string, dismissParentPopover?: boolean) => Promise<boolean>;
+        "dismiss": (data?: any, role?: string | undefined, dismissParentPopover?: boolean) => Promise<boolean>;
         /**
           * If `true`, the popover will be automatically dismissed when the content has been clicked.
          */
@@ -1203,7 +1203,7 @@ export namespace Components {
         /**
           * Present the popover overlay after it has been created. Developers can pass a mouse, touch, or pointer event to position the popover relative to where that event was dispatched.
          */
-        "present": (event?: MouseEvent | TouchEvent | PointerEvent | CustomEvent) => Promise<void>;
+        "present": (event?: MouseEvent | TouchEvent | PointerEvent | CustomEvent<any> | undefined) => Promise<void>;
         /**
           * When opening a popover from a trigger, we should not be modifying the `event` prop from inside the component. Additionally, when pressing the "Right" arrow key, we need to shift focus to the first descendant in the newly presented popover.
          */
@@ -1431,7 +1431,7 @@ export namespace Components {
           * @param data Any data to emit in the dismiss events.
           * @param role The role of the element that is dismissing the toast. This can be useful in a button handler for determining which button was clicked to dismiss the toast. Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
          */
-        "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
         /**
           * How many milliseconds to wait before hiding the toast. By default, it will show until `dismiss()` is called.
          */

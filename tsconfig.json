@@ -23,12 +23,24 @@
     "target": "es2017",
     "baseUrl": ".",
     "paths": {
+      "@gasco/core/hydrate": [
+        "./core/hydrate"
+      ],
       "@gasco/core": [
         "./core"
+      ],
+      "@gasco/angular": [
+        "./angular"
+      ],
+      "@gasco/angular-server": [
+        "./packages/angular-server"
       ],
       "@gasco/react": [
         "./react"
       ],
+      "@gasco/vue": [
+        "./vue"
+      ]
     }
   }
 }

@@ -49,7 +49,7 @@
   contain: size style;
 }
 
-:host(.ion-color) .inner-scroll {
+:host(.gasco-color) .inner-scroll {
   background: current-color(base);
   color: current-color(contrast);
 }
@@ -96,7 +96,7 @@
   /**
    * This adds `.inner-scroll` as part of the
    * stacking context in WebKit. Without it,
-   * children of ion-content are treated as
+   * children of gasco-content are treated as
    * siblings rather than descendants. This
    * can result in the children being put
    * into their own layers, degrading
@@ -249,7 +249,7 @@
   position: absolute;
 
   /**
-   * When presenting ion-content inside of an ion-modal, the .inner-scroll
+   * When presenting gasco-content inside of an gasco-modal, the .inner-scroll
    * element is composited. In WebKit, the fixed content is not composited
    * causing it to appear under the main scrollable content as a result.
    * The fixed content is correctly composited in other browsers. Adding

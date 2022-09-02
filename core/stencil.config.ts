@@ -24,8 +24,7 @@ export const config: Config = {
     { components: ['gasco-datetime'] },
     { components: ['gasco-autocomplete'] },
     { components: ['gasco-tab', 'gasco-tab-button'] },
-    { components: ['gasco-input'] },
-    // { components: ['gasco-input', 'gasco-input-code'] },
+    { components: ['gasco-input', 'gasco-input-code'] },
     { components: ['gasco-button', 'gasco-button-icon'] },
     { components: ['gasco-item', 'gasco-label', 'gasco-list', 'gasco-list-header'] },
     { components: ['gasco-accordion', 'gasco-accordion-content', 'gasco-accordion-group'] },
@@ -74,15 +73,15 @@ export const config: Config = {
     {
       type: 'docs-readme',
     },
-    // {
-    //   type: 'www',
-    //   serviceWorker: null, // disable service workers
-    // },
+    {
+      type: 'www',
+      serviceWorker: null, // disable service workers
+    },
     {
       type: 'dist-hydrate-script'
     },
   ],
-  buildEs5: 'prod',
+  // buildEs5: 'prod',
   extras: {
     dynamicImportShim: true,
     initializeNextTick: true,

@@ -24,6 +24,8 @@
   ],
   "dependencies": {
     "@stencil/core": "^2.13.0",
+    "browserslist": "^4.21.3",
+    "caniuse-lite": "^1.0.30001388",
     "ionicons": "^6.0.2"
   },
   "devDependencies": {

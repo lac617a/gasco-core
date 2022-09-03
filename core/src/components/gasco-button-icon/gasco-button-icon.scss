@@ -7,6 +7,10 @@
   width: #{$button-md-height};
 }
 
+.button-native {
+  padding: 0;
+}
+
 // Material Design Outline Button
 // --------------------------------------------------
 
@@ -21,10 +25,16 @@
 :host(.button-large.button-solid.gasco-button-icon),
 :host(.button-large.button-outline) {
   width: #{$button-md-large-height};
+  height: #{$button-md-large-height};
 }
 
-:host(.button-small.button-solid.gasco-button-icon),
-:host(.button-small.button-clear.gasco-button-icon) 
-:host(.button-small.button-outline.gasco-button-icon) {
+:host(.button-small.button-solid.gasco-button-icon), 
+:host(.button-small.button-outline) {
   width: #{$button-md-small-height};
+  height: #{$button-md-small-height};
+}
+
+:host(.button-solid.button-disabled) {
+  --background: #F1F1F1 !important;
+  --color: #CCCCCC !important;
 }

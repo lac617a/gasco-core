@@ -1,7 +1,7 @@
 import { ComponentInterface, EventEmitter } from '@stencil/core';
 import { Component, Element, Event, Host, Prop, h } from '@stencil/core';
 
-import type {  Color } from '../../interface';
+import type { Color } from '../../interface';
 import type { Attributes } from '../../utils/helpers';
 import { inheritAriaAttributes } from '../../utils/helpers';
 import { createColorClasses } from '../../utils/theme';

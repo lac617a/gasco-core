@@ -140,14 +140,10 @@ export interface FrameworkDelegate {
   removeViewFromDom(container: any, component: any): Promise<void>;
 }
 
-
 declare module './components' {
   export namespace Components {
     export type IonIcon = IoniconsComponents.IonIcon;
   }
-}
-
-declare module './components' {
   export namespace JSX {
     export type IonIcon = IoniconsJSX.IonIcon;
   }

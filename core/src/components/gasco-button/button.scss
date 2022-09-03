@@ -250,6 +250,29 @@ $size: 18px;
   100% { transform: rotate(360deg) }
 }
 
+
+// Button Icons
+// --------------------------------------------------
+
+::slotted(ion-icon) {
+  font-size: 1.4em;
+  pointer-events: none;
+}
+
+::slotted(ion-icon[slot="start"]) {
+  @include margin(0, .3em, 0, -.3em);
+}
+
+::slotted(ion-icon[slot="end"]) {
+  @include margin(0, -.2em, 0, .3em);
+}
+
+::slotted(ion-icon[slot="icon-only"]) {
+  font-size: 1.8em;
+}
+
+
+
 // Outline and Clear Button Progress
 // --------------------------------------------------
 

@@ -275,17 +275,17 @@
 // Input Icons
 // --------------------------------------------------
 
-::slotted([slot="start"]),
-::slotted([slot="end"]) {
+::slotted(ion-icon[slot="start"]),
+::slotted(ion-icon[slot="end"]) {
   font-size: 1.4em !important;
   pointer-events: none;
 }
 
-::slotted([slot="start"]) {
+::slotted(ion-icon[slot="start"]) {
   @include margin(0, -.3em, 0, .6em);
 }
 
-::slotted([slot="end"]) {
+::slotted(ion-icon[slot="end"]) {
   @include margin(0, .6em, 0, -.3em);
 }
 

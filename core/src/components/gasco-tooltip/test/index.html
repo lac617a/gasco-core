@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Gasco Web Component tooltip</title>
+    <link href="../../../../css/gasco.bundle.css" rel="stylesheet" />
+
+    <script nomodule src="../../../../dist/gasco/gasco.js"></script>
+    <script type="module" src="../../../../dist/gasco/gasco.esm.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <style>
+      html {
+        --gasco-font-family: 'Mulish', sans-serif !important;
+      }
+    </style>
+    <h2 class="gasco-heading:2 gasco-text-center">Tooltip</h2>
+    <div>
+      <gasco-tooltip label="Esto es requerido">
+        <gasco-label>holaa</gasco-label>
+      </gasco-tooltip>
+  
+      <gasco-tooltip label="Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae unde eius cum numquam natus ut dignissimos atque, maxime temporibus suscipit culpa, minus quisquam repellat voluptatum ab sed, assumenda voluptates? Vel!" position="bottom">
+        <gasco-label>holaa</gasco-label>
+      </gasco-tooltip>
+  
+      <gasco-tooltip label="Indica dirección para que este pedido...">
+        <gasco-button>Hola</gasco-button>
+      </gasco-tooltip>
+    </div>
+    </script>
+  </body>
+</html>

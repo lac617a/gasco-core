@@ -60,7 +60,7 @@ export class GascoInput implements ComponentInterface {
 
   /**
    * Instructional text that show before the input has a value.
-   * This property applies only whe the `type` property is set to `email`, `number`, `password`, `search`, `tel`, `text`, or `url`, otherwise it is ignored.
+   * This property applies only whe the `type` property is set to `email`, `number`, `password`, `tel`, `text`, or `url`, otherwise it is ignored.
    */
   @Prop() placeholder?: string;
 

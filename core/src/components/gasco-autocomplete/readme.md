@@ -56,7 +56,7 @@ Type: `Promise<HTMLInputElement>`
 
 ### `setFocus() => Promise<void>`
 
-Sets focus on the specified `ion-searchbar`. Use this method instead of the global
+Sets focus on the specified `gasco-autocomplete`. Use this method instead of the global
 `input.focus()`.
 
 #### Returns

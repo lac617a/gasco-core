@@ -123,7 +123,7 @@ export namespace Components {
          */
         "searchIcon"?: string;
         /**
-          * Sets focus on the specified `ion-searchbar`. Use this method instead of the global `input.focus()`.
+          * Sets focus on the specified `gasco-autocomplete`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -715,7 +715,7 @@ export namespace Components {
          */
         "pattern"?: string;
         /**
-          * Instructional text that show before the input has a value. This property applies only whe the `type` property is set to `email`, `number`, `password`, `search`, `tel`, `text`, or `url`, otherwise it is ignored.
+          * Instructional text that show before the input has a value. This property applies only whe the `type` property is set to `email`, `number`, `password`, `tel`, `text`, or `url`, otherwise it is ignored.
          */
         "placeholder"?: string;
         /**
@@ -2704,7 +2704,7 @@ declare namespace LocalJSX {
          */
         "pattern"?: string;
         /**
-          * Instructional text that show before the input has a value. This property applies only whe the `type` property is set to `email`, `number`, `password`, `search`, `tel`, `text`, or `url`, otherwise it is ignored.
+          * Instructional text that show before the input has a value. This property applies only whe the `type` property is set to `email`, `number`, `password`, `tel`, `text`, or `url`, otherwise it is ignored.
          */
         "placeholder"?: string;
         /**

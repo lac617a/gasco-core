@@ -56,17 +56,16 @@ export class GascoTooltip implements ComponentInterface {
     }
   }
 
-  componentDidRender(): void {
-    this.handleTooltipRef();
-  }
-
-  private handleTooltipRef() {
-    const div_height = this.tooltipRef.offsetHeight;
-    if (this.position === 'top') {
-      this.tooltipRef.style.top = `-${Math.ceil((div_height * 2) / 1.8)}px`;
-    } else {
-      this.tooltipRef.style.bottom = `-${Math.ceil((div_height * 2) / 1.8)}px`;
-    }
+  componentDidLoad(): void {
+    setTimeout(() => {
+      const div_height = this.tooltipRef.offsetHeight;
+      console.log(div_height);
+      if (this.position === 'top') {
+        this.tooltipRef.style.transform = `translateY(-${Math.ceil((div_height * 2) / 2)}px)`;
+      } else {
+        this.tooltipRef.style.transform = `translateY(${Math.ceil((div_height * 2) / 1.9)}px)`;
+      }
+    }, 1000);
   }
 
   render() {

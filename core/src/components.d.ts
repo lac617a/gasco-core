@@ -778,10 +778,6 @@ export namespace Components {
         "disabled": boolean;
         "fireFocusEvents": boolean;
         /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement>;
-        /**
           * A hint to the browser for which keyboard to display. Possible values: `none`, `text`.
          */
         "inputmode"?: 'none' | 'text';

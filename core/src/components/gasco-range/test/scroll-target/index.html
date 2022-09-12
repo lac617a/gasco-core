@@ -11,7 +11,7 @@
     <script nomodule src="../../../../../dist/gasco/gasco.js"></script>
     <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
     <style>
-      .ion-content-scroll-host {
+      .gasco-content-scroll-host {
         width: 100%;
         height: 100%;
 
@@ -20,15 +20,9 @@
     </style>
   </head>
   <body>
-    <ion-app>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Range - Scroll Target</ion-title>
-        </ion-toolbar>
-      </ion-header>
 
-      <ion-content class="ion-padding" scroll-y="false">
-        <div class="ion-content-scroll-host">
+      <gasco-content class="gasco-padding" scroll-y="false">
+        <div class="gasco-content-scroll-host">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus nulla a nunc tincidunt semper.
             Nam nibh lorem, pharetra ac ex ac, tempus fringilla est. Aenean tincidunt ipsum pellentesque, consequat
@@ -37,13 +31,13 @@
             lobortis finibus, lectus lorem maximus purus, quis sagittis tortor sem sed tellus.
           </p>
 
-          <ion-item>
-            <ion-label position="stacked">Stacked Label</ion-label>
-            <ion-range value="40">
-              <ion-label slot="start">Start</ion-label>
-              <ion-label slot="end">End</ion-label>
-            </ion-range>
-          </ion-item>
+          <gasco-item>
+            <gasco-label position="stacked">Stacked Label</gasco-label>
+            <gasco-range value="40">
+              <gasco-label slot="start">Start</gasco-label>
+              <gasco-label slot="end">End</gasco-label>
+            </gasco-range>
+          </gasco-item>
 
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus nulla a nunc tincidunt semper.
@@ -77,7 +71,7 @@
             lobortis finibus, lectus lorem maximus purus, quis sagittis tortor sem sed tellus.
           </p>
         </div>
-      </ion-content>
-    </ion-app>
+      </gasco-content>
+    </gasco-app>
   </body>
 </html>

@@ -1,10 +1,10 @@
 /**
  * Initializes a mutation observer to detect when the calendar month
- * text is updated as a result of a month change in `ion-datetime`.
+ * text is updated as a result of a month change in `gasco-datetime`.
  *
- * @param {*} datetimeSelector The element selector for the `ion-datetime` component.
+ * @param {*} datetimeSelector The element selector for the `gasco-datetime` component.
  */
-export function InitMonthDidChangeEvent(datetimeSelector = 'ion-datetime') {
+export function InitMonthDidChangeEvent(datetimeSelector = 'gasco-datetime') {
   const observer = new MutationObserver((mutationRecords) => {
     if (mutationRecords[0].type === 'characterData') {
       window.dispatchEvent(new CustomEvent('datetimeMonthDidChange'));

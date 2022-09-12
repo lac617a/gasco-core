@@ -55,6 +55,10 @@
 
   cursor: grab;
   touch-action: pan-y;
+  &:hover .range-knob::before {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 :host(.range-pressed) .range-slider {
@@ -91,6 +95,7 @@
   &:focus {
     outline: none;
   }
+
 }
 
 .range-bar {
@@ -131,6 +136,20 @@
   box-shadow: var(--knob-box-shadow);
   z-index: 2;
   pointer-events: none;
+
+  &::before {
+    content: '';
+    @include border-radius(50%);
+    @include position(calc(50% - 18px), null, null, calc(50% - 18px));
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    z-index: -1;
+    transition: 300ms;
+    visibility: hidden;
+    opacity: 0;
+    background: #{gasco-color(primary, base, 0.26)};
+  }
 }
 
 :host(.range-pressed) .range-bar-active {

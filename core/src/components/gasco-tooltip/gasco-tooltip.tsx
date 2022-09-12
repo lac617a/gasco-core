@@ -1,5 +1,5 @@
 import type { ComponentInterface, EventEmitter } from '@stencil/core';
-import { Component, Event, Host, Listen, Prop, h } from '@stencil/core';
+import { Component, Event, Host, Listen, Prop, Element, h } from '@stencil/core';
 
 @Component({
   tag: 'gasco-tooltip',
@@ -9,6 +9,10 @@ import { Component, Event, Host, Listen, Prop, h } from '@stencil/core';
 export class GascoTooltip implements ComponentInterface {
 
   private tooltipRef!: HTMLDivElement;
+  private tooltipSlotRef!: HTMLDivElement;
+  
+
+  @Element() el!: HTMLElement;
 
   /**
    * If `true`, the tooltip will be visible.
@@ -59,11 +63,11 @@ export class GascoTooltip implements ComponentInterface {
   componentDidLoad(): void {
     setTimeout(() => {
       const div_height = this.tooltipRef.offsetHeight;
-      console.log(div_height);
+      const slot = this.tooltipSlotRef.offsetHeight;
       if (this.position === 'top') {
-        this.tooltipRef.style.transform = `translateY(-${Math.ceil((div_height * 2) / 2)}px)`;
+        this.tooltipRef.style.transform = `translateY(-${Math.ceil((div_height * 2) / 2) + slot}px)`;
       } else {
-        this.tooltipRef.style.transform = `translateY(${Math.ceil((div_height * 2) / 1.9)}px)`;
+        this.tooltipRef.style.transform = `translateY(${Math.ceil((div_height * 2) / 1.9) + slot}px)`;
       }
     }, 1000);
   }
@@ -84,7 +88,7 @@ export class GascoTooltip implements ComponentInterface {
             'tooltip-show': true,
             [`tooltip-${this.position}`]: true
           }}>{this.label}</div>
-        <slot></slot>
+        <div style={{display: 'inline'}} ref={(focusEl) => (this.tooltipSlotRef = focusEl)}><slot></slot></div>
       </Host>
     );
   }

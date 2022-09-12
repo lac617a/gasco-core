@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <title>Datetime - Disable Dates</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <link href="../../../../../css/ionic.bundle.css" rel="stylesheet" />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
     <link href="../../../../../scripts/testing/styles.css" rel="stylesheet" />
     <script src="../../../../../scripts/testing/scripts.js"></script>
-    <script type="module" src="../../../../../dist/ionic/ionic.esm.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
     <style>
       .grid {
         display: grid;
@@ -25,7 +25,7 @@
         margin-left: 5px;
       }
 
-      ion-datetime {
+      gasco-datetime {
         box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.25), 0px 8px 16px rgba(0, 0, 0, 0.25);
         border-radius: 8px;
       }
@@ -33,35 +33,35 @@
   </head>
 
   <body>
-    <ion-app>
-      <ion-header translucent="true">
-        <ion-toolbar>
-          <ion-title>Datetime - Disable Dates</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
+    <gasco-app>
+      <gasco-header translucent="true">
+        <gasco-toolbar>
+          <gasco-title>Datetime - Disable Dates</gasco-title>
+        </gasco-toolbar>
+      </gasco-header>
+      <gasco-content class="gasco-padding">
         <div class="grid">
           <div class="grid-item">
             <h2>Disable Specific Date</h2>
-            <ion-datetime id="specificDate" value="2021-10-01"></ion-datetime>
+            <gasco-datetime id="specificDate" value="2021-10-01"></gasco-datetime>
           </div>
 
           <div class="grid-item">
             <h2>Disable Weekends</h2>
-            <ion-datetime id="weekends" value="2021-10-01"></ion-datetime>
+            <gasco-datetime id="weekends" value="2021-10-01"></gasco-datetime>
           </div>
 
           <div class="grid-item">
             <h2>Disable Date Range</h2>
-            <ion-datetime id="dateRange" value="2021-10-01"></ion-datetime>
+            <gasco-datetime id="dateRange" value="2021-10-01"></gasco-datetime>
           </div>
 
           <div class="grid-item">
             <h2>Disable Month</h2>
-            <ion-datetime id="month" value="2021-10-01"></ion-datetime>
+            <gasco-datetime id="month" value="2021-10-01"></gasco-datetime>
           </div>
         </div>
-      </ion-content>
+      </gasco-content>
 
       <script>
         const specificDateDisabled = document.querySelector('#specificDate');
@@ -106,6 +106,6 @@
           return true;
         };
       </script>
-    </ion-app>
+    </gasco-app>
   </body>
 </html>

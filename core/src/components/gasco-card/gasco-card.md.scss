@@ -19,6 +19,13 @@
 :host(.card-vertical) {
   max-width: $card-max-width-vertical;
 }
+
+.card-native {
+  ::slotted(img) {
+    width: 100%;
+  }
+}
+
 :host(.card-horizontal),
 :host(.card-horizontal-reverse) {
   max-width: $card-max-width-horizontal;

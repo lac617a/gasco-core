@@ -1,5 +1,5 @@
 import type { ComponentInterface, EventEmitter } from '@stencil/core';
-import { Build, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Build, Component, Element, Event, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import type { Color, StyleEventDetail, InputChangeEventDetail } from '../../interface';
 import type { Attributes } from '../../utils/helpers';
@@ -14,7 +14,6 @@ import { createColorClasses } from '../../utils/theme';
 export class GascoInputCode implements ComponentInterface {
   private isComposing = false;
   private arrayInput = new Array();
-  private nativeInput?: HTMLInputElement;
   private inheritedAttributes: Attributes = {};
   private inputId = 'gasco-input-code-';
 
@@ -98,34 +97,6 @@ export class GascoInputCode implements ComponentInterface {
     this.emitStyle();
   }
 
-  /**
-    * Update the native input element when the value changes
-    */
-  @Watch('value')
-  protected valueChanged(current: string | number) {
-    this.count += 1;
-    let nativeInput = this.nativeInput;
-    const value = this.getValue();
-
-    this.el.childNodes.forEach((_, index) => {
-      if (this.count - 1 === index) {
-        nativeInput = this.el.childNodes[index + 1]?.firstChild as HTMLInputElement;
-        this.arrayInput[index] = current;
-      }
-    });
-
-    if (nativeInput && nativeInput.value !== value && !this.isComposing) {
-      nativeInput.focus();
-    }
-    
-    if (this.autosubmit && this.arrayInput.join('').length === this.maxlength) {
-      this.gascoCodeDone.emit(this.arrayInput.join(''));
-    }
-
-    this.emitStyle();
-    this.gascoChange.emit({ value: typeof this.value !== 'number'  ? this.value : this.value.toString() });
-  }
-
   //? EVENTs
   @Event() gascoCodeDone: EventEmitter;
 
@@ -156,50 +127,9 @@ export class GascoInputCode implements ComponentInterface {
   @Event() gascoStyle!: EventEmitter<StyleEventDetail>;
 
   //? METHODs
-
-  /**
-  * Returns the native `<input>` element used under the hood.
-  */
-  @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput!);
-  }
-
   private onComposition = (v: boolean): void => {
     this.isComposing = v;
   };
-
-  //? FUNCTIONs PRIVATEs
-
-  private handlePaste = (ev: ClipboardEvent) => {
-    let pasted = ev.clipboardData.getData('text') || null;
-    pasted = pasted.replace(/\D/g, "");
-    pasted = pasted.substring(0, this.maxlength);
-    
-    if (pasted) {
-      this.arrayInput = pasted.split('');
-    }
-  };
-
-  private handleType = (ev: KeyboardEvent, index: number) => {
-    if (ev.code == '8') {
-      ev.stopPropagation();
-      ev.preventDefault();
-      this.arrayInput[index - 1] = 0;
-    } else {
-      let key = ev.key.replace(/\D/g, "");
-      if(key !== '') {
-        this.arrayInput[index - 1] = key;
-      }
-    }
-  };
-
-  private handleGoto = (index: number) => {
-    if (!index || index > this.maxlength) {
-      index = 1;
-    }
-    this.emitStyle();
-  }
 
 
   private getValue(): string {
@@ -216,10 +146,29 @@ export class GascoInputCode implements ComponentInterface {
     });
   };
 
+  private handleInput (input: HTMLInputElement) {
+    this.el.childNodes.forEach((_, index) => {
+      if (this.count - 1 === index) {
+        const child = this.el.childNodes[index + 1]?.firstChild as HTMLInputElement;
+        child?.focus();
+        this.arrayInput[index] = input.value;
+      }
+    });
+    if (input.value && !this.isComposing) {}
+    
+    if (this.autosubmit && this.arrayInput.join('').length === this.maxlength) {
+      this.gascoCodeDone.emit({detail: this.arrayInput.join('')});
+    }
+    this.emitStyle();
+    this.gascoChange.emit({ value: typeof this.value !== 'number'  ? this.value : this.value.toString() });
+  }
+
   private onInput = (ev: Event) => {
+    this.count += 1;
     const input = ev.target as HTMLInputElement | null;
     if (input) {
-      this.value = input.value || '';
+      this.value = input.value;
+      this.handleInput(input);
     }
     this.gascoInput.emit(ev as InputEvent);
   };
@@ -268,7 +217,7 @@ export class GascoInputCode implements ComponentInterface {
   }
 
   componentDidLoad() {
-    const nativeInput = this.nativeInput;
+    const nativeInput = this.el.childNodes[0].firstChild;
     if (nativeInput) {
       nativeInput.addEventListener('compositionstart', this.onComposition.bind(true));
       nativeInput.addEventListener('compositionend', this.onComposition.bind(false));
@@ -283,7 +232,7 @@ export class GascoInputCode implements ComponentInterface {
         })
       );
     }
-    const nativeInput = this.nativeInput;
+    const nativeInput = this.el.childNodes[0].firstChild;
     if (nativeInput) {
       nativeInput.removeEventListener('compositionstart', this.onComposition.bind(true));
       nativeInput.removeEventListener('compositionend', this.onComposition.bind(false));
@@ -305,7 +254,6 @@ export class GascoInputCode implements ComponentInterface {
             <input
               class="native-input code"
               aria-labelledby={this.name ? this.name + index : null}
-              ref={input => this.nativeInput = input}
               disabled={this.disabled}
               autoFocus={this.autofocus && index === 0}
               inputMode={this.inputmode}
@@ -315,9 +263,6 @@ export class GascoInputCode implements ComponentInterface {
               type={this.type}
               value={value}
               placeholder={this.secure ? '*' : '0'}
-              onPaste={this.handlePaste}
-              onKeyDown={(e) => this.handleType(e, inputIds)}
-              onKeyDownCapture={() => this.handleGoto(inputIds)}
               onInput={this.onInput}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
@@ -329,5 +274,3 @@ export class GascoInputCode implements ComponentInterface {
     );
   }
 }
-
-let inputIds = 0;

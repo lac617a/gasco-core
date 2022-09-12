@@ -19,10 +19,10 @@ $range-md-hit-width:                         42px !default;
 $range-md-hit-height:                        $range-md-slider-height !default;
 
 /// @prop - Height of the range bar
-$range-md-bar-height:                        2px !default;
+$range-md-bar-height:                        4px !default;
 
 /// @prop - Background of the range bar
-$range-md-bar-background-color:              $background-color-step-250 !default;
+$range-md-bar-background-color:              gasco-color(light, contrast) !default;
 
 /// @prop - Background of the active range bar
 $range-md-bar-active-background-color:       current-color(base) !default;
@@ -40,7 +40,7 @@ $range-md-knob-background-color:             $range-md-bar-active-background-col
 $range-md-pin-background-color:              $range-md-bar-active-background-color !default;
 
 /// @prop - Color of the range pin
-$range-md-pin-color:                         ion-color(primary, contrast) !default;
+$range-md-pin-color:                         gasco-color(primary, contrast) !default;
 
 /// @prop - Font size of the range pin
 $range-md-pin-font-size:                     12px !default;

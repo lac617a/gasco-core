@@ -6,7 +6,7 @@ test('locale', async () => {
   });
 
   const screenshotCompares = [];
-  const datetime = await page.find('ion-datetime');
+  const datetime = await page.find('gasco-datetime');
 
   screenshotCompares.push(await page.compareScreenshot());
 
@@ -26,16 +26,16 @@ test('it should render month and year with an en-US locale', async () => {
   });
 
   const screenshotCompares = [];
-  const datetime = await page.find('ion-datetime');
+  const datetime = await page.find('gasco-datetime');
 
   datetime.setProperty('locale', 'en-US');
   await page.waitForChanges();
 
-  const button = await page.find('ion-datetime >>> .calendar-month-year ion-item');
+  const button = await page.find('gasco-datetime >>> .calendar-month-year gasco-item');
   await button.click();
   await page.waitForChanges();
 
-  const yearBody = await page.find('ion-datetime >>> .datetime-year-body');
+  const yearBody = await page.find('gasco-datetime >>> .datetime-year-body');
   expect(yearBody).toHaveClass('order-month-first');
 
   screenshotCompares.push(await page.compareScreenshot());
@@ -51,16 +51,16 @@ test('it should render year and month with a ja-JP locale', async () => {
   });
 
   const screenshotCompares = [];
-  const datetime = await page.find('ion-datetime');
+  const datetime = await page.find('gasco-datetime');
 
   datetime.setProperty('locale', 'ja-JP');
   await page.waitForChanges();
 
-  const button = await page.find('ion-datetime >>> .calendar-month-year ion-item');
+  const button = await page.find('gasco-datetime >>> .calendar-month-year gasco-item');
   await button.click();
   await page.waitForChanges();
 
-  const yearBody = await page.find('ion-datetime >>> .datetime-year-body');
+  const yearBody = await page.find('gasco-datetime >>> .datetime-year-body');
   expect(yearBody).toHaveClass('order-year-first');
 
   screenshotCompares.push(await page.compareScreenshot());

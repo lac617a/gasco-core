@@ -22,9 +22,9 @@ body {
   background: var(--gasco-background-color);
 }
 
-body.backdrop-no-scroll {
-  overflow: hidden;
-}
+// body.backdrop-no-scroll {
+//   overflow: hidden;
+// }
 
 // TODO: Block scrolling in gasco-content, breaks inside gasco-modal
 // body.backdrop-no-scroll .gasco-page > gasco-content {

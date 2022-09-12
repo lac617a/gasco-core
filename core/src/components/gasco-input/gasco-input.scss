@@ -219,7 +219,7 @@
   pointer-events: none;
   --border-color: #{gasco-color(primary, base)} !important;
   .native-input {
-    &-label, &-textHelp, &-limit {
+    &-label, &-textHelp, &-limit, &.code {
       color: #{gasco-color(primary, base)};
     }
   }
@@ -247,7 +247,7 @@
 :host(.has-error) {
   --border-color: #{gasco-color(secondary, base)} !important;
   .native-input {
-    &-label, &-textHelp, &-limit {
+    &-label, &-textHelp, &-limit, &.code {
       color: #{gasco-color(secondary, base)};
     }
   }
@@ -261,7 +261,7 @@
 :host(.has-success) {
   --border-color: #{gasco-color(success, base)} !important;
   .native-input {
-    &-label, &-textHelp, &-limit {
+    &-label, &-textHelp, &-limit, &.code {
       color: #{gasco-color(success, base)};
     }
   }

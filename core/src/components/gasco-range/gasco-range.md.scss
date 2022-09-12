@@ -12,7 +12,7 @@
   --bar-height: #{$range-md-bar-height};
   --bar-background: #{gasco-color(primary, base, 0.26)};
   --bar-background-active: #{gasco-color(primary, base)};
-  --bar-border-radius: 0;
+  --bar-border-radius: 20px;
   --height: #{$range-md-slider-height};
   --pin-background: #{gasco-color(primary, base)};
   --pin-color: #{gasco-color(primary, contrast)};
@@ -43,9 +43,9 @@
   @include margin(0, 0, 0, 14px);
 }
 
-:host(.range-has-pin) {
-  @include padding($range-md-padding-vertical + $range-md-pin-font-size + $range-md-pin-padding-vertical, null, null, null);
-}
+// :host(.range-has-pin) {
+//   @include padding($range-md-padding-vertical + $range-md-pin-font-size + $range-md-pin-padding-vertical, null, null, null);
+// }
 
 .range-bar-active {
   bottom: 0;
@@ -138,16 +138,22 @@
   transform: scale(1);
 }
 
-:host(.range-disabled) .range-bar-active,
+
+
 :host(.range-disabled) .range-bar,
 :host(.range-disabled) .range-tick {
+  background-color: #EBEBEB;
+}
+
+:host(.range-disabled) .range-bar.range-bar-active {
   background-color: $range-md-bar-background-color;
 }
 
-:host(.range-disabled) .range-knob {
-  transform: scale(.55);
 
-  outline: 5px solid #fff;
+:host(.range-disabled) .range-knob {
+  // transform: scale(.55);
+
+  // outline: 5px solid #fff;
 
   background-color: $range-md-bar-background-color;
 }

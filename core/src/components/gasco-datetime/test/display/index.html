@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <title>Datetime - Standalone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <link href="../../../../../css/ionic.bundle.css" rel="stylesheet" />
+    <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
     <link href="../../../../../scripts/testing/styles.css" rel="stylesheet" />
     <script src="../../../../../scripts/testing/scripts.js"></script>
-    <script type="module" src="../../../../../dist/ionic/ionic.esm.js"></script>
+    <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
     <style>
       body {
         padding: 20px;
       }
 
-      ion-datetime {
+      gasco-datetime {
         border: 1px solid black;
       }
     </style>
@@ -36,10 +36,10 @@
 
     <br /><br />
 
-    <ion-datetime value="2022-02-22T16:30:00"></ion-datetime>
+    <gasco-datetime value="2022-02-22T16:30:00"></gasco-datetime>
 
     <script>
-      const datetime = document.querySelector('ion-datetime');
+      const datetime = document.querySelector('gasco-datetime');
 
       const mutationObserver = new MutationObserver(() => {
         window.dispatchEvent(new CustomEvent('ionWorkingPartsDidChange'));

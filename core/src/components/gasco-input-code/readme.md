@@ -35,19 +35,6 @@
 | `gascoInput`    | Emitted when a keyboard input occurred. | `CustomEvent<InputEvent>`             |
 
 
-## Methods
-
-### `getInputElement() => Promise<HTMLInputElement>`
-
-Returns the native `<input>` element used under the hood.
-
-#### Returns
-
-Type: `Promise<HTMLInputElement>`
-
-
-
-
 ## CSS Custom Properties
 
 | Name                        | Description                                                                                              |

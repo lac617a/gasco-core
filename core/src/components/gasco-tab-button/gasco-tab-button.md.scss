@@ -59,6 +59,7 @@
 :host(.in-segment-color) {
   background: none;
   color: $segment-button-md-text-color;
+  transition: 300ms;
 }
 
 // Indicator color and ripple on a Segment w/ color
@@ -81,17 +82,33 @@
   background: #{current-color(base)};
 }
 
+:host(.in-segment-color:focus){
+  outline: 2px solid #4D4D4D;
+  border-radius: 2px;
+}
+
 @media (any-hover: hover) {
   :host(.in-segment-color:hover) .button-native {
     color: $segment-button-md-text-color;
 
-    &::after {
-      background: #{current-color(base)};
-    }
+    // &::after {
+    //   background: #{current-color(base)};
+    // }
   }
 
   :host(.in-segment-color.segment-button-checked:hover) .button-native {
     color: #{current-color(base)};
+  }
+  :host(.in-segment-color:hover) {
+    ::slotted(gasco-label) {
+      color: #00A3E0 !important;
+    }
+    .segment-button-indicator {
+      opacity: 1;
+      .segment-button-indicator-background {
+        background: #00A3E0 !important;
+      }
+    }
   }
 }
 
@@ -187,6 +204,7 @@
 }
 
 .segment-button-indicator-background {
+  transition: 300ms;
   background: var(--indicator-color);
 }
 

@@ -193,7 +193,7 @@
 // Segment Button Icon
 // --------------------------------------------------
 
-::slotted(gasco-icon) {
+::slotted(ion-icon) {
   flex-shrink: 0;
 
   order: -1;
@@ -246,7 +246,7 @@
 }
 
 // Layout: icon hide
-:host(.segment-button-layout-icon-hide) ::slotted(gasco-icon) {
+:host(.segment-button-layout-icon-hide) ::slotted(ion-icon) {
   display: none;
 }
 

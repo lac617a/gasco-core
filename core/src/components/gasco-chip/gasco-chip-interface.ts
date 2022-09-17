@@ -1,4 +1,4 @@
-export interface ChipChangeEventDetail<T = any> {
-  value: T;
+export interface ChipChangeEventDetail {
+  target: Event;
   activate: boolean;
 }

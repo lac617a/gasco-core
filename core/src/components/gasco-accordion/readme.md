@@ -33,6 +33,19 @@
 | `"header"`   | The wrapper element for the header slot.                                                                                 |
 
 
+## Dependencies
+
+### Depends on
+
+- ion-icon
+
+### Graph
+```mermaid
+graph TD;
+  gasco-accordion --> ion-icon
+  style gasco-accordion fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

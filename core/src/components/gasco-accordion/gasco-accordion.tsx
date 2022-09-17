@@ -184,7 +184,7 @@ export class GascoAccordion implements ComponentInterface {
     }
 
     // const { toggleIconSlot, toggleIcon } = this;
-    const { toggleIconSlot } = this;
+    const { toggleIconSlot, toggleIcon } = this;
 
     /**
      * Check if there already is a toggle icon.
@@ -195,14 +195,21 @@ export class GascoAccordion implements ComponentInterface {
       return;
     }
 
-    const iconEl = document.createElement('i');
+    const iconEl = document.createElement('ion-icon');
     iconEl.slot = toggleIconSlot;
-    iconEl.textContent = 'expand_more';
-    // iconEl.lazy = false;
-    // iconEl.icon = toggleIcon;
-    iconEl.classList.add('material-icons');
+    iconEl.lazy = false;
     iconEl.classList.add('gasco-accordion-toggle-icon');
+    iconEl.icon = toggleIcon;
     iconEl.setAttribute('aria-hidden', 'true');
+
+    // const iconEl = document.createElement('i');
+    // iconEl.slot = toggleIconSlot;
+    // iconEl.textContent = 'expand_more';
+    // // iconEl.lazy = false;
+    // // iconEl.icon = toggleIcon;
+    // iconEl.classList.add('material-icons');
+    // iconEl.classList.add('gasco-accordion-toggle-icon');
+    // iconEl.setAttribute('aria-hidden', 'true');
 
     gascoItem.appendChild(iconEl);
   };

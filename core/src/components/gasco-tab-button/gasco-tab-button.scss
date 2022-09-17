@@ -100,7 +100,7 @@
   min-height: inherit;
   max-height: inherit;
 
-  transition: var(--transition);
+  transition: 300ms;
 
   border: none;
 
@@ -118,6 +118,7 @@
 
 .button-native::after {
   @include button-state();
+  transition: 300ms;
 }
 
 .button-inner {
@@ -127,11 +128,13 @@
   flex-flow: inherit;
   align-items: center;
   justify-content: center;
+  text-transform: capitalize;
 
   width: 100%;
   height: 100%;
 
   z-index: 1;
+  transition: 300ms;
 }
 
 
@@ -158,6 +161,7 @@
 
 :host(.gasco-focused) .button-native {
   color: var(--color-focused);
+  transition: 300ms;
 
   &::after {
     background: var(--background-focused);
@@ -255,12 +259,6 @@
   display: none;
 }
 
-// Segment Button Ripple
-// --------------------------------------------------
-
-gasco-ripple-effect {
-  color: var(--ripple-color, var(--color-checked));
-}
 
 // Segment Button: Indicator
 // --------------------------------------------------
@@ -276,6 +274,7 @@ gasco-ripple-effect {
   will-change: transform, opacity;
 
   pointer-events: none;
+  transition: 300ms;
 }
 
 .segment-button-indicator-background {
@@ -287,6 +286,7 @@ gasco-ripple-effect {
   box-shadow: var(--indicator-box-shadow);
 
   pointer-events: none;
+  transition: 300ms;
 }
 
 .segment-button-indicator-animated {

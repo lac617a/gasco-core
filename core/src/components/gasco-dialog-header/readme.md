@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                     | Type      | Default |
-| ------------- | ------------- | ----------------------------------------------- | --------- | ------- |
-| `translucent` | `translucent` | If `true`, the card header will be translucent. | `boolean` | `false` |
+| Property      | Attribute     | Description                                       | Type      | Default |
+| ------------- | ------------- | ------------------------------------------------- | --------- | ------- |
+| `translucent` | `translucent` | If `true`, the dialog header will be translucent. | `boolean` | `false` |
 
 
 ----------------------------------------------

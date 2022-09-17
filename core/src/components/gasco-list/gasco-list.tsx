@@ -1,13 +1,11 @@
 import type { ComponentInterface } from '@stencil/core';
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'gasco-list',
   styleUrl: 'gasco-list.md.scss',
 })
 export class GascoList implements ComponentInterface {
-  @Element() el!: HTMLElement;
-
   /**
    * How the bottom border should be displayed on all items.
    */

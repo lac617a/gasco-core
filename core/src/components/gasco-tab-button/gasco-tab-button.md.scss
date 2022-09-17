@@ -62,12 +62,6 @@
   transition: 300ms;
 }
 
-// Indicator color and ripple on a Segment w/ color
-// should not change if the variables are set
-:host(.in-segment-color) gasco-ripple-effect {
-  color: #{current-color(base)};
-}
-
 :host(.in-segment-color) .segment-button-indicator-background {
   background: #{current-color(base)};
 }
@@ -83,7 +77,7 @@
 }
 
 :host(.in-segment-color:focus){
-  outline: 2px solid #4D4D4D;
+  outline: 2px solid #{$segment-button-md-text-color};
   border-radius: 2px;
 }
 
@@ -99,14 +93,17 @@
   :host(.in-segment-color.segment-button-checked:hover) .button-native {
     color: #{current-color(base)};
   }
-  :host(.in-segment-color:hover) {
+  :host(.in-segment.in-segment-color:hover) {
     ::slotted(gasco-label) {
-      color: #00A3E0 !important;
+      color: #{current-color(base)};
+    }
+    .button-inner {
+      color: #{current-color(base)};
     }
     .segment-button-indicator {
       opacity: 1;
       .segment-button-indicator-background {
-        background: #00A3E0 !important;
+        background: #{current-color(base)};
       }
     }
   }

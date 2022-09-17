@@ -16,7 +16,7 @@ $margin-overlay: $circle-size - $inset-size;
   --background-inset-circle: #{$inset-color};
 }
 
-:host(.progress-line) {
+:host(.progress-inline) {
   height: 4px;
 }
 

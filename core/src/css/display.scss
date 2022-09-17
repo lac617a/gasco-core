@@ -9,6 +9,10 @@
   display: none !important;
 }
 
+.gasco-row {
+  display: flex;
+}
+
 // Adds hidden classes
 @each $breakpoint in map-keys($screen-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $screen-breakpoints);

@@ -1,7 +1,7 @@
 import type { ComponentInterface, EventEmitter } from '@stencil/core';
 import { Component, Host, Prop, h, State, Event } from '@stencil/core';
 
-import type { ChipChangeEventDetail, Color } from '../../interface';
+import type { Color } from '../../interface';
 import { createColorClasses } from '../../utils/theme';
 
 @Component({
@@ -12,7 +12,6 @@ import { createColorClasses } from '../../utils/theme';
 export class GascoChip implements ComponentInterface {
   private outline: boolean = true;
   private chipId = `gasco-chip-${chipIds++}`;
-  // private focusEl?: HTMLElement;
 
   /**
    * The color to use from your application's color palette.
@@ -33,11 +32,6 @@ export class GascoChip implements ComponentInterface {
 
 
   @State() isActive: boolean = false;
-
-  /**
-   * Emitted when the checked property has changed.
-   */
-  @Event() gascoChange!: EventEmitter<ChipChangeEventDetail>;
 
   /**
   * Emitted when the chip has focus.
@@ -69,11 +63,11 @@ export class GascoChip implements ComponentInterface {
 
     return (
       <Host
-        aria-disabled={this.disabled ? 'true' : null}
-        onClick={this.onClick}
         id={this.chipId}
-        onFocus={() => this.onFocus()}
-        onBlur={() => this.onBlur()}
+        onBlur={this.onBlur}
+        onClick={this.onClick}
+        onFocus={this.onFocus}
+        aria-disabled={this.disabled ? 'true' : null}
         class={
           createColorClasses(this.color, {
             [`chip-${finalSize}`]: finalSize !== undefined,

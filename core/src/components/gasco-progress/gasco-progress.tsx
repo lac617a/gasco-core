@@ -32,7 +32,7 @@ export class GascoProgress implements ComponentInterface {
   /**
    * If true, reverse the progress bar direction.
    */
-  @Prop() progress: 'line' | 'circle' = 'line';
+  @Prop() shape: 'inline' | 'circle' = 'inline';
 
   /**
    * The Progress size only for circle.
@@ -60,7 +60,7 @@ export class GascoProgress implements ComponentInterface {
 
   render() {
     const finalSize = this.size === undefined && false? 'small' : this.size;
-    const { color, type, reversed, value, buffer, progress } = this;
+    const { color, type, reversed, value, buffer, shape } = this;
     const paused = config.getBoolean('_testing');
     return (
       <Host
@@ -71,12 +71,12 @@ export class GascoProgress implements ComponentInterface {
         class={createColorClasses(color, {
           'progress-paused': paused,
           [`progress-bar-${type}`]: true,
-          [`progress-${progress}`]: true,
+          [`progress-${shape}`]: true,
           [`progress-${finalSize}`]: finalSize !== undefined,
           'progress-bar-reversed': document.dir === 'rtl' ? !reversed : reversed,
         })}
       >
-        {progress === 'line' ? (
+        {shape === 'inline' ? (
           type === 'indeterminate' ? renderIndeterminate() : renderProgress(value, buffer)
         ) : (
           type === 'indeterminate' ? renderIndeterminateCircle() : renderProgressCircle(value)

@@ -25,10 +25,10 @@
   <h1 class="gasco-heading:1">Tab with disabled</h1>
   <gasco-tab value="bookmarks" aria-label="Tab Options" select-on-focus>
     <gasco-tab-button value="bookmarks">
-      <gasco-label>Bookmarks</gasco-label>
+      Bookmarks
     </gasco-tab-button>
     <gasco-tab-button value="reading-list">
-      <gasco-label>Reading List</gasco-label>
+      Reading List
     </gasco-tab-button>
     <gasco-tab-button disabled value="shared-links">
       <gasco-label>Shared Links</gasco-label>
@@ -49,5 +49,11 @@
     </gasco-tab-button>
   </gasco-tab>
 </body>
+
+<script>
+  document.querySelector('gasco-tab').addEventListener('gascoSelect', (e) => {
+    console.log(e.target.value);
+  })
+</script>
 
 </html>

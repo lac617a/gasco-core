@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, ChipChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, DatetimeParts, FrameworkDelegate, InputChangeEventDetail, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
+import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, DatetimeParts, FrameworkDelegate, InputChangeEventDetail, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
 import { CounterFormatter } from "./components/gasco-item/gasco-item-interface";
 import { PickerColumnItem } from "./components/gasco-picker-column-internal/picker-column-internal-interfaces";
 import { PickerInternalChangeEventDetail } from "./components/gasco-picker-internal/picker-internal-interfaces";
@@ -594,21 +594,21 @@ export namespace Components {
     }
     interface GascoDialogFooter {
         /**
-          * If `true`, the card footer will be line.
+          * If `true`, the dialog footer will be line.
          */
         "line"?: boolean;
         /**
-          * If `true`, the card footer will be line.
+          * If `true`, the dialog footer will be line.
          */
         "position"?: 'left' | 'right';
         /**
-          * If `true`, the card footer will be translucent.
+          * If `true`, the dialog footer will be translucent.
          */
         "translucent": boolean;
     }
     interface GascoDialogHeader {
         /**
-          * If `true`, the card header will be translucent.
+          * If `true`, the dialog header will be translucent.
          */
         "translucent": boolean;
     }
@@ -1237,11 +1237,11 @@ export namespace Components {
         /**
           * If true, reverse the progress bar direction.
          */
-        "progress": 'line' | 'circle';
+        "reversed": boolean;
         /**
           * If true, reverse the progress bar direction.
          */
-        "reversed": boolean;
+        "shape": 'inline' | 'circle';
         /**
           * The Progress size only for circle.
          */
@@ -1981,10 +1981,6 @@ declare namespace LocalJSX {
          */
         "onGascoBlur"?: (event: GascoAutocompleteCustomEvent<void>) => void;
         /**
-          * Emitted when the cancel button is clicked.
-         */
-        "onGascoCancel"?: (event: GascoAutocompleteCustomEvent<void>) => void;
-        /**
           * Emitted when the value has changed.
          */
         "onGascoChange"?: (event: GascoAutocompleteCustomEvent<SearchbarChangeEventDetail>) => void;
@@ -2227,10 +2223,6 @@ declare namespace LocalJSX {
           * Emitted when the chip loses focus.
          */
         "onGascoBlur"?: (event: GascoChipCustomEvent<void>) => void;
-        /**
-          * Emitted when the checked property has changed.
-         */
-        "onGascoChange"?: (event: GascoChipCustomEvent<ChipChangeEventDetail>) => void;
         /**
           * Emitted when the chip has focus.
          */
@@ -2551,21 +2543,21 @@ declare namespace LocalJSX {
     }
     interface GascoDialogFooter {
         /**
-          * If `true`, the card footer will be line.
+          * If `true`, the dialog footer will be line.
          */
         "line"?: boolean;
         /**
-          * If `true`, the card footer will be line.
+          * If `true`, the dialog footer will be line.
          */
         "position"?: 'left' | 'right';
         /**
-          * If `true`, the card footer will be translucent.
+          * If `true`, the dialog footer will be translucent.
          */
         "translucent"?: boolean;
     }
     interface GascoDialogHeader {
         /**
-          * If `true`, the card header will be translucent.
+          * If `true`, the dialog header will be translucent.
          */
         "translucent"?: boolean;
     }
@@ -3264,11 +3256,11 @@ declare namespace LocalJSX {
         /**
           * If true, reverse the progress bar direction.
          */
-        "progress"?: 'line' | 'circle';
+        "reversed"?: boolean;
         /**
           * If true, reverse the progress bar direction.
          */
-        "reversed"?: boolean;
+        "shape"?: 'inline' | 'circle';
         /**
           * The Progress size only for circle.
          */

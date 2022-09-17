@@ -33,7 +33,6 @@
 | Event         | Description                                     | Type                                      |
 | ------------- | ----------------------------------------------- | ----------------------------------------- |
 | `gascoBlur`   | Emitted when the input loses focus.             | `CustomEvent<void>`                       |
-| `gascoCancel` | Emitted when the cancel button is clicked.      | `CustomEvent<void>`                       |
 | `gascoChange` | Emitted when the value has changed.             | `CustomEvent<SearchbarChangeEventDetail>` |
 | `gascoClear`  | Emitted when the clear input button is clicked. | `CustomEvent<void>`                       |
 | `gascoFocus`  | Emitted when the input has focus.               | `CustomEvent<void>`                       |

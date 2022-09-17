@@ -68,7 +68,7 @@ export class GascoTabButton implements ComponentInterface, ButtonInterface {
   }
 
   private get hasIcon() {
-    return !!this.el.querySelector('gasco-icon');
+    return !!this.el.querySelector('ion-icon');
   }
 
   private updateStyle = () => {

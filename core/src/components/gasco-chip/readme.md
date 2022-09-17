@@ -16,11 +16,10 @@
 
 ## Events
 
-| Event         | Description                                    | Type                                      |
-| ------------- | ---------------------------------------------- | ----------------------------------------- |
-| `gascoBlur`   | Emitted when the chip loses focus.             | `CustomEvent<void>`                       |
-| `gascoChange` | Emitted when the checked property has changed. | `CustomEvent<ChipChangeEventDetail<any>>` |
-| `gascoFocus`  | Emitted when the chip has focus.               | `CustomEvent<void>`                       |
+| Event        | Description                        | Type                |
+| ------------ | ---------------------------------- | ------------------- |
+| `gascoBlur`  | Emitted when the chip loses focus. | `CustomEvent<void>` |
+| `gascoFocus` | Emitted when the chip has focus.   | `CustomEvent<void>` |
 
 
 ## CSS Custom Properties

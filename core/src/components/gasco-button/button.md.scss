@@ -16,7 +16,8 @@
 
   @include margin($button-md-margin-top, $button-md-margin-end, $button-md-margin-bottom, $button-md-margin-start);
 
-  width: #{$button-md-width};
+  max-width: #{$button-md-width};
+  width: 100%;
   height: #{$button-md-height};
 
   font-size: #{$button-md-font-size};
@@ -91,7 +92,7 @@
   --padding-bottom: #{$button-md-large-padding-bottom};
 
   height: #{$button-md-large-height};
-  width: #{$button-md-large-width};
+  max-width: #{$button-md-large-width};
   font-size: #{$button-md-large-font-size};
 }
 
@@ -102,7 +103,7 @@
   --padding-bottom: #{$button-md-small-padding-bottom};
 
   height: #{$button-md-small-height};
-  width: #{$button-md-small-width};
+  max-width: #{$button-md-small-width};
   font-size: #{$button-md-small-font-size};
 }
 

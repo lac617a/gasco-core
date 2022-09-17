@@ -1,6 +1,6 @@
 import { ComponentInterface, EventEmitter, Listen } from '@stencil/core';
 import { Component, Element, Event, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
-import { arrowBackSharp, closeSharp, searchSharp } from 'ionicons/icons';
+import { closeSharp, searchSharp } from 'ionicons/icons';
 
 import { config } from '../../global/config';
 import type { AutocompleteTypes, Color, SearchbarChangeEventDetail, StyleEventDetail } from '../../interface';
@@ -43,17 +43,6 @@ export class GascoAutocomplete implements ComponentInterface {
    * Set the input's autocorrect property.
    */
   @Prop() autocorrect: 'on' | 'off' = 'off';
-
-  /**
-   * Set the cancel button icon. Only applies to `md` mode.
-   * Defaults to `arrow-back-sharp`.
-   */
-  @Prop() cancelButtonIcon = config.get('backButtonIcon', arrowBackSharp) as string;
-
-  /**
-   * Set the the cancel button text. Only applies to `ios` mode.
-   */
-  @Prop() cancelButtonText = 'Cancel';
 
   /**
    * Set the clear icon. Defaults to `close-circle` for `ios` and `close-sharp` for `md`.
@@ -191,11 +180,6 @@ export class GascoAutocomplete implements ComponentInterface {
    * Emitted when the value has changed.
    */
   @Event() gascoChange!: EventEmitter<SearchbarChangeEventDetail>;
-
-  /**
-   * Emitted when the cancel button is clicked.
-   */
-  @Event() gascoCancel!: EventEmitter<void>;
 
   /**
    * Emitted when the clear input button is clicked.
@@ -384,22 +368,6 @@ export class GascoAutocomplete implements ComponentInterface {
     }, 16 * 4);
   };
 
-  /**
-   * Clears the input field and tells the input to blur since
-   * the clearInput function doesn't want the input to blur
-   * then calls the custom cancel function if the user passed one in.
-   */
-  // private onCancelSearchbar = (ev?: Event) => {
-  //   if (ev) {
-  //     ev.preventDefault();
-  //     ev.stopPropagation();
-  //   }
-  //   this.gascoCancel.emit();
-  //   this.onClearInput();
-
-  //   if (this.nativeInput) {
-  //     this.nativeInput.blur();
-  //   }
   // };
 
   /**

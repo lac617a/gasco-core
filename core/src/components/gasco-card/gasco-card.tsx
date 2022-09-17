@@ -30,7 +30,7 @@ export class GascoCard implements ComponentInterface {
   /**
    * card direction, default is "vertical".
    */
-  @Prop() direction?: 'horizontal' | 'horizontal-reverse' | 'vertical' = 'vertical';
+  @Prop({reflect:  true}) direction?: 'horizontal' | 'horizontal-reverse' | 'vertical' = 'vertical';
 
   connectedCallback() {
     if(this.direction === 'horizontal' || this.direction === 'horizontal-reverse') {

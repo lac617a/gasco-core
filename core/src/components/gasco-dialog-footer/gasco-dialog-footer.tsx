@@ -10,17 +10,17 @@ import { createColorClasses } from '../../utils/theme';
 export class GascoDialogFooter implements ComponentInterface {
 
   /**
-   * If `true`, the card footer will be translucent.
+   * If `true`, the dialog footer will be translucent.
    */
   @Prop() translucent: boolean = false;
 
   /**
-   * If `true`, the card footer will be line.
+   * If `true`, the dialog footer will be line.
    */
   @Prop() line?: boolean = false;
 
   /**
-   * If `true`, the card footer will be line.
+   * If `true`, the dialog footer will be line.
    */
   @Prop() position?: 'left' | 'right' = 'right';
 

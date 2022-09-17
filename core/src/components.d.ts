@@ -79,14 +79,6 @@ export namespace Components {
          */
         "autocorrect": 'on' | 'off';
         /**
-          * Set the cancel button icon. Only applies to `md` mode. Defaults to `arrow-back-sharp`.
-         */
-        "cancelButtonIcon": string;
-        /**
-          * Set the the cancel button text. Only applies to `ios` mode.
-         */
-        "cancelButtonText": string;
-        /**
           * Set the clear icon. Defaults to `close-circle` for `ios` and `close-sharp` for `md`.
          */
         "clearIcon"?: string;
@@ -1960,14 +1952,6 @@ declare namespace LocalJSX {
           * Set the input's autocorrect property.
          */
         "autocorrect"?: 'on' | 'off';
-        /**
-          * Set the cancel button icon. Only applies to `md` mode. Defaults to `arrow-back-sharp`.
-         */
-        "cancelButtonIcon"?: string;
-        /**
-          * Set the the cancel button text. Only applies to `ios` mode.
-         */
-        "cancelButtonText"?: string;
         /**
           * Set the clear icon. Defaults to `close-circle` for `ios` and `close-sharp` for `md`.
          */

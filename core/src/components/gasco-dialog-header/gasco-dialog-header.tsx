@@ -9,7 +9,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 export class GascoDialogHeader implements ComponentInterface {
 
   /**
-   * If `true`, the card header will be translucent.
+   * If `true`, the dialog header will be translucent.
    */
   @Prop() translucent = false;
 

@@ -159,21 +159,25 @@ $size: 18px;
 
 :host(.button-disabled.button-solid),
 :host(.button-disabled.button-solid) .button-native {
-  --gasco-color-base: #F1F1F1 !important;
-  --gasco-color-contrast: #CCCCCC !important;
+  // --gasco-color-base: #F1F1F1 !important;
+  // --gasco-color-contrast: #CCCCCC !important;
+  --background: #F1F1F1 !important;
+  --color: #CCCCCC !important;
 }
 
 :host(.button-disabled.button-outline),
 :host(.button-disabled.button-outline) .button-native {
   --border-color: #CCCCCC !important;
-  --gasco-color-base: #CCCCCC !important;
+  --color: #CCCCCC !important;
+  // --gasco-color-base: #CCCCCC !important;
   // --gasco-color-base: transparent !important;
-  --gasco-color-contrast: #CCCCCC !important;
+  // --gasco-color-contrast: #CCCCCC !important;
 }
 
 :host(.button-disabled.button-clear),
 :host(.button-disabled.button-clear) .button-native {
-  --gasco-color-base: #CCCCCC !important;
+  // --gasco-color-base: #CCCCCC !important;
+  --color: #CCCCCC !important;
 }
 
 .button-native {

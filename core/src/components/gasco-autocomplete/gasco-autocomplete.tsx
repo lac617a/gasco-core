@@ -1,4 +1,4 @@
-import { ComponentInterface, EventEmitter, Listen } from '@stencil/core';
+import { ComponentInterface, EventEmitter } from '@stencil/core';
 import { Component, Element, Event, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
 import { closeSharp, searchSharp } from 'ionicons/icons';
 
@@ -136,7 +136,7 @@ export class GascoAutocomplete implements ComponentInterface {
   @State() showSuggestions: boolean;
   @State() inputValue = '';
   @State() suggestionArr: string[] = [];
-  @State() selectedSuggestionIndex: number;
+  @State() selectedSuggestionIndex: number | undefined;
 
   /** Values that the auto-complete textbox should search for */
   @Prop() suggestionlist: string[] = [];
@@ -155,13 +155,6 @@ export class GascoAutocomplete implements ComponentInterface {
     }
   }
 
-  @Listen('window:click') 
-  handleWindowClick(e: Event) {
-    if (!this.el.contains((e.target as HTMLElement))) {
-      this.showSuggestions = false;
-      this.selectedSuggestionIndex = undefined;
-    }
-  }
 
 
 
@@ -321,12 +314,11 @@ export class GascoAutocomplete implements ComponentInterface {
     this.gascoChange.emit({ value });
   }
 
-  private getSuggestionElement = (suggestion: string) => {
+  private getSuggestionItem = (suggestion: string) => {
     const isSelected = this.selectedSuggestionIndex !== undefined
       && suggestion === this.suggestionArr[this.selectedSuggestionIndex];
     return (
       <gasco-item
-        button
         class={'xeph-li ' + (isSelected ? 'xeph-selected': '')}
         onClick={() => this.onSelect(suggestion)}
       >
@@ -347,7 +339,6 @@ export class GascoAutocomplete implements ComponentInterface {
       ev.stopPropagation();
     }
 
-    // setTimeout() fixes https://github.com/ionic-team/ionic/issues/7527
     // wait for 4 frames
     setTimeout(() => {
       const value = this.getValue();
@@ -391,10 +382,6 @@ export class GascoAutocomplete implements ComponentInterface {
    */
   private onBlur = () => {
     this.focused = false;
-
-    this.showSuggestions = false;
-    this.selectedSuggestionIndex = undefined;
-    this.suggestionArr = this.findMatch(this.inputValue);
 
     this.gascoBlur.emit();
     this.positionElements();
@@ -542,27 +529,9 @@ export class GascoAutocomplete implements ComponentInterface {
   }
 
   render() {
-    // const { cancelButtonText } = this;
     const animated = this.animated && config.getBoolean('animated', true);
     const clearIcon = this.clearIcon || closeSharp;
     const searchIcon = this.searchIcon || searchSharp;
-    // const shouldShowCancelButton = this.shouldShowCancelButton();
-
-    // const cancelButton = this.showCancelButton !== 'never' && (
-    //   <button
-    //     aria-label={cancelButtonText}
-    //     // Screen readers should not announce button if it is not visible on screen
-    //     aria-hidden={shouldShowCancelButton ? undefined : 'true'}
-    //     type="button"
-    //     onMouseDown={this.onCancelSearchbar}
-    //     onTouchStart={this.onCancelSearchbar}
-    //     class="searchbar-cancel-button"
-    //   >
-    //     <div aria-hidden="true">
-    //       <ion-icon aria-hidden="true" icon={this.cancelButtonIcon} lazy={false}></ion-icon>
-    //     </div>
-    //   </button>
-    // );
 
     return (
       <Host
@@ -571,10 +540,10 @@ export class GascoAutocomplete implements ComponentInterface {
         class={createColorClasses(this.color, {
           'searchbar-animated': animated,
           'searchbar-disabled': this.disabled,
-          'searchbar-no-animate': animated && this.noAnimate,
+          'searchbar-has-focus': this.focused,
           'searchbar-has-value': this.hasValue(),
           'searchbar-left-aligned': this.shouldAlignLeft,
-          'searchbar-has-focus': this.focused,
+          'searchbar-no-animate': animated && this.noAnimate,
           'searchbar-should-show-clear': this.shouldShowClearButton(),
           'searchbar-should-show-cancel': this.shouldShowCancelButton(),
         })}
@@ -600,36 +569,36 @@ export class GascoAutocomplete implements ComponentInterface {
             spellcheck={this.spellcheck}
           />
 
-
-          {/* {cancelButton} */}
           {this.value.length < 1 && (
             <ion-icon
-            aria-hidden="true"
-            icon={searchIcon}
             lazy={false}
+            icon={searchIcon}
+            aria-hidden="true"
             class="searchbar-search-icon"
           ></ion-icon>
           )}
 
           <button
-            aria-label="reset"
-            type="button"
             no-blur
+            type="button"
+            aria-label="reset"
             class="searchbar-clear-button"
             onMouseDown={(ev) => this.onClearInput(ev, true)}
             onTouchStart={(ev) => this.onClearInput(ev, true)}
           >
             <ion-icon
-              aria-hidden="true"
-              icon={clearIcon}
               lazy={false}
+              icon={clearIcon}
+              aria-hidden="true"
               class="searchbar-clear-icon"
             ></ion-icon>
           </button>
         </div>
-        <gasco-list onFocus={this.onFocus} role='listbox' hidden={!this.showSuggestions}>
-          {this.suggestionArr.map(suggestion => this.getSuggestionElement(suggestion))}
-        </gasco-list>
+        {this.showSuggestions && (
+          <gasco-list role='listbox' hidden={this.showSuggestions}>
+            {this.suggestionArr.map(suggestion => this.getSuggestionItem(suggestion))}
+          </gasco-list>
+        )}
       </Host>
     );
   }

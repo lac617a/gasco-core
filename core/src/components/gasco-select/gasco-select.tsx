@@ -1,5 +1,5 @@
-import { ComponentInterface, EventEmitter } from '@stencil/core';
-import { Component, Host, h, Prop, State, Element, Event } from '@stencil/core';
+import type { ComponentInterface, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Prop, State, Listen, Element, Event } from '@stencil/core';
 import { hostContext } from '../../utils/theme';
 import { IChoiceDetail, IChoiceProp } from './gasco-select-interface';
 import { chevronDown, chevronUp } from 'ionicons/icons';
@@ -18,7 +18,7 @@ export class GascoSelect implements ComponentInterface {
 
   @Element() el!: HTMLGascoSelectElement;
 
-  @Prop() type?: 'simple' | 'multiple' = 'simple';
+  @Prop() multiple?: boolean = false;
   @Prop({reflect: true}) choices?: IChoiceProp[];
 
   /**
@@ -70,7 +70,7 @@ export class GascoSelect implements ComponentInterface {
   private onSelect(e: Event, label: string, value: string) {
     e.preventDefault();
     
-    if (this.type === 'simple') {
+    if (!this.multiple) {
       e.stopPropagation();
       this.value = label;
       return;
@@ -112,8 +112,15 @@ export class GascoSelect implements ComponentInterface {
     return pageSelects;
   }
 
+  @Listen('click', {target: 'window'}) 
+  handleWindowClick(e: Event) {
+    if (!this.el.contains((e.target as HTMLElement)) && this.isExpanded) {
+      this.isExpanded = false;
+    }
+  }
+
   render() {
-    const {el, isExpanded, disabled, value: v, type, placeholder, label} = this;
+    const {el, isExpanded, disabled, value: v, multiple, placeholder, label} = this;
 
     return (
       <Host
@@ -142,7 +149,7 @@ export class GascoSelect implements ComponentInterface {
             {this.getChoices().length > 0 && isExpanded && (
               this.getChoices().map(({ label, value, disabled }) => (
                 <gasco-item disabled={disabled} onClick={(e) => this.onSelect(e, label, value)}>
-                  {type !== 'simple' &&
+                  {multiple &&
                     <gasco-checkbox
                       slot="start"
                       color="primary"

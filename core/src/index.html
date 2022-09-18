@@ -20,65 +20,32 @@
     html {
       --gasco-font-family: 'Mulish', sans-serif !important;
     }
+
     .row {
       margin: 4rem;
     }
+
   </style>
 
-  <!-- <div class="gasco-padding">
-    <gasco-select type="multiple"></gasco-select>
-    <gasco-select></gasco-select>
+  <div style="display: grid; gap: 1rem; margin: 1rem;">
+    <gasco-autocomplete id="autocomplete" autocomplete="name" autocorrect="on"></gasco-autocomplete>
+    <gasco-autocomplete autocorrect="off" autocomplete="off" spellcheck="true"></gasco-autocomplete>
+    <gasco-autocomplete disabled></gasco-autocomplete>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const select = document.querySelector('gasco-select');
-  
-      select.addEventListener('gascoReady', (e) => {
-        select.choices = [
-          {
-            label: 'casa',
-            value: 'home',
-          },
-          {
-            label: 'casa1',
-            value: 'home1',
-          },
-          {
-            label: 'casa2',
-            value: 'home2',
-          },
-          {
-            label: 'casa3',
-            value: 'home3',
-          },
-        ];
-      });
+    var testArr = ['the', 'valid', 'strings', 'for', 'search', 'auto', 'complete', 'foo', 'bar'];
+    const autocomplete = document.querySelector('#autocomplete');
 
-      select.addEventListener('gascoChangeSelect', (e) => {
-        console.log(e.detail);
-      })
+    autocomplete.addEventListener('gascoFocus', (e) => {
+      autocomplete.suggestionlist = testArr;
     });
-  </script> -->
 
+    autocomplete.addEventListener('gascoChange', (e) => {
+      console.log(e.target.value);
+    });
 
-
-  <div style="margin: 4rem;">
-    <gasco-tooltip label="Esto es requerido">
-      <gasco-label>holaa</gasco-label>
-    </gasco-tooltip>
-
-    <gasco-tooltip label="Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae unde eius cum numquam natus ut dignissimos atque, maxime temporibus suscipit culpa, minus quisquam repellat voluptatum ab sed, assumenda voluptates? Vel!" position="bottom">
-      <gasco-label>holaa</gasco-label>
-    </gasco-tooltip>
-
-    <gasco-tooltip label="Indica dirección para que este pedido...">
-      <gasco-button>Hola</gasco-button>
-    </gasco-tooltip>
-  </div>
-
-
-
+  </script>
 
 
 

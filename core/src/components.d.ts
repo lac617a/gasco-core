@@ -1343,6 +1343,7 @@ export namespace Components {
           * Instructional text that show before the input has a value. The Input label.
          */
         "label"?: string;
+        "multiple"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -1351,7 +1352,6 @@ export namespace Components {
           * Instructional text that show before the input has a value.
          */
         "placeholder"?: string;
-        "type"?: 'simple' | 'multiple';
     }
     interface GascoTab {
         /**
@@ -3396,6 +3396,7 @@ declare namespace LocalJSX {
           * Instructional text that show before the input has a value. The Input label.
          */
         "label"?: string;
+        "multiple"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -3406,7 +3407,6 @@ declare namespace LocalJSX {
           * Instructional text that show before the input has a value.
          */
         "placeholder"?: string;
-        "type"?: 'simple' | 'multiple';
     }
     interface GascoTab {
         /**

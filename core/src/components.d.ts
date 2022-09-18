@@ -1351,7 +1351,7 @@ export namespace Components {
           * Instructional text that show before the input has a value.
          */
         "placeholder"?: string;
-        "type"?: 'single' | 'multiple';
+        "type"?: 'simple' | 'multiple';
     }
     interface GascoTab {
         /**
@@ -3406,7 +3406,7 @@ declare namespace LocalJSX {
           * Instructional text that show before the input has a value.
          */
         "placeholder"?: string;
-        "type"?: 'single' | 'multiple';
+        "type"?: 'simple' | 'multiple';
     }
     interface GascoTab {
         /**

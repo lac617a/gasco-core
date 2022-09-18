@@ -1,16 +1,20 @@
 @import '../../themes/gasco.globals.scss';
 
+:host(.gasco-select) {
+  width: 100%;
+  max-width: 400px;
+}
+
 .select-native {
   position: relative;
-  max-width: 400px;
   width: 100%;
+  max-width: 400px;
 }
 
 .select-native gasco-input,
 .select-native gasco-list {
   max-width: 100%;
 }
-
 
 .select-native gasco-list {
   position: absolute;
@@ -21,6 +25,7 @@
   contain: layout;
   visibility: hidden;
   transition: 300ms;
+  width: 100%;
 }
 
 :host(.select-expanded) .select-native gasco-list {

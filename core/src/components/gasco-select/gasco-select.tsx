@@ -18,7 +18,7 @@ export class GascoSelect implements ComponentInterface {
 
   @Element() el!: HTMLGascoSelectElement;
 
-  @Prop() type?: 'single' | 'multiple' = 'single';
+  @Prop() type?: 'simple' | 'multiple' = 'simple';
   @Prop({reflect: true}) choices?: IChoiceProp[];
 
   /**
@@ -70,7 +70,7 @@ export class GascoSelect implements ComponentInterface {
   private onSelect(e: Event, label: string, value: string) {
     e.preventDefault();
     
-    if (this.type === 'single') {
+    if (this.type === 'simple') {
       e.stopPropagation();
       this.value = label;
       return;
@@ -123,6 +123,7 @@ export class GascoSelect implements ComponentInterface {
         class={{
           'in-item': hostContext('gasco-item', el),
           'select-disabled': disabled,
+          'gasco-select': true,
           'select-expanded': isExpanded,
           'gasco-color': true,
           'gasco-color-primary': true
@@ -135,14 +136,13 @@ export class GascoSelect implements ComponentInterface {
             label={label}
             onClick={this.onClick}
             placeholder={placeholder}>
-            <ion-icon slot="end" icon={isExpanded ? chevronUp : chevronDown}></ion-icon>
+            <ion-icon slot="end" lazy={false} icon={isExpanded ? chevronUp : chevronDown}></ion-icon>
           </gasco-input>
           <gasco-list>
             {this.getChoices().length > 0 && isExpanded && (
               this.getChoices().map(({ label, value, disabled }) => (
                 <gasco-item disabled={disabled} onClick={(e) => this.onSelect(e, label, value)}>
-                  {/* {startIcon && <ion-icon name={startIcon} slot="start"></ion-icon>} */}
-                  {type !== 'single' &&
+                  {type !== 'simple' &&
                     <gasco-checkbox
                       slot="start"
                       color="primary"

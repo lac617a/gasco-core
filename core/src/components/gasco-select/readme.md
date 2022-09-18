@@ -14,7 +14,7 @@
 | `label`       | `label`       | Instructional text that show before the input has a value. The Input label. | `string`                 | `undefined`                |
 | `name`        | `name`        | The name of the control, which is submitted with the form data.             | `string`                 | `this.selectId`            |
 | `placeholder` | `placeholder` | Instructional text that show before the input has a value.                  | `string`                 | `'Seleccione un elemento'` |
-| `type`        | `type`        |                                                                             | `"multiple" \| "single"` | `'single'`                 |
+| `type`        | `type`        |                                                                             | `"multiple" \| "simple"` | `'simple'`                 |
 
 
 ## Events

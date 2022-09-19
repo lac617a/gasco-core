@@ -14,7 +14,7 @@
 
 | Project | Package | Version | Downloads| Links |
 | ------- | ------- | ------- | -------- |:-----:|
-| **Core** | [`@gasco/core`](https://www.npmjs.com/package/@gasco/core) | [![version](https://img.shields.io/npm/v/@gasco/core/latest.svg)](https://www.npmjs.com/package/@gasco/core) | <a  href="https://www.npmjs.com/package/@gasco/core"  target="_blank"><img  src="https://img.shields.io/npm/dm/@gasco/core.svg"  alt="NPM Downloads" /></a> | [`README.md`](core/README.md)
+| **Core** | [`@gasco/core`](https://www.npmjs.com/package/@gasco/core) | [![version](https://img.shields.io/npm/v/@gasco/core/latest.svg)](https://www.npmjs.com/package/@gasco/core) | <a  href="https://www.npmjs.com/package/@gasco/core"  target="_blank"><img  src="https://img.shields.io/npm/dm/@gasco/core.svg"  alt="NPM Downloads" /></a> | [`README.md`](core/readme.md)
 
 ##  :hammer:¿Como funciona el proyecto gasco web component?
 

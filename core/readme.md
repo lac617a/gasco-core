@@ -35,6 +35,7 @@ El paquete `@gasco/core` se puede usar en HTML simple o JavaScript estándar sin
 
 Al usar un controlador de superposición, los desarrolladores deberán definir el componente de superposición antes de poder usarlo. A continuación se muestra un ejemplo del uso de `toastController`:
 
+
 ```typescript
 import { defineCustomElement } from '@gasco/core/components/gasco-toast.js';
 import { initialize, toastController } from '@gasco/core/components';

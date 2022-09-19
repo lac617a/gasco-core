@@ -3,7 +3,7 @@ import { Component, Element, Event, Host, h } from '@stencil/core';
 
 import { getElementRoot } from '../../utils/helpers';
 
-import type { PickerInternalChangeEventDetail } from './picker-internal-interfaces';
+import type { PickerInternalChangeEventDetail } from './gasco-picker-internal-interfaces';
 
 @Component({
   tag: 'gasco-picker-internal',

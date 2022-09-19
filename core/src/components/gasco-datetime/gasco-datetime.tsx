@@ -8,7 +8,7 @@ import { getElementRoot, raf, renderHiddenInput } from '../../utils/helpers';
 import { printGascoError, printGascoWarning } from '../../utils/logging';
 import { isRTL } from '../../utils/rtl';
 import { createColorClasses } from '../../utils/theme';
-import type { PickerColumnItem } from '../gasco-picker-column-internal/picker-column-internal-interfaces';
+import type { PickerColumnItem } from '../gasco-picker-column-internal/gasco-picker-column-internal-interfaces';
 
 import { warnIfValueOutOfBounds } from './utils/comparison';
 import {

@@ -19,6 +19,8 @@ export * from './components/gasco-paginator/gasco-paginator-interface';
 export * from './components/gasco-autocomplete/gasco-autocomplete-interface';
 export * from './components/gasco-chip/gasco-chip-interface';
 export * from './components/gasco-select/gasco-select-interface';
+export * from './components/gasco-picker-column-internal/gasco-picker-column-internal-interfaces';
+export * from './components/gasco-picker-internal/gasco-picker-internal-interfaces';
 
 // Types from utils
 export {

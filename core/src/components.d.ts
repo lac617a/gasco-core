@@ -7,8 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, DatetimeParts, FrameworkDelegate, InputChangeEventDetail, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
 import { CounterFormatter } from "./components/gasco-item/gasco-item-interface";
-import { PickerColumnItem } from "./components/gasco-picker-column-internal/picker-column-internal-interfaces";
-import { PickerInternalChangeEventDetail } from "./components/gasco-picker-internal/picker-internal-interfaces";
+import { PickerColumnItem } from "./components/gasco-picker-column-internal/gasco-picker-column-internal-interfaces";
+import { PickerInternalChangeEventDetail } from "./components/gasco-picker-internal/gasco-picker-internal-interfaces";
 import { PinFormatter } from "./components/gasco-range/gasco-range-interface";
 import { IChoiceDetail, IChoiceProp } from "./components/gasco-select/gasco-select-interface";
 import { GascoSafeString } from "./utils/sanitization";

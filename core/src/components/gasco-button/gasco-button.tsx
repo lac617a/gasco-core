@@ -28,7 +28,7 @@ export interface ButtonInterface {
   styleUrl: 'button.md.scss',
   shadow: true,
 })
-export class Button implements ComponentInterface, ButtonInterface {
+export class GascoButton implements ComponentInterface, ButtonInterface {
   private inItem = false;
   private inToolbar = false;
   private inListHeader = false;

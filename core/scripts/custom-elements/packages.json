@@ -1,5 +1,5 @@
 {
-  "name": "@ionic/core/components",
+  "name": "@gasco/core/components",
   "version": "0.0.0",
   "description": "Gasco Components exported as custom elements, extending HTMLElement.",
   "main": "./index.js",

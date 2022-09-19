@@ -5,9 +5,9 @@ import type { Color } from '../../interface';
 import { getElementRoot, raf } from '../../utils/helpers';
 import { hapticSelectionChanged, hapticSelectionEnd, hapticSelectionStart } from '../../utils/native/haptic';
 import { createColorClasses } from '../../utils/theme';
-import type { PickerInternalCustomEvent } from '../gasco-picker-internal/picker-internal-interfaces';
+import type { PickerInternalCustomEvent } from '../gasco-picker-internal/gasco-picker-internal-interfaces';
 
-import type { PickerColumnItem } from './picker-column-internal-interfaces';
+import type { PickerColumnItem } from './gasco-picker-column-internal-interfaces';
 
 @Component({
   tag: 'gasco-picker-column-internal',

@@ -21,14 +21,14 @@
 ###  :file_folder:Funcionalidades de directorios
 
 * :open_file_folder:core
-	* |-:file_folder:scripts
-	* |-:file_folder:src
-		* |-:file_folder:components
-		* |-:file_folder:constant
-		* |-:file_folder:css
-		* |-:file_folder:global
-		* |-:file_folder:themes
-		* |-:file_folder:utils
+	* ├──:file_folder:scripts
+	* └──:file_folder:src
+		* ├──:file_folder:components
+		* ├──:file_folder:constant
+		* ├──:file_folder:css
+		* ├──:file_folder:global
+		* ├──:file_folder:themes
+		* └──:file_folder:utils
 * :file_folder:packages
 
 ###  :file_folder:core

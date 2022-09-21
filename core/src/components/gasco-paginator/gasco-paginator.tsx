@@ -1,12 +1,13 @@
 import type { ComponentInterface, EventEmitter } from '@stencil/core';
 import { Component, Event, Prop, h, Host, Watch, Element, State } from '@stencil/core';
-import { chevronBack, chevronForward } from 'ionicons/icons';
+import { chevronBack, chevronForward, playBackOutline, playForwardOutline } from 'ionicons/icons';
 import { PaginatorChangeEventDetail, PaginatorReadyEventDetail } from '../../interface';
+import paginate from './utils';
 
 @Component({
   tag: 'gasco-paginator',
   styleUrl: 'gasco-paginator.scss',
-  scoped: true
+  shadow: true
 })
 export class GascoPaginator implements ComponentInterface {
   private pages: number[] = [];
@@ -16,164 +17,209 @@ export class GascoPaginator implements ComponentInterface {
 
   @Element() el!: HTMLGascoPaginatorElement;
 
-  @Prop({reflect: true, mutable: true}) page: number = 1;
-  @Prop({reflect: true, mutable: true}) pageSize: number = 10;
-  @Prop({reflect: true, mutable: true}) selectList?: number[];
-  
-  @Prop({reflect: true}) itemCount?: number;
+  @Prop({ reflect: true, mutable: true }) currentPage: number = 1;
+  @Prop({ reflect: true, mutable: true }) pageSize: number = 10;
+  @Prop({ reflect: true, mutable: true }) suggestionList?: number[];
+
+  @Prop({ reflect: true }) totalItems?: number;
 
   /**
    * Additional attributes to pass to the pagiantor.
    */
-  @Prop() htmlAttributes?:  { [key: string]: any };
+  @Prop() htmlAttributes?: { [key: string]: any };
 
   @Event() sizeChanged!: EventEmitter;
   @Event() gascoChange!: EventEmitter<PaginatorChangeEventDetail>;
-  @Event() gascoPaginatorReady!: EventEmitter<PaginatorReadyEventDetail>;
+  @Event() gascoReady!: EventEmitter<PaginatorReadyEventDetail>;
 
   @State() countPaginatorStart: number = 0;
   @State() countPaginatorEnd: number = 3;
 
   componentWillLoad() {
-    if (this.itemCount) {
-      this.end = this.page * this.pageSize;
-      this.getTotalItemCount(this.itemCount, this.pageSize);
+
+    if (this.totalItems) {
+      this.getTotalItemCount(this.totalItems);
+      const { currentPage, pageSize } = this.getTotalItemCount(this.totalItems);
+      this.end = currentPage * pageSize;
     }
-    this.gascoPaginatorReady.emit({...this, start: this.start, end: this.end});
+    this.gascoReady.emit({ ...this, start: this.start, end: this.end });
   }
 
-  @Watch('itemCount')
-  handleItemCount(current: number){
-    this.getTotalItemCount(current, this.pageSize);
+  @Watch('totalItems')
+  handleItemCount(current: number) {
+    this.getTotalItemCount(current);
   }
 
-  private getTotalItemCount(itemCount?: number, pageSize?: number) {
-    this.pages = [];
-    for (let i = 1; i < Math.ceil(itemCount / pageSize); i++) {
-      this.pages.push(i);
+  private getTotalItemCount(current?: number) {
+    const { totalPages, pages, currentPage, pageSize } = paginate(current, this.currentPage, this.pageSize);
+    this.pages = pages;
+    this.pageCount = totalPages;
+
+    return {
+      pageSize,
+      currentPage
     }
-    this.pageCount = this.pages.length;
   }
 
   private getPageSelect() {
-    const pageSelects = this.selectList
-      ? this.selectList.map((s) => {
+    const pageSelects = this.suggestionList
+      ? this.suggestionList.map((s) => {
         return s;
       })
       : [];
     return pageSelects
   }
 
-  private handleCountPaginator(higher?: boolean, simple?: boolean) {
-    let defaultSimple: boolean = this.page % 3 === (higher ? 0 : 1) && (this.page + 1) !== 2;
-    if (!simple) {
-      defaultSimple = this.page % 3 === 1;
-    }
-    
-    if (defaultSimple) {
-      if (higher) {
-        this.countPaginatorStart = this.countPaginatorEnd;
-        this.countPaginatorEnd += 3;
-        return;
-      }
-
-      if ((this.page - 1) <= 3) {
-        this.countPaginatorStart = 0;
-        this.countPaginatorEnd = 3;
-      } else {
-        this.countPaginatorEnd = this.countPaginatorStart;
-        this.countPaginatorStart -= 3;
-      }
-      // console.log('STATR:', this.countPaginatorStart);
-      // console.log('END:', this.countPaginatorEnd);
-    }
-  }
-
-  private handlePrevious(event: UIEvent, value?: number) {
-    if (value && this.page !== 2 && this.page !== 1) {
-      this.handleCountPaginator(false, false);
-      return this.handleSelect(event, (this.page - 1) - value);
-    } else if (this.page !== 1) {
-      this.handleCountPaginator(false, true);
-      return this.handleSelect(event, this.page - 1)
-    }
-  }
-
-  private handleNext(event: UIEvent, value?: number) {
-    if (value && this.page !== this.pageCount) {
-      this.handleCountPaginator(true, false);
-      return this.handleSelect(event, (this.page + 1) + value);
-    } else if (this.page !== this.pageCount) {
-      this.handleCountPaginator(true, true);
-      return this.handleSelect(event, this.page + 1);
-    }
-  }
-
   private handleSelect(event: UIEvent, index: number) {
     event.preventDefault();
-    this.page = index;
+    this.currentPage = index;
+    if (this.currentPage <= this.pageCount) {
+      if (this.currentPage === 2) {
+        this.start = this.currentPage * (this.pageSize / 2) + 1;
+        this.end = this.currentPage * (this.pageSize / 2) + this.pageSize;
+      } else {
+        this.start = (this.currentPage - 1) * this.pageSize + 1;
+        this.end = (this.currentPage - 1) * this.pageSize + this.pageSize;
+      }
 
-    if (this.page === 2) {
-      this.start = this.page * (this.pageSize / 2) + 1;
-      this.end = this.page * (this.pageSize / 2) + this.pageSize;
-    } else {
-      this.start = (this.page - 1) * this.pageSize + 1;
-      this.end = (this.page - 1) * this.pageSize + this.pageSize;
+      this.end = this.currentPage === this.pageCount ? this.totalItems : this.end;
+
+      if (this.end !== this.pageCount) {
+        this.gascoChange.emit({ value: index + 1, start: this.start, end: this.end });
+      }
     }
-
-    this.end = this.page === this.pageCount ? this.itemCount : this.end;
-
-    if (this.end !== this.pageCount) {
-      this.gascoChange.emit({value: index + 1, start: this.start, end: this.end});
-    }
+    event.stopPropagation();
   }
 
   @Watch('pageSize')
   handlePageSize(current: number) {
-    this.end = (this.page - 1) * current + current + 1;
-    this.getTotalItemCount(this.itemCount, current);
-    this.gascoChange.emit({start: this.start, end: this.end});
+    this.pageSize = current;
+    this.end = (this.currentPage - 1) * current + current;
+    this.getTotalItemCount(this.totalItems);
+    this.gascoChange.emit({ start: this.start, end: this.end });
   }
 
   private handlePageSizeChange(event) {
-    this.pageSize = event.target.value
+    event.preventDefault();
+    this.pageSize = event.target.value;
+    event.stopPropagation();
   }
 
-  private renderPages() {
+
+  private displayedPages() {
+    // if currentPage is currentPage 1
+    if (this.currentPage === 1) {
+      return this.pages.slice(this.currentPage - 1, this.currentPage + 2);
+    }
+    // if currentPage is the last currentPage
+    else if (this.currentPage === this.pages.length) {
+      return this.pages.slice(this.currentPage - 2, this.currentPage + 1);
+    }
+    // if currentPage is between 4-7
+    else if (this.currentPage >= 4 && this.currentPage <= 7) {
+      return this.pages.slice(this.currentPage - 2, this.currentPage + 1);
+    }
+    // if currentPage more than 7
+    else if (this.currentPage > 7) {
+      return this.pages.slice(this.currentPage - 2, this.currentPage + 1);
+    }
+    // if currentPage less than 4
+    else {
+      return this.pages.slice(this.currentPage - 1, this.currentPage + 2);
+    }
+  }
+
+  private renderPaginate() {
     return (
       <div class="paginator-pages">
-        <div class="wrap-buttons">
-          <button
-            onClick={event => this.handlePrevious(event, 2)}>
-            <ion-icon icon={chevronBack} lazy={false} flipRtl></ion-icon>
-            <ion-icon icon={chevronBack} lazy={false} flipRtl></ion-icon>
-          </button>
-          <button
-            onClick={event => this.handlePrevious(event)}>
-            <ion-icon icon={chevronBack} lazy={false} flipRtl></ion-icon>
-          </button>
-        </div>
         <div class="wrap-indicator">
-          {this.pages.slice(this.countPaginatorStart, this.countPaginatorEnd).map((index: number) => {
-              return (
-                <button
-                  class={`paginator-indicator ${this.page === index && 'active-indicator'}`}
-                  onClick={event => this.handleSelect(event, index)}>
-                  {index}
-                </button>
-              )
-          })}
+          <button
+            disabled={this.currentPage <= 2}
+            onClick={e => {
+              const current = this.currentPage -= 2;
+              this.handleSelect(e, current);
+          }}>
+            <ion-icon icon={playBackOutline} lazy={false} flipRtl></ion-icon>
+          </button>
+          <button
+            disabled={this.currentPage === 1}
+            onClick={e => {
+              const current = this.currentPage -= 1;
+              this.handleSelect(e, current);
+          }}>
+            <ion-icon icon={chevronBack} lazy={false} flipRtl></ion-icon>
+          </button>
+          {this.currentPage > 3 && (
+            <button
+              class="paginator-indicator"
+              onClick={e => {
+                const current = this.currentPage = 1;
+                this.handleSelect(e, current);
+              }}>
+                {this.pages[0]}
+            </button>
+          )}
+          {this.currentPage > 3 && <span>...</span>}
+
+          {this.displayedPages().map(index => (
+            <button
+              class={{
+                ['paginator-indicator']: true,
+                ['active-indicator']: this.currentPage === index
+              }}
+              onClick={e => {
+                const current = this.currentPage = index;
+                this.handleSelect(e, current);
+              }}>
+              {index}
+            </button>
+          ))}
+          {this.currentPage < this.pages.length - 2 && <span>...</span>}
+          {this.currentPage < this.pages.length - 2 && (
+            <button
+              class="paginator-indicator"
+              onClick={e => {
+                const current = this.currentPage = this.pages.length;
+                this.handleSelect(e, current);
+              }}>
+              {this.pages[this.pages.length - 1]}
+            </button>
+          )}
+
+          <button
+            disabled={this.currentPage === this.pages[this.pages.length - 1]}
+            onClick={e => {
+              const current = this.currentPage += 1;
+              this.handleSelect(e, current);
+            }}>
+            <ion-icon icon={chevronForward} lazy={false} flipRtl></ion-icon>
+          </button>
+          <button
+            disabled={this.currentPage >= this.pages[this.pages.length - 2]}
+            onClick={e => {
+              const current = this.currentPage += 2;
+              this.handleSelect(e, current);
+            }}>
+            <ion-icon icon={playForwardOutline} lazy={false} flipRtl></ion-icon>
+          </button>
         </div>
-        <div class="wrap-buttons">
-          <button
-            onClick={event => this.handleNext(event)}>
-            <ion-icon icon={chevronForward} lazy={false} flipRtl></ion-icon>
-          </button>
-          <button
-            onClick={event => this.handleNext(event, 2)}>
-            <ion-icon icon={chevronForward} lazy={false} flipRtl></ion-icon>
-            <ion-icon icon={chevronForward} lazy={false} flipRtl></ion-icon>
-          </button>
+      </div>
+    )
+  }
+
+  private renderChoice() {
+    const choice = this.getPageSelect().map(n => <option value={n}>{n.toString()}</option>);
+
+    return this.getPageSelect().length > 0 && (
+      <div class="paginator-select">
+        <div class="paginator-size">
+          <span>Mostrar</span>
+          <select onChange={event => this.handlePageSizeChange(event)}>
+            {choice}
+          </select>
+        </div>
+        <div class="paginator-counts">
+          {this.start} - {this.currentPage === this.pages[this.pageCount] ? this.totalItems : this.end} de {this.totalItems}
         </div>
       </div>
     )
@@ -186,22 +232,9 @@ export class GascoPaginator implements ComponentInterface {
         class={`
           gasco-paginator 
           ${this.getPageSelect().length > 0 ? 'paginator-with-select' : ''}
-        `}
-      >
-        {this.getPageSelect().length > 0 && (
-          <div class="paginator-select">
-            <div class="paginator-size">
-              <span>Mostrar</span>
-              <select onChange={event => this.handlePageSizeChange(event)}>
-                {this.getPageSelect().map(n => <option>{n}</option>)}
-              </select>
-            </div>
-            <div class="paginator-counts">
-              {this.start} - {this.page === this.pages[this.pageCount] ? this.itemCount : this.end} de {this.itemCount}
-            </div>
-          </div>
-        )}
-        {this.renderPages()}
+        `}>
+        {this.renderChoice()}
+        {this.renderPaginate()}
       </Host>
     );
   }

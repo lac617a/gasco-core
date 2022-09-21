@@ -1081,14 +1081,14 @@ export namespace Components {
         "type"?: 'simple' | 'basic' | 'default';
     }
     interface GascoPaginator {
+        "currentPage": number;
         /**
           * Additional attributes to pass to the pagiantor.
          */
         "htmlAttributes"?: { [key: string]: any };
-        "itemCount"?: number;
-        "page": number;
         "pageSize": number;
-        "selectList"?: number[];
+        "suggestionList"?: number[];
+        "totalItems"?: number;
     }
     interface GascoPickerColumnInternal {
         /**
@@ -3085,17 +3085,17 @@ declare namespace LocalJSX {
         "type"?: 'simple' | 'basic' | 'default';
     }
     interface GascoPaginator {
+        "currentPage"?: number;
         /**
           * Additional attributes to pass to the pagiantor.
          */
         "htmlAttributes"?: { [key: string]: any };
-        "itemCount"?: number;
         "onGascoChange"?: (event: GascoPaginatorCustomEvent<PaginatorChangeEventDetail>) => void;
-        "onGascoPaginatorReady"?: (event: GascoPaginatorCustomEvent<PaginatorReadyEventDetail>) => void;
+        "onGascoReady"?: (event: GascoPaginatorCustomEvent<PaginatorReadyEventDetail>) => void;
         "onSizeChanged"?: (event: GascoPaginatorCustomEvent<any>) => void;
-        "page"?: number;
         "pageSize"?: number;
-        "selectList"?: number[];
+        "suggestionList"?: number[];
+        "totalItems"?: number;
     }
     interface GascoPickerColumnInternal {
         /**

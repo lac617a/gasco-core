@@ -23,8 +23,50 @@
   </style>
   <div class="row">
     <h3 class="gasco-heading:2 gasco-text-center">Paginator</h3>
-    <gasco-paginator page="1" page-size="10" item-count="100" select-list="[10,20,30]"></gasco-paginator>
+    
+    <gasco-paginator
+      current-page="1"
+      page-size="10"
+      total-items="100"
+      suggestion-list="[10, 20, 30]"></gasco-paginator>
   </div>
+
+  <script>
+    const paginator = document.querySelector('gasco-paginator');
+
+    paginator.addEventListener('gascoReady', (e) => {
+      // HERE YOUR APIs for READY
+      const {
+        start,
+        end
+      } = e.detail;
+      paginator.suggestionList = [10, 20, 30];
+      handleData(start, end);
+    });
+
+    paginator.addEventListener('gascoChange', (e) => {
+      // HERE YOUR APIs for change
+      const {
+        start,
+        end
+      } = e.detail;
+      console.log('START:', start, 'END:', end);
+      handleData(start, end);
+    });
+
+    function handleData(start = 1, end = 10) {
+      fetch(`/assets/data.json?start=${start}&end=${end}`)
+        .then(response => {
+          response.json().then(result => {
+            paginator.totalItems = result.total;
+
+            // This is just me faking out a paged result, since my mock dataset is static JSON.
+            // console.table(result.data.slice(start, end));
+          });
+        });
+    }
+
+  </script>
 
 </body>
 

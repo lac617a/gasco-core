@@ -29,8 +29,24 @@
 /**
  * Hide scrollbars on Chrome and Safari
  */
+// :host::-webkit-scrollbar {
+//   display: none;
+// }
+
+/* width */
 :host::-webkit-scrollbar {
-  display: none;
+  width: 5px;
+}
+
+/* Track */
+:host::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+/* Handle */
+:host::-webkit-scrollbar-thumb {
+  background: gasco-color(medium, base);
+  border-radius: 4px;
 }
 
 :host .picker-item {
@@ -59,6 +75,6 @@
   :host(:focus) {
     outline: none;
 
-    background: current-color(base, 0.2);
+    // background: current-color(base, 0.2);
   }
 }

@@ -12,6 +12,7 @@ import { defineCustomElement as defineGascoAutocomplete } from '@gasco/core/comp
 import { defineCustomElement as defineGascoBackdrop } from '@gasco/core/components/gasco-backdrop.js';
 import { defineCustomElement as defineGascoButton } from '@gasco/core/components/gasco-button.js';
 import { defineCustomElement as defineGascoButtonIcon } from '@gasco/core/components/gasco-button-icon.js';
+import { defineCustomElement as defineGascoCalendar } from '@gasco/core/components/gasco-calendar.js';
 import { defineCustomElement as defineGascoCard } from '@gasco/core/components/gasco-card.js';
 import { defineCustomElement as defineGascoCardContent } from '@gasco/core/components/gasco-card-content.js';
 import { defineCustomElement as defineGascoCardHeader } from '@gasco/core/components/gasco-card-header.js';
@@ -55,6 +56,7 @@ export const GascoAutocomplete = /*@__PURE__*/createReactComponent<JSX.GascoAuto
 export const GascoBackdrop = /*@__PURE__*/createReactComponent<JSX.GascoBackdrop, HTMLGascoBackdropElement>('gasco-backdrop', undefined, undefined, defineGascoBackdrop);
 export const GascoButton = /*@__PURE__*/createReactComponent<JSX.GascoButton, HTMLGascoButtonElement>('gasco-button', undefined, undefined, defineGascoButton);
 export const GascoButtonIcon = /*@__PURE__*/createReactComponent<JSX.GascoButtonIcon, HTMLGascoButtonIconElement>('gasco-button-icon', undefined, undefined, defineGascoButtonIcon);
+export const GascoCalendar = /*@__PURE__*/createReactComponent<JSX.GascoCalendar, HTMLGascoCalendarElement>('gasco-calendar', undefined, undefined, defineGascoCalendar);
 export const GascoCard = /*@__PURE__*/createReactComponent<JSX.GascoCard, HTMLGascoCardElement>('gasco-card', undefined, undefined, defineGascoCard);
 export const GascoCardContent = /*@__PURE__*/createReactComponent<JSX.GascoCardContent, HTMLGascoCardContentElement>('gasco-card-content', undefined, undefined, defineGascoCardContent);
 export const GascoCardHeader = /*@__PURE__*/createReactComponent<JSX.GascoCardHeader, HTMLGascoCardHeaderElement>('gasco-card-header', undefined, undefined, defineGascoCardHeader);

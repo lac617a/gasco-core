@@ -7,22 +7,22 @@
 
 ## Properties
 
-| Property         | Attribute    | Description                                     | Type                      | Default     |
-| ---------------- | ------------ | ----------------------------------------------- | ------------------------- | ----------- |
-| `htmlAttributes` | --           | Additional attributes to pass to the pagiantor. | `{ [key: string]: any; }` | `undefined` |
-| `itemCount`      | `item-count` |                                                 | `number`                  | `undefined` |
-| `page`           | `page`       |                                                 | `number`                  | `1`         |
-| `pageSize`       | `page-size`  |                                                 | `number`                  | `10`        |
-| `selectList`     | --           |                                                 | `number[]`                | `undefined` |
+| Property         | Attribute      | Description                                     | Type                      | Default     |
+| ---------------- | -------------- | ----------------------------------------------- | ------------------------- | ----------- |
+| `currentPage`    | `current-page` |                                                 | `number`                  | `1`         |
+| `htmlAttributes` | --             | Additional attributes to pass to the pagiantor. | `{ [key: string]: any; }` | `undefined` |
+| `pageSize`       | `page-size`    |                                                 | `number`                  | `10`        |
+| `suggestionList` | --             |                                                 | `number[]`                | `undefined` |
+| `totalItems`     | `total-items`  |                                                 | `number`                  | `undefined` |
 
 
 ## Events
 
-| Event                 | Description | Type                                      |
-| --------------------- | ----------- | ----------------------------------------- |
-| `gascoChange`         |             | `CustomEvent<PaginatorChangeEventDetail>` |
-| `gascoPaginatorReady` |             | `CustomEvent<PaginatorReadyEventDetail>`  |
-| `sizeChanged`         |             | `CustomEvent<any>`                        |
+| Event         | Description | Type                                      |
+| ------------- | ----------- | ----------------------------------------- |
+| `gascoChange` |             | `CustomEvent<PaginatorChangeEventDetail>` |
+| `gascoReady`  |             | `CustomEvent<PaginatorReadyEventDetail>`  |
+| `sizeChanged` |             | `CustomEvent<any>`                        |
 
 
 ## Dependencies

@@ -1,4 +1,4 @@
-import { ComponentInterface, EventEmitter, Listen } from '@stencil/core';
+import { ComponentInterface, EventEmitter } from '@stencil/core';
 import { Build, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import type { Color, TextFieldTypes, StyleEventDetail, InputChangeEventDetail, AutocompleteTypes } from '../../interface';
@@ -165,8 +165,6 @@ export class GascoInput implements ComponentInterface {
     */
   @Prop() step?: string;
 
-  @State() showCalendar = false;
-
   //? WATCHs
   @Watch('disabled')
   protected disabledChanged() {
@@ -229,29 +227,12 @@ export class GascoInput implements ComponentInterface {
    * Emitted when the input has focus.
    */
   @Event() gascoFocus!: EventEmitter<FocusEvent>;
-
-  /**
-   * Emitted when the input has focus to datetime.
-   */
-  @Event() gascoFocusDatetime!: EventEmitter;
   
   /**
    * Emitted when the styles change.
    * @internal
    */
   @Event() gascoStyle!: EventEmitter<StyleEventDetail>;
-
-  @Listen('gascoDatetimeReady')
-  handleDatetimeReady(ev: CustomEvent) {
-    const {month, day, year} = ev.detail;
-    this.value = `${day}/${month}/${year}`;
-  }
-  @Listen('gascoBlurDatetime')
-  handleDatetimeBlur(ev: CustomEvent) {
-    if (ev.detail && this.calendar && this.showCalendar) {
-      this.showCalendar = false;
-    }
-  }
 
   //? METHODs
 
@@ -331,9 +312,6 @@ export class GascoInput implements ComponentInterface {
   private onFocus = (ev: FocusEvent) => {
     this.hasFocus = true;
     this.emitStyle();
-    if (this.calendar && !this.showCalendar) {
-      this.showCalendar = true;
-    }
 
     if (this.fireFocusEvents) {
       this.gascoFocus.emit(ev);
@@ -427,7 +405,6 @@ export class GascoInput implements ComponentInterface {
           {...this.inheritedAttributes}
         />
         <slot name="end"></slot>
-        {this.showCalendar && (<gasco-datetime size="cover"></gasco-datetime>)}
         {this.textHelp && (<span class="native-input-textHelp">{this.textHelp}</span>)}
         {this.limit && (
           <span class="native-input-limit">

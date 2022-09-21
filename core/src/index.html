@@ -47,43 +47,14 @@
 
   </script> -->
 
+  <gasco-calendar></gasco-calendar>
 
-
-  <gasco-paginator current-page="1" page-size="10" total-items="100"></gasco-paginator>
   <script>
-    const paginator = document.querySelector('gasco-paginator');
+    const calendar = document.querySelector('gasco-calendar');
 
-    paginator.addEventListener('gascoReady', (e) => {
-      // HERE YOUR APIs for READY
-      const {
-        start,
-        end
-      } = e.detail;
-      paginator.suggestionList = [10, 20, 30];
-      handleData(start, end);
+    calendar.addEventListener('gascoChangeValue', (e) => {
+      console.log(e.detail);
     });
-
-    paginator.addEventListener('gascoChange', (e) => {
-      // HERE YOUR APIs for change
-      const {
-        start,
-        end
-      } = e.detail;
-      console.log('START:', start, 'END:', end);
-      handleData(start, end);
-    });
-
-    function handleData(start = 1, end = 10) {
-      fetch(`/assets/data.json?start=${start}&end=${end}`)
-        .then(response => {
-          response.json().then(result => {
-            paginator.totalItems = result.total;
-
-            // This is just me faking out a paged result, since my mock dataset is static JSON.
-            // console.table(result.data.slice(start, end));
-          });
-        });
-    }
 
   </script>
 </body>

@@ -5,8 +5,6 @@
     <title>Datetime - Standalone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <link href="../../../../../css/gasco.bundle.css" rel="stylesheet" />
-    <link href="../../../../../scripts/testing/styles.css" rel="stylesheet" />
-    <script src="../../../../../scripts/testing/scripts.js"></script>
     <script type="module" src="../../../../../dist/gasco/gasco.esm.js"></script>
     <style>
       body {
@@ -35,6 +33,7 @@
     </select>
 
     <br /><br />
+    <gasco-calendar></gasco-calendar>
 
     <gasco-datetime value="2022-02-22T16:30:00"></gasco-datetime>
 
@@ -42,7 +41,7 @@
       const datetime = document.querySelector('gasco-datetime');
 
       const mutationObserver = new MutationObserver(() => {
-        window.dispatchEvent(new CustomEvent('ionWorkingPartsDidChange'));
+        window.dispatchEvent(new CustomEvent('gascoWorkingPartsDidChange'));
       });
 
       const initCalendarMonthChangeObserver = async () => {

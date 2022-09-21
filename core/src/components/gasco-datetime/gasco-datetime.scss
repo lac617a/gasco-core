@@ -199,8 +199,8 @@
  */
 :host .calendar-action-buttons {
   display: flex;
-
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 :host .calendar-action-buttons gasco-item,
@@ -214,7 +214,7 @@
   align-items: center;
 }
 
-:host .calendar-action-buttons gasco-item gasco-icon {
+:host .calendar-action-buttons gasco-item ion-icon {
   @include padding(0, 0, 0, 4px);
 }
 

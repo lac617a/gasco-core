@@ -5,7 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, DatetimeParts, FrameworkDelegate, InputChangeEventDetail, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
+import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, DatetimeParts, FrameworkDelegate, InputChangeEventDetail as InputChangeEventDetail1, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
+import { InputChangeEventDetail } from "./components/gasco-input/gasco-input-interface";
 import { CounterFormatter } from "./components/gasco-item/gasco-item-interface";
 import { PickerColumnItem } from "./components/gasco-picker-column-internal/gasco-picker-column-internal-interfaces";
 import { PickerInternalChangeEventDetail } from "./components/gasco-picker-internal/gasco-picker-internal-interfaces";
@@ -228,6 +229,9 @@ export namespace Components {
           * The type of the button.
          */
         "type": 'submit' | 'reset' | 'button';
+    }
+    interface GascoCalendar {
+        "fireFocusEvents": boolean;
     }
     interface GascoCard {
         /**
@@ -1513,6 +1517,10 @@ export interface GascoButtonIconCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoButtonIconElement;
 }
+export interface GascoCalendarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoCalendarElement;
+}
 export interface GascoCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoCheckboxElement;
@@ -1635,6 +1643,12 @@ declare global {
     var HTMLGascoButtonIconElement: {
         prototype: HTMLGascoButtonIconElement;
         new (): HTMLGascoButtonIconElement;
+    };
+    interface HTMLGascoCalendarElement extends Components.GascoCalendar, HTMLStencilElement {
+    }
+    var HTMLGascoCalendarElement: {
+        prototype: HTMLGascoCalendarElement;
+        new (): HTMLGascoCalendarElement;
     };
     interface HTMLGascoCardElement extends Components.GascoCard, HTMLStencilElement {
     }
@@ -1848,6 +1862,7 @@ declare global {
         "gasco-backdrop": HTMLGascoBackdropElement;
         "gasco-button": HTMLGascoButtonElement;
         "gasco-button-icon": HTMLGascoButtonIconElement;
+        "gasco-calendar": HTMLGascoCalendarElement;
         "gasco-card": HTMLGascoCardElement;
         "gasco-card-content": HTMLGascoCardContentElement;
         "gasco-card-header": HTMLGascoCardHeaderElement;
@@ -2138,6 +2153,21 @@ declare namespace LocalJSX {
           * The type of the button.
          */
         "type"?: 'submit' | 'reset' | 'button';
+    }
+    interface GascoCalendar {
+        "fireFocusEvents"?: boolean;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onGascoBlur"?: (event: GascoCalendarCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onGascoChangeValue"?: (event: GascoCalendarCustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onGascoFocus"?: (event: GascoCalendarCustomEvent<FocusEvent>) => void;
     }
     interface GascoCard {
         /**
@@ -2654,15 +2684,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onGascoChange"?: (event: GascoInputCustomEvent<InputChangeEventDetail>) => void;
+        "onGascoChange"?: (event: GascoInputCustomEvent<InputChangeEventDetail1>) => void;
         /**
           * Emitted when the input has focus.
          */
         "onGascoFocus"?: (event: GascoInputCustomEvent<FocusEvent>) => void;
-        /**
-          * Emitted when the input has focus to datetime.
-         */
-        "onGascoFocusDatetime"?: (event: GascoInputCustomEvent<any>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
@@ -2749,7 +2775,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onGascoChange"?: (event: GascoInputCodeCustomEvent<InputChangeEventDetail>) => void;
+        "onGascoChange"?: (event: GascoInputCodeCustomEvent<InputChangeEventDetail1>) => void;
         "onGascoCodeDone"?: (event: GascoInputCodeCustomEvent<any>) => void;
         /**
           * Emitted when the input has focus.
@@ -3569,6 +3595,7 @@ declare namespace LocalJSX {
         "gasco-backdrop": GascoBackdrop;
         "gasco-button": GascoButton;
         "gasco-button-icon": GascoButtonIcon;
+        "gasco-calendar": GascoCalendar;
         "gasco-card": GascoCard;
         "gasco-card-content": GascoCardContent;
         "gasco-card-header": GascoCardHeader;
@@ -3616,6 +3643,7 @@ declare module "@stencil/core" {
             "gasco-backdrop": LocalJSX.GascoBackdrop & JSXBase.HTMLAttributes<HTMLGascoBackdropElement>;
             "gasco-button": LocalJSX.GascoButton & JSXBase.HTMLAttributes<HTMLGascoButtonElement>;
             "gasco-button-icon": LocalJSX.GascoButtonIcon & JSXBase.HTMLAttributes<HTMLGascoButtonIconElement>;
+            "gasco-calendar": LocalJSX.GascoCalendar & JSXBase.HTMLAttributes<HTMLGascoCalendarElement>;
             "gasco-card": LocalJSX.GascoCard & JSXBase.HTMLAttributes<HTMLGascoCardElement>;
             "gasco-card-content": LocalJSX.GascoCardContent & JSXBase.HTMLAttributes<HTMLGascoCardContentElement>;
             "gasco-card-header": LocalJSX.GascoCardHeader & JSXBase.HTMLAttributes<HTMLGascoCardHeaderElement>;

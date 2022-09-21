@@ -1,6 +1,6 @@
 import { ComponentInterface, EventEmitter } from '@stencil/core';
 import { Component, Element, Event, Host, Method, Prop, State, Watch, h, writeTask } from '@stencil/core';
-import { caretDownSharp, caretUpSharp, chevronBack, chevronForward } from 'ionicons/icons';
+import { chevronBack, chevronDown, chevronUp, chevronForward } from 'ionicons/icons';
 
 import type { Color, DatetimeChangeEventDetail, DatetimeParts, StyleEventDetail } from '../../interface';
 import { startFocusVisible } from '../../utils/focus-visible';
@@ -1326,8 +1326,8 @@ export class GascoDatetime implements ComponentInterface {
   }
 
   private renderCalendarHeader() {
-    const expandedIcon = caretUpSharp;
-    const collapsedIcon = caretDownSharp;
+    const expandedIcon = chevronDown;
+    const collapsedIcon = chevronUp;
 
     const prevMonthDisabled = isPrevMonthDisabled(this.workingParts, this.minParts, this.maxParts);
     const nextMonthDisabled = isNextMonthDisabled(this.workingParts, this.maxParts);
@@ -1339,7 +1339,7 @@ export class GascoDatetime implements ComponentInterface {
             <gasco-item button detail={false} lines="none" onClick={() => this.toggleMonthAndYearView()}>
               <gasco-label>
                 {getMonthAndYear(this.locale, this.workingParts)}{' '}
-                <ion-icon icon={this.showMonthAndYear ? expandedIcon : collapsedIcon} lazy={false}></ion-icon>
+                <ion-icon icon={this.showMonthAndYear ? collapsedIcon : expandedIcon} lazy={false}></ion-icon>
               </gasco-label>
             </gasco-item>
           </div>

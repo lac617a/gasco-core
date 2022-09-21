@@ -111,7 +111,7 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [gasco-input](../gasco-input)
+ - [gasco-calendar](../gasco-calendar)
 
 ### Depends on
 
@@ -136,7 +136,7 @@ graph TD;
   gasco-datetime --> gasco-button-icon
   gasco-datetime --> gasco-popover
   gasco-popover --> gasco-backdrop
-  gasco-input --> gasco-datetime
+  gasco-calendar --> gasco-datetime
   style gasco-datetime fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

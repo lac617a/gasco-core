@@ -43,16 +43,6 @@ graph TD;
   gasco-select --> gasco-list
   gasco-select --> gasco-item
   gasco-select --> gasco-checkbox
-  gasco-input --> gasco-datetime
-  gasco-datetime --> gasco-button
-  gasco-datetime --> gasco-picker-internal
-  gasco-datetime --> gasco-picker-column-internal
-  gasco-datetime --> gasco-item
-  gasco-datetime --> gasco-label
-  gasco-datetime --> ion-icon
-  gasco-datetime --> gasco-button-icon
-  gasco-datetime --> gasco-popover
-  gasco-popover --> gasco-backdrop
   style gasco-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

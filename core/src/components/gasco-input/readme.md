@@ -41,13 +41,12 @@
 
 ## Events
 
-| Event                | Description                                   | Type                                  |
-| -------------------- | --------------------------------------------- | ------------------------------------- |
-| `gascoBlur`          | Emitted when the input loses focus.           | `CustomEvent<FocusEvent>`             |
-| `gascoChange`        | Emitted when the value has changed.           | `CustomEvent<InputChangeEventDetail>` |
-| `gascoFocus`         | Emitted when the input has focus.             | `CustomEvent<FocusEvent>`             |
-| `gascoFocusDatetime` | Emitted when the input has focus to datetime. | `CustomEvent<any>`                    |
-| `gascoInput`         | Emitted when a keyboard input occurred.       | `CustomEvent<InputEvent>`             |
+| Event         | Description                             | Type                                  |
+| ------------- | --------------------------------------- | ------------------------------------- |
+| `gascoBlur`   | Emitted when the input loses focus.     | `CustomEvent<FocusEvent>`             |
+| `gascoChange` | Emitted when the value has changed.     | `CustomEvent<InputChangeEventDetail>` |
+| `gascoFocus`  | Emitted when the input has focus.       | `CustomEvent<FocusEvent>`             |
+| `gascoInput`  | Emitted when a keyboard input occurred. | `CustomEvent<InputEvent>`             |
 
 
 ## Methods
@@ -94,25 +93,13 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [gasco-calendar](../gasco-calendar)
  - [gasco-select](../gasco-select)
-
-### Depends on
-
-- [gasco-datetime](../gasco-datetime)
 
 ### Graph
 ```mermaid
 graph TD;
-  gasco-input --> gasco-datetime
-  gasco-datetime --> gasco-button
-  gasco-datetime --> gasco-picker-internal
-  gasco-datetime --> gasco-picker-column-internal
-  gasco-datetime --> gasco-item
-  gasco-datetime --> gasco-label
-  gasco-datetime --> ion-icon
-  gasco-datetime --> gasco-button-icon
-  gasco-datetime --> gasco-popover
-  gasco-popover --> gasco-backdrop
+  gasco-calendar --> gasco-input
   gasco-select --> gasco-input
   style gasco-input fill:#f9f,stroke:#333,stroke-width:4px
 ```

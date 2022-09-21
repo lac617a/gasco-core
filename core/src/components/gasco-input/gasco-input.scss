@@ -289,18 +289,6 @@
   @include margin(0, .6em, 0, -.3em);
 }
 
-// Input datetime
-:host(.input-datetime) {
-  z-index: 99999;
-  gasco-datetime {
-    position: absolute;
-    background: #{$background-color-value};
-    top: #{$input-datetime-height};
-    box-shadow: 0px 4px 4px #CCCCCC;
-    border-radius: 0 0 15px 15px;
-  }
-}
-
 // Input Hover
 @media (any-hover: hover) {
   :host(:not([disabled]):hover) {

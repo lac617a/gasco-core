@@ -650,10 +650,6 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
-          * If `true`, the user cannot interact with the calendar.
-         */
-        "calendar": boolean;
-        /**
           * The color to use from your application's color palette. Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
          */
         "color"?: Color;
@@ -677,7 +673,7 @@ export namespace Components {
         /**
           * Instructional text that show before the input has a value. The Input label.
          */
-        "label"?: string;
+        "label"?: string | undefined;
         /**
           * Instructional text that show before the input has a value. The Input text help.
          */
@@ -2625,10 +2621,6 @@ declare namespace LocalJSX {
          */
         "autofocus"?: boolean;
         /**
-          * If `true`, the user cannot interact with the calendar.
-         */
-        "calendar"?: boolean;
-        /**
           * The color to use from your application's color palette. Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
          */
         "color"?: Color;
@@ -2648,7 +2640,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that show before the input has a value. The Input label.
          */
-        "label"?: string;
+        "label"?: string | undefined;
         /**
           * Instructional text that show before the input has a value. The Input text help.
          */

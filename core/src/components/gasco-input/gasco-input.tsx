@@ -25,7 +25,7 @@ export class GascoInput implements ComponentInterface {
    * The color to use from your application's color palette.
    * Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
    */
-  @Prop({reflect: true}) color?: Color = 'primary';
+  @Prop({reflect: true}) color?: Color;
 
   /**
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.

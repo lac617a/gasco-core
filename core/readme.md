@@ -38,7 +38,7 @@ Al usar un controlador de superposición, los desarrolladores deberán definir e
 
 ```typescript
 import { defineCustomElement } from '@gasco/core/components/gasco-toast.js';
-import { initialize, toastController } from '@gasco/core/components';
+import { toastController } from '@gasco/core/components';
 
 defineCustomElement();
 

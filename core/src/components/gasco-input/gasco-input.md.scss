@@ -13,6 +13,7 @@
 
   font-size: $input-md-font-size;
   max-width: $input-md-width;
+  flex-grow: 0;
 }
 
 .input-indicator-icon {

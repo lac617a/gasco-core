@@ -66,6 +66,10 @@
   color: current-color(base);
 }
 
+:host(.has-label) {
+  margin-top: var(--margin-bottom);
+}
+
 // Native Text Input
 // --------------------------------------------------
 

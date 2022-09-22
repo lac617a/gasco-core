@@ -25,7 +25,7 @@ export class GascoInput implements ComponentInterface {
    * The color to use from your application's color palette.
    * Default options are: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `light`, and `dark`.
    */
-  @Prop({reflect: true}) color?: Color;
+  @Prop({reflect: true}) color?: Color = 'primary';
 
   /**
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
@@ -54,11 +54,6 @@ export class GascoInput implements ComponentInterface {
   @Prop() disabled = false;
 
   /**
-   * If `true`, the user cannot interact with the calendar.
-   */
-  @Prop({mutable: true}) calendar = false;
-
-  /**
    * Instructional text that show before the input has a value.
    * This property applies only whe the `type` property is set to `email`, `number`, `password`, `tel`, `text`, or `url`, otherwise it is ignored.
    */
@@ -73,7 +68,7 @@ export class GascoInput implements ComponentInterface {
    * Instructional text that show before the input has a value.
    * The Input label.
    */
-  @Prop() label?: string;
+  @Prop() label?: string | undefined;
 
   /**
    * Instructional text that show before the input has a value.
@@ -284,6 +279,7 @@ export class GascoInput implements ComponentInterface {
       'has-placeholder': this.placeholder !== undefined,
       'has-value': this.hasValue(),
       'has-focus': this.hasFocus,
+      'has-label': this.label !== undefined,
       'interactive-disabled': this.disabled,
     });
   };
@@ -369,7 +365,7 @@ export class GascoInput implements ComponentInterface {
         class={createColorClasses(this.color, {
           'has-value': this.hasValue(),
           'has-focus': this.hasFocus,
-          'input-datetime': this.calendar,
+          'has-label': this.label !== undefined,
           [`input-${finalSize}`]: finalSize !== undefined,
         })}>
         {this.label && (<span class="native-input-label">{this.label}</span>)}

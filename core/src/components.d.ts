@@ -1265,10 +1265,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true`, the radio is selected.
-         */
-        "ischecked": boolean;
-        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -3301,10 +3297,6 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the radio.
          */
         "disabled"?: boolean;
-        /**
-          * If `true`, the radio is selected.
-         */
-        "ischecked"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */

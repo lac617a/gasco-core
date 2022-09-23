@@ -10,7 +10,7 @@
   border-radius: 4px;
   visibility: hidden;
 
-  max-width: 274px;
+  max-width: 230px;
   width: max-content;
   word-wrap: break-word;
   
@@ -25,18 +25,17 @@
 
   filter: drop-shadow(0px 4px 8px rgba(171, 190, 209, 0.4));
   transition: ease-in 200ms all;
-  &:before {
-    background-color: #999999;
-    border-radius: 1px;
-    bottom: -3px;
-    content: "";
-    height: 8px;
-    width: 8px;
-    left: 10px;
-    position: absolute;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+}
+
+:host .tooltip-show .selector {
+  background-color: #999999;
+  border-radius: 1px;
+  bottom: -3px;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 :host .tooltip-show.tooltip-top {
@@ -49,11 +48,8 @@
   opacity: 0;
   bottom: calc(100% - 75px);
   bottom: -20px;
-  &:before {
+  .selector {
     top: -3px;
-    bottom: inherit;
-    content: "";
-    position: absolute;
   }
 }
 
@@ -70,6 +66,18 @@
     top: initial;
     bottom: 0;
   }
+}
+
+:host(.gasco-tooltip:active) .tooltip-show.tooltip-top,
+:host(.gasco-tooltip:active) .tooltip-show.tooltip-bottom {
+  opacity: 1;
+  top: 0;
+  visibility: visible;
+}
+
+:host(.gasco-tooltip:active) .tooltip-show.tooltip-bottom {
+  top: initial;
+  bottom: 0;
 }
 
 @media only screen and (max-width: 768px) {

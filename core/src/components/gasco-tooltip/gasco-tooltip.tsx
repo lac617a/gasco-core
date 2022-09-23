@@ -9,6 +9,7 @@ import { Component, Event, Host, Listen, Prop, Element, h } from '@stencil/core'
 export class GascoTooltip implements ComponentInterface {
 
   private tooltipRef!: HTMLDivElement;
+  private selectorRef!: HTMLSpanElement;
   private tooltipSlotRef!: HTMLDivElement;
   
 
@@ -60,23 +61,50 @@ export class GascoTooltip implements ComponentInterface {
     }
   }
 
+  @Listen('resize', {target: 'window'})
+  handleResize() {
+    this.handleTootltipResize();
+  }
+  
   componentDidLoad(): void {
-    setTimeout(() => {
-      const div_height = this.tooltipRef.offsetHeight;
-      const slot = this.tooltipSlotRef.offsetHeight;
+    setTimeout(() => this.handleTootltipResize(), 800);
+  }
+
+  private handleTootltipResize() {
+    const clientWidth = document.documentElement.clientWidth;
+    const {height, left} = this.tooltipRef.getClientRects()[0];
+    const slot = this.tooltipSlotRef.offsetHeight;
+
+    const divStyle = this.tooltipRef.style;
+    const selector = this.selectorRef;
+
+    const translateTop = height + slot;
+    const translateBottom = height + slot;
+
+    if (clientWidth > 480) {
       if (this.position === 'top') {
-        this.tooltipRef.style.transform = `translateY(-${Math.ceil((div_height * 2) / 2) + slot}px)`;
+        divStyle.transform = `translateY(-${translateTop}px)`;
       } else {
-        this.tooltipRef.style.transform = `translateY(${Math.ceil((div_height * 2) / 1.9) + slot}px)`;
+        divStyle.transform = `translateY(${translateBottom}px)`;
       }
-    }, 1000);
+    } else {
+      selector.style.left = `${left / 2}px`;
+      if (this.position === 'top') {
+        divStyle.transform = `
+          translate(-${Math.ceil(clientWidth / 5)}px, -${translateTop}px) scale(0.9)`;
+      } else {
+        divStyle.transform = `
+        translate(-${Math.ceil(clientWidth / 5)}px, ${translateBottom}px) scale(0.9)`;
+      }
+    }
   }
 
   render() {
     return (
       <Host
-        tabindex="-1"
+        tabindex="0"
         aria-hidden="true"
+        aria-role="button"
         class={{
           'tooltip-hide': !this.visible,
           'tooltip-no-tappable': !this.tappable,
@@ -87,7 +115,10 @@ export class GascoTooltip implements ComponentInterface {
           class={{
             'tooltip-show': true,
             [`tooltip-${this.position}`]: true
-          }}>{this.label}</div>
+          }}>
+            <span ref={(focusEl) => (this.selectorRef = focusEl)} class="selector"></span>
+            {this.label}
+          </div>
         <div style={{display: 'inline'}} ref={(focusEl) => (this.tooltipSlotRef = focusEl)}><slot></slot></div>
       </Host>
     );

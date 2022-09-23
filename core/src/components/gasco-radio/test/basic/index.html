@@ -12,7 +12,7 @@
 </head>
 <body>
   <div style="padding: 1rem;">
-    <gasco-radio></gasco-radio>
+    <gasco-radio checked onclick="handleSelect()"></gasco-radio>
     <gasco-radio disabled></gasco-radio>
     <div>
       <p style="display: flex;align-items: center; gap: 1rem;">
@@ -27,6 +27,13 @@
   </div>
 
   <script>
+
+    function handleSelect() {
+      const input = document.querySelector('gasco-radio');
+      input.checked = !input.checked;
+      console.log(input)
+    }
+
     const inputs = document.querySelectorAll('gasco-radio');
 
     for (var i = 0; i < inputs.length; i++) {

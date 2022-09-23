@@ -1257,6 +1257,10 @@ export namespace Components {
     }
     interface GascoRadio {
         /**
+          * If `true`, the radio is selected.
+         */
+        "checked": boolean;
+        /**
           * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`.
          */
         "color"?: Color;
@@ -3289,6 +3293,10 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface GascoRadio {
+        /**
+          * If `true`, the radio is selected.
+         */
+        "checked"?: boolean;
         /**
           * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`.
          */

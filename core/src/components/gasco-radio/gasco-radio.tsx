@@ -43,11 +43,6 @@ export class GascoRadio implements ComponentInterface {
   @Prop() name: string = this.inputId;
 
   /**
-   * If `true`, the radio is selected.
-   */
-  @Prop({mutable: true}) ischecked = false;
-
-  /**
    * If `true`, the user cannot interact with the radio.
    */
   @Prop() disabled = false;
@@ -148,7 +143,7 @@ export class GascoRadio implements ComponentInterface {
         <label htmlFor={inputId}>{labelText}</label>
         <input
           type="radio"
-          checked={checked &&  this.ischecked}
+          checked={checked}
           disabled={disabled}
           tabindex="-1"
           id={inputId}

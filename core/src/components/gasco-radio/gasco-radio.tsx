@@ -16,6 +16,7 @@ import { createColorClasses, hostContext } from '../../utils/theme';
 })
 export class GascoRadio implements ComponentInterface {
   private inputId = `gasco-rb-${radioButtonIds++}`;
+  private nativeInput!: HTMLInputElement;
 
   @Element() el!: HTMLGascoRadioElement;
 
@@ -102,6 +103,10 @@ export class GascoRadio implements ComponentInterface {
     });
   }
 
+  private onClick = () => {
+    this.checked = this.nativeInput.checked;
+  };
+
   private onFocus = () => {
     this.gascoFocus.emit();
   };
@@ -119,6 +124,7 @@ export class GascoRadio implements ComponentInterface {
         role="radio"
         onBlur={this.onBlur}
         onFocus={this.onFocus}
+        onClick={this.onClick}
         tabindex={buttonTabindex}
         aria-checked={`${checked}`}
         aria-hidden={disabled ? 'true' : null}
@@ -137,10 +143,11 @@ export class GascoRadio implements ComponentInterface {
         <label htmlFor={inputId}>{labelText}</label>
         <input
           type="radio"
-          id={inputId}
-          tabindex="-1"
           checked={checked}
           disabled={disabled}
+          tabindex="-1"
+          id={inputId}
+          ref={(nativeEl) => (this.nativeInput = nativeEl as HTMLInputElement)}
         />
       </Host>
     );

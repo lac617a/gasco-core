@@ -22,6 +22,8 @@ export const config: Config = {
     { components: ['gasco-checkbox'] },
     { components: ['gasco-progress'] },
     { components: ['gasco-datetime'] },
+    { components: ['gasco-calendar'] },
+    { components: ['gasco-paginator'] },
     { components: ['gasco-autocomplete'] },
     { components: ['gasco-tab', 'gasco-tab-button'] },
     { components: ['gasco-input', 'gasco-input-code'] },
@@ -87,6 +89,7 @@ export const config: Config = {
     initializeNextTick: true,
     scriptDataOpts: true,
   },
+  preamble: '(C) Gasco https://gasco-web-component.herokuapp.com/ - MIT License',
   plugins: [sass()],
   enableCache: true,
 };

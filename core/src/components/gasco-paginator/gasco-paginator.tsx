@@ -85,7 +85,7 @@ export class GascoPaginator implements ComponentInterface {
       this.end = this.currentPage === this.pageCount ? this.totalItems : this.end;
 
       if (this.end !== this.pageCount) {
-        this.gascoChange.emit({ value: index + 1, start: this.start, end: this.end });
+        this.gascoChange.emit({ current: index, start: this.start, end: this.end });
       }
     }
     event.stopPropagation();
@@ -96,7 +96,7 @@ export class GascoPaginator implements ComponentInterface {
     this.pageSize = current;
     this.end = (this.currentPage - 1) * current + current;
     this.getTotalItemCount(this.totalItems);
-    this.gascoChange.emit({ start: this.start, end: this.end });
+    this.gascoChange.emit({ current: this.currentPage, start: this.start, end: this.end });
   }
 
   private handlePageSizeChange(event) {

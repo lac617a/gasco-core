@@ -1,5 +1,5 @@
 export interface PaginatorChangeEventDetail {
-  value?: number | null;
+  current?: number | null;
   start?: number | null;
   end?: number | null;
 }

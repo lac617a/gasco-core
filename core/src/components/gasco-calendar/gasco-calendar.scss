@@ -16,8 +16,8 @@
   gasco-datetime {
     position: absolute;
     @include position(68px, 0, null, 0);
-    box-shadow: 0px 4px 4px gasco-color(medium, base);
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 2px 4px rgba(171, 190, 209, 0.6);
     max-width: 340px;
     margin-inline: 5px;
     z-index: 9999;

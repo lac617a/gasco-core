@@ -138,7 +138,7 @@
 // Footer
 // -----------------------------------
 :host .datetime-buttons {
-  @include padding(10px, 10px, 10px, 10px);
+  @include padding(null, 10px, 10px, 10px);
 
   display: flex;
 

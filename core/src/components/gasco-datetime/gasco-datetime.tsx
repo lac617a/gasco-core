@@ -1396,7 +1396,9 @@ export class GascoDatetime implements ComponentInterface {
         </div>
         <div class="calendar-days-of-week">
           {getDaysOfWeek(this.locale, this.firstDayOfWeek % 7).map((d) => {
-            return <div class="day-of-week">{d}</div>;
+            return <div class="day-of-week">
+              {d === 'X' ? 'M' : d}
+            </div>;
           })}
         </div>
       </div>

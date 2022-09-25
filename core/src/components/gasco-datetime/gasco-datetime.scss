@@ -186,11 +186,10 @@
   width: 100%;
 }
 
-:host .datetime-action-buttons gasco-buttons {
+:host .datetime-action-buttons {
   display: flex;
-
-  justify-content: space-between;
 }
+
 
 /**
  * Date/Year button should be on

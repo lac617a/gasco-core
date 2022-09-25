@@ -30,11 +30,15 @@
 ### Depends on
 
 - ion-icon
+- [gasco-item](../gasco-item)
+- [gasco-list](../gasco-list)
 
 ### Graph
 ```mermaid
 graph TD;
   gasco-paginator --> ion-icon
+  gasco-paginator --> gasco-item
+  gasco-paginator --> gasco-list
   style gasco-paginator fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

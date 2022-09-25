@@ -1,4 +1,4 @@
-import type { ComponentInterface, EventEmitter } from '@stencil/core';
+import { ComponentInterface, EventEmitter, Fragment, Listen } from '@stencil/core';
 import { Component, Event, Prop, h, Host, Watch, Element, State } from '@stencil/core';
 import { chevronBack, chevronForward, playBackOutline, playForwardOutline } from 'ionicons/icons';
 import { PaginatorChangeEventDetail, PaginatorReadyEventDetail } from '../../interface';
@@ -34,6 +34,7 @@ export class GascoPaginator implements ComponentInterface {
 
   @State() countPaginatorStart: number = 0;
   @State() countPaginatorEnd: number = 3;
+  @State() isExpanded: boolean = false;
 
   componentWillLoad() {
 
@@ -42,6 +43,13 @@ export class GascoPaginator implements ComponentInterface {
       const { currentPage, pageSize } = this.getTotalItemCount(this.totalItems);
       this.end = currentPage * pageSize;
     }
+
+    if (document.documentElement.clientWidth > 480) {
+      this.displayedPagesLarge();
+    } else {
+      this.displayedPagesSmall();
+    }
+
     this.gascoReady.emit({ ...this, start: this.start, end: this.end });
   }
 
@@ -99,14 +107,23 @@ export class GascoPaginator implements ComponentInterface {
     this.gascoChange.emit({ current: this.currentPage, start: this.start, end: this.end });
   }
 
-  private handlePageSizeChange(event) {
+  private handlePageSizeChange(event: Event, value: number) {
     event.preventDefault();
-    this.pageSize = event.target.value;
+    this.pageSize = value;
     event.stopPropagation();
   }
 
+  @Listen('resize', {target: 'window'})
+  protected handleResizePaginator(){
+    if (document.documentElement.clientWidth > 480) {
+      return this.displayedPagesLarge();
+    } else {
+      return this.displayedPagesSmall();
+    }
+  }
 
-  private displayedPages() {
+
+  private displayedPagesLarge() {
     // if currentPage is currentPage 1
     if (this.currentPage === 1) {
       return this.pages.slice(this.currentPage - 1, this.currentPage + 2);
@@ -129,6 +146,10 @@ export class GascoPaginator implements ComponentInterface {
     }
   }
 
+  private displayedPagesSmall() {
+    return this.pages.slice(this.currentPage - 1, this.currentPage + 1);
+  }
+
   private renderPaginate() {
     return (
       <div class="paginator-pages">
@@ -149,19 +170,23 @@ export class GascoPaginator implements ComponentInterface {
           }}>
             <ion-icon icon={chevronBack} lazy={false} flipRtl></ion-icon>
           </button>
-          {this.currentPage > 3 && (
-            <button
-              class="paginator-indicator"
-              onClick={e => {
-                const current = this.currentPage = 1;
-                this.handleSelect(e, current);
-              }}>
-                {this.pages[0]}
-            </button>
+          {document.documentElement.clientWidth > 480 && (
+            this.currentPage > 3 && (
+              <Fragment>
+                <button
+                  class="paginator-indicator"
+                  onClick={e => {
+                    const current = this.currentPage = 1;
+                    this.handleSelect(e, current);
+                  }}>
+                    {this.pages[0]}
+                </button>
+                <span>...</span>
+              </Fragment>
+            )
           )}
-          {this.currentPage > 3 && <span>...</span>}
 
-          {this.displayedPages().map(index => (
+          {this.handleResizePaginator().map(index => (
             <button
               class={{
                 ['paginator-indicator']: true,
@@ -208,19 +233,27 @@ export class GascoPaginator implements ComponentInterface {
   }
 
   private renderChoice() {
-    const choice = this.getPageSelect().map(n => <option value={n}>{n.toString()}</option>);
+    const choice = this.getPageSelect().map(n => (
+      <gasco-item onClick={(e) => this.handlePageSizeChange(e, n)}>{n}</gasco-item>
+    ));
 
     return this.getPageSelect().length > 0 && (
       <div class="paginator-select">
-        <div class="paginator-size">
-          <span>Mostrar</span>
-          <select onChange={event => this.handlePageSizeChange(event)}>
-            {choice}
-          </select>
+        <span>Filas por página:</span>
+        <div class="select-wrap">
+          <button
+            class="select-button"
+            onBlur={() => setTimeout(() => this.isExpanded = false, 200)}
+            onFocus={() => this.isExpanded = true}>{this.pageSize}</button>
+          {this.isExpanded && (
+            <gasco-list>
+              {choice}
+            </gasco-list>
+          )}
         </div>
-        <div class="paginator-counts">
+        <span class="paginator-counts">
           {this.start} - {this.currentPage === this.pages[this.pageCount] ? this.totalItems : this.end} de {this.totalItems}
-        </div>
+        </span>
       </div>
     )
   }
@@ -229,10 +262,10 @@ export class GascoPaginator implements ComponentInterface {
     return (
       <Host
         {...(this.htmlAttributes as any)}
-        class={`
-          gasco-paginator 
-          ${this.getPageSelect().length > 0 ? 'paginator-with-select' : ''}
-        `}>
+        class={{
+          'gasco-paginator': true,
+          'paginator-with-select': this.getPageSelect().length > 0
+        }}>
         {this.renderChoice()}
         {this.renderPaginate()}
       </Host>

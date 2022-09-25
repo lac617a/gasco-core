@@ -1,5 +1,5 @@
-import { ComponentInterface, EventEmitter } from '@stencil/core';
-import { Component, Element, Event, Host, Method, Prop, State, Watch, h, writeTask } from '@stencil/core';
+import type { ComponentInterface, EventEmitter } from '@stencil/core';
+import { Component, Element, Event, Host, Method, Fragment, Prop, State, Watch, h, writeTask } from '@stencil/core';
 import { chevronBack, chevronDown, chevronUp, chevronForward } from 'ionicons/icons';
 
 import type { Color, DatetimeChangeEventDetail, DatetimeParts, StyleEventDetail } from '../../interface';
@@ -205,12 +205,12 @@ export class GascoDatetime implements ComponentInterface {
   /**
    * The text to display on the picker's cancel button.
    */
-  @Prop() cancelText = 'Cancel';
+  @Prop() cancelText = 'cancelar';
 
   /**
    * The text to display on the picker's "Done" button.
    */
-  @Prop() doneText = 'Done';
+  @Prop() doneText = 'aceptar';
 
   /**
    * The text to display on the picker's "Clear" button.
@@ -336,7 +336,6 @@ export class GascoDatetime implements ComponentInterface {
           minute,
           ampm,
         };
-        this.gascoDatetimeReady.emit(this.activePartsClone);
 
         /**
          * The working parts am/pm value must be updated when the value changes, to
@@ -352,8 +351,12 @@ export class GascoDatetime implements ComponentInterface {
     }
 
     this.emitStyle();
-    this.gascoChange.emit({
-      value: this.value,
+
+    const newDate = new Date(this.value);
+    const convert = newDate.toLocaleDateString("es-ES", { year: 'numeric', month: 'long', day: 'numeric' });
+
+    this.gascoChangeDatetime.emit({
+      value: convert,
     });
   }
 
@@ -373,7 +376,7 @@ export class GascoDatetime implements ComponentInterface {
    * buttons are set in the `button` slot then the
    * default buttons will not be rendered.
    */
-  @Prop() showDefaultButtons = false;
+  @Prop() showDefaultButtons = true;
 
   /**
    * If `true`, a "Clear" button will be rendered alongside
@@ -416,7 +419,7 @@ export class GascoDatetime implements ComponentInterface {
   /**
    * Emitted when the value (selected date) has changed.
    */
-  @Event() gascoChange!: EventEmitter<DatetimeChangeEventDetail>;
+  @Event() gascoChangeDatetime!: EventEmitter<DatetimeChangeEventDetail>;
 
   /**
    * Emitted when the datetime has focus.
@@ -427,12 +430,7 @@ export class GascoDatetime implements ComponentInterface {
    * Emitted when the datetime loses focus.
    */
   @Event() gascoBlur!: EventEmitter<void>;
-  @Event() gascoBlurDatetime!: EventEmitter;
 
-  /**
-   * Emitted when the datetime loses focus.
-   */
-  @Event() gascoDatetimeReady!: EventEmitter<DatetimeParts>;
 
   /**
    * Emitted when the styles change.
@@ -494,6 +492,7 @@ export class GascoDatetime implements ComponentInterface {
   @Method()
   async cancel(closeOverlay = false) {
     this.gascoCancel.emit();
+    this.gascoChangeDatetime.emit({value: ''});
 
     if (closeOverlay) {
       this.closeParentOverlay();
@@ -1122,7 +1121,6 @@ export class GascoDatetime implements ComponentInterface {
   };
 
   private onBlur = () => {
-    this.gascoBlurDatetime.emit(true);
     this.gascoBlur.emit();
   };
 
@@ -1197,25 +1195,35 @@ export class GascoDatetime implements ComponentInterface {
             }}
           >
             <slot name="buttons">
-              <gasco-buttons>
-                {showDefaultButtons && (
-                  <gasco-button id="cancel-button" color={this.color} onClick={() => this.cancel(true)}>
-                    {this.cancelText}
+              {showDefaultButtons && (
+                <gasco-button
+                  fill="clear"
+                  id="cancel-button"
+                  color={this.color}
+                  onClick={() => this.cancel(true)}>
+                  {this.cancelText.toLocaleUpperCase()}
+                </gasco-button>
+              )}
+              <div>
+                {showClearButton && (
+                  <gasco-button
+                    fill="clear"
+                    id="clear-button"
+                    color={this.color}
+                    onClick={() => clearButtonClick()}>
+                    {this.clearText.toLocaleUpperCase()}
                   </gasco-button>
                 )}
-                <div>
-                  {showClearButton && (
-                    <gasco-button id="clear-button" color={this.color} onClick={() => clearButtonClick()}>
-                      {this.clearText}
-                    </gasco-button>
-                  )}
-                  {showDefaultButtons && (
-                    <gasco-button id="confirm-button" color={this.color} onClick={() => this.confirm(true)}>
-                      {this.doneText}
-                    </gasco-button>
-                  )}
-                </div>
-              </gasco-buttons>
+                {showDefaultButtons && (
+                  <gasco-button
+                    fill="clear"
+                    id="confirm-button"
+                    color={this.color}
+                    onClick={() => this.confirm(true)}>
+                    {this.doneText.toLocaleUpperCase()}
+                  </gasco-button>
+                )}
+              </div>
             </slot>
           </div>
         </div>
@@ -1242,6 +1250,8 @@ export class GascoDatetime implements ComponentInterface {
     });
     const showMonthFirst = isMonthFirstLocale(locale);
     const columnOrder = showMonthFirst ? 'month-first' : 'year-first';
+    const { showDefaultButtons } = this;
+
     return (
       <div class="datetime-year">
         <div
@@ -1320,6 +1330,37 @@ export class GascoDatetime implements ComponentInterface {
               ></gasco-picker-column-internal>
             )}
           </gasco-picker-internal>
+          <div class="datetime-footer-year">
+            <div class="datetime-buttons">
+              <div
+                class={{
+                  ['datetime-action-buttons']: true,
+                  ['has-clear-button']: this.showClearButton,
+                }}
+              >
+                <slot name="buttons">
+                  {showDefaultButtons && (
+                    <Fragment>
+                      <gasco-button
+                        fill="clear"
+                        color={this.color}
+                        id="cancel-button-year"
+                        onClick={() => this.toggleMonthAndYearView()}>
+                        {this.cancelText.toLocaleUpperCase()}
+                      </gasco-button>
+                      <gasco-button
+                        fill="clear"
+                        color={this.color}
+                        id="confirm-button-year"
+                        onClick={() => this.toggleMonthAndYearView()}>
+                        {this.doneText.toLocaleUpperCase()}
+                      </gasco-button>
+                    </Fragment>
+                  )}
+                </slot>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -1336,7 +1377,7 @@ export class GascoDatetime implements ComponentInterface {
       <div class="calendar-header">
         <div class="calendar-action-buttons">
           <div class="calendar-month-year">
-            <gasco-item button detail={false} lines="none" onClick={() => this.toggleMonthAndYearView()}>
+            <gasco-item detail={false} lines="none" onClick={() => this.toggleMonthAndYearView()}>
               <gasco-label>
                 {getMonthAndYear(this.locale, this.workingParts)}{' '}
                 <ion-icon icon={this.showMonthAndYear ? collapsedIcon : expandedIcon} lazy={false}></ion-icon>

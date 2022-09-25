@@ -22,27 +22,27 @@
 | Event               | Description | Type                         |
 | ------------------- | ----------- | ---------------------------- |
 | `gascoChangeSelect` |             | `CustomEvent<IChoiceDetail>` |
-| `gascoReady`        |             | `CustomEvent<any>`           |
+| `gascoReadySelect`  |             | `CustomEvent<any>`           |
 
 
 ## Dependencies
 
 ### Depends on
 
+- [gasco-item](../gasco-item)
+- [gasco-checkbox](../gasco-checkbox)
 - [gasco-input](../gasco-input)
 - ion-icon
 - [gasco-list](../gasco-list)
-- [gasco-item](../gasco-item)
-- [gasco-checkbox](../gasco-checkbox)
 
 ### Graph
 ```mermaid
 graph TD;
+  gasco-select --> gasco-item
+  gasco-select --> gasco-checkbox
   gasco-select --> gasco-input
   gasco-select --> ion-icon
   gasco-select --> gasco-list
-  gasco-select --> gasco-item
-  gasco-select --> gasco-checkbox
   style gasco-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

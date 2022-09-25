@@ -24,7 +24,7 @@
   </style>
 
   <div class="gasco-padding">
-    <gasco-select label="label" multiple></gasco-select>
+    <gasco-select disabled label="label" multiple></gasco-select>
     <gasco-select id="select2"></gasco-select>
   </div>
 
@@ -33,7 +33,7 @@
       const select = document.querySelector('gasco-select');
       const select2 = document.querySelector('#select2');
 
-      select.addEventListener('gascoReady', (e) => {
+      select.addEventListener('gascoReadySelect', (e) => {
         select.choices = [{
             label: 'casa',
             value: 'home',
@@ -55,7 +55,7 @@
         ];
       });
 
-      select2.addEventListener('gascoReady', (e) => {
+      select2.addEventListener('gascoReadySelect', (e) => {
         select2.choices = [{
             label: 'casa',
             value: 'home',

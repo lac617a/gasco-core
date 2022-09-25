@@ -33,7 +33,7 @@
   --border-style: solid;
   --border-width: 1px;
   --border-color: #{gasco-color(medium, base)};
-  --background: transparent;
+  --background: #{$background-color-value};
   --color: #{gasco-color(medium, base)};
   --line-height-secondary: 16px;
   --font-size-secondary: 12px;
@@ -118,7 +118,7 @@
 .native-input {
   @include padding(var(--padding-top), var(--padding-end), var(--padding-bottom), var(--padding-start));
   &-label {
-    --background: white;
+    // --background: white;
     position: absolute;
     top: -10px;
     left: 10px;
@@ -147,9 +147,11 @@
 
 
 // DISABLED
-:host[disabled] {
+:host[disabled],
+:host(.has-disabled) {
   --border-color: #{gasco-color(light, base)} !important;
   --background: #{gasco-color(light, base)} !important;
+  --box-shadow: none;
 }
 .native-input[disabled] {
   opacity: .8;

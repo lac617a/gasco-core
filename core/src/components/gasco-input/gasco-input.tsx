@@ -4,7 +4,7 @@ import { Build, Component, Element, Event, Host, Method, Prop, State, Watch, h }
 import type { Color, TextFieldTypes, StyleEventDetail, InputChangeEventDetail, AutocompleteTypes } from '../../interface';
 import type { Attributes } from '../../utils/helpers';
 import { inheritAriaAttributes, inheritAttributes } from '../../utils/helpers';
-import { createColorClasses } from '../../utils/theme';
+import { createColorClasses, hostContext } from '../../utils/theme';
 
 @Component({
   tag: 'gasco-input',
@@ -19,7 +19,7 @@ export class GascoInput implements ComponentInterface {
 
   @Prop() fireFocusEvents = true;
   @State() hasFocus = false;
-  @Element() el!: HTMLElement;
+  @Element() el!: HTMLGascoInputElement;
 
   /**
    * The color to use from your application's color palette.
@@ -356,6 +356,7 @@ export class GascoInput implements ComponentInterface {
   }
 
   render() {
+    const el = this.el;
     const value = this.getValue();
     const labelId = this.inputId + '-lbl';
     const finalSize = this.size === undefined && false ? 'small' : this.size;
@@ -363,8 +364,10 @@ export class GascoInput implements ComponentInterface {
       <Host
         aria-disabled={this.disabled ? 'true' : null}
         class={createColorClasses(this.color, {
+          'in-select': hostContext('gasco-select', el),
           'has-value': this.hasValue(),
           'has-focus': this.hasFocus,
+          'has-disabled': this.disabled,
           'has-label': this.label !== undefined,
           [`input-${finalSize}`]: finalSize !== undefined,
         })}>

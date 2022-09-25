@@ -511,16 +511,16 @@ export class GascoPickerInternal implements ComponentInterface {
     return (
       <Host onPointerDown={(ev: PointerEvent) => this.onPointerDown(ev)} onClick={() => this.onClick()}>
         <input
-          aria-hidden="true"
-          tabindex={-1}
-          inputmode="numeric"
           type="number"
+          tabindex={-1}
+          aria-hidden="true"
+          inputmode="numeric"
           ref={(el) => (this.inputEl = el)}
           onInput={() => this.onInputChange()}
           onBlur={() => this.exitInputMode()}
         />
-        <div class="picker-before"></div>
-        <div class="picker-after"></div>
+        {/* <div class="picker-before"></div>
+        <div class="picker-after"></div> */}
         <div class="picker-highlight" ref={(el) => (this.highlightEl = el)}></div>
         <slot></slot>
       </Host>

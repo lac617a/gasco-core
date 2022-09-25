@@ -20,55 +20,17 @@
     html {
       --gasco-font-family: 'Mulish', sans-serif !important;
     }
-
-    .row {
-      margin: 4rem;
+    body {
+      background-color: brown;
     }
 
   </style>
 
   <div style="display: flex; align-items: center; justify-content: center; margin-top: 3rem;">
 
-    <gasco-tooltip label="Esto es requerido">
-      <i class="material-icons">info</i>
-    </gasco-tooltip>
+    <gasco-calendar></gasco-calendar>
 
-    <gasco-tooltip
-      label="Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae unde eius cum numquam natus ut dignissimos atque, maxime temporibus suscipit culpa, minus quisquam repellat voluptatum ab sed, assumenda voluptates? Vel!"
-      position="bottom">
-      <gasco-label>holaa</gasco-label>
-    </gasco-tooltip>
-
-    <gasco-tooltip label="Indica dirección para que este pedido...">
-      <gasco-button>Hola</gasco-button>
-    </gasco-tooltip>
-
-    <gasco-tooltip label="Esto es requerido" position="bottom">
-      <i class="material-icons">info_outline</i>
-    </gasco-tooltip>
   </div>
-
-  <!-- <div style="display: grid; gap: 1rem; margin: 1rem;">
-    <gasco-autocomplete id="autocomplete" autocomplete="name" autocorrect="on"></gasco-autocomplete>
-    <gasco-autocomplete autocorrect="off" autocomplete="off" spellcheck="true"></gasco-autocomplete>
-    <gasco-autocomplete disabled></gasco-autocomplete>
-  </div>
-
-  <script>
-    var testArr = ['the', 'valid', 'strings', 'for', 'search', 'auto', 'complete', 'foo', 'bar'];
-    const autocomplete = document.querySelector('#autocomplete');
-
-    autocomplete.addEventListener('gascoFocus', (e) => {
-      autocomplete.suggestionlist = testArr;
-    });
-
-    autocomplete.addEventListener('gascoChange', (e) => {
-      console.log(e.target.value);
-    });
-
-  </script> -->
-
-  <!-- <gasco-calendar></gasco-calendar>
 
   <script>
     const calendar = document.querySelector('gasco-calendar');
@@ -77,7 +39,8 @@
       console.log(e.detail);
     });
 
-  </script> -->
+  </script>
+
 </body>
 
 </html>

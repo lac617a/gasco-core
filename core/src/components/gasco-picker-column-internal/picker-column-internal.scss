@@ -61,6 +61,14 @@
   overflow: hidden;
 
   scroll-snap-align: center;
+
+  cursor: default;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #072531;
+
 }
 
 :host .picker-item-empty {

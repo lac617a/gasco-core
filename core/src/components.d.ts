@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, DatetimeParts, FrameworkDelegate, InputChangeEventDetail as InputChangeEventDetail1, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
+import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, FrameworkDelegate, InputChangeEventDetail as InputChangeEventDetail1, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
 import { InputChangeEventDetail } from "./components/gasco-input/gasco-input-interface";
 import { CounterFormatter } from "./components/gasco-item/gasco-item-interface";
 import { PickerColumnItem } from "./components/gasco-picker-column-internal/gasco-picker-column-internal-interfaces";
@@ -2369,7 +2369,6 @@ declare namespace LocalJSX {
           * Emitted when the datetime loses focus.
          */
         "onGascoBlur"?: (event: GascoDatetimeCustomEvent<void>) => void;
-        "onGascoBlurDatetime"?: (event: GascoDatetimeCustomEvent<any>) => void;
         /**
           * Emitted when the datetime selection was cancelled.
          */
@@ -2377,11 +2376,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value (selected date) has changed.
          */
-        "onGascoChange"?: (event: GascoDatetimeCustomEvent<DatetimeChangeEventDetail>) => void;
-        /**
-          * Emitted when the datetime loses focus.
-         */
-        "onGascoDatetimeReady"?: (event: GascoDatetimeCustomEvent<DatetimeParts>) => void;
+        "onGascoChangeDatetime"?: (event: GascoDatetimeCustomEvent<DatetimeChangeEventDetail>) => void;
         /**
           * Emitted when the datetime has focus.
          */
@@ -3420,7 +3415,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         "onGascoChangeSelect"?: (event: GascoSelectCustomEvent<IChoiceDetail>) => void;
-        "onGascoReady"?: (event: GascoSelectCustomEvent<any>) => void;
+        "onGascoReadySelect"?: (event: GascoSelectCustomEvent<any>) => void;
         /**
           * Instructional text that show before the input has a value.
          */

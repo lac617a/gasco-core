@@ -2,29 +2,80 @@
 
 :host {
   display: block;
-  padding: 20px;
+  padding: 17px;
 
   background: #FFFFFF;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border: 1.5px solid #EBEBEB;
+  flex-grow: 1;
 }
 
 :host(.gasco-paginator.paginator-with-select) {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 1rem;
+
   .gasco-select {
     max-width: 100px;
   }
+
   .select-native :host(gasco-input) {
     margin-bottom: 0;
   }
+
   .paginator-select {
     display: flex;
     align-items: center;
-    gap: 10px;
-    .paginator-size {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    justify-content: end;
+    flex: 1 1;
+    gap: 1rem;
+
+    span {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #072531;
+      // flex-shrink: 0;
+    }
+    .select-wrap {
+      position: relative;
+      max-width: 80px;
+      width: 100%;
+      > gasco-list {
+        position: absolute;
+        width: 100%;
+        top: 3rem;
+        z-index: 100;
+      }
+    }
+
+    .select-button {
+      position: relative;
+      border: 1px solid gasco-color(primary, base);
+      border-radius: 4px;
+      width: 100%;
+      text-align: initial;
+      @include padding(4px, 11px);
+
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #072531;
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 0.8em;
+        height: 0.5em;
+        top: 10px;
+        right: 10px;
+        background-color: gasco-color(primary, base);
+        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        transition: 300ms;
+      }
+
+      &:focus::after {
+        transform: rotate(180deg);
+      }
     }
   }
 }
@@ -40,63 +91,73 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
   .wrap-buttons {
     display: flex;
+
     button {
       display: flex;
       padding: 6px 2px;
       align-items: center;
       transition: 300ms;
       border-radius: 4px;
+
       &:hover {
         background: #{gasco-color(light, base)};
       }
     }
   }
+
   .wrap-indicator {
     @include padding(0, 8px, 0, 8px);
     display: flex;
     gap: 8px;
     direction: ltr;
+
     .paginator-indicator {
       position: relative;
       padding: 2px 8px;
       user-select: none;
       z-index: 1;
       transition: all 0.1s linear;
+
       &:hover::after {
         background: #{gasco-color(light, base)};
       }
+
       &.active-indicator {
         color: #ffffff !important;
+
         &::after {
           background: #{gasco-color(primary, base)};
         }
       }
+
       &.disabled {
         cursor: default;
         color: #bbb;
-  
+
         &:hover {
           border-color: #fafafa;
         }
       }
+
       &::after {
         @include border-radius(32px);
         @include padding(4px);
-      
+
         position: absolute;
-      
+
         top: 50%;
         left: 50%;
-      
+
         width: 20px;
         height: 20px;
-      
+
         transform: translate(-50%, -50%);
-      
+
         content: " ";
-      
+
         z-index: -1;
       }
     }
@@ -104,15 +165,33 @@
 }
 
 @media only screen and (max-width: 670px) {
-  :host(.gasco-paginator.paginator-with-select){
+  :host(.gasco-paginator.paginator-with-select) {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    .paginator-select {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+      span {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
   }
 
   :host .paginator-pages .wrap-indicator {
     .paginator-indicator {
       font-size: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  :host(.gasco-paginator.paginator-with-select) {
+    padding-inline: 0 !important;
+    .paginator-select {
+      width: initial;
     }
   }
 }

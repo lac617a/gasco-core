@@ -1,5 +1,5 @@
-import type  { EventEmitter, ComponentInterface } from '@stencil/core';
-import { Component, Host, h, Event, State, Prop, Listen } from '@stencil/core';
+import type { EventEmitter, ComponentInterface } from '@stencil/core';
+import { Component, Host, h, Event, State, Element, Prop, Listen } from '@stencil/core';
 import { InputChangeEventDetail } from '../gasco-input/gasco-input-interface';
 
 @Component({
@@ -8,6 +8,9 @@ import { InputChangeEventDetail } from '../gasco-input/gasco-input-interface';
   shadow: true,
 })
 export class GascoCalendar implements ComponentInterface {
+
+  @Element() el!: HTMLGascoCalendarElement;
+
   @Prop() fireFocusEvents = true;
 
   @State() hasFocus = false;
@@ -29,10 +32,9 @@ export class GascoCalendar implements ComponentInterface {
    */
   @Event() gascoFocus!: EventEmitter<FocusEvent>;
 
-  @Listen('gascoDatetimeReady')
+  @Listen('gascoChangeDatetime')
   handleDatetimeReady(ev: CustomEvent) {
-    const {month, day, year} = ev.detail;
-    const value = `${day}/${month}/${year}`;
+    const value = ev.detail.value;
 
     this.inputValue = value;
     this.gascoChangeValue.emit({value});
@@ -51,7 +53,6 @@ export class GascoCalendar implements ComponentInterface {
 
   private onBlur = (ev: FocusEvent) => {
     this.hasFocus = false;
-
     if (this.showCalendar) {
       this.showCalendar = false;
     }
@@ -59,23 +60,30 @@ export class GascoCalendar implements ComponentInterface {
     if (this.fireFocusEvents) {
       this.gascoBlur.emit(ev);
     }
-  };
+  }
+
+  @Listen('click', {target: 'window'})
+  protected handleClickWindow(e: Event) {
+    if (!this.el.contains((e.target as HTMLElement)) && this.showCalendar) {
+      this.onBlur(e as FocusEvent);
+    }
+  }
 
   render() {
-    const {onFocus, onBlur, showCalendar, inputValue} = this
+    const {onFocus, showCalendar, inputValue} = this
     return (
       <Host
-        onBlur={onBlur}
+        // onBlur={onBlur}
         onFocus={onFocus}
         class={{
-          ['gasco-color']: true,
-          ['gasco-calendar']: true,
-          ['gasco-color-primary']: true,
+          'gasco-color': true,
+          'gasco-calendar': true,
           'has-focus': this.hasFocus,
+          'gasco-color-primary': true,
         }}
       >
         <div class="native-calendar" part="native">
-          <gasco-input class="input-datetime" value={inputValue} readonly>
+          <gasco-input label="Selecciona una fecha" class="input-datetime" value={inputValue} readonly>
             <ion-icon name="calendar-number-outline" slot="end"></ion-icon>
           </gasco-input>
           {showCalendar && <gasco-datetime size="cover"></gasco-datetime>}

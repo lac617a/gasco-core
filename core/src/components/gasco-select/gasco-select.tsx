@@ -1,5 +1,5 @@
 import type { ComponentInterface, EventEmitter } from '@stencil/core';
-import { Component, Host, h, Prop, State, Listen, Element, Event } from '@stencil/core';
+import { Component, Host, h, Prop, State, Listen, Watch, Element, Event } from '@stencil/core';
 import { hostContext } from '../../utils/theme';
 import { IChoiceDetail, IChoiceProp } from './gasco-select-interface';
 import { chevronDown, chevronUp } from 'ionicons/icons';
@@ -44,11 +44,16 @@ export class GascoSelect implements ComponentInterface {
 
   @State() isExpanded = false;
 
-  @Event() gascoReady!: EventEmitter;
+  @Event() gascoReadySelect!: EventEmitter;
   @Event() gascoChangeSelect!: EventEmitter<IChoiceDetail>;
 
   componentWillLoad() {
-    this.gascoReady.emit();
+    this.gascoReadySelect.emit();
+  }
+
+  @Watch('choices')
+  protected handleChoices() {
+    this.getChoices();
   }
 
   componentDidLoad() {
@@ -57,9 +62,9 @@ export class GascoSelect implements ComponentInterface {
 
 
   private onClick = () => {
-    // if (this.disabled || this.isExpanded) {
-    //   return undefined;
-    // }
+    if (this.disabled || this.isExpanded) {
+      return undefined;
+    }
     if (!this.isExpanded) {
       this.isExpanded = true;
     } else {
@@ -113,14 +118,28 @@ export class GascoSelect implements ComponentInterface {
   }
 
   @Listen('click', {target: 'window'}) 
-  handleWindowClick(e: Event) {
+  protected handleWindowClick(e: Event) {
     if (!this.el.contains((e.target as HTMLElement)) && this.isExpanded) {
       this.isExpanded = false;
     }
   }
 
+  private renderItem() {
+    return this.getChoices().map(({ label, value, disabled }) => (
+      <gasco-item disabled={disabled} onClick={(e) => this.onSelect(e, label, value)}>
+        {this.multiple &&
+          <gasco-checkbox
+            slot="start"
+            color="primary"
+            checked={this.element.some(item => item.label === label)}></gasco-checkbox>
+        }
+        {label}
+      </gasco-item>
+    ))
+  }
+
   render() {
-    const {el, isExpanded, disabled, value: v, multiple, placeholder, label} = this;
+    const {el, isExpanded, disabled, value, placeholder, label} = this;
 
     return (
       <Host
@@ -128,37 +147,26 @@ export class GascoSelect implements ComponentInterface {
         aria-haspopup="listbox"
         aria-disabled={disabled ? 'true' : null}
         class={{
-          'in-item': hostContext('gasco-item', el),
-          'select-disabled': disabled,
-          'gasco-select': true,
-          'select-expanded': isExpanded,
           'gasco-color': true,
-          'gasco-color-primary': true
+          'gasco-select': true,
+          'select-disabled': disabled,
+          'select-expanded': isExpanded,
+          'in-item': hostContext('gasco-item', el),
+          [`gasco-color-${disabled ? 'light' : 'primary'}`]: true
         }}
       >
         <div class="select-native">
           <gasco-input
             readonly
-            value={v}
+            value={value}
             label={label}
+            disabled={disabled}
             onClick={this.onClick}
             placeholder={placeholder}>
             <ion-icon slot="end" lazy={false} icon={isExpanded ? chevronUp : chevronDown}></ion-icon>
           </gasco-input>
           <gasco-list>
-            {this.getChoices().length > 0 && isExpanded && (
-              this.getChoices().map(({ label, value, disabled }) => (
-                <gasco-item disabled={disabled} onClick={(e) => this.onSelect(e, label, value)}>
-                  {multiple &&
-                    <gasco-checkbox
-                      slot="start"
-                      color="primary"
-                      checked={this.element.some(item => item.label === label)}></gasco-checkbox>
-                  }
-                  {label}
-                </gasco-item>
-              ))
-            )}
+            {this.getChoices().length > 0 && isExpanded && this.renderItem()}
           </gasco-list>
         </div>
       </Host>

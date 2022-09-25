@@ -28,7 +28,11 @@
   width: 100%;
 }
 
-:host(.select-expanded) .select-native gasco-list {
+:host(.select-expanded) gasco-list {
   opacity: 1;
   visibility: visible;
+}
+
+:host(.select-expanded) ion-icon {
+  color: gasco-color(primary, base);
 }

@@ -25,7 +25,8 @@
   contain: layout;
   visibility: hidden;
   transition: 300ms;
-  width: 100%;
+  width: 98%;
+  margin: 0 auto;
 }
 
 :host(.select-expanded) gasco-list {

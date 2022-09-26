@@ -62,9 +62,9 @@ export class GascoSelect implements ComponentInterface {
 
 
   private onClick = () => {
-    if (this.disabled || this.isExpanded) {
-      return undefined;
-    }
+    // if (this.disabled || this.isExpanded) {
+    //   return undefined;
+    // }
     if (!this.isExpanded) {
       this.isExpanded = true;
     } else {
@@ -76,8 +76,9 @@ export class GascoSelect implements ComponentInterface {
     e.preventDefault();
     
     if (!this.multiple) {
-      e.stopPropagation();
       this.value = label;
+      this.isExpanded = false;
+      e.stopPropagation();
       return;
     }
     
@@ -163,7 +164,12 @@ export class GascoSelect implements ComponentInterface {
             disabled={disabled}
             onClick={this.onClick}
             placeholder={placeholder}>
-            <ion-icon slot="end" lazy={false} icon={isExpanded ? chevronUp : chevronDown}></ion-icon>
+            <ion-icon
+              slot="end"
+              lazy={false}
+              icon={isExpanded ? chevronUp : chevronDown}
+              onClick={() => this.isExpanded = !isExpanded}
+              ></ion-icon>
           </gasco-input>
           <gasco-list>
             {this.getChoices().length > 0 && isExpanded && this.renderItem()}

@@ -36,6 +36,10 @@ export class GascoCalendar implements ComponentInterface {
   handleDatetimeReady(ev: CustomEvent) {
     const value = ev.detail.value;
 
+    if (value !== '') {
+      this.onBlur(ev as unknown as FocusEvent);
+    }
+
     this.inputValue = value;
     this.gascoChangeValue.emit({value});
   }

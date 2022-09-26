@@ -130,6 +130,9 @@
     border-radius: var(--border-radius);
     transition: 300ms;
   }
+  &[readonly] {
+    cursor: default;
+  }
   &-textHelp, &-limit {
     position: absolute;
     bottom: -17px;

@@ -34,6 +34,6 @@
   visibility: visible;
 }
 
-:host(.select-expanded) ion-icon {
+:host(.select-expanded:not(.select-disabled)) ion-icon {
   color: gasco-color(primary, base);
 }

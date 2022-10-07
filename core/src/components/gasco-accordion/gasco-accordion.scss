@@ -50,7 +50,7 @@
 }
 
 :host(.accordion-collapsed) #content {
-  display: none;
+  max-height: 0;
 }
 
 :host(.accordion-expanding) #content {

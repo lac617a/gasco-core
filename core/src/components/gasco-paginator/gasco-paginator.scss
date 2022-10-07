@@ -7,6 +7,8 @@
   background: #FFFFFF;
   border: 1.5px solid #EBEBEB;
   flex-grow: 1;
+  width: 100%;
+  max-width: 100%;
 }
 
 :host(.gasco-paginator.paginator-with-select) {

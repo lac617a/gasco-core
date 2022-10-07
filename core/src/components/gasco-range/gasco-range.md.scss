@@ -20,6 +20,9 @@
   @include padding($range-md-padding-vertical, $range-md-padding-horizontal);
 
   font-size: $range-md-pin-font-size;
+
+  width: 100%;
+  max-width: 100%;
 }
 
 :host(.gasco-color) .range-bar {

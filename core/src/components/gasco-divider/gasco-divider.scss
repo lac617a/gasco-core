@@ -5,6 +5,8 @@
   --margin-block: 0;
   --height-divider: 2px;
   --background: #{gasco-color(primary, base)};
+  width: 100%;
+  max-width: 100%;
 }
 
 .divider-native {

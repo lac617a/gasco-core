@@ -76,7 +76,9 @@
 :host .calendar-day {
   @include padding(13px, 0, 13px, 0px);
 
+  font-weight: 400;
   font-size: $datetime-md-calendar-item-font-size;
+  color: #072531;
 }
 
 :host .calendar-day:focus:after {

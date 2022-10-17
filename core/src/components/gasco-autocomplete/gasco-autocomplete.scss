@@ -167,6 +167,7 @@
   pointer-events: none;
   --border-color: #{gasco-color(light, base)} !important;
   --background: #{gasco-color(light, base)} !important;
+  background: #{gasco-color(light, base)} !important;
 }
 :host(.searchbar-disabled) {
   opacity: .8;

@@ -594,7 +594,7 @@ export class GascoAutocomplete implements ComponentInterface {
             ></ion-icon>
           </button>
         </div>
-        {this.showSuggestions && (
+        {this.showSuggestions && this.getValue().length > 0 && (
           <gasco-list role='listbox' hidden={!this.showSuggestions}>
             {this.suggestionArr.map(suggestion => this.getSuggestionItem(suggestion))}
           </gasco-list>

@@ -98,7 +98,7 @@ export class GascoSidebar implements ComponentInterface {
 
     if(current) {
 
-      item.forEach(node => {
+      item?.forEach(node => {
         if (!node.href) {
           node.style.height = '48px';
           node.children.item(2).replaceWith(this.createNewIcon(chevronForwardOutline, 'end'));
@@ -106,7 +106,7 @@ export class GascoSidebar implements ComponentInterface {
       });
 
       if (this.isResponsive >= 480) {
-        subItem.forEach((el, index) => {
+        subItem?.forEach((el, index) => {
           el.style.transition = '300ms';
           el.style.opacity = '0';
           el.style.paddingBottom = '0';
@@ -117,7 +117,7 @@ export class GascoSidebar implements ComponentInterface {
         });
       }
     } else {
-      subItem.forEach(el => {
+      subItem?.forEach(el => {
         el.style.display = 'flex';
         el.style.opacity = '1';
         el.style.paddingBottom = '12px';

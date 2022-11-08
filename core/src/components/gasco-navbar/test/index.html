@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Navbar - Basic</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="../../../../css/gasco.bundle.css" rel="stylesheet" />
+  <script nomodule src="../../../../dist/gasco/gasco.js"></script>
+  <script type="module" src="../../../../dist/gasco/gasco.esm.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+</head>
+
+<body>
+  <style>
+    html {
+      --gasco-font-family: 'Mulish', sans-serif !important;
+    }
+    body {
+      background-color: brown;
+    }
+  </style>
+  <gasco-navbar>
+    <nav slot="nav">
+      <div>
+        <img src="../../../assets/money.svg" alt="money">
+        <p>34.000</p>
+      </div>
+      <a href="/">
+        <img src="../../../assets/campana.svg" alt="campana">
+      </a>
+    </nav>
+  </gasco-navbar>
+  <div style="display: flex;">
+    <gasco-sidebar>
+      <nav slot="user-nav">
+        <div>
+          <img src="../../../assets/money.svg" alt="money">
+          <p>34.000</p>
+        </div>
+        <a href="/">
+          <img src="../../../assets/campana.svg" alt="campana">
+        </a>
+      </nav>
+      <gasco-list>
+        <gasco-list-header>
+          <gasco-label>DASHBOARDS</gasco-label>
+          <gasco-label>Datos para tu negocio</gasco-label>
+        </gasco-list-header>
+        <gasco-item href="/">
+          <i class="material-icons" slot="start">home</i>
+          Inicio
+        </gasco-item>
+        <gasco-item href="/">
+          <i class="material-icons" slot="start">money</i>
+          Finanzas
+        </gasco-item>
+        <gasco-item href="/">
+          <i class="material-icons" slot="start">donut_small</i>
+          Estadisticas
+        </gasco-item>
+      </gasco-list>
+      <gasco-list>
+        <gasco-list-header>
+          <gasco-label>HERRAMIENTAS</gasco-label>
+          <gasco-label>Utilidades para tu negocio</gasco-label>
+        </gasco-list-header>
+        <gasco-item>
+          <i class="material-icons" slot="start">donut_small</i>
+          Pedidos
+          <gasco-list slot="sub-list">
+            <gasco-item sub-item href="/core/src/components/gasco-navbar/test/index.html">
+              Realizar pedido
+            </gasco-item>
+            <gasco-item sub-item href="/">
+              Realizar
+            </gasco-item>
+            <gasco-item sub-item href="/">
+              pedido
+            </gasco-item>
+          </gasco-list>
+        </gasco-item>
+        <gasco-item>
+          <i class="material-icons" slot="start">donut_small</i>
+          Cartola
+          <gasco-list slot="sub-list">
+            <gasco-item sub-item href="/">
+              Realizar
+            </gasco-item>
+            <gasco-item sub-item href="/">
+              pedido
+            </gasco-item>
+          </gasco-list>
+        </gasco-item>
+      </gasco-list>
+    </gasco-sidebar>
+    <div style="width: 100%;">
+      <h1 style="background-color: blue;">Hola</h1>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const navbar = document.querySelector('gasco-navbar')
+      navbar.user = {
+        role: 'Administrador',
+        name: 'Maria Echeberria',
+        avatar: 'https://randomuser.me/api/portraits/women/18.jpg',
+      }
+      navbar.usernav = [
+        {name: 'Perfil', link: 'perfil'},
+        {name: 'Preferencia', link: 'preferencia'}
+      ]
+    })
+  </script>
+</body>
+
+</html>

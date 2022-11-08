@@ -1,0 +1,41 @@
+@import "./gasco-avatar";
+@import "./gasco-avatar.md.vars";
+
+
+// Material Design Avatar
+// --------------------------------------------------
+
+:host {
+  --border-radius: #{$avatar-md-border-radius};
+}
+
+.avatar-native {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0;
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0 0 0 0;
+  }
+  figcaption {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// ::slotted(gasco-label):nth-child(2) {
+//   font-weight: 600;
+//   font-size: 16px;
+//   line-height: 20px;
+//   color: #072531;
+// }
+
+// ::slotted(gasco-label) {
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 20px;
+//   color: #4D4D4D;
+// }

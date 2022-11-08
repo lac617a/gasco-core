@@ -18,15 +18,19 @@
 ### Used by
 
  - [gasco-autocomplete](../gasco-autocomplete)
+ - [gasco-navbar](../gasco-navbar)
  - [gasco-paginator](../gasco-paginator)
  - [gasco-select](../gasco-select)
+ - [gasco-sidebar](../gasco-sidebar)
 
 ### Graph
 ```mermaid
 graph TD;
   gasco-autocomplete --> gasco-list
+  gasco-navbar --> gasco-list
   gasco-paginator --> gasco-list
   gasco-select --> gasco-list
+  gasco-sidebar --> gasco-list
   style gasco-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

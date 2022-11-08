@@ -102,6 +102,9 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
    */
   @Prop() rel: string | undefined;
 
+
+  @Prop() subItem: boolean = false;
+
   /**
    * How the bottom border should be displayed on the item.
    */
@@ -342,6 +345,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
       labelColorStyles,
       lines,
       disabled,
+      subItem,
       href,
       divider,
       rel,
@@ -364,6 +368,9 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
     this.itemStyles.forEach((value) => {
       Object.assign(childStyles, value);
     });
+
+    const exactRouter = attrs.href === window.location.pathname ? ' router-active': '';
+
     const ariaDisabled = disabled || childStyles['item-interactive-disabled'] ? 'true' : null;
     const fillValue = fill || 'none';
     const inList = hostContext('gasco-list', this.el);
@@ -380,6 +387,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
             [`item-shape-${shape}`]: shape !== undefined,
             'item-divider': divider,
             'item-disabled': disabled,
+            'sub-item': subItem,
             'in-list': inList,
             'item-multiple-inputs': this.multipleInputs,
             'gasco-activatable': canActivate,
@@ -389,7 +397,11 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
         }}
         role={inList ? 'listitem' : null}
       >
-        <TagType {...attrs} class="item-native" part="native" disabled={disabled}>
+        <TagType
+          {...attrs}
+          part="native"
+          disabled={disabled}
+          class={`item-native${exactRouter}`}>
           <slot name="start"></slot>
           <div class="item-inner">
             <div class="input-wrapper">
@@ -400,6 +412,7 @@ export class GascoItem implements ComponentInterface, AnchorInterface, ButtonInt
           </div>
           <div class="item-highlight"></div>
         </TagType>
+        <slot name="sub-list" />
         <div class="item-bottom">
           <slot name="error"></slot>
           <slot name="helper"></slot>

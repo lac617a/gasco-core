@@ -25,11 +25,13 @@
 ### Used by
 
  - [gasco-datetime](../gasco-datetime)
+ - [gasco-table](../gasco-table)
 
 ### Graph
 ```mermaid
 graph TD;
   gasco-datetime --> gasco-label
+  gasco-table --> gasco-label
   style gasco-label fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

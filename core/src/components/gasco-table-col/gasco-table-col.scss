@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  padding: 16px;
+}
+
+.table-col {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #072531;
+  &-header {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: inherit;
+  }
+}
+
+button {
+  background-color: transparent;
+  max-width: 60px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+ion-icon {
+  font-size: 26px;
+  text-align: center;
+  color: #4D4D4D;
+}
+
+gasco-checkbox {
+  border: 1px solid #999999;
+}
+
+gasco-list {
+  position: absolute;
+  z-index: 10;
+  right: 1rem;
+  width: max-content;
+  gasco-item {
+    text-align: center;
+  }
+}
+
+@media only screen and(max-width: 768px) {
+  :host:not([action]) {
+    padding: 8px 21px;
+  }
+  :host(.table-col-small) {
+    .table-col {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  :host[action] {
+    padding: 0;
+  }
+  button {
+    max-width: 20px;
+  }
+  gasco-list {
+    top: 0;
+    right: 0.5rem;
+  }
+}

@@ -56,11 +56,13 @@
 ### Used by
 
  - [gasco-select](../gasco-select)
+ - [gasco-table](../gasco-table)
 
 ### Graph
 ```mermaid
 graph TD;
   gasco-select --> gasco-checkbox
+  gasco-table --> gasco-checkbox
   style gasco-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

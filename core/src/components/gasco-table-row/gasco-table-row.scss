@@ -1,0 +1,25 @@
+:host(.table-row) {
+  display: grid;
+  grid-template-columns: max-content 200px repeat(6, 1fr);
+
+  align-items: center;
+  box-shadow: inset 0px -1px 0px #E4E4EF;
+  transition: 300ms;
+  
+  &:hover:not(.table-row-header) {
+    background: #F2FCFF;
+  }
+}
+
+:host(.table-row.table-row-small) {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+@media screen and (max-width: 768px) {
+  :host(.table-row-header) {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1.2rem 0.5rem 0;
+  }
+}

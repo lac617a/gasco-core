@@ -27,6 +27,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [gasco-table](../gasco-table)
+
 ### Depends on
 
 - ion-icon
@@ -39,6 +43,7 @@ graph TD;
   gasco-paginator --> ion-icon
   gasco-paginator --> gasco-item
   gasco-paginator --> gasco-list
+  gasco-table --> gasco-paginator
   style gasco-paginator fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

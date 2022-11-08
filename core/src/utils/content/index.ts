@@ -35,7 +35,7 @@ export const getScrollElement = async (el: Element) => {
 };
 
 /**
- * Queries the element matching the selector for IonContent.
+ * Queries the element matching the selector for GascoContent.
  * See GASCO_CONTENT_SELECTOR for the selector used.
  */
 export const findGascoContent = (el: Element) => {
@@ -77,7 +77,7 @@ export const scrollToTop = (el: HTMLElement, durationMs: number): Promise<any> =
 };
 
 /**
- * Scrolls by a specified X/Y distance in the component. If an `ion-content` is found, it will scroll
+ * Scrolls by a specified X/Y distance in the component. If an `gasco-content` is found, it will scroll
  * using the public API `scrollByPoint` with a duration.
  */
 export const scrollByPoint = (el: HTMLElement, x: number, y: number, durationMs: number) => {
@@ -103,7 +103,7 @@ export const printGascoContentErrorMsg = (el: HTMLElement) => {
 };
 
 /**
- * Several components in Ionic need to prevent scrolling
+ * Several components in Gasco need to prevent scrolling
  * during a gesture (card modal, range, item sliding, etc).
  * Use this utility to account for gasco-content and custom content hosts.
  */

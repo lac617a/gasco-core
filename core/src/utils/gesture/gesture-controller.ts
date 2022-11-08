@@ -13,7 +13,7 @@ class GestureController {
   }
 
   /**
-   * Creates a blocker that will block any other gesture events from firing. Set in the ion-gesture component.
+   * Creates a blocker that will block any other gesture events from firing. Set in the gasco-gesture component.
    */
   createBlocker(opts: BlockerConfig = {}): BlockerDelegate {
     return new BlockerDelegate(this, this.newID(), opts.disable, !!opts.disableScroll);

@@ -26,3 +26,8 @@ gasco-list.list-inset {
 
   overflow: hidden;
 }
+
+
+:host(.gasco-expanded) {
+  height: auto;
+}

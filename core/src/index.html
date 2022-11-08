@@ -22,23 +22,44 @@
     }
     body {
       background-color: brown;
+      margin: 0;
+      box-sizing: border-box;
     }
 
   </style>
 
-  <div style="display: flex; align-items: center; justify-content: center; margin-top: 3rem;">
-
-    <gasco-calendar></gasco-calendar>
-
+  <gasco-navbar>
+    <nav slot="nav">
+      <a href="/">
+        <img src="assets/money.svg" alt="campana">
+        <p>34.000</p>
+      </a>
+      <a href="/">
+        <img src="assets/campana.svg" alt="campana">
+      </a>
+    </nav>
+  </gasco-navbar>
+  <div style="display: flex;">
+    <gasco-sidebar></gasco-sidebar>
+    <h1>Hola</h1>
   </div>
 
+  <!-- <div style="display: flex; align-items: center; justify-content: center; margin-top: 3rem;">
+  </div> -->
+
   <script>
-    const calendar = document.querySelector('gasco-calendar');
-
-    calendar.addEventListener('gascoChangeValue', (e) => {
-      console.log(e.detail);
-    });
-
+    document.addEventListener("DOMContentLoaded", () => {
+      const navbar = document.querySelector('gasco-navbar')
+      navbar.user = {
+        role: 'Administrador',
+        name: 'Maria Echeberria',
+        avatar: 'https://randomuser.me/api/portraits/women/18.jpg',
+      }
+      navbar.usernav = [
+        {name: 'Perfil', link: 'perfil'},
+        {name: 'Preferencia', link: 'preferencia'}
+      ]
+    })
   </script>
 
 </body>

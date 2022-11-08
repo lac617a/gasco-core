@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, FrameworkDelegate, InputChangeEventDetail as InputChangeEventDetail1, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
+import { AccordionGroupChangeEventDetail, AnimationBuilder, AutocompleteTypes, CheckboxChangeEventDetail, Color, ComponentProps, ComponentRef, DatetimeChangeEventDetail, FrameworkDelegate, IGetUserOfNavbar, INavbarUser, INavbarUserNav, InputChangeEventDetail as InputChangeEventDetail1, ITableColTypeAction, ITableUsers, MenuChangeEventDetail, ModalBreakpointChangeEventDetail, OverlayEventDetail, PaginatorChangeEventDetail, PaginatorReadyEventDetail, PopoverAttributes, PopoverSize, PositionAlign, PositionReference, PositionSide, RangeChangeEventDetail, RangeKnobMoveEndEventDetail, RangeKnobMoveStartEventDetail, RangeValue, ScrollBaseDetail, ScrollDetail, SearchbarChangeEventDetail, SegmentButtonLayout, SegmentChangeEventDetail, Side, StyleEventDetail, TextFieldTypes, ToastButton, TriggerAction } from "./interface";
 import { InputChangeEventDetail } from "./components/gasco-input/gasco-input-interface";
 import { CounterFormatter } from "./components/gasco-item/gasco-item-interface";
 import { PickerColumnItem } from "./components/gasco-picker-column-internal/gasco-picker-column-internal-interfaces";
@@ -143,6 +143,10 @@ export namespace Components {
           * the value of the searchbar.
          */
         "value"?: string | null;
+    }
+    interface GascoAvatar {
+        "alt": string;
+        "src": string;
     }
     interface GascoBackdrop {
         /**
@@ -863,6 +867,7 @@ export namespace Components {
           * The shape of the item. If "round" it will have increased border radius.
          */
         "shape"?: 'round';
+        "subItem": boolean;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
          */
@@ -1079,6 +1084,12 @@ export namespace Components {
           * If `"default"`, the modal will default. For default `"default"`.
          */
         "type"?: 'simple' | 'basic' | 'default';
+    }
+    interface GascoNavbar {
+        "color"?: Color;
+        "position"?: 'relative' | 'sticky';
+        "user"?: INavbarUser;
+        "usernav"?: INavbarUserNav[];
     }
     interface GascoPaginator {
         "currentPage": number;
@@ -1353,6 +1364,20 @@ export namespace Components {
          */
         "placeholder"?: string;
     }
+    interface GascoSidebar {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * If 'true', the `gasco-sidebar` will be inicialized open, defaul is `false`.
+         */
+        "isOpen"?: boolean;
+        /**
+          * If `cover`, the `gasco-sidebar` will expand to cover the full height of its container. If `fixed`, the `gasco-sidebar` will have a fixed height.
+         */
+        "size"?: 'cover' | 'fixed';
+    }
     interface GascoTab {
         /**
           * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
@@ -1396,6 +1421,36 @@ export namespace Components {
           * The value of the segment button.
          */
         "value": string;
+    }
+    interface GascoTable {
+        /**
+          * If it is `1`, `pageSize` will be shown, which is equivalent to the elements that you want to show.
+         */
+        "currentPage"?: number;
+        /**
+          * Number of elements to show this taking into account that it will always be 10 + 10.
+         */
+        "pageSize"?: number;
+        "pagination"?: boolean;
+        /**
+          * Amounts of items to display, this may vary depending on the user.
+         */
+        "suggestionList"?: number[];
+        /**
+          * Taking into account the number of elements to display by default it is `undefined`.
+         */
+        "totalItems"?: number;
+        /**
+          * The number of users to display.
+         */
+        "users"?: ITableUsers[];
+    }
+    interface GascoTableCol {
+        "action"?: boolean;
+        "typeAction"?: string;
+    }
+    interface GascoTableRow {
+        "header"?: boolean;
     }
     interface GascoToast {
         /**
@@ -1557,6 +1612,10 @@ export interface GascoModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoModalElement;
 }
+export interface GascoNavbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoNavbarElement;
+}
 export interface GascoPaginatorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoPaginatorElement;
@@ -1588,6 +1647,14 @@ export interface GascoSelectCustomEvent<T> extends CustomEvent<T> {
 export interface GascoTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGascoTabElement;
+}
+export interface GascoTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoTableElement;
+}
+export interface GascoTableColCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGascoTableColElement;
 }
 export interface GascoToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1621,6 +1688,12 @@ declare global {
     var HTMLGascoAutocompleteElement: {
         prototype: HTMLGascoAutocompleteElement;
         new (): HTMLGascoAutocompleteElement;
+    };
+    interface HTMLGascoAvatarElement extends Components.GascoAvatar, HTMLStencilElement {
+    }
+    var HTMLGascoAvatarElement: {
+        prototype: HTMLGascoAvatarElement;
+        new (): HTMLGascoAvatarElement;
     };
     interface HTMLGascoBackdropElement extends Components.GascoBackdrop, HTMLStencilElement {
     }
@@ -1778,6 +1851,12 @@ declare global {
         prototype: HTMLGascoModalElement;
         new (): HTMLGascoModalElement;
     };
+    interface HTMLGascoNavbarElement extends Components.GascoNavbar, HTMLStencilElement {
+    }
+    var HTMLGascoNavbarElement: {
+        prototype: HTMLGascoNavbarElement;
+        new (): HTMLGascoNavbarElement;
+    };
     interface HTMLGascoPaginatorElement extends Components.GascoPaginator, HTMLStencilElement {
     }
     var HTMLGascoPaginatorElement: {
@@ -1826,6 +1905,12 @@ declare global {
         prototype: HTMLGascoSelectElement;
         new (): HTMLGascoSelectElement;
     };
+    interface HTMLGascoSidebarElement extends Components.GascoSidebar, HTMLStencilElement {
+    }
+    var HTMLGascoSidebarElement: {
+        prototype: HTMLGascoSidebarElement;
+        new (): HTMLGascoSidebarElement;
+    };
     interface HTMLGascoTabElement extends Components.GascoTab, HTMLStencilElement {
     }
     var HTMLGascoTabElement: {
@@ -1837,6 +1922,24 @@ declare global {
     var HTMLGascoTabButtonElement: {
         prototype: HTMLGascoTabButtonElement;
         new (): HTMLGascoTabButtonElement;
+    };
+    interface HTMLGascoTableElement extends Components.GascoTable, HTMLStencilElement {
+    }
+    var HTMLGascoTableElement: {
+        prototype: HTMLGascoTableElement;
+        new (): HTMLGascoTableElement;
+    };
+    interface HTMLGascoTableColElement extends Components.GascoTableCol, HTMLStencilElement {
+    }
+    var HTMLGascoTableColElement: {
+        prototype: HTMLGascoTableColElement;
+        new (): HTMLGascoTableColElement;
+    };
+    interface HTMLGascoTableRowElement extends Components.GascoTableRow, HTMLStencilElement {
+    }
+    var HTMLGascoTableRowElement: {
+        prototype: HTMLGascoTableRowElement;
+        new (): HTMLGascoTableRowElement;
     };
     interface HTMLGascoToastElement extends Components.GascoToast, HTMLStencilElement {
     }
@@ -1855,6 +1958,7 @@ declare global {
         "gasco-accordion-content": HTMLGascoAccordionContentElement;
         "gasco-accordion-group": HTMLGascoAccordionGroupElement;
         "gasco-autocomplete": HTMLGascoAutocompleteElement;
+        "gasco-avatar": HTMLGascoAvatarElement;
         "gasco-backdrop": HTMLGascoBackdropElement;
         "gasco-button": HTMLGascoButtonElement;
         "gasco-button-icon": HTMLGascoButtonIconElement;
@@ -1881,6 +1985,7 @@ declare global {
         "gasco-list-header": HTMLGascoListHeaderElement;
         "gasco-menu": HTMLGascoMenuElement;
         "gasco-modal": HTMLGascoModalElement;
+        "gasco-navbar": HTMLGascoNavbarElement;
         "gasco-paginator": HTMLGascoPaginatorElement;
         "gasco-picker-column-internal": HTMLGascoPickerColumnInternalElement;
         "gasco-picker-internal": HTMLGascoPickerInternalElement;
@@ -1889,8 +1994,12 @@ declare global {
         "gasco-radio": HTMLGascoRadioElement;
         "gasco-range": HTMLGascoRangeElement;
         "gasco-select": HTMLGascoSelectElement;
+        "gasco-sidebar": HTMLGascoSidebarElement;
         "gasco-tab": HTMLGascoTabElement;
         "gasco-tab-button": HTMLGascoTabButtonElement;
+        "gasco-table": HTMLGascoTableElement;
+        "gasco-table-col": HTMLGascoTableColElement;
+        "gasco-table-row": HTMLGascoTableRowElement;
         "gasco-toast": HTMLGascoToastElement;
         "gasco-tooltip": HTMLGascoTooltipElement;
     }
@@ -2043,6 +2152,10 @@ declare namespace LocalJSX {
           * the value of the searchbar.
          */
         "value"?: string | null;
+    }
+    interface GascoAvatar {
+        "alt": string;
+        "src": string;
     }
     interface GascoBackdrop {
         /**
@@ -2858,6 +2971,7 @@ declare namespace LocalJSX {
           * The shape of the item. If "round" it will have increased border radius.
          */
         "shape"?: 'round';
+        "subItem"?: boolean;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
          */
@@ -3096,6 +3210,14 @@ declare namespace LocalJSX {
           * If `"default"`, the modal will default. For default `"default"`.
          */
         "type"?: 'simple' | 'basic' | 'default';
+    }
+    interface GascoNavbar {
+        "color"?: Color;
+        "onGascoSetUserToSidebar"?: (event: GascoNavbarCustomEvent<IGetUserOfNavbar>) => void;
+        "onGascoSidebarShow"?: (event: GascoNavbarCustomEvent<any>) => void;
+        "position"?: 'relative' | 'sticky';
+        "user"?: INavbarUser;
+        "usernav"?: INavbarUserNav[];
     }
     interface GascoPaginator {
         "currentPage"?: number;
@@ -3421,6 +3543,20 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
     }
+    interface GascoSidebar {
+        /**
+          * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"`, `"danger"`.
+         */
+        "color"?: Color;
+        /**
+          * If 'true', the `gasco-sidebar` will be inicialized open, defaul is `false`.
+         */
+        "isOpen"?: boolean;
+        /**
+          * If `cover`, the `gasco-sidebar` will expand to cover the full height of its container. If `fixed`, the `gasco-sidebar` will have a fixed height.
+         */
+        "size"?: 'cover' | 'fixed';
+    }
     interface GascoTab {
         /**
           * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"warning"` and `"danger"`.
@@ -3476,6 +3612,38 @@ declare namespace LocalJSX {
           * The value of the segment button.
          */
         "value"?: string;
+    }
+    interface GascoTable {
+        /**
+          * If it is `1`, `pageSize` will be shown, which is equivalent to the elements that you want to show.
+         */
+        "currentPage"?: number;
+        "onGascoTableAction"?: (event: GascoTableCustomEvent<ITableColTypeAction>) => void;
+        /**
+          * Number of elements to show this taking into account that it will always be 10 + 10.
+         */
+        "pageSize"?: number;
+        "pagination"?: boolean;
+        /**
+          * Amounts of items to display, this may vary depending on the user.
+         */
+        "suggestionList"?: number[];
+        /**
+          * Taking into account the number of elements to display by default it is `undefined`.
+         */
+        "totalItems"?: number;
+        /**
+          * The number of users to display.
+         */
+        "users"?: ITableUsers[];
+    }
+    interface GascoTableCol {
+        "action"?: boolean;
+        "onGascoTableTypeAction"?: (event: GascoTableColCustomEvent<ITableColTypeAction>) => void;
+        "typeAction"?: string;
+    }
+    interface GascoTableRow {
+        "header"?: boolean;
     }
     interface GascoToast {
         /**
@@ -3579,6 +3747,7 @@ declare namespace LocalJSX {
         "gasco-accordion-content": GascoAccordionContent;
         "gasco-accordion-group": GascoAccordionGroup;
         "gasco-autocomplete": GascoAutocomplete;
+        "gasco-avatar": GascoAvatar;
         "gasco-backdrop": GascoBackdrop;
         "gasco-button": GascoButton;
         "gasco-button-icon": GascoButtonIcon;
@@ -3605,6 +3774,7 @@ declare namespace LocalJSX {
         "gasco-list-header": GascoListHeader;
         "gasco-menu": GascoMenu;
         "gasco-modal": GascoModal;
+        "gasco-navbar": GascoNavbar;
         "gasco-paginator": GascoPaginator;
         "gasco-picker-column-internal": GascoPickerColumnInternal;
         "gasco-picker-internal": GascoPickerInternal;
@@ -3613,8 +3783,12 @@ declare namespace LocalJSX {
         "gasco-radio": GascoRadio;
         "gasco-range": GascoRange;
         "gasco-select": GascoSelect;
+        "gasco-sidebar": GascoSidebar;
         "gasco-tab": GascoTab;
         "gasco-tab-button": GascoTabButton;
+        "gasco-table": GascoTable;
+        "gasco-table-col": GascoTableCol;
+        "gasco-table-row": GascoTableRow;
         "gasco-toast": GascoToast;
         "gasco-tooltip": GascoTooltip;
     }
@@ -3627,6 +3801,7 @@ declare module "@stencil/core" {
             "gasco-accordion-content": LocalJSX.GascoAccordionContent & JSXBase.HTMLAttributes<HTMLGascoAccordionContentElement>;
             "gasco-accordion-group": LocalJSX.GascoAccordionGroup & JSXBase.HTMLAttributes<HTMLGascoAccordionGroupElement>;
             "gasco-autocomplete": LocalJSX.GascoAutocomplete & JSXBase.HTMLAttributes<HTMLGascoAutocompleteElement>;
+            "gasco-avatar": LocalJSX.GascoAvatar & JSXBase.HTMLAttributes<HTMLGascoAvatarElement>;
             "gasco-backdrop": LocalJSX.GascoBackdrop & JSXBase.HTMLAttributes<HTMLGascoBackdropElement>;
             "gasco-button": LocalJSX.GascoButton & JSXBase.HTMLAttributes<HTMLGascoButtonElement>;
             "gasco-button-icon": LocalJSX.GascoButtonIcon & JSXBase.HTMLAttributes<HTMLGascoButtonIconElement>;
@@ -3653,6 +3828,7 @@ declare module "@stencil/core" {
             "gasco-list-header": LocalJSX.GascoListHeader & JSXBase.HTMLAttributes<HTMLGascoListHeaderElement>;
             "gasco-menu": LocalJSX.GascoMenu & JSXBase.HTMLAttributes<HTMLGascoMenuElement>;
             "gasco-modal": LocalJSX.GascoModal & JSXBase.HTMLAttributes<HTMLGascoModalElement>;
+            "gasco-navbar": LocalJSX.GascoNavbar & JSXBase.HTMLAttributes<HTMLGascoNavbarElement>;
             "gasco-paginator": LocalJSX.GascoPaginator & JSXBase.HTMLAttributes<HTMLGascoPaginatorElement>;
             "gasco-picker-column-internal": LocalJSX.GascoPickerColumnInternal & JSXBase.HTMLAttributes<HTMLGascoPickerColumnInternalElement>;
             "gasco-picker-internal": LocalJSX.GascoPickerInternal & JSXBase.HTMLAttributes<HTMLGascoPickerInternalElement>;
@@ -3661,8 +3837,12 @@ declare module "@stencil/core" {
             "gasco-radio": LocalJSX.GascoRadio & JSXBase.HTMLAttributes<HTMLGascoRadioElement>;
             "gasco-range": LocalJSX.GascoRange & JSXBase.HTMLAttributes<HTMLGascoRangeElement>;
             "gasco-select": LocalJSX.GascoSelect & JSXBase.HTMLAttributes<HTMLGascoSelectElement>;
+            "gasco-sidebar": LocalJSX.GascoSidebar & JSXBase.HTMLAttributes<HTMLGascoSidebarElement>;
             "gasco-tab": LocalJSX.GascoTab & JSXBase.HTMLAttributes<HTMLGascoTabElement>;
             "gasco-tab-button": LocalJSX.GascoTabButton & JSXBase.HTMLAttributes<HTMLGascoTabButtonElement>;
+            "gasco-table": LocalJSX.GascoTable & JSXBase.HTMLAttributes<HTMLGascoTableElement>;
+            "gasco-table-col": LocalJSX.GascoTableCol & JSXBase.HTMLAttributes<HTMLGascoTableColElement>;
+            "gasco-table-row": LocalJSX.GascoTableRow & JSXBase.HTMLAttributes<HTMLGascoTableRowElement>;
             "gasco-toast": LocalJSX.GascoToast & JSXBase.HTMLAttributes<HTMLGascoToastElement>;
             "gasco-tooltip": LocalJSX.GascoTooltip & JSXBase.HTMLAttributes<HTMLGascoTooltipElement>;
         }

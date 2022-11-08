@@ -32,7 +32,7 @@ const createController = <Opts extends object, HTMLElm>(tagName: string) => {
   };
 };
 
-export const popoverController = /*@__PURE__*/ createController<PopoverOptions, HTMLGascoTooltipElement>('gasco-popover');
+export const popoverController = /*@__PURE__*/ createController<PopoverOptions, HTMLGascoPopoverElement>('gasco-popover');
 export const toastController = /*@__PURE__*/ createController<ToastOptions, HTMLGascoToastElement>('gasco-toast');
 export const modalController = /*@__PURE__*/ createController<ModalOptions, HTMLGascoModalElement>('gasco-modal');
 

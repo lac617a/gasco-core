@@ -3,7 +3,7 @@ import type { AnimationBuilder } from '../interface';
 export interface GascoConfig {
   /**
    * When it's set to `false`, disables all animation and transition across the app.
-   * Can be useful to make ionic smoother in slow devices, when animations can't run smoothly.
+   * Can be useful to make gasco smoother in slow devices, when animations can't run smoothly.
    */
   animated?: boolean;
 
@@ -14,14 +14,14 @@ export interface GascoConfig {
   rippleEffect?: boolean;
 
   /**
-   * Wherever ionic will respond to hardware go back buttons in an Android device.
-   * Defaults to `true` when ionic runs in a mobile device.
+   * Wherever gasco will respond to hardware go back buttons in an Android device.
+   * Defaults to `true` when gasco runs in a mobile device.
    */
   hardwareBackButton?: boolean;
 
   /**
    * Whenever clicking the top status bar should cause the scroll to top in an application.
-   * Defaults to `true` when ionic runs in a mobile device.
+   * Defaults to `true` when gasco runs in a mobile device.
    */
   statusTap?: boolean;
 

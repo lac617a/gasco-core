@@ -1,0 +1,16 @@
+@import "../../themes/gasco.globals";
+
+
+// Avatar
+// --------------------------------------------------
+
+img.avatar-img {
+  @include border-radius(var(--border-radius));
+
+  width: 45px;
+  height: 45px;
+  margin-right: 12px;
+
+  object-fit: cover;
+  flex-basis: 45px;
+}

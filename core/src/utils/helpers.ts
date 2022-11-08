@@ -166,7 +166,7 @@ export const getElementRoot = (el: HTMLElement, fallback: HTMLElement = el) => {
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   if (typeof (window as any) !== 'undefined') {
     const win = window as any;
-    const config = win?.Ionic?.config;
+    const config = win?.Gasco?.config;
     if (config) {
       const ael = config.get('_ael');
       if (ael) {
@@ -187,7 +187,7 @@ export const clamp = (min: number, n: number, max: number) => {
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   if (typeof (window as any) !== 'undefined') {
     const win = window as any;
-    const config = win?.Ionic?.config;
+    const config = win?.Gasco?.config;
     if (config) {
       const rel = config.get('_rel');
       if (rel) {
@@ -202,7 +202,7 @@ export const removeEventListener = (el: any, eventName: string, callback: any, o
 };
 
 /**
- * This method is used for Ionic's input components that use Shadow DOM. In
+ * This method is used for Gasco's input components that use Shadow DOM. In
  * order to properly label the inputs to work with screen readers, we need
  * to get the text content of the label outside of the shadow root and pass
  * it to the input inside of the shadow root.

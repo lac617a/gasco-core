@@ -29,6 +29,7 @@
  - [gasco-menu](../gasco-menu)
  - [gasco-modal](../gasco-modal)
  - [gasco-popover](../gasco-popover)
+ - [gasco-sidebar](../gasco-sidebar)
 
 ### Graph
 ```mermaid
@@ -37,6 +38,7 @@ graph TD;
   gasco-menu --> gasco-backdrop
   gasco-modal --> gasco-backdrop
   gasco-popover --> gasco-backdrop
+  gasco-sidebar --> gasco-backdrop
   style gasco-backdrop fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

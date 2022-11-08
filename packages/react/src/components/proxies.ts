@@ -9,6 +9,7 @@ import { defineCustomElement as defineGascoAccordion } from '@gasco/core/compone
 import { defineCustomElement as defineGascoAccordionContent } from '@gasco/core/components/gasco-accordion-content.js';
 import { defineCustomElement as defineGascoAccordionGroup } from '@gasco/core/components/gasco-accordion-group.js';
 import { defineCustomElement as defineGascoAutocomplete } from '@gasco/core/components/gasco-autocomplete.js';
+import { defineCustomElement as defineGascoAvatar } from '@gasco/core/components/gasco-avatar.js';
 import { defineCustomElement as defineGascoBackdrop } from '@gasco/core/components/gasco-backdrop.js';
 import { defineCustomElement as defineGascoButton } from '@gasco/core/components/gasco-button.js';
 import { defineCustomElement as defineGascoButtonIcon } from '@gasco/core/components/gasco-button-icon.js';
@@ -35,6 +36,7 @@ import { defineCustomElement as defineGascoList } from '@gasco/core/components/g
 import { defineCustomElement as defineGascoListHeader } from '@gasco/core/components/gasco-list-header.js';
 import { defineCustomElement as defineGascoMenu } from '@gasco/core/components/gasco-menu.js';
 import { defineCustomElement as defineGascoModal } from '@gasco/core/components/gasco-modal.js';
+import { defineCustomElement as defineGascoNavbar } from '@gasco/core/components/gasco-navbar.js';
 import { defineCustomElement as defineGascoPaginator } from '@gasco/core/components/gasco-paginator.js';
 import { defineCustomElement as defineGascoPickerColumnInternal } from '@gasco/core/components/gasco-picker-column-internal.js';
 import { defineCustomElement as defineGascoPickerInternal } from '@gasco/core/components/gasco-picker-internal.js';
@@ -43,8 +45,12 @@ import { defineCustomElement as defineGascoProgress } from '@gasco/core/componen
 import { defineCustomElement as defineGascoRadio } from '@gasco/core/components/gasco-radio.js';
 import { defineCustomElement as defineGascoRange } from '@gasco/core/components/gasco-range.js';
 import { defineCustomElement as defineGascoSelect } from '@gasco/core/components/gasco-select.js';
+import { defineCustomElement as defineGascoSidebar } from '@gasco/core/components/gasco-sidebar.js';
 import { defineCustomElement as defineGascoTab } from '@gasco/core/components/gasco-tab.js';
 import { defineCustomElement as defineGascoTabButton } from '@gasco/core/components/gasco-tab-button.js';
+import { defineCustomElement as defineGascoTable } from '@gasco/core/components/gasco-table.js';
+import { defineCustomElement as defineGascoTableCol } from '@gasco/core/components/gasco-table-col.js';
+import { defineCustomElement as defineGascoTableRow } from '@gasco/core/components/gasco-table-row.js';
 import { defineCustomElement as defineGascoToast } from '@gasco/core/components/gasco-toast.js';
 import { defineCustomElement as defineGascoTooltip } from '@gasco/core/components/gasco-tooltip.js';
 import { defineCustomElement as defineIonIcon } from '@gasco/core/components/ion-icon.js';
@@ -53,6 +59,7 @@ export const GascoAccordion = /*@__PURE__*/createReactComponent<JSX.GascoAccordi
 export const GascoAccordionContent = /*@__PURE__*/createReactComponent<JSX.GascoAccordionContent, HTMLGascoAccordionContentElement>('gasco-accordion-content', undefined, undefined, defineGascoAccordionContent);
 export const GascoAccordionGroup = /*@__PURE__*/createReactComponent<JSX.GascoAccordionGroup, HTMLGascoAccordionGroupElement>('gasco-accordion-group', undefined, undefined, defineGascoAccordionGroup);
 export const GascoAutocomplete = /*@__PURE__*/createReactComponent<JSX.GascoAutocomplete, HTMLGascoAutocompleteElement>('gasco-autocomplete', undefined, undefined, defineGascoAutocomplete);
+export const GascoAvatar = /*@__PURE__*/createReactComponent<JSX.GascoAvatar, HTMLGascoAvatarElement>('gasco-avatar', undefined, undefined, defineGascoAvatar);
 export const GascoBackdrop = /*@__PURE__*/createReactComponent<JSX.GascoBackdrop, HTMLGascoBackdropElement>('gasco-backdrop', undefined, undefined, defineGascoBackdrop);
 export const GascoButton = /*@__PURE__*/createReactComponent<JSX.GascoButton, HTMLGascoButtonElement>('gasco-button', undefined, undefined, defineGascoButton);
 export const GascoButtonIcon = /*@__PURE__*/createReactComponent<JSX.GascoButtonIcon, HTMLGascoButtonIconElement>('gasco-button-icon', undefined, undefined, defineGascoButtonIcon);
@@ -79,6 +86,7 @@ export const GascoList = /*@__PURE__*/createReactComponent<JSX.GascoList, HTMLGa
 export const GascoListHeader = /*@__PURE__*/createReactComponent<JSX.GascoListHeader, HTMLGascoListHeaderElement>('gasco-list-header', undefined, undefined, defineGascoListHeader);
 export const GascoMenu = /*@__PURE__*/createReactComponent<JSX.GascoMenu, HTMLGascoMenuElement>('gasco-menu', undefined, undefined, defineGascoMenu);
 export const GascoModal = /*@__PURE__*/createReactComponent<JSX.GascoModal, HTMLGascoModalElement>('gasco-modal', undefined, undefined, defineGascoModal);
+export const GascoNavbar = /*@__PURE__*/createReactComponent<JSX.GascoNavbar, HTMLGascoNavbarElement>('gasco-navbar', undefined, undefined, defineGascoNavbar);
 export const GascoPaginator = /*@__PURE__*/createReactComponent<JSX.GascoPaginator, HTMLGascoPaginatorElement>('gasco-paginator', undefined, undefined, defineGascoPaginator);
 export const GascoPickerColumnInternal = /*@__PURE__*/createReactComponent<JSX.GascoPickerColumnInternal, HTMLGascoPickerColumnInternalElement>('gasco-picker-column-internal', undefined, undefined, defineGascoPickerColumnInternal);
 export const GascoPickerInternal = /*@__PURE__*/createReactComponent<JSX.GascoPickerInternal, HTMLGascoPickerInternalElement>('gasco-picker-internal', undefined, undefined, defineGascoPickerInternal);
@@ -87,8 +95,12 @@ export const GascoProgress = /*@__PURE__*/createReactComponent<JSX.GascoProgress
 export const GascoRadio = /*@__PURE__*/createReactComponent<JSX.GascoRadio, HTMLGascoRadioElement>('gasco-radio', undefined, undefined, defineGascoRadio);
 export const GascoRange = /*@__PURE__*/createReactComponent<JSX.GascoRange, HTMLGascoRangeElement>('gasco-range', undefined, undefined, defineGascoRange);
 export const GascoSelect = /*@__PURE__*/createReactComponent<JSX.GascoSelect, HTMLGascoSelectElement>('gasco-select', undefined, undefined, defineGascoSelect);
+export const GascoSidebar = /*@__PURE__*/createReactComponent<JSX.GascoSidebar, HTMLGascoSidebarElement>('gasco-sidebar', undefined, undefined, defineGascoSidebar);
 export const GascoTab = /*@__PURE__*/createReactComponent<JSX.GascoTab, HTMLGascoTabElement>('gasco-tab', undefined, undefined, defineGascoTab);
 export const GascoTabButton = /*@__PURE__*/createReactComponent<JSX.GascoTabButton, HTMLGascoTabButtonElement>('gasco-tab-button', undefined, undefined, defineGascoTabButton);
+export const GascoTable = /*@__PURE__*/createReactComponent<JSX.GascoTable, HTMLGascoTableElement>('gasco-table', undefined, undefined, defineGascoTable);
+export const GascoTableCol = /*@__PURE__*/createReactComponent<JSX.GascoTableCol, HTMLGascoTableColElement>('gasco-table-col', undefined, undefined, defineGascoTableCol);
+export const GascoTableRow = /*@__PURE__*/createReactComponent<JSX.GascoTableRow, HTMLGascoTableRowElement>('gasco-table-row', undefined, undefined, defineGascoTableRow);
 export const GascoToast = /*@__PURE__*/createReactComponent<JSX.GascoToast, HTMLGascoToastElement>('gasco-toast', undefined, undefined, defineGascoToast);
 export const GascoTooltip = /*@__PURE__*/createReactComponent<JSX.GascoTooltip, HTMLGascoTooltipElement>('gasco-tooltip', undefined, undefined, defineGascoTooltip);
 export const IonIcon = /*@__PURE__*/createReactComponent<JSX.IonIcon, HTMLIonIconElement>('ion-icon', undefined, undefined, defineIonIcon);

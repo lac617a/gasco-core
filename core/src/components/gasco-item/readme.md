@@ -24,6 +24,7 @@
 | `rel`              | `rel`         | Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).                                                                                                    | `string`                                                                                                                                         | `undefined`      |
 | `routerAnimation`  | --            | When using a router, it specifies the transition animation when navigating to another page using `href`.                                                                                                                                                                                  | `(baseEl: any, opts?: any) => Animation`                                                                                                         | `undefined`      |
 | `shape`            | `shape`       | The shape of the item. If "round" it will have increased border radius.                                                                                                                                                                                                                   | `"round"`                                                                                                                                        | `undefined`      |
+| `subItem`          | `sub-item`    |                                                                                                                                                                                                                                                                                           | `boolean`                                                                                                                                        | `false`          |
 | `target`           | `target`      | Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.                                                                                                                                       | `string`                                                                                                                                         | `undefined`      |
 | `type`             | `type`        | The type of the button. Only used when an `onclick` or `button` property is present.                                                                                                                                                                                                      | `"button" \| "reset" \| "submit"`                                                                                                                | `'button'`       |
 
@@ -94,16 +95,20 @@
 
  - [gasco-autocomplete](../gasco-autocomplete)
  - [gasco-datetime](../gasco-datetime)
+ - [gasco-navbar](../gasco-navbar)
  - [gasco-paginator](../gasco-paginator)
  - [gasco-select](../gasco-select)
+ - [gasco-sidebar](../gasco-sidebar)
 
 ### Graph
 ```mermaid
 graph TD;
   gasco-autocomplete --> gasco-item
   gasco-datetime --> gasco-item
+  gasco-navbar --> gasco-item
   gasco-paginator --> gasco-item
   gasco-select --> gasco-item
+  gasco-sidebar --> gasco-item
   style gasco-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -21,6 +21,10 @@ export * from './components/gasco-chip/gasco-chip-interface';
 export * from './components/gasco-select/gasco-select-interface';
 export * from './components/gasco-picker-column-internal/gasco-picker-column-internal-interfaces';
 export * from './components/gasco-picker-internal/gasco-picker-internal-interfaces';
+export * from './components/gasco-navbar/gasco-navbar-interface';
+export * from './components/gasco-sidebar/gasco-sidebar-interface';
+export * from './components/gasco-table/gasco-table-interface';
+export * from './components/gasco-table-col/gasco-table-col-interface';
 
 // Types from utils
 export {

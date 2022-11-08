@@ -99,6 +99,7 @@
  - [gasco-paginator](../gasco-paginator)
  - [gasco-select](../gasco-select)
  - [gasco-sidebar](../gasco-sidebar)
+ - [gasco-table-col](../gasco-table-col)
 
 ### Graph
 ```mermaid
@@ -109,6 +110,7 @@ graph TD;
   gasco-paginator --> gasco-item
   gasco-select --> gasco-item
   gasco-sidebar --> gasco-item
+  gasco-table-col --> gasco-item
   style gasco-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

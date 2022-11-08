@@ -7,16 +7,17 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default     |
-| -------- | --------- | ----------- | --------- | ----------- |
-| `action` | `action`  |             | `boolean` | `undefined` |
+| Property     | Attribute     | Description | Type      | Default     |
+| ------------ | ------------- | ----------- | --------- | ----------- |
+| `action`     | `action`      |             | `boolean` | `undefined` |
+| `typeAction` | `type-action` |             | `string`  | `undefined` |
 
 
 ## Events
 
-| Event              | Description | Type               |
-| ------------------ | ----------- | ------------------ |
-| `gascoTableAction` |             | `CustomEvent<any>` |
+| Event                  | Description | Type                               |
+| ---------------------- | ----------- | ---------------------------------- |
+| `gascoTableTypeAction` |             | `CustomEvent<ITableColTypeAction>` |
 
 
 ## Shadow Parts
@@ -35,11 +36,15 @@
 ### Depends on
 
 - ion-icon
+- [gasco-list](../gasco-list)
+- [gasco-item](../gasco-item)
 
 ### Graph
 ```mermaid
 graph TD;
   gasco-table-col --> ion-icon
+  gasco-table-col --> gasco-list
+  gasco-table-col --> gasco-item
   gasco-table --> gasco-table-col
   style gasco-table-col fill:#f9f,stroke:#333,stroke-width:4px
 ```

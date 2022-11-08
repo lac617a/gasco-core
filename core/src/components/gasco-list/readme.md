@@ -22,6 +22,7 @@
  - [gasco-paginator](../gasco-paginator)
  - [gasco-select](../gasco-select)
  - [gasco-sidebar](../gasco-sidebar)
+ - [gasco-table-col](../gasco-table-col)
 
 ### Graph
 ```mermaid
@@ -31,6 +32,7 @@ graph TD;
   gasco-paginator --> gasco-list
   gasco-select --> gasco-list
   gasco-sidebar --> gasco-list
+  gasco-table-col --> gasco-list
   style gasco-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

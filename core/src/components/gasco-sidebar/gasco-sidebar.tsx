@@ -1,5 +1,5 @@
-import { ComponentInterface } from '@stencil/core';
-import { Component, Host, h, Prop, Watch, State, Listen } from '@stencil/core';
+import type { ComponentInterface } from '@stencil/core';
+import { Component, Host, h, Prop, Watch, Element, State, Listen } from '@stencil/core';
 import { chevronBackOutline, chevronDownOutline, chevronForwardOutline  } from 'ionicons/icons';
 
 import type { Color } from '../../interface';
@@ -13,6 +13,8 @@ import { INavbarUser, INavbarUserNav, IGetUserOfNavbar } from '../../interface';
 })
 export class GascoSidebar implements ComponentInterface {
   private usernav!: INavbarUserNav[];
+
+  @Element() el!: HTMLGascoSidebarElement;
 
   @State() user?: INavbarUser;
   @State() isResize: boolean = false;
@@ -92,14 +94,13 @@ export class GascoSidebar implements ComponentInterface {
   // Item  Watch 
   @Watch('isResize')
   protected handleIsResize(current: boolean) {
-    const subItem = document.querySelectorAll('gasco-list-header');
-
-    const item = document.querySelectorAll('gasco-item');
-
+    const subItem = this.el.querySelectorAll('gasco-list-header');
+    const item = this.el.querySelectorAll('gasco-item');
+    
     if(current) {
 
       item?.forEach(node => {
-        if (!node.href) {
+        if (!node?.href) {
           node.style.height = '48px';
           node.children.item(2).replaceWith(this.createNewIcon(chevronForwardOutline, 'end'));
         }

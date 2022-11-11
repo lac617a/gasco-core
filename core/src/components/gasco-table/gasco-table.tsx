@@ -66,7 +66,7 @@ export class GascoTable implements ComponentInterface {
   }
 
   componentWillLoad() {
-    this.stateUserList = this.users;
+    setTimeout(() => this.stateUserList = this.users, 200);
   }
 
   // METHOD's

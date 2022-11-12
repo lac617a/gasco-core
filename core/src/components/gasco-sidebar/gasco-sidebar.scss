@@ -9,11 +9,17 @@
 
 :host(.sidebar-show) {
   max-width: 60px;
+  @media only screen and (min-width: 481px) {
+    ::slotted(gasco-list) {
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+  }
 }
 
-:host(.sidebar-with-user.sidebar-size-fixed) {
-  height: calc(100vh - 95px);
-}
+// :host(.sidebar-with-user.sidebar-size-fixed) {
+//   height: calc(100vh - 83px);
+// }
 
 :host(.sidebar-with-user.sidebar-size-fixed) .sidebar-native {
   padding: 15px 0px;
@@ -84,7 +90,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  margin: 0 1rem;
+  margin: 0 43px;
   cursor: pointer;
   &::before {
     content: "";
@@ -124,8 +130,9 @@
 ::slotted([slot="user-nav"]) {
   display: none;
   align-items: center;
+  flex-wrap: wrap;
   gap: 30px;
-  margin: 17px 1rem;
+  margin: 17px 43px;
 
   font-weight: 400;
   font-size: 12px;
@@ -156,11 +163,16 @@
 }
 
 ::slotted(gasco-list) {
+  display: flex;
+  flex-direction: column;
   box-shadow: none;
+  transition: 300ms;
   > gasco-list-header {
-    padding-block: 12px;
+    padding: 12px 43px;
     flex-direction: column;
     align-items: flex-start;
+    box-shadow: none;
+    transition: 300ms;
     > gasco-label {
       text-transform: uppercase;
       font-weight: 600;

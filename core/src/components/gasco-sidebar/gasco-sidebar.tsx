@@ -13,6 +13,7 @@ import { INavbarUser, INavbarUserNav, IGetUserOfNavbar } from '../../interface';
 })
 export class GascoSidebar implements ComponentInterface {
   private usernav!: INavbarUserNav[];
+  //TODO hacer una variable privada para manejar el los subItem
 
   @Element() el!: HTMLGascoSidebarElement;
 
@@ -80,7 +81,7 @@ export class GascoSidebar implements ComponentInterface {
     const item = (e.target as HTMLGascoItemElement);
 
     if(item.tagName === "GASCO-ITEM") {
-      if (item.style.height === 'auto') {
+      if (item.style.height === 'auto' || !item.style.height) {
         item.style.height = '48px';
         item.children.item(2).replaceWith(this.createNewIcon(chevronForwardOutline, 'end'));
       } else {
@@ -91,15 +92,17 @@ export class GascoSidebar implements ComponentInterface {
     e.stopPropagation();
   }
 
-  // Item  Watch 
+  // Item  Watch
   @Watch('isResize')
   protected handleIsResize(current: boolean) {
     const subItem = this.el.querySelectorAll('gasco-list-header');
     const item = this.el.querySelectorAll('gasco-item');
-    
+
     if(current) {
 
       item?.forEach(node => {
+        node.classList.remove('in-sidebar-show');
+        node.classList.add('in-sidebar');
         if (!node?.href) {
           node.style.height = '48px';
           node.children.item(2).replaceWith(this.createNewIcon(chevronForwardOutline, 'end'));
@@ -110,17 +113,29 @@ export class GascoSidebar implements ComponentInterface {
         subItem?.forEach((el, index) => {
           el.style.transition = '300ms';
           el.style.opacity = '0';
+          el.style.height = '40px';
           el.style.paddingBottom = '0';
           el.style.transform = 'translate(-100px) scale(0)';
           if (index > 0) {
             setTimeout(() => el.style.display = 'none', 300);
           }
         });
+      } else {
+        item?.forEach(node => {
+          node.classList.add('in-sidebar-show');
+          node.classList.remove('in-sidebar');
+        });
       }
     } else {
+      item?.forEach(node => {
+        node.classList.add('in-sidebar-show');
+        node.classList.remove('in-sidebar');
+      });
+
       subItem?.forEach(el => {
         el.style.display = 'flex';
         el.style.opacity = '1';
+        el.style.height = 'auto';
         el.style.paddingBottom = '12px';
         el.style.transform = 'translate(0px) scale(1)';
       });
@@ -151,19 +166,49 @@ export class GascoSidebar implements ComponentInterface {
     return iconEl;
   }
 
-  componentWillLoad() {
-    const subItem = document.querySelectorAll('gasco-item');
-    subItem.forEach(node => {
-      if (!node.href) {
-        node.style.transition = 'height 300ms';
-        node.style.willChange = 'height';
-        node.style.height = '48px';
-        node.appendChild(
+  private routesExacItem(node: HTMLGascoListElement) {
+    const location = window.location.pathname;
+    if (node.slot === 'sub-list') {
+      const parentElement = node.parentElement;
+      let subItem: HTMLGascoItemElement;
+      
+      node.childNodes.forEach(item => {
+        const ASitem = item as HTMLGascoItemElement;
+        if (ASitem.tagName === 'GASCO-ITEM' && ASitem.href === location) {
+          subItem = ASitem;
+        }
+      });
+
+      parentElement.style.transition = 'height 300ms';
+      parentElement.style.willChange = 'height';
+
+      if (subItem) {
+        parentElement.classList.add('route-active');
+        parentElement.appendChild(
+          this.createNewIcon(chevronDownOutline, 'end')
+        );
+      } else {
+        parentElement.classList.remove('route-active');
+        parentElement.style.height = '48px';
+        parentElement.appendChild(
           this.createNewIcon(chevronForwardOutline, 'end')
         );
       }
-    });
+    }
   }
+
+  componentWillLoad() {
+    const allItem = this.el.querySelectorAll('gasco-item');
+    allItem.forEach(node => node.classList.add('in-sidebar-show'));
+
+    const allList = this.el.querySelectorAll('gasco-list');
+    allList.forEach(node => this.routesExacItem(node));
+  }
+
+  // componentWillUpdate() {
+  //   const subItem = this.el.querySelectorAll('gasco-item');
+  //   subItem.forEach(node => this.routesExacItem(node, true));
+  // }
 
   render() {
     const { user, handleHiddenSidebar } = this;

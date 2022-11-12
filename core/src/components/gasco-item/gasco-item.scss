@@ -278,6 +278,24 @@ button, a {
   -webkit-user-drag: none;
 }
 
+:host(.in-sidebar-show) .item-native {
+  font-size: 14px !important;
+  padding-left: 43px;
+}
+
+:host(.in-sidebar) .item-native {
+  @include padding(
+    var(--padding-top),
+    var(--padding-end),
+    var(--padding-bottom),
+    calc(var(--padding-start) + var(--gasco-safe-area-left, 0px))
+  );
+}
+
+:host(.route-active) .item-native {
+  --color: #0090C6;
+}
+
 
 // Inner Item
 // --------------------------------------------------
@@ -362,6 +380,10 @@ button, a {
 
 ::slotted(gasco-label:not([slot="end"])) {
   flex: 1;
+}
+
+::slotted([slot="end"]) {
+  color: #4D4D4D;
 }
 
 // Item Input

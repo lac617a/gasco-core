@@ -6,7 +6,7 @@ import type { Color } from '../../interface';
 import { createColorClasses } from '../../utils/theme';
 import { INavbarUser, INavbarUserNav, IGetUserOfNavbar } from '../../interface';
 
-const logo = 'https://camo.githubusercontent.com/2bac56fff4f1d85f15664302b857a26d039d467660d9f34f73d9a19436ad8b4a/68747470733a2f2f676173636f2d7765622d636f6d706f6e656e742e6865726f6b756170702e636f6d2f696d672f676173636f2d7765622d636f6d706f6e656e742e737667';
+const logo = 'https://i.ibb.co/ys0LhBX/logo-Gasco.png';
 
 @Component({
   tag: 'gasco-navbar',
@@ -74,8 +74,10 @@ export class GascoNavbar implements ComponentInterface {
           )}
           {this.isOpen && (
             <gasco-list>
-              {this.usernav.map((nav: INavbarUserNav) => (
-                <gasco-item href={nav.link}>{nav.name}</gasco-item>
+              {this.usernav.map((nav: INavbarUserNav, index: number) => (
+                <gasco-item
+                  divider={index > 0}
+                  href={nav.link}>{nav.name}</gasco-item>
               ))}
           </gasco-list>
           )}

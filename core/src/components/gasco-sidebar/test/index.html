@@ -27,14 +27,20 @@
     body {
       background-color: brown;
     }
+    gasco-button {
+      position: absolute;
+    }
+
   </style>
   <div style="display: flex;">
     <gasco-sidebar size="cover">
       <gasco-list>
+
         <gasco-list-header>
           <gasco-label>DASHBOARDS</gasco-label>
           <gasco-label>Datos para tu negocio</gasco-label>
         </gasco-list-header>
+
         <gasco-item href="/">
           <i class="material-icons" slot="start">home</i>
           Inicio
@@ -47,6 +53,7 @@
           <i class="material-icons" slot="start">donut_small</i>
           Estadisticas
         </gasco-item>
+
       </gasco-list>
       <gasco-list>
         <gasco-list-header>
@@ -85,6 +92,10 @@
     <div style="width: 100%;">
       <h1 style="background-color: blue;">Test performance sidebar</h1>
     </div>
+  </div>
+
+  <div>
+    <gasco-button></gasco-button>
   </div>
 
 </body>

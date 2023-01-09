@@ -82,7 +82,7 @@ export class GascoSidebar implements ComponentInterface {
 
     if(item.tagName === "GASCO-ITEM") {
       if (item.style.height === 'auto' || !item.style.height) {
-        item.style.height = '48px';
+        item.style.height = '24px';
         item.children.item(2).replaceWith(this.createNewIcon(chevronForwardOutline, 'end'));
       } else {
         item.style.height = 'auto';
@@ -104,7 +104,7 @@ export class GascoSidebar implements ComponentInterface {
         node.classList.remove('in-sidebar-show');
         node.classList.add('in-sidebar');
         if (!node?.href) {
-          node.style.height = '48px';
+          node.style.height = '24px';
           node.children.item(2).replaceWith(this.createNewIcon(chevronForwardOutline, 'end'));
         }
       });
@@ -114,7 +114,6 @@ export class GascoSidebar implements ComponentInterface {
           el.style.transition = '300ms';
           el.style.opacity = '0';
           el.style.height = '40px';
-          el.style.paddingBottom = '0';
           el.style.transform = 'translate(-100px) scale(0)';
           if (index > 0) {
             setTimeout(() => el.style.display = 'none', 300);
@@ -136,7 +135,6 @@ export class GascoSidebar implements ComponentInterface {
         el.style.display = 'flex';
         el.style.opacity = '1';
         el.style.height = 'auto';
-        el.style.paddingBottom = '12px';
         el.style.transform = 'translate(0px) scale(1)';
       });
     }
@@ -189,7 +187,7 @@ export class GascoSidebar implements ComponentInterface {
         );
       } else {
         parentElement.classList.remove('route-active');
-        parentElement.style.height = '48px';
+        parentElement.style.height = '24px';
         parentElement.appendChild(
           this.createNewIcon(chevronForwardOutline, 'end')
         );
@@ -224,7 +222,7 @@ export class GascoSidebar implements ComponentInterface {
           <button
             class={`sidebar-button${this.isResize ? ' is-resize' : ''}`}
             onClick={handleHiddenSidebar}>
-            <ion-icon icon={chevronBackOutline}></ion-icon>
+            <ion-icon icon={chevronBackOutline} style={{fontSize:52}}></ion-icon>
           </button>
           {this.isResponsive <= 480 && user !== null && (
             <button

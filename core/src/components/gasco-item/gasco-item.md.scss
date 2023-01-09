@@ -40,11 +40,12 @@
 :host(.sub-item) {
   --min-height: 0;
   .input-wrapper {
-    padding-left: 2.8rem;
-    font-weight: 400;
+    padding-left: 2.4rem;
+
+    font-weight: 500;
     font-size: 12px;
-    line-height: 16px;
-    padding-block: 10px;
+    line-height: 15px;
+    // padding-block: 10px;
   }
 }
 
@@ -192,6 +193,14 @@
 
 // Material Design Item Slots
 // --------------------------------------------------
+
+:host(.in-sidebar-show) ::slotted([slot="start"]) {
+  margin-right: 13px;
+}
+
+:host(.in-sidebar) ::slotted([slot="start"]) {
+  margin-left: 4px;
+}
 
 ::slotted([slot="start"]) {
   @include margin-horizontal($item-md-start-slot-margin-start, $item-md-start-slot-margin-end);

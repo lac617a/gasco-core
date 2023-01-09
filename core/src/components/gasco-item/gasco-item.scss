@@ -278,9 +278,24 @@ button, a {
   -webkit-user-drag: none;
 }
 
+:host(.in-sidebar-show) {
+  --min-height: 24px;
+}
+
+:host(.in-sidebar) {
+  --min-height: 24px;
+}
+
+:host(.in-sidebar-show):not(:last-child) {
+  margin-bottom: 15px;
+}
+
 :host(.in-sidebar-show) .item-native {
+  font-family: inherit;
   font-size: 14px !important;
-  padding-left: 43px;
+  font-weight: 600 !important;
+  line-height: 18px !important;
+  padding-left: 25px;
 }
 
 :host(.in-sidebar) .item-native {
@@ -364,6 +379,13 @@ button, a {
 
 // Item Slots
 // --------------------------------------------------
+
+::slotted([slot="sub-list"]) {
+  display: flex !important;
+  gap: 10px;
+  flex-direction: column;
+  margin-top: 10px !important;
+}
 
 ::slotted(gasco-icon) {
   font-size: 1.6em;
